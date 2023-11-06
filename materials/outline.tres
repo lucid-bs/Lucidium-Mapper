@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bbgrmay1xyf32"]
+
+[sub_resource type="Shader" id="Shader_ur3p7"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.beta2's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_front,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform float grow;
+
+void vertex() {
+	VERTEX+=NORMAL*grow;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	ALBEDO = albedo.rgb;
+}
+"
+metadata/_edit_res_path = "res://Scenes/Core/MapEditor.tscn::Shader_aiaya"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_ur3p7")
+shader_parameter/albedo = Color(0, 1, 1, 1)
+shader_parameter/grow = 0.03

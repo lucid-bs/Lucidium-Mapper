@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bf2xqx4dcms47"
+path="res://.godot/imported/CubeNoteSmooth.obj-8ae2a8028d7a5dca16e757eebc559311.mesh"
+
+[deps]
+
+files=["res://.godot/imported/CubeNoteSmooth.obj-8ae2a8028d7a5dca16e757eebc559311.mesh"]
+
+source_file="res://extern/ChroMapper/CubeNoteSmooth.obj"
+dest_files=["res://.godot/imported/CubeNoteSmooth.obj-8ae2a8028d7a5dca16e757eebc559311.mesh", "res://.godot/imported/CubeNoteSmooth.obj-8ae2a8028d7a5dca16e757eebc559311.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

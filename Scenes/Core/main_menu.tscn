@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bltg8i5j75slv"]
+
+[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_ib27d"]
+[ext_resource type="Script" path="res://Scenes/Core/main_menu.gd" id="2_qmcka"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ib27d")
+script = ExtResource("2_qmcka")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+anchor_right = 0.3
+anchor_bottom = 1.0
+auto_height = true
+item_count = 2
+item_0/text = "Do I have"
+item_1/text = "Any choice?"
+metadata/_edit_use_anchors_ = true

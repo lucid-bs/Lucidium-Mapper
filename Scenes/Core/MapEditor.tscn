@@ -1,0 +1,633 @@
+[gd_scene load_steps=26 format=3 uid="uid://d22oot53lt605"]
+
+[ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
+[ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
+[ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
+[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
+[ext_resource type="Material" uid="uid://bkhx7qlonmdvo" path="res://materials/bloq/whiteTexture.tres" id="5_q1tg2"]
+[ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
+[ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
+[ext_resource type="Script" path="res://Scenes/Bloq.gd" id="8_7qirs"]
+[ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
+[ext_resource type="Script" path="res://Scenes/ErrorLogger.gd" id="10_i8sui"]
+
+[sub_resource type="Environment" id="Environment_rcla0"]
+background_mode = 1
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tahei"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j1knx"]
+material = ExtResource("6_2v7ym")
+size = Vector3(0.025, 3, 0.025)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abaqk"]
+size = Vector3(0.025, 4, 0.025)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3f33k"]
+size = Vector2(4, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r5xv2"]
+size = Vector2(4, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u3cbc"]
+size = Vector3(1, 1, 0.0605469)
+
+[sub_resource type="QuadMesh" id="QuadMesh_7skff"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxoc4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_right = 4
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rou5e"]
+bg_color = Color(0.517647, 0.517647, 0.517647, 0.462745)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oauwe"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jfgi"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w8qgi"]
+_surfaces = [{
+"aabb": AABB(-0.15, -0.005, -0.042, 0.3, 0.01, 0.09001),
+"format": 34359742465,
+"index_count": 48,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 8, 0, 6, 0, 9, 0, 5, 0, 1, 0, 0, 0, 7, 0, 1, 0, 5, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 6, 0, 8, 0, 3, 0, 4, 0, 9, 0, 3, 0, 8, 0, 9, 0, 2, 0, 3, 0, 6, 0, 2, 0, 9, 0, 4, 0, 7, 0, 8, 0, 1, 0, 7, 0, 4, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ityvx"]
+resource_name = "arrow_Arrow"
+_surfaces = [{
+"aabb": AABB(-0.15, -0.005, -0.042, 0.3, 0.01, 0.09001),
+"format": 34359742467,
+"index_count": 48,
+"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 8, 0, 6, 0, 9, 0, 12, 0, 10, 0, 11, 0, 13, 0, 10, 0, 12, 0, 16, 0, 14, 0, 15, 0, 17, 0, 14, 0, 16, 0, 20, 0, 18, 0, 19, 0, 21, 0, 18, 0, 20, 0, 24, 0, 22, 0, 23, 0, 25, 0, 22, 0, 24, 0, 28, 0, 26, 0, 27, 0, 29, 0, 26, 0, 28, 0),
+"material": SubResource("StandardMaterial3D_2jfgi"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 177, 166, 255, 127, 177, 166, 255, 127, 177, 166, 255, 127, 177, 166, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_w8qgi")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vm5bd"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.001
+
+[node name="Map Editor" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rcla0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.93358, -0.0745088, 0.350537, 0, 0.978148, 0.207911, -0.358368, -0.194102, 0.913179, 3, 2.7, 6)
+script = ExtResource("2_xkfh1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+mesh = SubResource("CapsuleMesh_tahei")
+
+[node name="Grid" type="Node3D" parent="."]
+
+[node name="X" type="Node3D" parent="Grid"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_2v7ym")
+
+[node name="Y" type="Node3D" parent="Grid"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3, 0)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = ExtResource("7_k0ji6")
+mesh = SubResource("QuadMesh_3f33k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+material_override = ExtResource("7_k0ji6")
+mesh = SubResource("PlaneMesh_r5xv2")
+
+[node name="Timeline" type="Node3D" parent="Grid"]
+
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="4" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="5" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="6" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="7" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="GridPlacements" type="Node3D" parent="Grid"]
+
+[node name="00" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/00"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/00"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="Rotating Light" type="Node3D" parent="."]
+transform = Transform3D(-1.00389, -0.423731, -0.346668, -3.22324e-08, 0.711106, -0.826286, 0.579596, -0.733924, -0.600447, 0, 3, 0)
+
+[node name="Light" type="DirectionalLight3D" parent="Rotating Light"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+light_energy = 0.5
+light_bake_mode = 0
+shadow_bias = 0.05
+shadow_normal_bias = 0.4
+
+[node name="MapperUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("4_n5qpl")
+
+[node name="Top Bar" type="Panel" parent="MapperUI"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 0.0555556
+metadata/_edit_use_anchors_ = true
+
+[node name="TabBar" type="TabBar" parent="MapperUI/Top Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_selected_color = Color(0.662745, 0.811765, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_dxoc4")
+tab_alignment = 1
+clip_tabs = false
+scrolling_enabled = false
+tab_count = 3
+tab_0/title = "Chart"
+tab_1/title = "Environment"
+tab_2/title = "Text Editor"
+
+[node name="Button" type="Button" parent="MapperUI/Top Bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.03125
+anchor_bottom = 1.0
+theme_override_fonts/font = ExtResource("9_fabox")
+text = "arrow_back"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Bottom Bar" type="Panel" parent="MapperUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.844444
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MapperUI/Bottom Bar"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 112.0
+text = "Debug Logger"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/Bottom Bar"]
+layout_mode = 0
+anchor_left = 0.15
+anchor_right = 0.8
+anchor_bottom = 0.999997
+metadata/_edit_use_anchors_ = true
+
+[node name="ErrorLogger" type="VBoxContainer" parent="MapperUI/Bottom Bar/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("10_i8sui")
+
+[node name="RightTabContainer" type="TabContainer" parent="MapperUI"]
+layout_mode = 0
+anchor_left = 0.8
+anchor_top = 0.0555556
+anchor_right = 1.0
+anchor_bottom = 0.844444
+metadata/_edit_use_anchors_ = true
+
+[node name="Inspector" type="Control" parent="MapperUI/RightTabContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/RightTabContainer/Inspector"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Panel" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rou5e")
+
+[node name="Cube" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cube"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Direction" type="HBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Direction"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 9
+popup/item_0/text = "Up"
+popup/item_0/id = 0
+popup/item_1/text = "Down"
+popup/item_1/id = 1
+popup/item_2/text = "Left"
+popup/item_2/id = 2
+popup/item_3/text = "Right"
+popup/item_3/id = 3
+popup/item_4/text = "Dot"
+popup/item_4/id = 4
+popup/item_5/text = "Up Left"
+popup/item_5/id = 5
+popup/item_6/text = "Up Right"
+popup/item_6/id = 6
+popup/item_7/text = "Down Left"
+popup/item_7/id = 7
+popup/item_8/text = "Down Right"
+popup/item_8/id = 8
+
+[node name="Color" type="HBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+layout_mode = 2
+
+[node name="Color" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "Red"
+popup/item_0/id = 0
+popup/item_1/text = "Blue"
+popup/item_1/id = 1
+
+[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+layout_mode = 2
+
+[node name="Color" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Angle Offset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EventSettings" type="VBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Panel" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rou5e")
+
+[node name="Event" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Event"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Beat" type="HBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Beat
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Time" type="HBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Grid" type="HBoxContainer" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 3.0
+
+[node name="Label2" type="Label" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox2" type="SpinBox" parent="MapperUI/RightTabContainer/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2.0
+
+[node name="Attributes" type="Control" parent="MapperUI/RightTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LeftTabContainer" type="TabContainer" parent="MapperUI"]
+layout_mode = 0
+anchor_top = 0.0555556
+anchor_right = 0.15
+anchor_bottom = 0.844444
+metadata/_edit_use_anchors_ = true
+
+[node name="Notes" type="Control" parent="MapperUI/LeftTabContainer"]
+layout_mode = 2
+
+[node name="NoteCotainer" type="VBoxContainer" parent="MapperUI/LeftTabContainer/Notes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer"]
+layout_mode = 2
+
+[node name="Title" type="Panel" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rou5e")
+
+[node name="Direction" type="Label" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Direction"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="Button" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "TL"
+
+[node name="Button2" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "T"
+
+[node name="Button3" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "TR"
+
+[node name="Button4" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "L"
+
+[node name="Button5" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "D"
+
+[node name="Button6" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "R"
+
+[node name="Button7" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "BL"
+
+[node name="Button8" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "B"
+
+[node name="Button9" type="Button" parent="MapperUI/LeftTabContainer/Notes/NoteCotainer/CubeSettings/GridContainer"]
+layout_mode = 2
+text = "BR"
+
+[node name="Arcs" type="Control" parent="MapperUI/LeftTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Bombs" type="Control" parent="MapperUI/LeftTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Walls" type="Control" parent="MapperUI/LeftTabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RedBloq" parent="." instance=ExtResource("1_hvejt")]
+y = 0
+direction = 1
+
+[node name="BlooBloq" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+script = ExtResource("8_7qirs")
+color = 1
+x = 2
+direction = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlooBloq"]
+shape = SubResource("BoxShape3D_oauwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BlooBloq"]
+transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("3_aa3hs")
+skeleton = NodePath("")
+
+[node name="Arrow" type="MeshInstance3D" parent="BlooBloq/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
+mesh = SubResource("ArrayMesh_ityvx")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_q1tg2")
+
+[node name="Dot" type="MeshInstance3D" parent="BlooBloq/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
+visible = false
+material_override = ExtResource("5_q1tg2")
+mesh = SubResource("CylinderMesh_vm5bd")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://4uq6t750w1kx"]
+
+[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_jt28w"]
+[ext_resource type="Script" path="res://Scenes/Core/first_time_setup.gd" id="2_ni6y4"]
+
+[node name="First Time Setup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jt28w")
+script = ExtResource("2_ni6y4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.397
+anchor_top = 0.083
+anchor_right = 0.6
+anchor_bottom = 0.125
+offset_left = 0.0639954
+offset_top = 0.191998
+offset_right = 0.199951
+offset_bottom = 2.0
+grow_horizontal = 2
+text = "Where is your Maps Folder?"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(623, 556)
+visible = true
+borderless = true
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+show_hidden_files = true
+
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]

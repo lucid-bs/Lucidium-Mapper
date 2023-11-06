@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfjyqn2ilcpxk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nyexs"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rxndq"]
+sky_material = SubResource("ProceduralSkyMaterial_nyexs")
+
+[sub_resource type="Environment" id="Environment_dhny6"]
+background_mode = 2
+sky = SubResource("Sky_rxndq")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_u2ohw"]
+script/source = "extends StaticBody3D
+
+
+func _ready() -> void:
+	var mesh : MeshInstance3D = get_child(1)
+
+func _input_event(camera: Camera3D, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == 1 && event.pressed == true && event.shift_pressed == true:
+			%ErrorLogger.log_message(\"One small [25 MINUTES] for [CLICKING BLOQ], one giant leap for [LUCIDIUM MAPPER]\")
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_pupw6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1meb"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dhny6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.9)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.6, -0.4)
+script = SubResource("GDScript_u2ohw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.7)
+mesh = SubResource("BoxMesh_pupw6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.7)
+shape = SubResource("BoxShape3D_l1meb")
