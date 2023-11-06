@@ -97,7 +97,7 @@ func _ready() -> void:
 	
 	$MeshInstance3D.material_override = bloq_material
 	if glossy:
-		$MeshInstance3D.material_override.set_shader_parameter("roughness", 0.75)
+		$MeshInstance3D.material_override.set_shader_parameter("roughness", 0.5)
 		$MeshInstance3D.material_override.set_shader_parameter("retallic", 1)
 	else:
 		$MeshInstance3D.material_override.set_shader_parameter("roughness", 1)
