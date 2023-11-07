@@ -1,0 +1,3 @@
+This branch aims to solve the issue of editing note data \n
+We need to be able to edit note data as it is a crucial feature that is a requirement for every editor \n
+ ---- The following outlines approaches to solving this issue ---- \n
