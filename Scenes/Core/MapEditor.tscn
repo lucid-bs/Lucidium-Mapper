@@ -776,7 +776,3 @@ transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558
 visible = false
 material_override = ExtResource("5_q1tg2")
 mesh = SubResource("CylinderMesh_vm5bd")
-
-[node name="Editor" type="Node" parent="."]
-
-[node name="SelectionManager" type="Node" parent="Editor"]
