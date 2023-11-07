@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=27 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
+[ext_resource type="Script" path="res://Scenes/GridPlacement.gd" id="4_gcuyk"]
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
 [ext_resource type="Material" uid="uid://bkhx7qlonmdvo" path="res://materials/bloq/whiteTexture.tres" id="5_q1tg2"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
@@ -226,12 +227,156 @@ skeleton = NodePath("../..")
 
 [node name="00" type="StaticBody3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/00"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/00"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="10" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="20" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="30" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="01" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="11" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="21" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="31" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="02" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="13" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="23" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="33" type="StaticBody3D" parent="Grid/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
@@ -631,3 +776,7 @@ transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558
 visible = false
 material_override = ExtResource("5_q1tg2")
 mesh = SubResource("CylinderMesh_vm5bd")
+
+[node name="Editor" type="Node" parent="."]
+
+[node name="SelectionManager" type="Node" parent="Editor"]

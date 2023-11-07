@@ -12,13 +12,3 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ib27d")
 script = ExtResource("2_qmcka")
-
-[node name="ItemList" type="ItemList" parent="."]
-layout_mode = 0
-anchor_right = 0.3
-anchor_bottom = 1.0
-auto_height = true
-item_count = 2
-item_0/text = "Do I have"
-item_1/text = "Any choice?"
-metadata/_edit_use_anchors_ = true
