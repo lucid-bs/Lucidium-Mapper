@@ -14,7 +14,11 @@ signal Map_Selected(directory : String)
 
 func _ready() -> void:
 	$Title/Title.text = Title
-	$Title/Subtitle.text = Subtitle
+	
+	if Subtitle == "":
+		$Title/Subtitle.queue_free()
+	else:
+		$Title/Subtitle.text = Subtitle
 	
 	$Author/Author.text = Author
 	$Author/Mapper.text = Mapper
