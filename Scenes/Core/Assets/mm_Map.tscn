@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Core/Assets/mm_Map.gd" id="1_uy3uj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gir82"]
-font_size = 22
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t4eb"]
 font_size = 8
@@ -27,10 +27,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Title"]
 layout_mode = 2
-text = "Lost Faith"
+text = "Lost Faith "
 label_settings = SubResource("LabelSettings_gir82")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Subtitle" type="Label" parent="Title"]
 layout_mode = 2
