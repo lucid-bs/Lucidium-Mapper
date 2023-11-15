@@ -1,0 +1,35 @@
+{
+  "_version": "2.1.0",
+  "_songName": "Lost Faith",
+  "_songSubName": "",
+  "_songAuthorName": "JD The 65th",
+  "_levelAuthorName": "JD The 65th",
+  "_beatsPerMinute": 99.0,
+  "_songTimeOffset": 0.0,
+  "_shuffle": 0.0,
+  "_shufflePeriod": 0.5,
+  "_previewStartTime": 38.74,
+  "_previewDuration": 24.0,
+  "_songFilename": "lf.egg",
+  "_coverImageFilename": "tcsr.png",
+  "_environmentName": "WeaveEnvironment",
+  "_allDirectionsEnvironmentName": "GlassDesertEnvironment",
+  "_environmentNames": [],
+  "_colorSchemes": [],
+  "_difficultyBeatmapSets": [
+    {
+      "_beatmapCharacteristicName": "Standard",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "ExpertPlus",
+          "_difficultyRank": 9,
+          "_beatmapFilename": "ExpertPlusStandard.dat",
+          "_noteJumpMovementSpeed": 16.0,
+          "_noteJumpStartBeatOffset": 0.0,
+          "_beatmapColorSchemeIdx": 0,
+          "_environmentNameIdx": 0
+        }
+      ]
+    }
+  ]
+}

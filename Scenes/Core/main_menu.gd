@@ -36,3 +36,4 @@ func _ready() -> void:
 
 func _configure_map(directory: String):
 	get_tree().change_scene_to_packed(MAP_CONFIGURER)
+	EditorResourcePreview

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=6 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_ib27d"]
 [ext_resource type="Script" path="res://Scenes/Core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://Scenes/Core/Assets/mm_Map.tscn" id="3_2i0mj"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
+[ext_resource type="Script" path="res://Scenes/Core/Assets/WebMapLoader.gd" id="5_nugno"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -28,3 +30,71 @@ layout_mode = 2
 
 [node name="Panel" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_2i0mj")]
 layout_mode = 2
+
+[node name="Lucidium" type="Sprite2D" parent="."]
+position = Vector2(992, 128)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("4_u068o")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 256.0
+offset_right = 1216.0
+offset_bottom = 704.0
+tab_alignment = 1
+
+[node name="New Map" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Load Map" type="Control" parent="TabContainer"]
+layout_mode = 2
+script = ExtResource("5_nugno")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Load Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Input" type="VBoxContainer" parent="TabContainer/Load Map/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Load Map/VBoxContainer/Input"]
+layout_mode = 2
+text = "Beat Saver ID or Web Link (to a zip file)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Load Map/VBoxContainer/Input"]
+layout_mode = 2
+placeholder_text = "25f or https://example.com"
+alignment = 1
+
+[node name="FILESYSTEM" type="VBoxContainer" parent="TabContainer/Load Map/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Load Map/VBoxContainer/FILESYSTEM"]
+layout_mode = 2
+text = "Filesystem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar" type="TabBar" parent="TabContainer/Load Map/VBoxContainer/FILESYSTEM"]
+layout_mode = 2
+tab_alignment = 1
+tab_count = 2
+tab_0/title = "Map Directory"
+tab_1/title = "USER DATA (Temporary)"
+
+[node name="Button" type="Button" parent="TabContainer/Load Map/VBoxContainer"]
+layout_mode = 2
+text = "Download"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="TabContainer/Load Map"]
+
+[connection signal="pressed" from="TabContainer/Load Map/VBoxContainer/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
