@@ -764,6 +764,7 @@ script = ExtResource("8_7qirs")
 color = 1
 x = 2
 direction = 8
+angle_offset = 45
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlooBloq"]
 shape = SubResource("BoxShape3D_oauwe")

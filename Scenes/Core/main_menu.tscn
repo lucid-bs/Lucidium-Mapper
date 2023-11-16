@@ -38,17 +38,18 @@ texture = ExtResource("4_u068o")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 256.0
-offset_right = 1216.0
-offset_bottom = 704.0
+anchor_left = 0.6
+anchor_top = 0.355556
+anchor_right = 0.95
+anchor_bottom = 0.977778
 tab_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="New Map" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Load Map" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("5_nugno")
 
