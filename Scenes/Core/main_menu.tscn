@@ -46,7 +46,6 @@ tab_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Main Menu"]
@@ -89,6 +88,7 @@ visible = false
 layout_mode = 2
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 script = ExtResource("5_nugno")
