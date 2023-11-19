@@ -31,7 +31,7 @@ func _on_request_completed(result, response_code, headers, body):
 	
 
 func _on_button_pressed() -> void:
-	resourceLocator = $VBoxContainer/Input/LineEdit.text 
+	resourceLocator = $Input/LineEdit.text 
 	if "https://" in resourceLocator:
 		downloadURL = resourceLocator
 		pass
@@ -42,7 +42,7 @@ func _on_button_pressed() -> void:
 		var beatSaverAPIEndpoint = "https://api.beatsaver.com/maps/id/" + resourceLocator
 		$HTTPRequest.request(beatSaverAPIEndpoint)
 		await thingyUpdated
-	if $VBoxContainer/FILESYSTEM/TabBar.current_tab == 0:
+	if $FILESYSTEM/TabBar.current_tab == 0:
 		$HTTPRequest.download_file = config.get_value("FileSystem", "InstallDir") + "/CustomWIPLevels/" + "lucid.zip"
 	else:
 		$HTTPRequest.download_file = "user://lucid.zip"

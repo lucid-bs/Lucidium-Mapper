@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=31 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
 [ext_resource type="Script" path="res://Scenes/GridPlacement.gd" id="4_gcuyk"]
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
+[ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://bkhx7qlonmdvo" path="res://materials/bloq/whiteTexture.tres" id="5_q1tg2"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
@@ -38,6 +39,13 @@ size = Vector2(4, 3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r5xv2"]
 size = Vector2(4, 40)
+
+[sub_resource type="FontVariation" id="FontVariation_op0pt"]
+base_font = ExtResource("5_1sgbo")
+variation_opentype = {
+1936486004: null,
+2003265652: 700
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u3cbc"]
 size = Vector3(1, 1, 0.0605469)
@@ -189,11 +197,23 @@ material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/0"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "1"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
 [node name="1" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/1"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "2"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
 
 [node name="2" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
@@ -201,11 +221,23 @@ material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/2"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "3"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
 [node name="3" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/3"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "4"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
 
 [node name="4" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
@@ -213,11 +245,23 @@ material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/4"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "5"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
 [node name="5" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/5"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "6"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
 
 [node name="6" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
@@ -225,11 +269,25 @@ material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/6"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "7
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
 [node name="7" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/7"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "8
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
 
 [node name="GridPlacements" type="Node3D" parent="Grid"]
 
