@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
-[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://icon.svg" id="2_qhjkb"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/grid_manager.gd" id="3_wy725"]
@@ -860,45 +860,53 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Window" type="Window" parent="MapperUI"]
+[node name="SettingsWindow" type="Window" parent="MapperUI"]
 title = "Settings"
 initial_position = 2
 size = Vector2i(640, 360)
 script = ExtResource("10_n0s4v")
 
-[node name="PanelContainer" type="PanelContainer" parent="MapperUI/Window"]
+[node name="GlobalSettings" type="TabContainer" parent="MapperUI/SettingsWindow"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/Window/PanelContainer"]
+[node name="DummyParameters" type="MarginContainer" parent="MapperUI/SettingsWindow/GlobalSettings"]
 layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MapperUI/Window/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Param1 "
 
-[node name="HSlider" type="HSlider" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MapperUI/Window/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Param2"
 
-[node name="HSlider" type="HSlider" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1036,4 +1044,4 @@ transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558
 visible = false
 mesh = SubResource("CylinderMesh_vm5bd")
 
-[connection signal="close_requested" from="MapperUI/Window" to="MapperUI/Window" method="_on_close_requested"]
+[connection signal="close_requested" from="MapperUI/SettingsWindow" to="MapperUI/SettingsWindow" method="_on_close_requested"]
