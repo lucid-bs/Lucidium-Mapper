@@ -1,6 +1,5 @@
-extends StaticBody3D
-
-class_name Bloq
+extends VisualEventBS
+class_name Block
 
 
 enum BLOQ_DIRECTIONS {
@@ -27,7 +26,6 @@ enum BLOQ_COLORS {
 
 
 # V3 JSON SETTINGS
-@export var beat : float = 0
 @export var color : BLOQ_COLORS = BLOQ_COLORS.RED
 
 @export_range(0, 3) var x = 0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cku2ya1a0pubt"]
+[gd_scene load_steps=10 format=3 uid="uid://bowv8s3d8ivsx"]
 
-[ext_resource type="Script" path="res://Scenes/Bloq.gd" id="1_p10gk"]
-[ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="2_hir18"]
-[ext_resource type="Material" uid="uid://bpnac6d7buech" path="res://materials/bloq/arrowShader.tres" id="3_3pj1r"]
+[ext_resource type="Script" path="res://Scenes/Core/editor/block.gd" id="1_ikyr4"]
+[ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="2_xs4d4"]
+[ext_resource type="Material" uid="uid://q5ec1qb0a6lg" path="res://materials/bloq/bloqShader.tres" id="3_oqkyf"]
+[ext_resource type="Material" uid="uid://bpnac6d7buech" path="res://materials/bloq/arrowShader.tres" id="4_1h48e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oauwe"]
 size = Vector3(0.75, 0.75, 0.75)
@@ -43,29 +44,29 @@ top_radius = 0.08
 bottom_radius = 0.08
 height = 0.001
 
-[node name="RedBloq" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
-script = ExtResource("1_p10gk")
-x = 1
-y = 2
-direction = 0
+[node name="BlueBloq" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+script = ExtResource("1_ikyr4")
+glossy = false
+color = 1
+x = 2
+direction = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_oauwe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("2_hir18")
+mesh = ExtResource("2_xs4d4")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_oqkyf")
 
 [node name="Arrow" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
 mesh = SubResource("ArrayMesh_ityvx")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_3pj1r")
+surface_material_override/0 = ExtResource("4_1h48e")
 
 [node name="Dot" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
 visible = false
-material_override = ExtResource("3_3pj1r")
 mesh = SubResource("CylinderMesh_vm5bd")

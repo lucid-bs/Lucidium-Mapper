@@ -1,22 +1,19 @@
-[gd_scene load_steps=37 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=29 format=3 uid="uid://d22oot53lt605"]
 
-[ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
-[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://icon.svg" id="2_qhjkb"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
-[ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/grid_manager.gd" id="3_wy725"]
-[ext_resource type="Script" path="res://Scenes/GridPlacement.gd" id="4_gcuyk"]
+[ext_resource type="Script" path="res://Scenes/grid_placement.gd" id="4_gcuyk"]
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
-[ext_resource type="Script" path="res://Scenes/Bloq.gd" id="8_7qirs"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
-[ext_resource type="Script" path="res://Scenes/ErrorLogger.gd" id="10_i8sui"]
+[ext_resource type="Script" path="res://Scenes/error_logger.gd" id="10_i8sui"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://Scenes/Core/settings_window.tscn" id="11_f5e1k"]
-[ext_resource type="Material" uid="uid://q5ec1qb0a6lg" path="res://materials/bloq/bloqShader.tres" id="13_3lljt"]
-[ext_resource type="Material" uid="uid://bpnac6d7buech" path="res://materials/bloq/arrowShader.tres" id="14_jhken"]
+[ext_resource type="Script" path="res://Scenes/Core/editor/selection_manager.gd" id="12_02ale"]
+[ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Core/editor/block.tscn" id="14_om2ls"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
@@ -78,45 +75,6 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oauwe"]
-size = Vector3(0.75, 0.75, 0.75)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jfgi"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_w8qgi"]
-_surfaces = [{
-"aabb": AABB(-0.15, -0.005, -0.042, 0.3, 0.01, 0.09001),
-"format": 34359742465,
-"index_count": 48,
-"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 8, 0, 6, 0, 9, 0, 5, 0, 1, 0, 0, 0, 7, 0, 1, 0, 5, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 6, 0, 8, 0, 3, 0, 4, 0, 9, 0, 3, 0, 8, 0, 9, 0, 2, 0, 3, 0, 6, 0, 2, 0, 9, 0, 4, 0, 7, 0, 8, 0, 1, 0, 7, 0, 4, 0),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 10,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189)
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_ityvx"]
-resource_name = "arrow_Arrow"
-_surfaces = [{
-"aabb": AABB(-0.15, -0.005, -0.042, 0.3, 0.01, 0.09001),
-"format": 34359742467,
-"index_count": 48,
-"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 8, 0, 6, 0, 9, 0, 12, 0, 10, 0, 11, 0, 13, 0, 10, 0, 12, 0, 16, 0, 14, 0, 15, 0, 17, 0, 14, 0, 16, 0, 20, 0, 18, 0, 19, 0, 21, 0, 18, 0, 20, 0, 24, 0, 22, 0, 23, 0, 25, 0, 22, 0, 24, 0, 28, 0, 26, 0, 27, 0, 29, 0, 26, 0, 28, 0),
-"material": SubResource("StandardMaterial3D_2jfgi"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 30,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 177, 166, 255, 127, 177, 166, 255, 127, 177, 166, 255, 127, 177, 166, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_w8qgi")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_vm5bd"]
-top_radius = 0.08
-bottom_radius = 0.08
-height = 0.001
 
 [node name="Map Editor" type="Node3D"]
 
@@ -865,133 +823,23 @@ layout_mode = 2
 [node name="Editor" type="Node" parent="."]
 
 [node name="SelectionManager" type="Node" parent="Editor"]
+script = ExtResource("12_02ale")
 
 [node name="Bloqs" type="Node3D" parent="."]
 script = ExtResource("11_bwwcu")
 
-[node name="RedBloq" parent="Bloqs" instance=ExtResource("1_hvejt")]
-glossy = false
-y = 0
-direction = 1
-
-[node name="RedBloq2" parent="Bloqs" instance=ExtResource("1_hvejt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -4)
-glossy = false
-direction = 8
-
-[node name="RedBloq3" parent="Bloqs" instance=ExtResource("1_hvejt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -10)
-glossy = false
-x = 2
-y = 0
-direction = 7
-
-[node name="BlooBloq" type="StaticBody3D" parent="Bloqs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
-script = ExtResource("8_7qirs")
+[node name="Bloq" parent="Bloqs" instance=ExtResource("14_om2ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
 glossy = false
 color = 1
 x = 2
 direction = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq"]
-shape = SubResource("BoxShape3D_oauwe")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq"]
-transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("3_aa3hs")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("13_3lljt")
-
-[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
-mesh = SubResource("ArrayMesh_ityvx")
-surface_material_override/0 = ExtResource("14_jhken")
-
-[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
-visible = false
-mesh = SubResource("CylinderMesh_vm5bd")
-
-[node name="BlooBloq2" type="StaticBody3D" parent="Bloqs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -4)
-script = ExtResource("8_7qirs")
+[node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 glossy = false
-color = 1
-x = 2
-y = 2
-direction = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq2"]
-shape = SubResource("BoxShape3D_oauwe")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq2"]
-transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("3_aa3hs")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("13_3lljt")
-
-[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq2/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
-mesh = SubResource("ArrayMesh_ityvx")
-surface_material_override/0 = ExtResource("14_jhken")
-
-[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq2/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
-visible = false
-mesh = SubResource("CylinderMesh_vm5bd")
-
-[node name="BlooBloq3" type="StaticBody3D" parent="Bloqs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -8)
-script = ExtResource("8_7qirs")
-glossy = false
-color = 1
 x = 1
-direction = 6
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq3"]
-shape = SubResource("BoxShape3D_oauwe")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq3"]
-transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("3_aa3hs")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("13_3lljt")
-
-[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq3/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
-mesh = SubResource("ArrayMesh_ityvx")
-surface_material_override/0 = ExtResource("14_jhken")
-
-[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq3/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
-visible = false
-mesh = SubResource("CylinderMesh_vm5bd")
-
-[node name="BlooBloq4" type="StaticBody3D" parent="Bloqs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -12)
-script = ExtResource("8_7qirs")
-glossy = false
-color = 1
-x = 3
-y = 1
-direction = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq4"]
-shape = SubResource("BoxShape3D_oauwe")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq4"]
-transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("3_aa3hs")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("13_3lljt")
-
-[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq4/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
-mesh = SubResource("ArrayMesh_ityvx")
-surface_material_override/0 = ExtResource("14_jhken")
-
-[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq4/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
-visible = false
-mesh = SubResource("CylinderMesh_vm5bd")
+direction = 1
+bloq_multiplier = 1.0
+arrow_multiplier = 1.0
+arrow_white = 1.0

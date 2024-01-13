@@ -3,7 +3,10 @@ extends StaticBody3D
 var highlighted = false
 
 func _mouse_enter() -> void:
-	$MeshInstance3D.transparency = 0.6
+	if Input.is_key_pressed(KEY_SHIFT):
+		$MeshInstance3D.transparency = 0.3
+	else:
+		$MeshInstance3D.transparency = 0.6
 	highlighted = true
 	
 
