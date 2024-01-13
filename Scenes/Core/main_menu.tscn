@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_ib27d"]
 [ext_resource type="Script" path="res://Scenes/Core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://Scenes/Core/Assets/mm_Map.tscn" id="3_2i0mj"]
-[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://icon.svg" id="4_u068o"]
 [ext_resource type="Script" path="res://Scenes/Core/Assets/WebMapLoader.gd" id="5_nugno"]
 
 [node name="Main Menu" type="Control"]
@@ -118,8 +118,8 @@ vertical_alignment = 1
 
 [node name="TabBar" type="TabBar" parent="TabContainer/Load Map/FILESYSTEM"]
 layout_mode = 2
-tab_alignment = 1
 tab_count = 2
+tab_alignment = 1
 tab_0/title = "Map Directory"
 tab_1/title = "USER DATA (Temporary)"
 

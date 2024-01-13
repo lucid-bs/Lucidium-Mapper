@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Bloq.gd" id="1_p10gk"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="2_hir18"]
-[ext_resource type="Material" uid="uid://bkhx7qlonmdvo" path="res://materials/bloq/whiteTexture.tres" id="3_n4pn7"]
+[ext_resource type="Material" uid="uid://dyiu4fhxfhyu2" path="res://materials/bloq/arrowShader.tres" id="3_3pj1r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oauwe"]
 size = Vector3(0.75, 0.75, 0.75)
@@ -62,10 +62,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
 mesh = SubResource("ArrayMesh_ityvx")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_n4pn7")
+surface_material_override/0 = ExtResource("3_3pj1r")
 
 [node name="Dot" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
 visible = false
-material_override = ExtResource("3_n4pn7")
+material_override = ExtResource("3_3pj1r")
 mesh = SubResource("CylinderMesh_vm5bd")

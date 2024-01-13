@@ -1,22 +1,26 @@
-[gd_scene load_steps=31 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=37 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
-[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://icon.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
+[ext_resource type="Script" path="res://Scenes/Core/editor/grid_manager.gd" id="3_wy725"]
 [ext_resource type="Script" path="res://Scenes/GridPlacement.gd" id="4_gcuyk"]
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
-[ext_resource type="Material" uid="uid://bkhx7qlonmdvo" path="res://materials/bloq/whiteTexture.tres" id="5_q1tg2"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
 [ext_resource type="Script" path="res://Scenes/Bloq.gd" id="8_7qirs"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
 [ext_resource type="Script" path="res://Scenes/ErrorLogger.gd" id="10_i8sui"]
+[ext_resource type="Script" path="res://Scenes/Core/settings_window.gd" id="10_n0s4v"]
+[ext_resource type="Script" path="res://Scenes/Core/editor/block_manager.gd" id="11_bwwcu"]
+[ext_resource type="Material" uid="uid://q5ec1qb0a6lg" path="res://materials/bloq/bloqShader.tres" id="13_3lljt"]
+[ext_resource type="Material" uid="uid://dyiu4fhxfhyu2" path="res://materials/bloq/arrowShader.tres" id="14_jhken"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
-tonemap_mode = 2
+tonemap_mode = 3
 glow_enabled = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tahei"]
@@ -32,13 +36,19 @@ material = ExtResource("6_2v7ym")
 size = Vector3(0.025, 3, 0.025)
 
 [sub_resource type="BoxMesh" id="BoxMesh_abaqk"]
-size = Vector3(0.025, 4, 0.025)
+size = Vector3(0.1, 4, 0.025)
 
 [sub_resource type="QuadMesh" id="QuadMesh_3f33k"]
 size = Vector2(4, 3)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drsw4"]
+albedo_color = Color(0.443137, 0.443137, 0.443137, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_r5xv2"]
 size = Vector2(4, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o38ct"]
+size = Vector3(0.025, 40, 0.05)
 
 [sub_resource type="FontVariation" id="FontVariation_op0pt"]
 base_font = ExtResource("5_1sgbo")
@@ -115,7 +125,7 @@ height = 0.001
 environment = SubResource("Environment_rcla0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.93358, -0.0745088, 0.350537, 0, 0.978148, 0.207911, -0.358368, -0.194102, 0.913179, 3, 2.7, 6)
+transform = Transform3D(0.93358, -0.0745088, 0.350537, 0, 0.978148, 0.207911, -0.358368, -0.194102, 0.913179, 5.2, 4.6, 5.6)
 script = ExtResource("2_xkfh1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
@@ -123,6 +133,7 @@ mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 
 [node name="Grid" type="Node3D" parent="."]
+script = ExtResource("3_wy725")
 
 [node name="X" type="Node3D" parent="Grid"]
 
@@ -186,10 +197,35 @@ mesh = SubResource("QuadMesh_3f33k")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
-material_override = ExtResource("7_k0ji6")
+material_override = SubResource("StandardMaterial3D_drsw4")
 mesh = SubResource("PlaneMesh_r5xv2")
 
 [node name="Timeline" type="Node3D" parent="Grid"]
+
+[node name="LANE1" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0.0034079, -16)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE2" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -2, 0.0034079, -16)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE3" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 0.0034079, -16)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE4" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 0.0034079, -16)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE5" type="MeshInstance3D" parent="Grid/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 2, 0.0034079, -16)
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
 
 [node name="0" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -452,8 +488,6 @@ transform = Transform3D(-1.00389, -0.423731, -0.346668, -3.22324e-08, 0.711106, 
 
 [node name="Light" type="DirectionalLight3D" parent="Rotating Light"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-light_energy = 0.5
-light_bake_mode = 0
 shadow_bias = 0.05
 shadow_normal_bias = 0.4
 
@@ -487,10 +521,10 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_dxoc4")
+tab_count = 3
 tab_alignment = 1
 clip_tabs = false
 scrolling_enabled = false
-tab_count = 3
 tab_0/title = "Chart"
 tab_1/title = "Environment"
 tab_2/title = "Text Editor"
@@ -503,6 +537,20 @@ anchor_bottom = 1.0
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "arrow_back"
 flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuButton" type="MenuButton" parent="MapperUI/Top Bar"]
+layout_mode = 0
+anchor_left = 0.03125
+anchor_right = 0.1
+anchor_bottom = 0.999999
+theme_override_font_sizes/font_size = 12
+text = "Settings"
+item_count = 2
+popup/item_0/text = "Map Settings"
+popup/item_0/id = 0
+popup/item_1/text = "Editor Settings"
+popup/item_1/id = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Bottom Bar" type="Panel" parent="MapperUI"]
@@ -534,8 +582,9 @@ layout_mode = 2
 script = ExtResource("10_i8sui")
 
 [node name="RightTabContainer" type="TabContainer" parent="MapperUI"]
-layout_mode = 0
-anchor_left = 0.8
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8125
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 0.844444
@@ -812,38 +861,180 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="RedBloq" parent="." instance=ExtResource("1_hvejt")]
-y = 0
-direction = 1
+[node name="Window" type="Window" parent="MapperUI"]
+title = "Settings"
+initial_position = 2
+size = Vector2i(640, 360)
+script = ExtResource("10_n0s4v")
 
-[node name="BlooBloq" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
-script = ExtResource("8_7qirs")
-color = 1
-x = 2
-direction = 8
-angle_offset = 45
+[node name="PanelContainer" type="PanelContainer" parent="MapperUI/Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlooBloq"]
-shape = SubResource("BoxShape3D_oauwe")
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/Window/PanelContainer"]
+layout_mode = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BlooBloq"]
-transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("3_aa3hs")
-skeleton = NodePath("")
+[node name="HBoxContainer" type="HBoxContainer" parent="MapperUI/Window/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
 
-[node name="Arrow" type="MeshInstance3D" parent="BlooBloq/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
-mesh = SubResource("ArrayMesh_ityvx")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("5_q1tg2")
+[node name="Label" type="Label" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Param1 "
 
-[node name="Dot" type="MeshInstance3D" parent="BlooBloq/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
-visible = false
-material_override = ExtResource("5_q1tg2")
-mesh = SubResource("CylinderMesh_vm5bd")
+[node name="HSlider" type="HSlider" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MapperUI/Window/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Param2"
+
+[node name="HSlider" type="HSlider" parent="MapperUI/Window/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Editor" type="Node" parent="."]
 
 [node name="SelectionManager" type="Node" parent="Editor"]
+
+[node name="Bloqs" type="Node3D" parent="."]
+script = ExtResource("11_bwwcu")
+
+[node name="RedBloq" parent="Bloqs" instance=ExtResource("1_hvejt")]
+glossy = false
+y = 0
+direction = 1
+
+[node name="RedBloq2" parent="Bloqs" instance=ExtResource("1_hvejt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -4)
+glossy = false
+direction = 8
+
+[node name="RedBloq3" parent="Bloqs" instance=ExtResource("1_hvejt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -10)
+glossy = false
+x = 2
+y = 0
+direction = 7
+
+[node name="BlooBloq" type="StaticBody3D" parent="Bloqs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+script = ExtResource("8_7qirs")
+glossy = false
+color = 1
+x = 2
+direction = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq"]
+shape = SubResource("BoxShape3D_oauwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq"]
+transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("3_aa3hs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_3lljt")
+
+[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
+mesh = SubResource("ArrayMesh_ityvx")
+surface_material_override/0 = ExtResource("14_jhken")
+
+[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
+visible = false
+mesh = SubResource("CylinderMesh_vm5bd")
+
+[node name="BlooBloq2" type="StaticBody3D" parent="Bloqs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -4)
+script = ExtResource("8_7qirs")
+glossy = false
+color = 1
+x = 2
+y = 2
+direction = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq2"]
+shape = SubResource("BoxShape3D_oauwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq2"]
+transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("3_aa3hs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_3lljt")
+
+[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq2/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
+mesh = SubResource("ArrayMesh_ityvx")
+surface_material_override/0 = ExtResource("14_jhken")
+
+[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq2/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
+visible = false
+mesh = SubResource("CylinderMesh_vm5bd")
+
+[node name="BlooBloq3" type="StaticBody3D" parent="Bloqs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -8)
+script = ExtResource("8_7qirs")
+glossy = false
+color = 1
+x = 1
+direction = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq3"]
+shape = SubResource("BoxShape3D_oauwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq3"]
+transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("3_aa3hs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_3lljt")
+
+[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq3/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
+mesh = SubResource("ArrayMesh_ityvx")
+surface_material_override/0 = ExtResource("14_jhken")
+
+[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq3/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
+visible = false
+mesh = SubResource("CylinderMesh_vm5bd")
+
+[node name="BlooBloq4" type="StaticBody3D" parent="Bloqs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -12)
+script = ExtResource("8_7qirs")
+glossy = false
+color = 1
+x = 3
+y = 1
+direction = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bloqs/BlooBloq4"]
+shape = SubResource("BoxShape3D_oauwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bloqs/BlooBloq4"]
+transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("3_aa3hs")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_3lljt")
+
+[node name="Arrow" type="MeshInstance3D" parent="Bloqs/BlooBloq4/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
+mesh = SubResource("ArrayMesh_ityvx")
+surface_material_override/0 = ExtResource("14_jhken")
+
+[node name="Dot" type="MeshInstance3D" parent="Bloqs/BlooBloq4/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
+visible = false
+mesh = SubResource("CylinderMesh_vm5bd")
+
+[connection signal="close_requested" from="MapperUI/Window" to="MapperUI/Window" method="_on_close_requested"]

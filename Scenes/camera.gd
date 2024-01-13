@@ -7,16 +7,17 @@ const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
 @export_range(0.0, 1.0) var sensitivity: float = 0.25
 
-# Mouse state
+# Mouse states
 var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
 
 # Movement state
 var _direction = Vector3(0.0, 0.0, 0.0)
 var _velocity = Vector3(0.0, 0.0, 0.0)
-var _acceleration = 30
-var _deceleration = -10
-var _vel_multiplier = 7
+@export_range(0, 1) var inertia : float = 1
+var _acceleration := lerpf(30, 8, inertia) # 30 REG, 8 MAX INERTIA
+var _deceleration := lerpf(-15, -3, inertia) # -10 REG, -3 MAX INERTIA
+var _vel_multiplier = 5
 
 # Keyboard state
 var _w = false

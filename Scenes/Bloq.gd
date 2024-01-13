@@ -37,14 +37,19 @@ enum BLOQ_COLORS {
 @export var angle_offset : int = 0
 # END OPF V3 JSON SETTINGS
 
+@export var rgb_color : Color
+@export var bloq_multiplier : float = 0.28 # 0.28 MMA2 Style
+@export var arrow_multiplier : float = 0.405 # 0.405 MMA2 Style
+@export var arrow_white : float = 0 # 0 MMA2 Style
+func update_color(new_color : Color, new_note_color := color, color_multiplier := bloq_multiplier):
+	$MeshInstance3D.material_override.set_shader_parameter("albedo", new_color)
+	$MeshInstance3D.material_override.set_shader_parameter("color_multiplier", bloq_multiplier)
+	color = new_note_color
 
-func update_color(new_color : BLOQ_COLORS):
-	if color == BLOQ_COLORS.RED:
-		$MeshInstance3D.material_override.set_shader_parameter("albedo", Color(1, 0, 0))
-	else:
-		$MeshInstance3D.material_override.set_shader_parameter("albedo", Color(0.19, 0.62, 1))
-	color = new_color
-
+func update_arrow_color(albedo := rgb_color, multiplier := arrow_multiplier, white:= arrow_white):
+	$MeshInstance3D/Arrow.material_override.set_shader_parameter("albedo", rgb_color) 
+	$MeshInstance3D/Arrow.material_override.set_shader_parameter("color_multiplier", arrow_multiplier)
+	$MeshInstance3D/Arrow.material_override.set_shader_parameter("white_blend", arrow_white)
 func update_direction(new_direction : BLOQ_DIRECTIONS, new_angle_offset : int):
 	if direction == BLOQ_DIRECTIONS.ANY:
 		$MeshInstance3D/Dot.visible = true
@@ -94,18 +99,27 @@ func update_selection(new_selected: bool):
 func _ready() -> void:
 	# Configure Material
 	var bloq_material = load("res://materials/bloq/bloqShader.tres").duplicate()
-	
+	var arrow_material = load("res://materials/bloq/arrowShader.tres").duplicate()
 	$MeshInstance3D.material_override = bloq_material
+	$MeshInstance3D/Arrow.material_override = arrow_material
+	$MeshInstance3D/Dot.material_override = arrow_material
 	if glossy:
 		$MeshInstance3D.material_override.set_shader_parameter("roughness", 0.5)
 		$MeshInstance3D.material_override.set_shader_parameter("retallic", 1)
 	else:
 		$MeshInstance3D.material_override.set_shader_parameter("roughness", 1)
-		$MeshInstance3D.material_override.set_shader_parameter("retallic", 0)
+		$MeshInstance3D.material_override.set_shader_parameter("metallic", 1)
 	
-	update_color(color)
+	if color == BLOQ_COLORS.RED:
+		rgb_color = Color(1, 0, 0)
+	else:
+		rgb_color = Color(0.19, 0.62, 1)
+	update_color(rgb_color)
 	update_direction(direction, angle_offset)
 	update_position(x, y)
+	
+	update_arrow_color()
+	
 	
 	
 

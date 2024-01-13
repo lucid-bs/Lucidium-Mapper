@@ -9,13 +9,14 @@ uniform vec4 albedo : source_color;
 uniform float roughness : hint_range(0,1) = 0.75;
 uniform float specular;
 uniform float metallic : hint_range(0,1) = 1;
+uniform float color_multiplier : hint_range(0, 3) = 1;
 
 
 
 
 void fragment() {
 	vec2 base_uv = UV;
-	ALBEDO = albedo.rgb;
+	ALBEDO = albedo.rgb * color_multiplier;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
@@ -26,7 +27,8 @@ metadata/_edit_res_path = "res://materials/bloq/glossyBloq.tres::Shader_od0y6"
 [resource]
 render_priority = 0
 shader = SubResource("Shader_od0y6")
-shader_parameter/albedo = Color(0.580392, 0.607843, 0.643137, 1)
+shader_parameter/albedo = Color(0.19, 0.62, 1, 1)
 shader_parameter/roughness = 0.75
-shader_parameter/specular = 0.5
+shader_parameter/specular = 1.0
 shader_parameter/metallic = 1.0
+shader_parameter/color_multiplier = 1.0
