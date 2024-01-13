@@ -21,7 +21,6 @@
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
 tonemap_mode = 3
-glow_enabled = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tahei"]
 
