@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Bloq.gd" id="1_p10gk"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="2_hir18"]
-[ext_resource type="Material" uid="uid://dyiu4fhxfhyu2" path="res://materials/bloq/arrowShader.tres" id="3_3pj1r"]
+[ext_resource type="Material" uid="uid://bpnac6d7buech" path="res://materials/bloq/arrowShader.tres" id="3_3pj1r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oauwe"]
 size = Vector3(0.75, 0.75, 0.75)

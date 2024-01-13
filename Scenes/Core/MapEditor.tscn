@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
-[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://icon.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/grid_manager.gd" id="3_wy725"]
@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/Core/settings_window.gd" id="10_n0s4v"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="Material" uid="uid://q5ec1qb0a6lg" path="res://materials/bloq/bloqShader.tres" id="13_3lljt"]
-[ext_resource type="Material" uid="uid://dyiu4fhxfhyu2" path="res://materials/bloq/arrowShader.tres" id="14_jhken"]
+[ext_resource type="Material" uid="uid://bpnac6d7buech" path="res://materials/bloq/arrowShader.tres" id="14_jhken"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
@@ -909,6 +909,31 @@ text = "Param2"
 [node name="HSlider" type="HSlider" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Switch"
+
+[node name="CheckButton" type="CheckButton" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tick"
+
+[node name="CheckBox" type="CheckBox" parent="MapperUI/SettingsWindow/GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
 
 [node name="Editor" type="Node" parent="."]
 
