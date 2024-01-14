@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=36 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -73,6 +73,10 @@ border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="ImageTexture" id="ImageTexture_8eeft"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_h43xo"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_sdh3j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rou5e"]
 bg_color = Color(0.517647, 0.517647, 0.517647, 0.462745)
@@ -560,10 +564,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MapperUI/VSplitContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_icons/grabber = SubResource("ImageTexture_h43xo")
 split_offset = 1016
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MapperUI/VSplitContainer/HSplitContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_icons/grabber = SubResource("ImageTexture_sdh3j")
 split_offset = 190
 
 [node name="LeftTabContainer" type="TabContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer"]
@@ -656,10 +664,51 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+split_offset = 560
+
+[node name="Control" type="Control" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer"]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
 mouse_filter = 1
+
+[node name="Bottom Bar" type="Panel" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Bottom Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Bottom Bar/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Bottom Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Debug Logger"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Bottom Bar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="ErrorLogger" type="VBoxContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Bottom Bar/MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("10_i8sui")
 
 [node name="RightTabContainer" type="TabContainer" parent="MapperUI/VSplitContainer/HSplitContainer"]
 custom_minimum_size = Vector2(224, 0)
@@ -845,34 +894,6 @@ max_value = 2.0
 [node name="Attributes" type="Control" parent="MapperUI/VSplitContainer/HSplitContainer/RightTabContainer"]
 visible = false
 layout_mode = 2
-
-[node name="Bottom Bar" type="Panel" parent="MapperUI/VSplitContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="MapperUI/VSplitContainer/Bottom Bar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.15
-anchor_bottom = 1.0
-text = "Debug Logger"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/VSplitContainer/Bottom Bar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.15
-anchor_right = 0.8125
-anchor_bottom = 1.0
-metadata/_edit_use_anchors_ = true
-
-[node name="ErrorLogger" type="VBoxContainer" parent="MapperUI/VSplitContainer/Bottom Bar/ScrollContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("10_i8sui")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MapperUI"]
 layout_mode = 0
