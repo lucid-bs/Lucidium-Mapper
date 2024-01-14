@@ -72,7 +72,7 @@ border_width_left = 4
 border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[sub_resource type="ImageTexture" id="ImageTexture_fv38h"]
+[sub_resource type="ImageTexture" id="ImageTexture_8eeft"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rou5e"]
 bg_color = Color(0.517647, 0.517647, 0.517647, 0.462745)
@@ -106,27 +106,32 @@ script = ExtResource("3_wy725")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/X"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/X"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/X"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/X"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/X"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("6_2v7ym")
@@ -135,30 +140,35 @@ surface_material_override/0 = ExtResource("6_2v7ym")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/Y"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/Y"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/Y"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2, 0)
+layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/Y"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3, 0)
+layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
 [node name="SelectionGrid" type="MeshInstance3D" parent="Grid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+layers = 2
 material_override = ExtResource("7_k0ji6")
 mesh = SubResource("QuadMesh_3f33k")
 
@@ -304,6 +314,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/00"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -317,6 +328,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -330,6 +342,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -343,6 +356,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -356,6 +370,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -369,6 +384,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -382,6 +398,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -395,6 +412,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -408,6 +426,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -421,6 +440,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -434,6 +454,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -447,6 +468,7 @@ shape = SubResource("BoxShape3D_u3cbc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
@@ -532,7 +554,7 @@ anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_constants/separation = 0
-theme_override_icons/grabber = SubResource("ImageTexture_fv38h")
+theme_override_icons/grabber = SubResource("ImageTexture_8eeft")
 split_offset = 568
 metadata/_edit_use_anchors_ = true
 
@@ -850,6 +872,26 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("10_i8sui")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MapperUI"]
+layout_mode = 0
+offset_left = 1128.0
+offset_top = 608.0
+offset_right = 1280.0
+offset_bottom = 720.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MapperUI/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+scaling_3d_scale = 2.0
+physics_object_picking = true
+size = Vector2i(152, 112)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="MapperUI/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 4)
+cull_mask = 1
 
 [node name="Editor" type="Node" parent="."]
 

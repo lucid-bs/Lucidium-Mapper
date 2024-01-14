@@ -22,8 +22,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/transparent=true
 window/subwindows/embed_subwindows=false
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [editor]
 
@@ -32,7 +31,11 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/zylann.editor_debugger/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://extern/Inter-VariableFont_slnt,wght.ttf"
 
 [input]
 

@@ -30,6 +30,7 @@ var _shift = false
 var _alt = false
 
 func _ready() -> void:
+	DisplayServer.window_set_min_size(Vector2i(1280, 720))
 	%ErrorLogger.log_message("Hello from Camera!")
 	get_viewport().physics_object_picking = true
 	
