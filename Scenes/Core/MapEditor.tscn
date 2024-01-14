@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=34 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scenes/Core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://Scenes/Core/settings_window.tscn" id="11_f5e1k"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/selection_manager.gd" id="12_02ale"]
+[ext_resource type="Script" path="res://Scenes/Core/left_tab_container.gd" id="12_b3ujs"]
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Core/editor/block.tscn" id="14_om2ls"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
@@ -70,6 +71,8 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 4
 border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="ImageTexture" id="ImageTexture_fv38h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rou5e"]
 bg_color = Color(0.517647, 0.517647, 0.517647, 0.462745)
@@ -528,6 +531,8 @@ anchors_preset = -1
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_constants/separation = 0
+theme_override_icons/grabber = SubResource("ImageTexture_fv38h")
 split_offset = 568
 metadata/_edit_use_anchors_ = true
 
@@ -542,6 +547,7 @@ split_offset = 190
 [node name="LeftTabContainer" type="TabContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+script = ExtResource("12_b3ujs")
 metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Control" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/LeftTabContainer"]
@@ -868,3 +874,6 @@ direction = 1
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
 arrow_white = 1.0
+
+[connection signal="dragged" from="MapperUI/VSplitContainer/HSplitContainer" to="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/LeftTabContainer" method="_on_h_split_container_dragged"]
+[connection signal="dragged" from="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer" to="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
