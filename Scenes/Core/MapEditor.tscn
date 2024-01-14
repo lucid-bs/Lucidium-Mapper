@@ -153,12 +153,12 @@ material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid"]
+[node name="SelectionGrid" type="MeshInstance3D" parent="Grid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 material_override = ExtResource("7_k0ji6")
 mesh = SubResource("QuadMesh_3f33k")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid"]
+[node name="TimelineGrid" type="MeshInstance3D" parent="Grid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 material_override = SubResource("StandardMaterial3D_drsw4")
 mesh = SubResource("PlaneMesh_r5xv2")
