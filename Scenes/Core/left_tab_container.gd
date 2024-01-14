@@ -19,4 +19,5 @@ func _on_h_split_container_dragged(_offset: int) -> void:
 func _on_h_split_container_dragged_parent(offset: int) -> void:
 	# Update the minimum size to be the current size minus the absolute value of the offset to make sure the 
 	# control doesn't be a bitch and refuse to resize
-	set_custom_minimum_size(Vector2(size.x - abs(offset), get_minimum_size().y))
+	# Clamp our new value between the real minimum size and the current size plus the absolute value of the offset
+	set_custom_minimum_size(Vector2(clamp(size.x, real_minimum_size, size.x + abs(offset)) - abs(offset), get_minimum_size().y))
