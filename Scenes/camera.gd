@@ -20,12 +20,6 @@ var _deceleration := lerpf(-15, -3, inertia) # -10 REG, -3 MAX INERTIA
 var _vel_multiplier = 5
 
 # Keyboard state
-var _w = false
-var _s = false
-var _a = false
-var _d = false
-var _q = false
-var _e = false
 var _shift = false
 var _alt = false
 
@@ -52,18 +46,6 @@ func _input(event):
 	# Receives key input
 	if event is InputEventKey:
 		match event.keycode:
-			KEY_W:
-				_w = event.pressed
-			KEY_S:
-				_s = event.pressed
-			KEY_A:
-				_a = event.pressed
-			KEY_D:
-				_d = event.pressed
-			KEY_Q:
-				_q = event.pressed
-			KEY_E:
-				_e = event.pressed
 			KEY_SHIFT:
 				_shift = event.pressed
 			KEY_ALT:
@@ -79,9 +61,9 @@ func _process(delta):
 func _update_movement(delta):
 	# Computes desired direction from key states
 	_direction = Vector3(
-		(_d as float) - (_a as float), 
-		(_e as float) - (_q as float),
-		(_s as float) - (_w as float)
+		Input.get_axis("fly_left", "fly_right"), 
+		Input.get_axis("fly_up", "fly_down"),
+		Input.get_axis("fly_forwards", "fly_backwards")
 	)
 	
 	# Computes the change in velocity due to desired direction and "drag"
