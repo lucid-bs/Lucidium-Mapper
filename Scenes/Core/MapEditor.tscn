@@ -605,7 +605,7 @@ split_offset = 190
 [node name="LeftTabMargin" type="MarginContainer" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 8
 
@@ -742,6 +742,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
 transform = Transform3D(0.93358, -0.0745088, 0.350537, 0, 0.978148, 0.207911, -0.358368, -0.194102, 0.913179, 5.2, 4.6, 5.6)
+current = true
 script = ExtResource("2_xkfh1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/VSplitContainer/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
@@ -837,7 +838,7 @@ flat = true
 [node name="RightTabMargin" type="MarginContainer" parent="MapperUI/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
