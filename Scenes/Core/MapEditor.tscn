@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=32 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
 [ext_resource type="Script" path="res://Scenes/error_logger.gd" id="10_i8sui"]
+[ext_resource type="Script" path="res://Scenes/Core/editor/menu_button.gd" id="10_vu5vo"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://Scenes/Core/settings_window.tscn" id="11_f5e1k"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/selection_manager.gd" id="12_02ale"]
@@ -503,7 +504,8 @@ flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuButton" type="MenuButton" parent="MapperUI/Top Bar"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.03125
 anchor_right = 0.1
 anchor_bottom = 0.999999
@@ -514,6 +516,7 @@ popup/item_0/text = "Map Settings"
 popup/item_0/id = 0
 popup/item_1/text = "Editor Settings"
 popup/item_1/id = 1
+script = ExtResource("10_vu5vo")
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsWindow" parent="MapperUI" instance=ExtResource("11_f5e1k")]
