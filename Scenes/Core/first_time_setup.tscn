@@ -42,6 +42,5 @@ borderless = true
 ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
-show_hidden_files = true
 
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]

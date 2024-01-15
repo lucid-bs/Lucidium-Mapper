@@ -41,12 +41,11 @@ shadow_mesh = SubResource("ArrayMesh_1auq3")
 [sub_resource type="CylinderMesh" id="CylinderMesh_mkti1"]
 top_radius = 0.08
 bottom_radius = 0.08
-height = 0.001
+height = 0.025
 
 [node name="Bloq" type="AnimatableBody3D"]
 sync_to_physics = false
 script = ExtResource("1_p10gk")
-direction = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xaduy")
@@ -58,12 +57,12 @@ skeleton = NodePath("")
 
 [node name="Arrow" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
+visible = false
 mesh = SubResource("ArrayMesh_8pbj6")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_3pj1r")
 
 [node name="Dot" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0871558, -0.996195, 0, 0.996195, 0.0871558, 0, 0, 0.266667)
-visible = false
+transform = Transform3D(1, 8.47033e-22, 1.13687e-13, 2.84217e-14, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.242262)
 material_override = ExtResource("3_3pj1r")
 mesh = SubResource("CylinderMesh_mkti1")

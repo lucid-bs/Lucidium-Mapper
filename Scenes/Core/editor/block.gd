@@ -28,11 +28,12 @@ enum BLOQ_COLORS {
 # V3 JSON SETTINGS
 @export var color : BLOQ_COLORS = BLOQ_COLORS.RED
 
+@export var direction : BLOQ_DIRECTIONS = BLOQ_DIRECTIONS.DOWN
+@export var angle_offset : int = 0
+
 @export_range(0, 3) var x = 0
 @export_range(0, 2) var y = 0
 
-@export var direction : BLOQ_DIRECTIONS = BLOQ_DIRECTIONS.DOWN
-@export var angle_offset : int = 0
 # END OPF V3 JSON SETTINGS
 
 @export var rgb_color : Color
