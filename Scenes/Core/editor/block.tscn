@@ -46,6 +46,18 @@ height = 0.025
 [node name="Bloq" type="AnimatableBody3D"]
 sync_to_physics = false
 script = ExtResource("1_p10gk")
+selected = null
+glossy = null
+color = null
+direction = null
+angle_offset = null
+rgb_color = null
+bloq_multiplier = null
+arrow_multiplier = null
+arrow_white = null
+beat = null
+x = null
+y = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xaduy")

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=178 format=3 uid="uid://bii6yebd2gynm"]
+[gd_resource type="Theme" load_steps=184 format=3 uid="uid://bii6yebd2gynm"]
 
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="1_os8my"]
 
@@ -32,6 +32,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 3
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2oqq"]
+bg_color = Color(0.113725, 0.133333, 0.160784, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fr7a"]
 content_margin_left = 4.5
@@ -176,6 +179,13 @@ border_color = Color(0.447, 0.468, 0.503, 1)
 corner_detail = 3
 shadow_color = Color(0, 0, 0, 0.3)
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11qli"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4cdc"]
 content_margin_left = 3.0
@@ -1226,7 +1236,7 @@ corner_radius_bottom_left = 3
 corner_detail = 3
 anti_aliasing = false
 
-[sub_resource type="Image" id="Image_2xcfn"]
+[sub_resource type="Image" id="Image_hl25r"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 2, 255, 255, 255, 35, 255, 255, 255, 53, 255, 255, 255, 34, 255, 255, 255, 2, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 35, 255, 255, 255, 74, 255, 255, 255, 74, 255, 255, 255, 74, 255, 255, 255, 34, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 53, 255, 255, 255, 74, 255, 255, 255, 74, 255, 255, 255, 74, 255, 255, 255, 52, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 34, 255, 255, 255, 74, 255, 255, 255, 74, 255, 255, 255, 74, 255, 255, 255, 34, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 2, 255, 255, 255, 34, 255, 255, 255, 52, 255, 255, 255, 34, 255, 255, 255, 2, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -1236,7 +1246,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_kp7hk"]
-image = SubResource("Image_2xcfn")
+image = SubResource("Image_hl25r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hgba"]
 content_margin_left = 5.25
@@ -1249,7 +1259,7 @@ texture_margin_top = 4.5
 texture_margin_right = 4.5
 texture_margin_bottom = 4.5
 
-[sub_resource type="Image" id="Image_34s6b"]
+[sub_resource type="Image" id="Image_m2l8u"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 3, 250, 250, 250, 86, 250, 250, 250, 131, 247, 247, 247, 86, 255, 255, 255, 3, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 250, 250, 250, 86, 248, 248, 248, 186, 248, 248, 248, 186, 248, 248, 248, 186, 248, 248, 248, 85, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 250, 250, 250, 131, 248, 248, 248, 186, 248, 248, 248, 186, 248, 248, 248, 186, 248, 248, 248, 131, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 247, 247, 247, 86, 248, 248, 248, 186, 248, 248, 248, 186, 248, 248, 248, 186, 248, 248, 248, 84, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 3, 248, 248, 248, 85, 248, 248, 248, 131, 248, 248, 248, 84, 255, 255, 255, 3, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -1259,7 +1269,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_i3s7g"]
-image = SubResource("Image_34s6b")
+image = SubResource("Image_m2l8u")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fr071"]
 content_margin_left = 4.5
@@ -1272,7 +1282,7 @@ texture_margin_top = 3.75
 texture_margin_right = 3.75
 texture_margin_bottom = 3.75
 
-[sub_resource type="Image" id="Image_2se01"]
+[sub_resource type="Image" id="Image_64bwa"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 3, 181, 181, 181, 86, 181, 181, 181, 131, 178, 178, 178, 86, 255, 255, 255, 3, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 181, 181, 181, 86, 180, 180, 180, 186, 180, 180, 180, 186, 180, 180, 180, 186, 180, 180, 180, 85, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 181, 181, 181, 131, 180, 180, 180, 186, 180, 180, 180, 186, 180, 180, 180, 186, 179, 179, 179, 131, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 178, 178, 178, 86, 180, 180, 180, 186, 180, 180, 180, 186, 180, 180, 180, 186, 179, 179, 179, 84, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 3, 180, 180, 180, 85, 179, 179, 179, 131, 179, 179, 179, 84, 255, 255, 255, 3, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -1282,7 +1292,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_k50am"]
-image = SubResource("Image_2se01")
+image = SubResource("Image_64bwa")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2u5gh"]
 content_margin_left = 5.25
@@ -1295,7 +1305,7 @@ texture_margin_top = 4.5
 texture_margin_right = 4.5
 texture_margin_bottom = 4.5
 
-[sub_resource type="Image" id="Image_m6hu2"]
+[sub_resource type="Image" id="Image_xvhsl"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 10, 255, 255, 255, 19, 255, 255, 255, 10, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 19, 255, 255, 255, 21, 255, 255, 255, 19, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 10, 255, 255, 255, 19, 255, 255, 255, 10, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -1305,7 +1315,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_qevvv"]
-image = SubResource("Image_m6hu2")
+image = SubResource("Image_xvhsl")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8hpli"]
 content_margin_left = 4.5
@@ -1494,6 +1504,13 @@ corner_radius_bottom_left = 3
 corner_detail = 3
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0qx2"]
+bg_color = Color(0.211765, 0.239216, 0.290196, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsvoo"]
 content_margin_left = 4.5
 content_margin_top = 3.0
@@ -1519,6 +1536,22 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_detail = 3
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rou5e"]
+bg_color = Color(0.25098, 0.266667, 0.298039, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.251, 0.267, 0.298, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycjh1"]
+bg_color = Color(0.129412, 0.14902, 0.180392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sqfr"]
 content_margin_left = 4.5
@@ -1661,7 +1694,7 @@ content_margin_top = -0.75
 content_margin_right = -0.75
 content_margin_bottom = -0.75
 
-[sub_resource type="Image" id="Image_ulbpw"]
+[sub_resource type="Image" id="Image_7mixo"]
 data = {
 "data": PackedByteArray(224, 224, 224, 51, 224, 224, 224, 100, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 100, 224, 224, 224, 49, 224, 224, 224, 100, 226, 226, 226, 77, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 226, 226, 226, 77, 224, 224, 224, 99, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 51, 224, 224, 224, 102, 227, 227, 227, 99, 226, 226, 226, 78, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 224, 224, 224, 51, 226, 226, 226, 79, 224, 224, 224, 99, 224, 224, 224, 49, 224, 224, 224, 99, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 99, 224, 224, 224, 49),
 "format": "RGBA8",
@@ -1671,7 +1704,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_8g4jv"]
-image = SubResource("Image_ulbpw")
+image = SubResource("Image_7mixo")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iv45"]
 content_margin_left = 3.0
@@ -1684,7 +1717,7 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
-[sub_resource type="Image" id="Image_1vku8"]
+[sub_resource type="Image" id="Image_5n4pf"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 85, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 85, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 85, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 102, 224, 224, 224, 85, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -1694,7 +1727,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_rcp5g"]
-image = SubResource("Image_1vku8")
+image = SubResource("Image_5n4pf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2v32"]
 content_margin_left = 6.0
@@ -1876,6 +1909,9 @@ border_color = Color(0.447, 0.468, 0.503, 1)
 corner_detail = 3
 shadow_color = Color(0, 0, 0, 0.3)
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70lve"]
+bg_color = Color(0.113725, 0.133333, 0.160784, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xqyk"]
 content_margin_left = 3.0
@@ -2081,6 +2117,8 @@ AcceptDialog/styles/panel = SubResource("StyleBoxFlat_ea8do")
 AssetLib/colors/status_color = Color(0.5, 0.5, 0.5, 1)
 AssetLib/styles/bg = SubResource("StyleBoxEmpty_jxkx8")
 AssetLib/styles/panel = SubResource("StyleBoxFlat_dcnl4")
+Background/base_type = &"Panel"
+Background/styles/panel = SubResource("StyleBoxFlat_k2oqq")
 BoxContainer/constants/separation = 3
 Button/colors/font_color = Color(0.8025, 0.81, 0.8225, 1)
 Button/colors/font_disabled_color = Color(1, 1, 1, 0.35)
@@ -2175,6 +2213,8 @@ ColorPicker/constants/sv_height = 192
 ColorPicker/constants/sv_width = 192
 ColorPresetButton/styles/preset_fg = SubResource("StyleBoxFlat_wt8bs")
 ControlEditorPopupPanel/styles/panel = SubResource("StyleBoxFlat_d7dyt")
+DarkPanelContainer/base_type = &"PanelContainer"
+DarkPanelContainer/styles/panel = SubResource("StyleBoxFlat_11qli")
 Editor/colors/accent_color = Color(0.44, 0.73, 0.98, 1)
 Editor/colors/axis_w_color = Color(0.55, 0.55, 0.55, 1)
 Editor/colors/axis_x_color = Color(0.96, 0.2, 0.32, 1)
@@ -2427,6 +2467,8 @@ Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 0
 Label/constants/shadow_outline_size = 0
 Label/styles/normal = SubResource("StyleBoxEmpty_jxkx8")
+LightPanelContainer/base_type = &"PanelContainer"
+LightPanelContainer/styles/panel = SubResource("StyleBoxFlat_l0qx2")
 LineEdit/colors/caret_color = Color(0.8025, 0.81, 0.8225, 1)
 LineEdit/colors/clear_button_color = Color(0.8025, 0.81, 0.8225, 1)
 LineEdit/colors/clear_button_color_pressed = Color(0.44, 0.73, 0.98, 1)
@@ -2451,6 +2493,10 @@ LinkButton/colors/font_outline_color = Color(0, 0, 0, 0)
 LinkButton/colors/font_pressed_color = Color(0.44, 0.73, 0.98, 1)
 LinkButton/constants/outline_size = 0
 LinkButton/styles/focus = SubResource("StyleBoxEmpty_jxkx8")
+LucidiumClassType/base_type = &"Panel"
+LucidiumClassType/styles/panel = SubResource("StyleBoxFlat_rou5e")
+LucidiumTabs/base_type = &"TabContainer"
+LucidiumTabs/styles/panel = SubResource("StyleBoxFlat_ycjh1")
 MarginContainer/constants/margin_bottom = 0
 MarginContainer/constants/margin_left = 0
 MarginContainer/constants/margin_right = 0
@@ -2613,6 +2659,8 @@ ThemeEditor/styles/preview_picker_overlay = SubResource("StyleBoxFlat_yi3iu")
 TooltipLabel/colors/font_color = Color(0.90125, 0.905, 0.91125, 1)
 TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_6qv8c")
+TopBar/base_type = &"Panel"
+TopBar/styles/panel = SubResource("StyleBoxFlat_70lve")
 Tree/colors/children_hl_line_color = Color(1, 1, 1, 0.35)
 Tree/colors/custom_button_font_highlight = Color(0.90125, 0.905, 0.91125, 1)
 Tree/colors/drop_position_color = Color(0.44, 0.73, 0.98, 1)

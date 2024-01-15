@@ -1,10 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=34 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/grid_manager.gd" id="3_wy725"]
 [ext_resource type="Script" path="res://Scenes/grid_placement.gd" id="4_gcuyk"]
-[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
@@ -59,20 +58,11 @@ size = Vector3(1, 1, 0.0605469)
 
 [sub_resource type="QuadMesh" id="QuadMesh_7skff"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2oqq"]
-bg_color = Color(0.113725, 0.133333, 0.160784, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70lve"]
-bg_color = Color(0.113725, 0.133333, 0.160784, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxoc4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 4
 border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycjh1"]
-bg_color = Color(0.129412, 0.14902, 0.180392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3xxa"]
 bg_color = Color(0.211765, 0.239216, 0.290196, 1)
@@ -80,26 +70,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11qli"]
-bg_color = Color(0.129412, 0.14902, 0.180392, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rou5e"]
-bg_color = Color(0.25098, 0.266667, 0.298039, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.251, 0.267, 0.298, 0)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 10
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tahei"]
 
@@ -109,17 +79,7 @@ emission_enabled = true
 emission_energy_multiplier = 2.56
 emission_texture = ExtResource("2_qhjkb")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0qx2"]
-bg_color = Color(0.211765, 0.239216, 0.290196, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m73j5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0e3lp"]
-bg_color = Color(0.129412, 0.14902, 0.180392, 1)
 
 [node name="Map Editor" type="Node3D"]
 
@@ -515,7 +475,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme = ExtResource("4_n5qpl")
 
 [node name="BG" type="Panel" parent="MapperUI"]
 layout_mode = 1
@@ -524,14 +483,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k2oqq")
+theme_type_variation = &"Background"
 
 [node name="Top Bar" type="Panel" parent="MapperUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.0555556
-theme_override_styles/panel = SubResource("StyleBoxFlat_70lve")
+theme_type_variation = &"TopBar"
 metadata/_edit_use_anchors_ = true
 
 [node name="TabBar" type="TabBar" parent="MapperUI/Top Bar"]
@@ -607,7 +566,6 @@ theme_override_constants/margin_bottom = 8
 [node name="LeftTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ycjh1")
 drag_to_rearrange_enabled = true
 tabs_rearrange_group = 1
 script = ExtResource("12_b3ujs")
@@ -617,21 +575,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f3xxa")
 
-[node name="MarginContainer" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes"]
+[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes"]
 layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
+theme_type_variation = &"DarkPanelContainer"
 
-[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_11qli")
-
-[node name="Notes" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel"]
+[node name="Notes" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel"]
 layout_mode = 2
 
-[node name="NoteContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes"]
+[node name="NoteContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -640,15 +591,15 @@ offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer"]
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer"]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rou5e")
+theme_type_variation = &"LucidiumClassType"
 
-[node name="Direction" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/Title"]
+[node name="Direction" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -659,44 +610,44 @@ text = "Direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings"]
+[node name="GridContainer" type="GridContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 3
 
-[node name="Button" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "TL"
 
-[node name="Button2" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button2" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "T"
 
-[node name="Button3" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button3" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "TR"
 
-[node name="Button4" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button4" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "L"
 
-[node name="Button5" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button5" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "D"
 
-[node name="Button6" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button6" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "R"
 
-[node name="Button7" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button7" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "BL"
 
-[node name="Button8" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button8" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "B"
 
-[node name="Button9" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/MarginContainer/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button9" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "BR"
 
@@ -734,7 +685,7 @@ stretch = true
 handle_input_locally = false
 msaa_3d = 2
 screen_space_aa = 1
-size = Vector2i(715, 633)
+size = Vector2i(715, 632)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
@@ -777,7 +728,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="PanelContainer" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l0qx2")
+theme_type_variation = &"LightPanelContainer"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer"]
 layout_mode = 2
@@ -794,7 +745,7 @@ theme_override_constants/margin_bottom = 6
 
 [node name="PanelContainer" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_11qli")
+theme_type_variation = &"DarkPanelContainer"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer"]
 layout_mode = 2
@@ -844,7 +795,6 @@ theme_override_constants/margin_bottom = 8
 [node name="RightTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/RightTabMargin"]
 custom_minimum_size = Vector2(224, 0)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0e3lp")
 drag_to_rearrange_enabled = true
 tabs_rearrange_group = 1
 metadata/_edit_use_anchors_ = true
@@ -853,21 +803,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f3xxa")
 
-[node name="MarginContainer" type="MarginContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector"]
+[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector"]
 layout_mode = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
+theme_type_variation = &"DarkPanelContainer"
 
-[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_11qli")
-
-[node name="Inspector" type="Control" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel"]
+[node name="Inspector" type="Control" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -875,20 +818,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rou5e")
+theme_type_variation = &"LucidiumClassType"
 
-[node name="Cube" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title"]
+[node name="Cube" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -899,17 +842,17 @@ text = "Cube"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Direction" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Direction" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
@@ -932,17 +875,17 @@ popup/item_7/id = 7
 popup/item_8/text = "Down Right"
 popup/item_8/id = 8
 
-[node name="Color" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Color" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 layout_mode = 2
 
-[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Color"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
@@ -951,29 +894,29 @@ popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 
-[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 layout_mode = 2
 
-[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Angle Offset"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EventSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
+[node name="EventSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rou5e")
+theme_type_variation = &"LucidiumClassType"
 
-[node name="Event" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title"]
+[node name="Event" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -984,11 +927,11 @@ text = "Event"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Beat" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Beat" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 layout_mode = 2
 tooltip_text = "Time in Beats"
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Beat
@@ -996,48 +939,48 @@ text = "Beat
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Time" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Time" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 layout_mode = 2
 tooltip_text = "Time in Seconds"
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Grid" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Grid" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 3.0
 
-[node name="Label2" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="Label2" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox2" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/MarginContainer/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="SpinBox2" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2.0
@@ -1054,35 +997,26 @@ script = ExtResource("12_02ale")
 [node name="Bloqs" type="Node3D" parent="."]
 script = ExtResource("11_bwwcu")
 
-[node name="Bloq" parent="Bloqs" instance=ExtResource("14_om2ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
-selected = null
+[node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
 glossy = false
 color = 1
 direction = 8
-angle_offset = null
-rgb_color = null
-bloq_multiplier = null
-arrow_multiplier = null
-arrow_white = null
-beat = null
+bloq_multiplier = 0.28
+arrow_multiplier = 0.405
 x = 2
-y = null
+y = 0
 
-[node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
+[node name="Bloq3" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
-selected = null
 glossy = false
-color = null
-direction = null
-angle_offset = null
-rgb_color = null
+color = 0
+direction = 1
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
 arrow_white = 1.0
-beat = null
 x = 1
-y = null
+y = 0
 
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]

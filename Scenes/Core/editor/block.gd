@@ -30,7 +30,6 @@ enum BLOQ_COLORS {
 
 @export var direction : BLOQ_DIRECTIONS = BLOQ_DIRECTIONS.DOWN
 @export var angle_offset : int = 0
-
 # END OPF V3 JSON SETTINGS
 
 @export var rgb_color : Color
@@ -115,6 +114,7 @@ func _ready() -> void:
 	update_position(x, y)
 	
 	update_arrow_color()
+	
 	
 	
 	

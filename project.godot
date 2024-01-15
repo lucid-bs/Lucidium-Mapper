@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/zylann.editor_debugger/plugin.cfg")
 
 [gui]
 
+theme/custom="res://UI/godot_blue.tres"
 theme/custom_font="res://extern/Inter-VariableFont_slnt,wght.ttf"
 
 [input]
