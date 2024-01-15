@@ -1061,12 +1061,13 @@ glossy = false
 color = 1
 direction = 8
 angle_offset = null
-x = 2
 rgb_color = null
 bloq_multiplier = null
 arrow_multiplier = null
 arrow_white = null
 beat = null
+x = 2
+y = null
 
 [node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
@@ -1075,12 +1076,13 @@ glossy = false
 color = null
 direction = null
 angle_offset = null
-x = 1
 rgb_color = null
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
 arrow_white = 1.0
 beat = null
+x = 1
+y = null
 
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
