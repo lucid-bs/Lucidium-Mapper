@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Core/Assets/MapDataManager.gd" id="2_83eha"]
 [ext_resource type="Script" path="res://Scenes/Core/map_configurer.gd" id="2_ocovv"]
 
-[node name="Map Configurer" type="Control" node_paths=PackedStringArray("MapDataer")]
+[node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_o27vy")
 script = ExtResource("2_ocovv")
-MapDataer = NodePath("MapDataManager")
+map_data_manager = NodePath("MapDataManager")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
 
 [node name="InfoDatThingy" type="Panel" parent="."]
 layout_mode = 1
@@ -212,5 +221,22 @@ anchor_right = 0.95
 anchor_bottom = 0.955556
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="DifficultyThingy"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -112.0
+offset_right = 96.0
+offset_bottom = -48.0004
+grow_horizontal = 2
+grow_vertical = 0
+text = "Enter Editor"
+
 [node name="MapDataManager" type="Node" parent="."]
 script = ExtResource("2_83eha")
+
+[connection signal="pressed" from="DifficultyThingy/Button" to="." method="_on_button_pressed"]

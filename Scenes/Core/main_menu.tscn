@@ -16,6 +16,15 @@ grow_vertical = 2
 theme = ExtResource("1_ib27d")
 script = ExtResource("2_qmcka")
 
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -32,16 +41,17 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Lucidium" type="Sprite2D" parent="."]
-position = Vector2(992, 128)
-scale = Vector2(0.375, 0.375)
+position = Vector2(992, 144)
+scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("4_u068o")
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.6
 anchor_top = 0.355556
 anchor_right = 0.95
-anchor_bottom = 0.977778
+anchor_bottom = 0.888889
 tab_alignment = 1
 metadata/_edit_use_anchors_ = true
 
