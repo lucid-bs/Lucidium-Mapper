@@ -4,7 +4,11 @@ extends Node
 ## Cannonically known as MapDataer.
 ## Not known as this in editor for self-debugging and readability's sake.
 
-var version: String = "2.1.0"
+var path : String
+var info_dat : FileAccess
+var info_dat_data : Dictionary
+
+var version : String = "2.1.0"
 var song_name : String
 var song_submane : String
 var song_author_name : String
@@ -30,5 +34,9 @@ var environment_names : Array[String] = []
 var color_schemes : Dictionary
 
 var custom_data : Dictionary
-var difficulty_beatmap_sets : Dictionary
+var difficulty_beatmap_sets : Array
 
+func _ready() -> void:
+	info_dat = FileAccess.open(path + "/Info.dat", FileAccess.READ_WRITE)
+	info_dat_data = JSON.parse_string(info_dat.get_as_text())
+	print("Map Loaded into RAM, setting variables.")

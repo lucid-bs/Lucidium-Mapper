@@ -35,5 +35,9 @@ func _ready() -> void:
 			
 
 func _configure_map(directory: String):
-	get_tree().change_scene_to_packed(MAP_CONFIGURER)
-	EditorResourcePreview
+	var map_config = MAP_CONFIGURER.instantiate()
+	map_config.map_data_manager.path = directory
+	
+	get_tree().root.call_deferred("add_child", map_config)
+	call_deferred("queue_free")
+	
