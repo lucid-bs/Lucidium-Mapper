@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtwrdjth048su"]
+[gd_scene load_steps=6 format=3 uid="uid://dtwrdjth048su"]
 
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_o27vy"]
 [ext_resource type="Script" path="res://Scenes/Core/Assets/MapDataManager.gd" id="2_83eha"]
 [ext_resource type="Script" path="res://Scenes/Core/map_configurer.gd" id="2_ocovv"]
+[ext_resource type="Script" path="res://Scenes/resources/beatmap_info.gd" id="4_fmmta"]
+
+[sub_resource type="Resource" id="Resource_g5lnc"]
+script = ExtResource("4_fmmta")
+version = "2.1.0"
+song_name = ""
+song_submane = ""
+song_author_name = ""
+level_author = ""
+audio_bpm = 0.0
+shuffle = 0.0
+shuffle_period = 0.0
+preview_start = 0.0
+preview_duration = 0.0
+cover_filename = ""
+audio_filename = ""
+environment_name = ""
+all_directions_environment_name = "GlassDesertEnvironment"
+song_offset_time = 0.0
+environment_names = Array[String]([])
+color_schemes = {}
+custom_data = {}
+difficulty_beatmap_sets = []
 
 [node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 3
@@ -238,5 +261,6 @@ text = "Enter Editor"
 
 [node name="MapDataManager" type="Node" parent="."]
 script = ExtResource("2_83eha")
+info_dat_data = SubResource("Resource_g5lnc")
 
 [connection signal="pressed" from="DifficultyThingy/Button" to="." method="_on_button_pressed"]
