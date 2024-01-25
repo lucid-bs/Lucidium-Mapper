@@ -23,7 +23,7 @@ environment_name = ""
 all_directions_environment_name = "GlassDesertEnvironment"
 song_time_offset = 0.0
 environment_names = Array[String]([])
-color_schemes = Array[Dictionary]([])
+color_schemes = Array[Array]([])
 custom_data = {}
 difficulty_beatmap_sets = []
 
