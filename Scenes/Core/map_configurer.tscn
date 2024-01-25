@@ -193,6 +193,7 @@ text = "Song BPM"
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 99999.0
+step = 0.0
 suffix = "Beats Per Minute"
 
 [node name="HSeparator2" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
@@ -219,6 +220,7 @@ text = "Preview Start"
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 9999.0
+step = 0.0
 
 [node name="PreviewDurationContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
 layout_mode = 2
@@ -236,6 +238,7 @@ text = "Preview Duration"
 [node name="PreviewDurationSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer/HBoxContainer"]
 layout_mode = 2
 max_value = 999.0
+step = 0.0
 
 [node name="DifficultyThingy" type="Panel" parent="."]
 layout_mode = 1
