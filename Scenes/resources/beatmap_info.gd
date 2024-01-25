@@ -26,7 +26,7 @@ var raw_data : Dictionary
 @export var song_time_offset : float = 0.0
 
 @export var environment_names : Array[String] = []
-@export var color_schemes : Array[Array]
+@export var color_schemes : Array[]
 
 @export var custom_data : Dictionary
 @export var difficulty_beatmap_sets : Array

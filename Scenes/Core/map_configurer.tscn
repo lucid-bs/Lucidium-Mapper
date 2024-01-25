@@ -7,25 +7,25 @@
 
 [sub_resource type="Resource" id="Resource_g5lnc"]
 script = ExtResource("4_fmmta")
-version = "2.1.0"
-song_name = ""
-song_subname = ""
-song_author_name = ""
-level_author_name = ""
-beats_per_minute = 0.0
-shuffle = 0.0
-shuffle_period = 0.5
-preview_start = 0.0
-preview_duration = 0.0
-song_filename = ""
-cover_image_filename = ""
-environment_name = ""
-all_directions_environment_name = "GlassDesertEnvironment"
-song_time_offset = 0.0
-environment_names = Array[String]([])
-color_schemes = Array[Array]([])
-custom_data = {}
-difficulty_beatmap_sets = []
+version = null
+song_name = null
+song_subname = null
+song_author_name = null
+level_author_name = null
+beats_per_minute = null
+shuffle = null
+shuffle_period = null
+preview_start = null
+preview_duration = null
+song_filename = null
+cover_image_filename = null
+environment_name = null
+all_directions_environment_name = null
+song_time_offset = null
+environment_names = null
+color_schemes = null
+custom_data = null
+difficulty_beatmap_sets = null
 
 [node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 3
