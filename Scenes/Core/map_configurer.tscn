@@ -1,29 +1,29 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtwrdjth048su"]
 
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_o27vy"]
-[ext_resource type="Script" path="res://Scenes/Core/Assets/MapDataManager.gd" id="2_83eha"]
 [ext_resource type="Script" path="res://Scenes/Core/map_configurer.gd" id="2_ocovv"]
+[ext_resource type="Script" path="res://Scenes/Core/Assets/map_data_manager.gd" id="3_e3olp"]
 [ext_resource type="Script" path="res://Scenes/resources/beatmap_info.gd" id="4_fmmta"]
 
 [sub_resource type="Resource" id="Resource_g5lnc"]
 script = ExtResource("4_fmmta")
 version = "2.1.0"
 song_name = ""
-song_submane = ""
+song_subname = ""
 song_author_name = ""
-level_author = ""
-audio_bpm = 0.0
+level_author_name = ""
+beats_per_minute = 0.0
 shuffle = 0.0
-shuffle_period = 0.0
+shuffle_period = 0.5
 preview_start = 0.0
 preview_duration = 0.0
-cover_filename = ""
-audio_filename = ""
+song_filename = ""
+cover_image_filename = ""
 environment_name = ""
 all_directions_environment_name = "GlassDesertEnvironment"
-song_offset_time = 0.0
+song_time_offset = 0.0
 environment_names = Array[String]([])
-color_schemes = {}
+color_schemes = Array[Dictionary]([])
 custom_data = {}
 difficulty_beatmap_sets = []
 
@@ -84,7 +84,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Name"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="SongNameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
@@ -101,7 +101,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Subname"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+[node name="SongSubnameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
@@ -118,7 +118,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Author"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="SongAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
@@ -135,7 +135,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Map Author"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="MapAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
@@ -155,7 +155,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Cover Filename"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
+[node name="CoverFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
@@ -172,7 +172,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Filename"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
+[node name="SongFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
@@ -189,10 +189,11 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Song BPM"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
+[node name="BPMSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "PLACEHOLDER"
+max_value = 99999.0
+suffix = "Beats Per Minute"
 
 [node name="HSeparator2" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -204,36 +205,37 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
-layout_mode = 2
-alignment = 2
-
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Preview Start"
-
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/HBoxContainer"]
+[node name="PrevviewStartContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "PLACEHOLDER"
+alignment = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PrevviewStartContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Preview Start"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/HBoxContainer3"]
+[node name="PreviewStartSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PrevviewStartContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+
+[node name="PreviewDurationContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/HBoxContainer3/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Preview Duration"
 
-[node name="LineEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/HBoxContainer3/HBoxContainer"]
+[node name="PreviewDurationSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "PLACEHOLDER"
+max_value = 999.0
 
 [node name="DifficultyThingy" type="Panel" parent="."]
 layout_mode = 1
@@ -260,7 +262,8 @@ grow_vertical = 0
 text = "Enter Editor"
 
 [node name="MapDataManager" type="Node" parent="."]
-script = ExtResource("2_83eha")
+script = ExtResource("3_e3olp")
 info_dat_data = SubResource("Resource_g5lnc")
 
+[connection signal="text_changed" from="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/SongNameEdit" to="." method="_on_song_name_edit_text_changed"]
 [connection signal="pressed" from="DifficultyThingy/Button" to="." method="_on_button_pressed"]

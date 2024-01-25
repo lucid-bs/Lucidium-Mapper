@@ -21,8 +21,8 @@ extends Resource
 @export var light_translation_event_box_groups : Array
 @export var basic_event_types_with_keywords : Dictionary
 @export var use_normal_events_as_compatible_events : bool = false
+@export var custom_data : Dictionary 
 
-@export var custom_data : Dictionary
 func unpack_from_json(json_text : String, json : Dictionary = {}):
 	if json.is_empty():
 		json = JSON.parse_string(json_text)
