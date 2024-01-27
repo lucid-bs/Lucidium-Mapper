@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=5 format=3 uid="uid://bltg8i5j75slv"]
 
-[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_ib27d"]
 [ext_resource type="Script" path="res://Scenes/Core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://Scenes/Core/Assets/mm_Map.tscn" id="3_2i0mj"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ib27d")
 script = ExtResource("2_qmcka")
 
 [node name="BG" type="Panel" parent="."]

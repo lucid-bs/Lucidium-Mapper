@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=36 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -81,6 +81,17 @@ emission_texture = ExtResource("2_qhjkb")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m73j5"]
 
+[sub_resource type="Curve3D" id="Curve3D_idjvy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, -4),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wyggk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.521429, 0.879245), 0.0, 0.0, 0, 0, Vector2(1, 0.00377357), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Map Editor" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -159,40 +170,48 @@ layers = 2
 material_override = ExtResource("7_k0ji6")
 mesh = SubResource("QuadMesh_3f33k")
 
-[node name="TimelineGrid" type="MeshInstance3D" parent="Grid"]
+[node name="Timeline" type="Node3D" parent="Grid"]
+
+[node name="TimelineGrid" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+layers = 4
 material_override = SubResource("StandardMaterial3D_drsw4")
 mesh = SubResource("PlaneMesh_r5xv2")
-
-[node name="Timeline" type="Node3D" parent="Grid"]
+skeleton = NodePath("../..")
 
 [node name="LANE1" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0.0034079, -16)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE2" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -2, 0.0034079, -16)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE3" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 0.0034079, -16)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE4" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 0.0034079, -16)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE5" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 2, 0.0034079, -16)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="0" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_f5epj")
 skeleton = NodePath("../..")
@@ -205,6 +224,7 @@ font_size = 114
 
 [node name="1" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -217,6 +237,7 @@ font_size = 114
 
 [node name="2" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -229,6 +250,7 @@ font_size = 114
 
 [node name="3" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -241,6 +263,7 @@ font_size = 114
 
 [node name="4" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -253,6 +276,7 @@ font_size = 114
 
 [node name="5" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -265,6 +289,7 @@ font_size = 114
 
 [node name="6" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -278,6 +303,7 @@ font_size = 114
 
 [node name="7" type="MeshInstance3D" parent="Grid/Timeline"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
+layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../..")
@@ -717,7 +743,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer2/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 4)
-cull_mask = 1
+cull_mask = 3
 
 [node name="BottomMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer"]
 layout_mode = 2
@@ -1017,6 +1043,24 @@ arrow_multiplier = 1.0
 arrow_white = 1.0
 x = 1
 y = 0
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.8, 0)
+curve = SubResource("Curve3D_idjvy")
+
+[node name="TrailEmitter" type="TrailEmitter" parent="Path3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+curve = SubResource("Curve_wyggk")
+geometry_nodepath = NodePath("..")
+size = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04654, 0, 0.805643)
+script = null
 
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
