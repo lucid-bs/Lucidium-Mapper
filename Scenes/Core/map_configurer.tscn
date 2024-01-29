@@ -24,7 +24,7 @@ song_time_offset = 0.0
 environment_names = Array[String]([])
 color_schemes = []
 custom_data = {}
-difficulty_beatmap_sets = []
+difficulty_beatmap_sets = Array[Resource("res://Scenes/resources/beatmap_set.gd")]([])
 
 [node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 3
@@ -232,8 +232,8 @@ text = "Preview Duration"
 [node name="PreviewDurationSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 999.0
-step = 0.0
+max_value = 9999.0
+step = 0.001
 
 [node name="DifficultyThingy" type="Panel" parent="."]
 layout_mode = 1

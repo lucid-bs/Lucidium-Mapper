@@ -29,7 +29,7 @@ var raw_data : Dictionary
 @export var color_schemes : Array
 
 @export var custom_data : Dictionary
-@export var difficulty_beatmap_sets : Array
+@export var difficulty_beatmap_sets : Array[BeatmapSet]
 
 var conversion_table_to_json = {
 	"song_name" = "_songName",
@@ -52,8 +52,8 @@ var conversion_table_to_json = {
 	"difficulty_beatmap_sets" = "_difficultyBeatmapSets",
 }
 
-### Converts the Raw JSON data to the BeatmapInfo Object
-func unpack_from_json(json_text : String, json : Dictionary = {}):
+### Converts the Raw JSON data into a new BeatmapInfo object
+func unpack_from_json(json_text : String, json : Dictionary = {}) -> BeatmapInfo:
 	if json.is_empty():
 		json = JSON.parse_string(json_text)
 	
@@ -72,7 +72,10 @@ func unpack_from_json(json_text : String, json : Dictionary = {}):
 	cover_image_filename = raw_data[conversion_table_to_json["cover_image_filename"]]
 	environment_name = raw_data[conversion_table_to_json["environment_name"]]
 	song_time_offset = raw_data[conversion_table_to_json["song_time_offset"]]
-	difficulty_beatmap_sets = raw_data[conversion_table_to_json["difficulty_beatmap_sets"]]
+	
+	for i in raw_data[conversion_table_to_json["difficulty_beatmap_sets"]]:
+		var bs = BeatmapSet.new()
+		difficulty_beatmap_sets.append(bs.unpack_from_json("i", i))
 	
 	# Check if keys exist in dictionary
 	
@@ -87,6 +90,8 @@ func unpack_from_json(json_text : String, json : Dictionary = {}):
 	# Check if array is not empty
 	if raw_data.has(conversion_table_to_json["environment_names"]) and raw_data[conversion_table_to_json["environment_names"]].size() > 0:
 		environment_names = raw_data[conversion_table_to_json["environment_names"]]
+	
+	return self
 
 func pack_to_json():
 	pass

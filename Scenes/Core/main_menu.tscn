@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://Scenes/Core/Assets/mm_Map.tscn" id="3_2i0mj"]
+[ext_resource type="Script" path="res://Scenes/Core/Assets/web_map_loader.gd" id="4_6ktwf"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
-[ext_resource type="Script" path="res://Scenes/Core/Assets/WebMapLoader.gd" id="5_nugno"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -99,7 +99,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 alignment = 1
-script = ExtResource("5_nugno")
+script = ExtResource("4_6ktwf")
 
 [node name="Input" type="VBoxContainer" parent="TabContainer/Load Map"]
 layout_mode = 2
