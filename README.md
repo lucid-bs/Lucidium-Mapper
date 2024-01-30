@@ -6,7 +6,7 @@ It's designed to be portable, one executable that works anywhere and everywhere.
 
 ## Why should you use this?
 I'm not gonna act like this mapper is the best invention since sliced bread. 
-It's far from it sctually. Chromapper is by far the best mapping solution available.
+It's far from it actually. Chromapper is by far the best mapping solution available.
 In most use cases, Chromapper does what lucidium can and better at that.
 
 ## No, seriously. Why should I use this?
