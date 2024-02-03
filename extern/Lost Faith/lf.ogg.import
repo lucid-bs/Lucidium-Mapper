@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbcvyg6bl2mlv"
+path="res://.godot/imported/lf.ogg-3a1f0f7b3799638d1de37693e05d8d9f.oggvorbisstr"
+
+[deps]
+
+source_file="res://extern/Lost Faith/lf.ogg"
+dest_files=["res://.godot/imported/lf.ogg-3a1f0f7b3799638d1de37693e05d8d9f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,6 @@
 extends Control
 
-
+const MAIN_MENU = preload("res://Scenes/Core/main_menu.tscn")
 
 var config = ConfigFile.new()
 
@@ -31,3 +31,6 @@ func _on_file_dialog_dir_selected(dir: String) -> void:
 	print(dir)
 	config.set_value("FileSystem", "InstallDir", dir)
 	config.save("user://settings.cfg")
+	
+	get_tree().change_scene_to_packed(MAIN_MENU)
+	

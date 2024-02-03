@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=5 format=3 uid="uid://bltg8i5j75slv"]
 
-[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_ib27d"]
 [ext_resource type="Script" path="res://Scenes/Core/main_menu.gd" id="2_qmcka"]
+[ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://Scenes/Core/Assets/mm_Map.tscn" id="3_2i0mj"]
+[ext_resource type="Script" path="res://Scenes/Core/Assets/web_map_loader.gd" id="4_6ktwf"]
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -10,5 +12,127 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ib27d")
 script = ExtResource("2_qmcka")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.0888889
+anchor_right = 0.5
+anchor_bottom = 0.9
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Panel" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_2i0mj")]
+layout_mode = 2
+
+[node name="Lucidium" type="Sprite2D" parent="."]
+position = Vector2(992, 144)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("4_u068o")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.355556
+anchor_right = 0.95
+anchor_bottom = 0.888889
+tab_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Main Menu" type="Control" parent="TabContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Main Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Main Menu/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welcome To Lucidium"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings (NONFUNCTIONAL)"
+
+[node name="New Map" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Load Map" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+script = ExtResource("4_6ktwf")
+
+[node name="Input" type="VBoxContainer" parent="TabContainer/Load Map"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Load Map/Input"]
+layout_mode = 2
+text = "Beat Saver ID or Web Link (to a zip file)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Load Map/Input"]
+layout_mode = 2
+placeholder_text = "25f or https://example.com"
+alignment = 1
+
+[node name="FILESYSTEM" type="VBoxContainer" parent="TabContainer/Load Map"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Load Map/FILESYSTEM"]
+layout_mode = 2
+text = "Filesystem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar" type="TabBar" parent="TabContainer/Load Map/FILESYSTEM"]
+layout_mode = 2
+tab_count = 2
+tab_alignment = 1
+tab_0/title = "Map Directory"
+tab_1/title = "USER DATA (Temporary)"
+
+[node name="Button" type="Button" parent="TabContainer/Load Map"]
+layout_mode = 2
+text = "Download"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="TabContainer/Load Map"]

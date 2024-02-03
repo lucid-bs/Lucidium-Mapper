@@ -7,28 +7,20 @@ const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
 @export_range(0.0, 1.0) var sensitivity: float = 0.25
 
-# Mouse state
+# Mouse states
 var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
 
 # Movement state
 var _direction = Vector3(0.0, 0.0, 0.0)
 var _velocity = Vector3(0.0, 0.0, 0.0)
-var _acceleration = 30
-var _deceleration = -10
-var _vel_multiplier = 7
-
-# Keyboard state
-var _w = false
-var _s = false
-var _a = false
-var _d = false
-var _q = false
-var _e = false
-var _shift = false
-var _alt = false
+@export_range(0, 1) var inertia : float = 1
+var _acceleration := lerpf(30, 8, inertia) # 30 REG, 8 MAX INERTIA
+var _deceleration := lerpf(-15, -3, inertia) # -10 REG, -3 MAX INERTIA
+var _vel_multiplier = 5
 
 func _ready() -> void:
+	DisplayServer.window_set_min_size(Vector2i(1280, 720))
 	%ErrorLogger.log_message("Hello from Camera!")
 	get_viewport().physics_object_picking = true
 	
@@ -47,26 +39,6 @@ func _input(event):
 			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
 				_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, 20)
 
-	# Receives key input
-	if event is InputEventKey:
-		match event.keycode:
-			KEY_W:
-				_w = event.pressed
-			KEY_S:
-				_s = event.pressed
-			KEY_A:
-				_a = event.pressed
-			KEY_D:
-				_d = event.pressed
-			KEY_Q:
-				_q = event.pressed
-			KEY_E:
-				_e = event.pressed
-			KEY_SHIFT:
-				_shift = event.pressed
-			KEY_ALT:
-				_alt = event.pressed
-
 # Updates mouselook and movement every frame
 func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
@@ -77,9 +49,9 @@ func _process(delta):
 func _update_movement(delta):
 	# Computes desired direction from key states
 	_direction = Vector3(
-		(_d as float) - (_a as float), 
-		(_e as float) - (_q as float),
-		(_s as float) - (_w as float)
+		Input.get_axis("fly_left", "fly_right"), 
+		Input.get_axis("fly_up", "fly_down"),
+		Input.get_axis("fly_forwards", "fly_backwards")
 	)
 	
 	# Computes the change in velocity due to desired direction and "drag"
@@ -89,8 +61,8 @@ func _update_movement(delta):
 	
 	# Compute modifiers' speed multiplier
 	var speed_multi = 1
-	if _shift: speed_multi *= SHIFT_MULTIPLIER
-	if _alt: speed_multi *= ALT_MULTIPLIER
+	if Input.is_action_pressed("fly_fast"): speed_multi *= SHIFT_MULTIPLIER
+	if Input.is_action_pressed("fly_slow"): speed_multi *= ALT_MULTIPLIER
 	
 	# Checks if we should bother translating the camera
 	if _direction == Vector3.ZERO and offset.length_squared() > _velocity.length_squared():

@@ -1,0 +1,267 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtwrdjth048su"]
+
+[ext_resource type="Script" path="res://Scenes/Core/map_configurer.gd" id="2_ocovv"]
+[ext_resource type="Script" path="res://Scenes/Core/Assets/map_data_manager.gd" id="3_e3olp"]
+[ext_resource type="Script" path="res://Scenes/resources/beatmap_info.gd" id="4_fmmta"]
+
+[sub_resource type="Resource" id="Resource_g5lnc"]
+script = ExtResource("4_fmmta")
+version = "2.1.0"
+song_name = ""
+song_subname = ""
+song_author_name = ""
+level_author_name = ""
+beats_per_minute = 0.0
+shuffle = 0.0
+shuffle_period = 0.5
+preview_start = 0.0
+preview_duration = 0.0
+song_filename = ""
+cover_image_filename = ""
+environment_name = ""
+all_directions_environment_name = "GlassDesertEnvironment"
+song_time_offset = 0.0
+environment_names = Array[String]([])
+color_schemes = []
+custom_data = {}
+difficulty_beatmap_sets = Array[Resource("res://Scenes/resources/beatmap_set.gd")]([])
+
+[node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ocovv")
+map_data_manager = NodePath("MapDataManager")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="InfoDatThingy" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.0444444
+anchor_right = 0.55
+anchor_bottom = 0.955556
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoDatThingy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Song Name"
+
+[node name="SongNameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLACEHOLDER"
+
+[node name="PanelContainer4" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Song Subname"
+
+[node name="SongSubnameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLACEHOLDER"
+
+[node name="PanelContainer2" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Song Author"
+
+[node name="SongAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLACEHOLDER"
+
+[node name="PanelContainer3" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Map Author"
+
+[node name="MapAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLACEHOLDER"
+
+[node name="HSeparator" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer6" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer6"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Cover Filename"
+
+[node name="CoverFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLACEHOLDER"
+
+[node name="PanelContainer5" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer5"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Song Filename"
+
+[node name="SongFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "PLACEHOLDER"
+
+[node name="PanelContainer7" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer7"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Song BPM"
+
+[node name="BPMSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer7/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 99999.0
+step = 0.0
+suffix = "Beats Per Minute"
+
+[node name="HSeparator2" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8"]
+layout_mode = 2
+alignment = 1
+
+[node name="PreviewStartContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewStartContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Preview Start"
+
+[node name="PreviewStartSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewStartContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+step = 0.001
+
+[node name="PreviewDurationContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Preview Duration"
+
+[node name="PreviewDurationSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/HBoxContainer2/PreviewDurationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 9999.0
+step = 0.001
+
+[node name="DifficultyThingy" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.0444444
+anchor_right = 0.95
+anchor_bottom = 0.955556
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="DifficultyThingy"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -112.0
+offset_right = 96.0
+offset_bottom = -48.0004
+grow_horizontal = 2
+grow_vertical = 0
+text = "Enter Editor"
+
+[node name="MapDataManager" type="Node" parent="."]
+script = ExtResource("3_e3olp")
+info_dat_data = SubResource("Resource_g5lnc")
+
+[connection signal="text_changed" from="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/SongNameEdit" to="." method="_on_song_name_edit_text_changed"]
+[connection signal="pressed" from="DifficultyThingy/Button" to="." method="_on_button_pressed"]
