@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://d8bp566mrdk4"]
+
+[ext_resource type="Script" path="res://extern/Godot/gdscript_code_editor.gd" id="1_ywh84"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_q77d0"]
+number_color = Color(0.631373, 1, 0.878431, 1)
+symbol_color = Color(0.670588, 0.788235, 1, 1)
+function_color = Color(0.4, 0.901961, 1, 1)
+member_variable_color = Color(0.737255, 0.878431, 1, 1)
+
+[node name="GDScriptCodeEdit" type="CodeEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 16
+text = "extends CodeEdit
+
+
+func get_class_instance(name: String):    
+	var classes = ProjectSettings.get_global_class_list()
+	for element in classes:        
+		if element[\"class\"] == name:            
+			return load(element[\"path\"]).new()    
+	push_error(\"Class \\\"\" + name + \"\\\" could not be found\")    
+	return null
+	
+func _ready():
+	# Iterate over all available utility functions provided by Godot's scripting API.
+	var utilities
+	var e = Block.new()
+	e = e.get_class()
+	print(ClassDB.get_class_list())
+	if get_class_instance(\"Block\"):
+		utilities = get_class_instance(\"Block\")
+		utilities = utilities.get_property_list()
+	
+	add_code_completion_option(CodeEdit.KIND_FUNCTION, \"e\", \"test\")
+	update_code_completion_options(true)
+
+	for i in utilities:
+		print(\"%s\" % [i])
+		
+
+
+func _on_code_completion_requested() -> void:
+	var cc
+	var cci
+	if get_class_instance(\"Block\"):
+		cc = get_class_instance(\"Block\")
+		CodeEdit
+		cci = cc.get_property_list()
+		get_property_list()
+		for i in cci:
+			add_code_completion_option(CodeEdit.KIND_MEMBER, i[\"name\"], i[\"name\"])
+		cci = cc.get_method_list()
+		for i in cci:
+			add_code_completion_option(CodeEdit.KIND_FUNCTION, i[\"name\"], i[\"name\"] + \"()\")
+		
+	
+	update_code_completion_options(true)
+"
+context_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+scroll_smooth = true
+minimap_draw = true
+minimap_width = 60
+caret_blink = true
+caret_blink_interval = 0.5
+syntax_highlighter = SubResource("CodeHighlighter_q77d0")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+structured_text_bidi_override = 5
+symbol_lookup_on_click = true
+line_folding = true
+line_length_guidelines = Array[int]([100, 80])
+gutters_draw_breakpoints_gutter = true
+gutters_draw_bookmarks = true
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_draw_fold_gutter = true
+delimiter_strings = Array[String](["\"\"\" \"\"\"", "''' '''", "\" \"", "' '"])
+delimiter_comments = Array[String](["##", "#"])
+code_completion_enabled = true
+code_completion_prefixes = Array[String]([".", ",", "(", "=", "$", "@", "\"", "'"])
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+auto_brace_completion_pairs = {
+"\"": "\"",
+"\"\"\"": "\"\"\"",
+"'": "'",
+"'''": "'''",
+"(": ")",
+"[": "]",
+"{": "}"
+}
+script = ExtResource("1_ywh84")
+
+[connection signal="code_completion_requested" from="." to="." method="_on_code_completion_requested"]
