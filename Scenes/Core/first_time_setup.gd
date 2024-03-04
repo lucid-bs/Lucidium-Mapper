@@ -23,7 +23,7 @@ func _ready() -> void:
 			install_detected = true
 	
 	if install_detected:
-		pass
+		get_tree().change_scene_to_packed(MAIN_MENU)
 
 
 

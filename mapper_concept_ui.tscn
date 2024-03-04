@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="1_li6mv"]
 [ext_resource type="Theme" uid="uid://cpjevlradbdti" path="res://UI/def_inter.tres" id="1_mi7yn"]
-[ext_resource type="Script" path="res://Scenes/ErrorLogger.gd" id="3_iii0j"]
+[ext_resource type="Script" path="res://Scenes/error_logger.gd" id="3_iii0j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxoc4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
