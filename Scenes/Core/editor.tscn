@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/Core/left_tab_container.gd" id="12_b3ujs"]
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Core/editor/block.tscn" id="14_om2ls"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/button_container.gd" id="14_uoxu3"]
+[ext_resource type="Script" path="res://Scenes/Core/editor_controller.gd" id="15_l4jnc"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
@@ -35,10 +36,10 @@ size = Vector2(4, 3)
 albedo_color = Color(0.443137, 0.443137, 0.443137, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r5xv2"]
-size = Vector2(4, 40)
+size = Vector2(4, 60)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o38ct"]
-size = Vector3(0.025, 40, 0.05)
+size = Vector3(0.025, 60, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
 size = Vector3(0.1, 4, 0.025)
@@ -64,13 +65,6 @@ border_width_left = 4
 border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3xxa"]
-bg_color = Color(0.211765, 0.239216, 0.290196, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tahei"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tl6yc"]
@@ -81,16 +75,19 @@ emission_texture = ExtResource("2_qhjkb")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m73j5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3xxa"]
+bg_color = Color(0.211765, 0.239216, 0.290196, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="Curve3D" id="Curve3D_idjvy"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, -4),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="Curve" id="Curve_wyggk"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.521429, 0.879245), 0.0, 0.0, 0, 0, Vector2(1, 0.00377357), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [node name="Map Editor" type="Node3D"]
 
@@ -173,38 +170,38 @@ mesh = SubResource("QuadMesh_3f33k")
 [node name="Timeline" type="Node3D" parent="Grid"]
 
 [node name="TimelineGrid" type="MeshInstance3D" parent="Grid/Timeline"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
 layers = 4
 material_override = SubResource("StandardMaterial3D_drsw4")
 mesh = SubResource("PlaneMesh_r5xv2")
 skeleton = NodePath("../..")
 
 [node name="LANE1" type="MeshInstance3D" parent="Grid/Timeline"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0.0034079, -16)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE2" type="MeshInstance3D" parent="Grid/Timeline"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -2, 0.0034079, -16)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -2, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE3" type="MeshInstance3D" parent="Grid/Timeline"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 0.0034079, -16)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE4" type="MeshInstance3D" parent="Grid/Timeline"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 0.0034079, -16)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
 [node name="LANE5" type="MeshInstance3D" parent="Grid/Timeline"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 2, 0.0034079, -16)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 2, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
@@ -575,12 +572,12 @@ layout_mode = 2
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 1.0
-split_offset = 983
+split_offset = 1020
 metadata/_edit_use_anchors_ = true
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MapperUI/HSplitContainer"]
 layout_mode = 2
-split_offset = 260
+split_offset = 270
 
 [node name="LeftTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer"]
 layout_mode = 2
@@ -600,9 +597,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_f3xxa")
 
 [node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes"]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
@@ -712,7 +709,7 @@ stretch = true
 handle_input_locally = false
 msaa_3d = 2
 screen_space_aa = 1
-size = Vector2i(640, 360)
+size = Vector2i(742, 632)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
@@ -724,27 +721,35 @@ script = ExtResource("2_xkfh1")
 mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
-layout_mode = 2
-anchor_left = 0.814181
-anchor_right = 1.0
-anchor_bottom = 0.2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-stretch = true
+[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00559441
+anchor_right = 0.99021
+anchor_bottom = 0.0759494
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer2"]
-transparent_bg = true
-handle_input_locally = false
-scaling_3d_scale = 2.0
-physics_object_picking = true
-size = Vector2i(118, 72)
-render_target_update_mode = 4
+[node name="HBoxContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer"]
+layout_mode = 2
 
-[node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer2/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 4)
-cull_mask = 3
+[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_fabox")
+text = "stat_minus_1"
+flat = true
+
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/HBoxContainer"]
+layout_mode = 2
+text = "1/2"
+
+[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_fabox")
+text = "stat_1"
+flat = true
 
 [node name="BottomMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer"]
 layout_mode = 2
@@ -1019,51 +1024,54 @@ layout_mode = 2
 
 [node name="Editor" type="Node" parent="."]
 
+[node name="EditorController" type="Node" parent="Editor"]
+script = ExtResource("15_l4jnc")
+
 [node name="SelectionManager" type="Node" parent="Editor"]
 script = ExtResource("12_02ale")
+
+[node name="BSMap" type="Node" parent="Editor"]
+
+[node name="SongStreamPlayer" type="AudioStreamPlayer" parent="Editor"]
+
+[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="Editor"]
 
 [node name="Bloqs" type="Node3D" parent="."]
 script = ExtResource("11_bwwcu")
 
 [node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+selected = false
 glossy = false
 color = 1
 direction = 8
+angle_offset = 0
+rgb_color = Color(0, 0, 0, 1)
 bloq_multiplier = 0.28
 arrow_multiplier = 0.405
+arrow_white = 0.0
+beat = 0.0
 x = 2
 y = 0
 
 [node name="Bloq3" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+selected = false
 glossy = false
 color = 0
 direction = 1
+angle_offset = 0
+rgb_color = Color(0, 0, 0, 1)
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
 arrow_white = 1.0
+beat = 0.0
 x = 1
 y = 0
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.8, 0)
 curve = SubResource("Curve3D_idjvy")
-
-[node name="TrailEmitter" type="TrailEmitter" parent="Path3D"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-auto_translate_mode = 0
-editor_description = ""
-curve = SubResource("Curve_wyggk")
-geometry_nodepath = NodePath("..")
-size = 3.0
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04654, 0, 0.805643)
-script = null
 
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
