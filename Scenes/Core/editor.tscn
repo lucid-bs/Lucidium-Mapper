@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=37 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -17,9 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Core/editor/block.tscn" id="14_om2ls"]
 [ext_resource type="Script" path="res://Scenes/Core/editor/button_container.gd" id="14_uoxu3"]
 [ext_resource type="Script" path="res://Scenes/Core/editor_controller.gd" id="15_l4jnc"]
+[ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
+background_color = Color(0.133333, 0.133333, 0.133333, 0)
 tonemap_mode = 3
 
 [sub_resource type="BoxMesh" id="BoxMesh_j1knx"]
@@ -1072,6 +1074,9 @@ y = 0
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.8, 0)
 curve = SubResource("Curve3D_idjvy")
+
+[node name="Billie" parent="." instance=ExtResource("18_rnir7")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
