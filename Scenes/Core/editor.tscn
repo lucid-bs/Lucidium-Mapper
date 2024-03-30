@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=59 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -18,11 +18,38 @@
 [ext_resource type="Script" path="res://Scenes/Core/editor/button_container.gd" id="14_uoxu3"]
 [ext_resource type="Script" path="res://Scenes/Core/editor_controller.gd" id="15_l4jnc"]
 [ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
+[ext_resource type="Material" uid="uid://3ksw0bxdofr2" path="res://materials/billie_water.tres" id="19_pgggt"]
+[ext_resource type="Texture2D" uid="uid://cauiaqreq10xs" path="res://extern/ChroMapper/billie/Billie/Sun.png" id="19_rks5o"]
+[ext_resource type="Shader" uid="uid://bckotlmp4m2j1" path="res://materials/shaders/waterfall.tres" id="20_5tvee"]
+[ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbno2"]
+sky_top_color = Color(0.239216, 0.137255, 0.0901961, 1)
+sky_horizon_color = Color(0.694118, 0.494118, 0.352941, 1)
+ground_bottom_color = Color(0.239216, 0.137255, 0.0901961, 1)
+ground_horizon_color = Color(0.694118, 0.494118, 0.352941, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_pnvj8"]
+sky_material = SubResource("ProceduralSkyMaterial_vbno2")
 
 [sub_resource type="Environment" id="Environment_rcla0"]
-background_mode = 1
-background_color = Color(0.133333, 0.133333, 0.133333, 0)
+background_mode = 2
+background_color = Color(0.658824, 0.466667, 0.333333, 1)
+sky = SubResource("Sky_pnvj8")
 tonemap_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 1
+fog_mode = 1
+fog_density = 1.0
+fog_depth_curve = 0.5
+fog_depth_begin = 0.0
+fog_depth_end = 1811.5
+volumetric_fog_density = 0.0
+volumetric_fog_anisotropy = 0.3
+volumetric_fog_ambient_inject = 0.61
+volumetric_fog_sky_affect = 0.779
 
 [sub_resource type="BoxMesh" id="BoxMesh_j1knx"]
 material = ExtResource("6_2v7ym")
@@ -75,6 +102,55 @@ emission_enabled = true
 emission_energy_multiplier = 2.56
 emission_texture = ExtResource("2_qhjkb")
 
+[sub_resource type="Curve" id="Curve_w583n"]
+_data = [Vector2(0, 1), 0.0, -1.059, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k5uc4"]
+curve = SubResource("Curve_w583n")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_kpcd8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1h2j"]
+emission_shape = 3
+emission_box_extents = Vector3(8, 8, 8)
+directional_velocity_min = 0.0299839
+directional_velocity_max = 0.0599839
+directional_velocity_curve = SubResource("CurveXYZTexture_kpcd8")
+gravity = Vector3(0, 0, 0)
+color = Color(3, 3, 3, 1)
+alpha_curve = SubResource("CurveTexture_k5uc4")
+turbulence_enabled = true
+turbulence_noise_speed_random = 1.8
+turbulence_influence_max = 0.716
+turbulence_initial_displacement_min = -56.6
+turbulence_initial_displacement_max = 37.2
+
+[sub_resource type="Gradient" id="Gradient_xq4vw"]
+offsets = PackedFloat32Array(0.443902, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r70vk"]
+gradient = SubResource("Gradient_xq4vw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.6, 0.6)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pshnc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_r70vk")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yiaym"]
+material = SubResource("StandardMaterial3D_pshnc")
+size = Vector2(0.063, 0.063)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m73j5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3xxa"]
@@ -91,12 +167,48 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8f4e1"]
+render_priority = 0
+shader = ExtResource("20_5tvee")
+
+[sub_resource type="Curve" id="Curve_5nldy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0972851, 1), 0.0, 0.0, 0, 0, Vector2(0.89819, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ve7n"]
+curve = SubResource("Curve_5nldy")
+
+[sub_resource type="Curve" id="Curve_oy2ye"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_tlu62"]
+curve_x = SubResource("Curve_oy2ye")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fxnm"]
+emission_shape = 3
+emission_box_extents = Vector3(6, 1, 4)
+directional_velocity_min = -0.0300161
+directional_velocity_max = -0.0300161
+directional_velocity_curve = SubResource("CurveXYZTexture_tlu62")
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_2ve7n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3icav"]
+render_priority = 0
+shader = ExtResource("20_id8xb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_oeq8w"]
+material = SubResource("ShaderMaterial_3icav")
+size = Vector2(12.21, 11.825)
+
 [node name="Map Editor" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
 
 [node name="Grid" type="Node3D" parent="."]
+visible = false
 script = ExtResource("3_wy725")
 
 [node name="X" type="Node3D" parent="Grid"]
@@ -489,6 +601,7 @@ transform = Transform3D(-1.00389, -0.423731, -0.346668, -3.22324e-08, 0.711106, 
 
 [node name="Light" type="DirectionalLight3D" parent="Rotating Light"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+light_color = Color(0.941, 0.707, 0.565, 1)
 shadow_bias = 0.05
 shadow_normal_bias = 0.4
 
@@ -722,6 +835,12 @@ script = ExtResource("2_xkfh1")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
 mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
+amount = 256
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_s1h2j")
+draw_pass_1 = SubResource("QuadMesh_yiaym")
 
 [node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
 layout_mode = 1
@@ -1078,6 +1197,67 @@ curve = SubResource("Curve3D_idjvy")
 [node name="Billie" parent="." instance=ExtResource("18_rnir7")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
+[node name="MeshRenderer" parent="Billie/Static/Track/WaterfallFlatClose" index="0"]
+surface_material_override/0 = ExtResource("19_pgggt")
+
+[node name="MeshRenderer" parent="Billie/Static/Waterfall/WaterfallFalling" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_8f4e1")
+
+[node name="Sprite3D" type="Sprite3D" parent="Billie/Dynamic/Sun/Sun_Moon" index="1"]
+modulate = Color(2.457, 1.326, 0.552, 1)
+billboard = 1
+texture = ExtResource("19_rks5o")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0007, -1.59451, -8.19465)
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
+process_material = SubResource("ParticleProcessMaterial_1fxnm")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00525, -1.59451, -8.19465)
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
+process_material = SubResource("ParticleProcessMaterial_1fxnm")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58322, 8.6273, -13.3614)
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
+process_material = SubResource("ParticleProcessMaterial_1fxnm")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6216, 8.6273, -13.3614)
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
+process_material = SubResource("ParticleProcessMaterial_1fxnm")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965766, 8.6273, -13.3614)
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
+process_material = SubResource("ParticleProcessMaterial_1fxnm")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965766, 8.6273, -23.2893)
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-5.56824, -2.62886, -8.18007, 11.1365, 5.25771, 16.3601)
+process_material = SubResource("ParticleProcessMaterial_1fxnm")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
 [connection signal="pressed" from="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer/Logger" to="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer" method="_on_logger_pressed"]
+
+[editable path="Billie"]
