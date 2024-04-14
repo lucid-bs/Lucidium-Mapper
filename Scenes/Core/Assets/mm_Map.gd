@@ -23,7 +23,7 @@ func _ready() -> void:
 	$TitleStuffs/Author/Author.text = Author
 	$TitleStuffs/Author/Mapper.text = Mapper
 	
-	$Directory.text = map_directory
+	$TitleStuffs/Directory.text = map_directory
 	
 	var image = Image.load_from_file(map_directory + "/" + Map_Image)
 	var texture = ImageTexture.create_from_image(image)

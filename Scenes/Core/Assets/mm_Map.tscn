@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/Core/Assets/mm_Map.gd" id="1_uy3uj"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4t4eb"]
-font_size = 8
-
 [sub_resource type="LabelSettings" id="LabelSettings_gir82"]
 font_size = 21
 
@@ -13,6 +10,9 @@ font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_8yola"]
 font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t4eb"]
+font_size = 8
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(576, 160)
@@ -31,16 +31,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 expand_mode = 1
 stretch_mode = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="Directory" type="Label" parent="."]
-layout_mode = 2
-anchor_top = 0.9
-anchor_right = 0.722222
-anchor_bottom = 1.0
-label_settings = SubResource("LabelSettings_4t4eb")
-horizontal_alignment = 1
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleStuffs" type="VBoxContainer" parent="."]
@@ -94,6 +84,15 @@ label_settings = SubResource("LabelSettings_8yola")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Directory" type="Label" parent="TitleStuffs"]
+custom_minimum_size = Vector2(448, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_4t4eb")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SELECTION_BUTTON" type="Button" parent="."]
 layout_mode = 1

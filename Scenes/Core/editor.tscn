@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=101 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/grid_placement.gd" id="4_gcuyk"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
+[ext_resource type="Script" path="res://Scenes/Core/editor/top_bar.gd" id="6_edat5"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
 [ext_resource type="Script" path="res://Scenes/error_logger.gd" id="10_i8sui"]
@@ -990,6 +991,395 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
+[node name="Grid2" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_wy725")
+
+[node name="X" type="Node3D" parent="Grid2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
+layers = 2
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid2/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
+layers = 2
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid2/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+layers = 2
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid2/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
+layers = 2
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid2/X"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
+layers = 2
+mesh = SubResource("BoxMesh_j1knx")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_2v7ym")
+
+[node name="Y" type="Node3D" parent="Grid2"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid2/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+layers = 2
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid2/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid2/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2, 0)
+layers = 2
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid2/Y"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3, 0)
+layers = 2
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_abaqk")
+skeleton = NodePath("../..")
+
+[node name="SelectionGrid" type="MeshInstance3D" parent="Grid2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+layers = 2
+material_override = ExtResource("7_k0ji6")
+mesh = SubResource("QuadMesh_3f33k")
+
+[node name="Timeline" type="Node3D" parent="Grid2"]
+
+[node name="TimelineGrid" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
+layers = 4
+material_override = SubResource("StandardMaterial3D_drsw4")
+mesh = SubResource("PlaneMesh_r5xv2")
+skeleton = NodePath("../..")
+
+[node name="LANE1" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0.0034079, -26)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE2" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -2, 0.0034079, -26)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE3" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 0.0034079, -26)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE4" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 0.0034079, -26)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="LANE5" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 2, 0.0034079, -26)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_o38ct")
+
+[node name="0" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_f5epj")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/0"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "1"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="1" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/1"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "2"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="2" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/2"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "3"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="3" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/3"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "4"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="4" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/4"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "5"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="5" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/5"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "6"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="6" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/6"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "7
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="7" type="MeshInstance3D" parent="Grid2/Timeline"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid2/Timeline/7"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "8
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="GridPlacements" type="Node3D" parent="Grid2"]
+
+[node name="00" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/00"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/00"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="10" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="20" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="30" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="01" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="11" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="21" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="31" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="02" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="13" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="23" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
+[node name="33" type="StaticBody3D" parent="Grid2/GridPlacements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.5, 0)
+script = ExtResource("4_gcuyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid2/GridPlacements/33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
+shape = SubResource("BoxShape3D_u3cbc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid2/GridPlacements/33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
+layers = 2
+transparency = 1.0
+mesh = SubResource("QuadMesh_7skff")
+
 [node name="Rotating Light" type="Node3D" parent="."]
 transform = Transform3D(-1.00389, -0.423731, -0.346668, -3.22324e-08, 0.711106, -0.826286, 0.579596, -0.733924, -0.600447, 0, 3, 0)
 
@@ -1023,6 +1413,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.0555556
 theme_type_variation = &"TopBar"
+script = ExtResource("6_edat5")
 metadata/_edit_use_anchors_ = true
 
 [node name="TabBar" type="TabBar" parent="MapperUI/Top Bar"]
@@ -1039,6 +1430,7 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_dxoc4")
+current_tab = 0
 tab_alignment = 1
 clip_tabs = false
 scrolling_enabled = false
@@ -1088,14 +1480,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 split_offset = 270
 
-[node name="LeftTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer"]
+[node name="LeftChartTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 8
 
-[node name="LeftTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin"]
+[node name="LeftTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 current_tab = 0
@@ -1104,18 +1496,18 @@ tabs_rearrange_group = 1
 script = ExtResource("12_b3ujs")
 metadata/_edit_use_anchors_ = true
 
-[node name="Notes" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer"]
+[node name="Notes" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 layout_mode = 2
 
-[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes"]
+[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes"]
 use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="Notes" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel"]
+[node name="Notes" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel"]
 layout_mode = 2
 
-[node name="NoteContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes"]
+[node name="NoteContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1124,15 +1516,15 @@ offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer"]
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer"]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_type_variation = &"LucidiumClassType"
 
-[node name="Direction" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/Title"]
+[node name="Direction" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1143,56 +1535,56 @@ text = "Direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
+[node name="GridContainer" type="GridContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 3
 
-[node name="Button" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "TL"
 
-[node name="Button2" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button2" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "T"
 
-[node name="Button3" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button3" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "TR"
 
-[node name="Button4" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button4" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "L"
 
-[node name="Button5" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button5" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "D"
 
-[node name="Button6" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button6" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "R"
 
-[node name="Button7" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button7" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "BL"
 
-[node name="Button8" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button8" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "B"
 
-[node name="Button9" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button9" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
 layout_mode = 2
 text = "BR"
 
-[node name="Arcs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer"]
+[node name="Arcs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Bombs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer"]
+[node name="Bombs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Walls" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer"]
+[node name="Walls" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 visible = false
 layout_mode = 2
 
@@ -1332,14 +1724,14 @@ toggle_mode = true
 text = "Output Log"
 flat = true
 
-[node name="RightTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer"]
+[node name="RightChartTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RightTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/RightTabMargin"]
+[node name="RightTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin"]
 custom_minimum_size = Vector2(224, 0)
 layout_mode = 2
 current_tab = 0
@@ -1347,18 +1739,18 @@ drag_to_rearrange_enabled = true
 tabs_rearrange_group = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Inspector" type="PanelContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer"]
+[node name="Inspector" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f3xxa")
 
-[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector"]
+[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector"]
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="Inspector" type="Control" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel"]
+[node name="Inspector" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1366,20 +1758,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_type_variation = &"LucidiumClassType"
 
-[node name="Cube" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title"]
+[node name="Cube" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1390,17 +1782,17 @@ text = "Cube"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Direction" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Direction" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
@@ -1423,17 +1815,17 @@ popup/item_7/id = 7
 popup/item_8/text = "Down Right"
 popup/item_8/id = 8
 
-[node name="Color" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Color" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 layout_mode = 2
 
-[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Color"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
@@ -1442,29 +1834,29 @@ popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 
-[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
 layout_mode = 2
 
-[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Angle Offset"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EventSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
+[node name="EventSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_type_variation = &"LucidiumClassType"
 
-[node name="Event" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title"]
+[node name="Event" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1475,11 +1867,11 @@ text = "Event"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Beat" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Beat" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 layout_mode = 2
 tooltip_text = "Time in Beats"
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Beat
@@ -1487,53 +1879,53 @@ text = "Beat
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Time" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Time" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 layout_mode = 2
 tooltip_text = "Time in Seconds"
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Grid" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Grid" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 3.0
 
-[node name="Label2" type="Label" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="Label2" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox2" type="SpinBox" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="SpinBox2" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2.0
 
-[node name="Attributes" type="Control" parent="MapperUI/HSplitContainer/RightTabMargin/RightTabContainer"]
+[node name="Attributes" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer"]
 visible = false
 layout_mode = 2
 
@@ -1583,6 +1975,36 @@ arrow_white = 1.0
 beat = 0.0
 x = 1
 y = 0
+
+[node name="Bloq4" parent="Bloqs" instance=ExtResource("14_om2ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -4)
+selected = false
+glossy = false
+color = 0
+direction = 0
+angle_offset = 0
+rgb_color = Color(0, 0, 0, 1)
+bloq_multiplier = 0.28
+arrow_multiplier = 0.405
+arrow_white = 0.0
+beat = 0.0
+x = 1
+y = 2
+
+[node name="Bloq5" parent="Bloqs" instance=ExtResource("14_om2ls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -4)
+selected = false
+glossy = false
+color = 1
+direction = 8
+angle_offset = 0
+rgb_color = Color(0, 0, 0, 1)
+bloq_multiplier = 1.0
+arrow_multiplier = 1.0
+arrow_white = 1.0
+beat = 0.0
+x = 2
+y = 2
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.8, 0)
@@ -1649,8 +2071,10 @@ visibility_aabb = AABB(-5.56824, -2.62886, -8.18007, 11.1365, 5.25771, 16.3601)
 process_material = SubResource("ParticleProcessMaterial_1fxnm")
 draw_pass_1 = SubResource("QuadMesh_oeq8w")
 
-[connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
-[connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
+[connection signal="tab_changed" from="MapperUI/Top Bar/TabBar" to="MapperUI/Top Bar" method="_on_tab_bar_tab_changed"]
+[connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
+[connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
 [connection signal="pressed" from="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer/Logger" to="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer" method="_on_logger_pressed"]
 
+[editable path="Bloqs/Bloq5"]
 [editable path="Billie"]

@@ -51,6 +51,7 @@ anchor_top = 0.355556
 anchor_right = 0.95
 anchor_bottom = 0.888889
 tab_alignment = 1
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
@@ -126,8 +127,8 @@ vertical_alignment = 1
 
 [node name="TabBar" type="TabBar" parent="TabContainer/Load Map/FILESYSTEM"]
 layout_mode = 2
-tab_count = 2
 tab_alignment = 1
+tab_count = 2
 tab_0/title = "Map Directory"
 tab_1/title = "USER DATA (Temporary)"
 
