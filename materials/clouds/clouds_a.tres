@@ -1,9 +1,8 @@
-[gd_resource type="VisualShader" load_steps=22 format=3 uid="uid://b08nq5tf0l06q"]
+[gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://b08nq5tf0l06q"]
 
 [ext_resource type="Texture2D" uid="uid://cuhejjcoqpwa" path="res://materials/clouds/cloud_alpha_noise.tres" id="1_0sntx"]
 [ext_resource type="Texture2D" uid="uid://d4j36d5y015q3" path="res://materials/clouds/BillieCloudsDistort.png" id="1_o80ym"]
-[ext_resource type="Texture2D" uid="uid://dojxwtda5nn02" path="res://extern/opengameart/WickedInsignia/fx_cloudalphas/FX_CloudAlpha03.webp" id="2_7wkv7"]
-[ext_resource type="Texture2D" uid="uid://dyjt3mbakfydb" path="res://extern/opengameart/WickedInsignia/fx_cloudalphas/FX_CloudAlpha06.webp" id="4_ntoyb"]
+[ext_resource type="Texture2D" uid="uid://bijlkjmhls458" path="res://extern/opengameart/WickedInsignia/fx_cloudalphas/FX_CloudAlpha01.webp.png" id="2_fpvff"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_er5m3"]
 operator = 2
@@ -32,7 +31,7 @@ op_type = 5
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kcgen"]
 expanded_output_ports = [0]
-texture = ExtResource("2_7wkv7")
+texture = ExtResource("2_fpvff")
 
 [sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_vnbkj"]
 
@@ -59,7 +58,6 @@ op_type = 0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_iltb5"]
 expanded_output_ports = [0]
-texture = ExtResource("4_ntoyb")
 
 [sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_olo2a"]
 billboard_type = 3
@@ -185,7 +183,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(927.05, 182.016)
+graph_offset = Vector2(-79.5466, -129.07)
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_olo2a")
 nodes/vertex/2/position = Vector2(140, 180)
 nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
@@ -203,7 +201,7 @@ nodes/fragment/6/position = Vector2(-300, 420)
 nodes/fragment/7/node = SubResource("VisualShaderNodeVectorCompose_mvngi")
 nodes/fragment/7/position = Vector2(-100, 420)
 nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_iltb5")
-nodes/fragment/9/position = Vector2(500, -140)
+nodes/fragment/9/position = Vector2(400, -200)
 nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_er5m3")
 nodes/fragment/10/position = Vector2(1000, 100)
 nodes/fragment/11/node = SubResource("VisualShaderNodeInput_hvsjg")
@@ -213,13 +211,13 @@ nodes/fragment/12/position = Vector2(1160, 200)
 nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_1npwx")
 nodes/fragment/13/position = Vector2(1140, 360)
 nodes/fragment/14/node = SubResource("VisualShaderNodeRandomRange_j5crd")
-nodes/fragment/14/position = Vector2(300, -260)
+nodes/fragment/14/position = Vector2(100, -260)
 nodes/fragment/15/node = SubResource("VisualShaderNodeFloatFunc_qxrld")
-nodes/fragment/15/position = Vector2(520, -220)
+nodes/fragment/15/position = Vector2(680, -360)
 nodes/fragment/16/node = SubResource("VisualShaderNodeSwitch_y57jn")
 nodes/fragment/16/position = Vector2(820, -80)
 nodes/fragment/17/node = SubResource("VisualShaderNodeTexture_kcgen")
-nodes/fragment/17/position = Vector2(500, 100)
+nodes/fragment/17/position = Vector2(240, 80)
 nodes/fragment/18/node = SubResource("VisualShaderNodeSwitch_vnbkj")
 nodes/fragment/18/position = Vector2(800, 60)
 nodes/fragment/connections = PackedInt32Array(4, 0, 5, 0, 5, 0, 2, 0, 3, 0, 6, 0, 6, 0, 7, 0, 7, 0, 5, 1, 2, 0, 10, 1, 10, 0, 12, 0, 12, 0, 0, 1, 11, 4, 12, 1, 14, 0, 15, 0, 9, 0, 16, 1, 15, 0, 16, 0, 16, 0, 0, 0, 18, 0, 10, 0, 9, 4, 18, 1, 17, 4, 18, 2, 15, 0, 18, 0, 17, 0, 16, 2, 13, 0, 0, 10, 13, 0, 0, 8)

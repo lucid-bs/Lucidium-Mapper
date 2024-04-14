@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
 [ext_resource type="Material" uid="uid://3ksw0bxdofr2" path="res://materials/billie_water.tres" id="19_pgggt"]
 [ext_resource type="Texture2D" uid="uid://cauiaqreq10xs" path="res://extern/ChroMapper/billie/Billie/Sun.png" id="19_rks5o"]
-[ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/ LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
+[ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
 [ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbno2"]
@@ -1599,7 +1599,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_8l1dh")
 
 [node name="Sprite3D" type="Sprite3D" parent="Billie/Dynamic/Sun/Sun_Moon" index="1"]
 modulate = Color(2.457, 1.326, 0.552, 1)
-billboard = 1
 texture = ExtResource("19_rks5o")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
