@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucidium Mapper"
+config/version="0.1.1"
 run/main_scene="res://Scenes/Core/LOADER.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/image="res://Lucidium.png"

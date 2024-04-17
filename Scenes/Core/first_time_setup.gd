@@ -49,10 +49,12 @@ func _on_file_dialog_dir_selected(dir: String) -> void:
 
 
 func _on_button_pressed() -> void:
+	config.set_value("Version", "ConfigVersion", 1)
+	config.set_value("EditorGrid", "UsingBeatwallsSchema", false)
 	config.set_value("FileSystem", "InstallDir", $DirectoryManager/HBoxContainer/LineEdit.text)
 	config.save("user://settings.cfg")
 	
-	config.set_value("EditorGrid", "UsingBeatwallsSchema", false)
+
 	get_tree().change_scene_to_packed(MAIN_MENU)
 
 
