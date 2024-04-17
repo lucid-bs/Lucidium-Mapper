@@ -719,106 +719,108 @@ layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="0" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="Node3D" type="Node3D" parent="Grid/Timeline"]
+
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_f5epj")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/0"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/0"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "1"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="1" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/1"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/1"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "2"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="2" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/2"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/2"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "3"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="3" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/3"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/3"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "4"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="4" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="4" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/4"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/4"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "5"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="5" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="5" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/5"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/5"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "6"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="6" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="6" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/6"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/6"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "7
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="7" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="7" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/7"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/7"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "8
 "
