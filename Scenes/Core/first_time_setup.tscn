@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4uq6t750w1kx"]
 
-[ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="1_jt28w"]
 [ext_resource type="Script" path="res://Scenes/Core/first_time_setup.gd" id="2_ni6y4"]
+[ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="3_2m35f"]
 
 [node name="First Time Setup" type="Control"]
 layout_mode = 3
@@ -10,7 +10,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_jt28w")
 script = ExtResource("2_ni6y4")
 
 [node name="Panel" type="Panel" parent="."]
@@ -38,10 +37,60 @@ metadata/_edit_use_anchors_ = true
 title = "Open a Directory"
 initial_position = 2
 size = Vector2i(876, 556)
-visible = true
 borderless = true
 ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.00078125
+anchor_top = 0.844444
+anchor_right = 1.0
+anchor_bottom = 0.988889
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Confirm" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Let's Go!"
+
+[node name="DirectoryManager" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.266667
+anchor_right = 0.95
+anchor_bottom = 0.355556
+offset_top = -1.52588e-05
+theme_type_variation = &"DarkPanelContainer"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DirectoryManager"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="DirectoryManager/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "user://"
+metadata/_edit_use_anchors_ = true
+
+[node name="OpenFileManagerButton" type="Button" parent="DirectoryManager/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2m35f")
+theme_override_font_sizes/font_size = 24
+text = "folder"
+metadata/_edit_use_anchors_ = true
+
+[node name="UseAppdataButton" type="Button" parent="DirectoryManager/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Use Appdata Instead"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
+[connection signal="pressed" from="HBoxContainer/Confirm" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DirectoryManager/HBoxContainer/OpenFileManagerButton" to="." method="_on_open_file_manager_button_pressed"]
+[connection signal="pressed" from="DirectoryManager/HBoxContainer/UseAppdataButton" to="." method="_on_use_appdata_button_pressed"]
