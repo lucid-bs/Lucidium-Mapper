@@ -7,9 +7,11 @@ extends Panel
 		"right_menu" = $"../HSplitContainer/RightChartTabMargin",
 		"enter" = func():
 			$"../../WorldEnvironment".environment.glow_enabled = false
+			$"../../Billie/Static/PlayersPlace".hide()
 			$"../../Grid".show(),
 		"exit" = func():
 			$"../../WorldEnvironment".environment.glow_enabled = true
+			$"../../Billie/Static/PlayersPlace".show()
 			$"../../Grid".hide(),
 	},
 	{},

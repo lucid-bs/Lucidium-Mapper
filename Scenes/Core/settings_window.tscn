@@ -1,81 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://w1xrk5prbs38"]
+[gd_scene format=3 uid="uid://w1xrk5prbs38"]
 
-[ext_resource type="Script" path="res://Scenes/Core/settings_window.gd" id="1_e8mhg"]
-
-[node name="SettingsWindow" type="Window"]
-title = "Settings"
-initial_position = 2
-size = Vector2i(640, 360)
-script = ExtResource("1_e8mhg")
-
-[node name="GlobalSettings" type="TabContainer" parent="."]
+[node name="GlobalSettings" type="TabContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
 
-[node name="DummyParameters" type="MarginContainer" parent="GlobalSettings"]
-visible = false
+[node name="DummyParameters" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GlobalSettings/DummyParameters"]
+[node name="ScrollContainer" type="ScrollContainer" parent="DummyParameters"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DummyParameters/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GlobalSettings/DummyParameters/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="DummyParameters/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-alignment = 1
+theme_type_variation = &"DarkPanelContainer"
 
-[node name="Label" type="Label" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Param1 "
 
-[node name="HSlider" type="HSlider" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GlobalSettings/DummyParameters/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Param2"
+text = "Dummy Setting A"
+horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer2"]
+[node name="CheckButton" type="CheckButton" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="GlobalSettings/DummyParameters/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="DummyParameters/ScrollContainer/VBoxContainer"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-alignment = 1
+theme_type_variation = &"DarkPanelContainer"
 
-[node name="Label" type="Label" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer2"]
+auto_translate_mode = 1
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Switch"
 
-[node name="CheckButton" type="CheckButton" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GlobalSettings/DummyParameters/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Tick"
+text = "Dummy Setting B"
+horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="GlobalSettings/DummyParameters/VBoxContainer/HBoxContainer4"]
+[node name="CheckButton" type="CheckButton" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer3" type="PanelContainer" parent="DummyParameters/ScrollContainer/VBoxContainer"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_type_variation = &"DarkPanelContainer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer3"]
+auto_translate_mode = 1
 layout_mode = 2
 
-[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[node name="Label" type="Label" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dummy Setting C (Color)"
+horizontal_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="DummyParameters/ScrollContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
