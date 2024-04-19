@@ -4,7 +4,7 @@ extends Control
 
 func _on_button_pressed() -> void:
 	
-	var editor = preload("res://Scenes/Core/editor.tscn").instantiate()
+	var editor = preload("res://scenes/core/editor.tscn").instantiate()
 	
 	get_tree().root.call_deferred("add_child", editor)
 	call_deferred("queue_free")

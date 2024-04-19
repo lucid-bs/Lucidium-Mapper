@@ -2,9 +2,9 @@ extends Control
 
 var config = ConfigFile.new()
 
-const MM_MAP = preload("res://Scenes/Core/Assets/mm_Map.tscn")
+const MM_MAP = preload("res://scenes/core/assets/mm_Map.tscn")
 
-const MAP_CONFIGURER = preload("res://Scenes/Core/map_configurer.tscn")
+const MAP_CONFIGURER = preload("res://scenes/core/map_configurer.tscn")
 
 func _ready() -> void:
 	

@@ -1,16 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=27 format=3 uid="uid://cr4ahtyggswxk"]
 
-[ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://Scenes/Bloq.tscn" id="1_hvejt"]
-[ext_resource type="Script" path="res://Scenes/camera.gd" id="2_xkfh1"]
+[ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://scenes/core/editor/block.tscn" id="1_hvejt"]
+[ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="3_aa3hs"]
-[ext_resource type="Script" path="res://Scenes/GridPlacement.gd" id="4_gcuyk"]
+[ext_resource type="Script" path="res://scenes/grid_placement.gd" id="4_gcuyk"]
 [ext_resource type="Theme" uid="uid://bii6yebd2gynm" path="res://UI/godot_blue.tres" id="4_n5qpl"]
 [ext_resource type="Material" uid="uid://bkhx7qlonmdvo" path="res://materials/bloq/whiteTexture.tres" id="5_q1tg2"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
-[ext_resource type="Script" path="res://Scenes/Bloq.gd" id="8_7qirs"]
+[ext_resource type="Script" path="res://scenes/core/editor/block.gd" id="8_7qirs"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
-[ext_resource type="Script" path="res://Scenes/ErrorLogger.gd" id="10_i8sui"]
+[ext_resource type="Script" path="res://scenes/error_logger.gd" id="10_i8sui"]
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 1
@@ -414,11 +414,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_selected_color = Color(0.662745, 0.811765, 1, 1)
 theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
-theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
+theme_override_colors/font_selected_color = Color(0.662745, 0.811765, 1, 1)
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_dxoc4")
 tab_alignment = 1
@@ -473,6 +473,7 @@ anchor_left = 0.8
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 0.844444
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Inspector" type="Control" parent="MapperUI/RightTabContainer"]
@@ -660,6 +661,7 @@ layout_mode = 0
 anchor_top = 0.0555556
 anchor_right = 0.15
 anchor_bottom = 0.844444
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Control" parent="MapperUI/LeftTabContainer"]
@@ -747,15 +749,15 @@ visible = false
 layout_mode = 2
 
 [node name="RedBloq" parent="." instance=ExtResource("1_hvejt")]
-y = 0
 direction = 1
+y = 0
 
 [node name="BlooBloq" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 script = ExtResource("8_7qirs")
 color = 1
-x = 2
 direction = 8
+x = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlooBloq"]
 shape = SubResource("BoxShape3D_oauwe")

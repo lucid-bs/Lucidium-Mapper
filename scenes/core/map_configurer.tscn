@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtwrdjth048su"]
 
-[ext_resource type="Script" path="res://Scenes/Core/map_configurer.gd" id="2_ocovv"]
-[ext_resource type="Script" path="res://Scenes/Core/Assets/map_data_manager.gd" id="3_e3olp"]
-[ext_resource type="Script" path="res://Scenes/resources/beatmap_info.gd" id="4_fmmta"]
+[ext_resource type="Script" path="res://scenes/core/map_configurer.gd" id="1_v5not"]
+[ext_resource type="Script" path="res://scenes/core/assets/map_data_manager.gd" id="2_mi6hj"]
+[ext_resource type="Script" path="res://scenes/resources/beatmap_info.gd" id="4_fmmta"]
 
 [sub_resource type="Resource" id="Resource_g5lnc"]
 script = ExtResource("4_fmmta")
@@ -24,7 +24,7 @@ song_time_offset = 0.0
 environment_names = Array[String]([])
 color_schemes = []
 custom_data = {}
-difficulty_beatmap_sets = Array[Resource("res://Scenes/resources/beatmap_set.gd")]([])
+difficulty_beatmap_sets = Array[Resource("res://scenes/resources/beatmap_set.gd")]([])
 
 [node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 3
@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ocovv")
+script = ExtResource("1_v5not")
 map_data_manager = NodePath("MapDataManager")
 
 [node name="BG" type="Panel" parent="."]
@@ -260,7 +260,7 @@ grow_vertical = 0
 text = "Enter Editor"
 
 [node name="MapDataManager" type="Node" parent="."]
-script = ExtResource("3_e3olp")
+script = ExtResource("2_mi6hj")
 info_dat_data = SubResource("Resource_g5lnc")
 
 [connection signal="text_changed" from="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/SongNameEdit" to="." method="_on_song_name_edit_text_changed"]

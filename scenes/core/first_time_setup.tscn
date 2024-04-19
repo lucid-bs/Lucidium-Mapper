@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4uq6t750w1kx"]
 
-[ext_resource type="Script" path="res://Scenes/Core/first_time_setup.gd" id="2_ni6y4"]
+[ext_resource type="Script" path="res://scenes/core/first_time_setup.gd" id="2_ni6y4"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="3_2m35f"]
 
 [node name="First Time Setup" type="Control"]

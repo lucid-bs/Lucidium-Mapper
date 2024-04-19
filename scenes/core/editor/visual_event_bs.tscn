@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bne388mtmk0a4"]
 
-[ext_resource type="Script" path="res://Scenes/Core/editor/visual_event_bs.gd" id="1_kfepc"]
+[ext_resource type="Script" path="res://scenes/core/editor/visual_event_bs.gd" id="1_kfepc"]
 
 [node name="VisualEventBS" type="AnimatableBody3D"]
 sync_to_physics = false
