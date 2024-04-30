@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.3")
 boot_splash/image="res://Lucidium.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+LocalSettingsManager="*res://scenes/settings_manager.gd"
+
 [display]
 
 window/size/viewport_width=1280

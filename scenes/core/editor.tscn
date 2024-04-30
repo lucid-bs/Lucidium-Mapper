@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="Script" path="res://scenes/core/editor/grid_manager.gd" id="3_wy725"]
+[ext_resource type="Script" path="res://scenes/core/editor/beat_grid_bars.gd" id="4_3kgy6"]
 [ext_resource type="Script" path="res://scenes/grid_placement.gd" id="4_gcuyk"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
@@ -15,18 +16,18 @@
 [ext_resource type="Script" path="res://scenes/core/editor/menu_button.gd" id="10_vu5vo"]
 [ext_resource type="Script" path="res://scenes/core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://scenes/core/settings_window.tscn" id="11_f5e1k"]
-[ext_resource type="Script" path="res://scenes/core/editor/selection_manager.gd" id="12_02ale"]
 [ext_resource type="Script" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://scenes/core/editor/block.tscn" id="14_om2ls"]
 [ext_resource type="Script" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
-[ext_resource type="Script" path="res://scenes/core/editor_controller.gd" id="15_l4jnc"]
 [ext_resource type="Script" path="res://scenes/core/editor/editor.gd" id="16_r33nt"]
-[ext_resource type="Script" path="res://scenes/core/editor/keybind_listener.gd" id="17_jeyg3"]
 [ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
 [ext_resource type="Material" uid="uid://3ksw0bxdofr2" path="res://materials/billie_water.tres" id="19_pgggt"]
 [ext_resource type="Texture2D" uid="uid://cauiaqreq10xs" path="res://extern/ChroMapper/billie/Billie/Sun.png" id="19_rks5o"]
 [ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
 [ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
+[ext_resource type="Script" path="res://scenes/core/editor/player_controller.gd" id="26_6j8m4"]
+[ext_resource type="Script" path="res://scenes/core/editor/event_manager.gd" id="27_720f7"]
+[ext_resource type="Script" path="res://scenes/core/editor/map_data.gd" id="27_fuiss"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbno2"]
 sky_top_color = Color(0.239216, 0.137255, 0.0901961, 1)
@@ -164,13 +165,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="Curve3D" id="Curve3D_idjvy"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, -4),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_5sl6x"]
 default_input_values = [1, Vector2(1.5, 0.5), 2, Vector2(0.5, 0.5)]
@@ -606,6 +600,20 @@ size = Vector2(12.21, 11.825)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
 
+[node name="LucidiumEditor" type="Node" parent="."]
+script = ExtResource("16_r33nt")
+current_beat = 1.0
+
+[node name="PlayerController" type="Node" parent="LucidiumEditor"]
+script = ExtResource("26_6j8m4")
+
+[node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node")]
+script = ExtResource("27_720f7")
+editor_node = NodePath("..")
+
+[node name="MapData" type="Node" parent="LucidiumEditor"]
+script = ExtResource("27_fuiss")
+
 [node name="Grid" type="Node3D" parent="."]
 script = ExtResource("3_wy725")
 
@@ -719,108 +727,110 @@ layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="Node3D" type="Node3D" parent="Grid/Timeline"]
+[node name="BeatBars" type="Node3D" parent="Grid/Timeline" node_paths=PackedStringArray("editor_node")]
+script = ExtResource("4_3kgy6")
+editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="0" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_f5epj")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/0"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "1"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="1" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/1"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/1"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "2"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="2" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/2"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/2"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "3"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="3" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/3"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/3"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "4"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="4" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="4" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/4"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/4"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "5"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="5" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="5" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/5"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/5"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "6"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="6" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="6" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/6"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/6"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "7
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="7" type="MeshInstance3D" parent="Grid/Timeline/Node3D"]
+[node name="7" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/Node3D/7"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/7"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "8
 "
@@ -1999,26 +2009,9 @@ max_value = 2.0
 visible = false
 layout_mode = 2
 
-[node name="Editor" type="Node" parent="."]
-script = ExtResource("16_r33nt")
-
-[node name="EditorController" type="Node" parent="Editor"]
-script = ExtResource("15_l4jnc")
-
-[node name="KeybindListener" type="Node" parent="Editor"]
-script = ExtResource("17_jeyg3")
-
-[node name="SelectionManager" type="Node" parent="Editor"]
-script = ExtResource("12_02ale")
-
-[node name="BSMap" type="Node" parent="Editor"]
-
-[node name="SongStreamPlayer" type="AudioStreamPlayer" parent="Editor"]
-
-[node name="SFXStreamPlayer" type="AudioStreamPlayer" parent="Editor"]
-
-[node name="Bloqs" type="Node3D" parent="."]
+[node name="Bloqs" type="Node3D" parent="." node_paths=PackedStringArray("editor_node")]
 script = ExtResource("11_bwwcu")
+editor_node = NodePath("../LucidiumEditor")
 
 [node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
@@ -2079,10 +2072,6 @@ arrow_white = 1.0
 beat = 0.0
 x = 2
 y = 2
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.8, 0)
-curve = SubResource("Curve3D_idjvy")
 
 [node name="Billie" parent="." instance=ExtResource("18_rnir7")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

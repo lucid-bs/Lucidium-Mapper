@@ -8,6 +8,9 @@ extends Control
 ### WHY IS HACK YELLOW
 ### WHAT THE FUCKKKKKKKKKKK
 
+### So... The editor likely does the same thing I'm doing.
+### What the fuck.
+
 ### Required because the UI minimum size gets fucked by this hack
 @export var real_minimum_size : int = 160
 

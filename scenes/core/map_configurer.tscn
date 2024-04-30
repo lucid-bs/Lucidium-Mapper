@@ -35,7 +35,7 @@ color_schemes = []
 custom_data = {}
 difficulty_beatmap_sets = Array[Resource("res://scenes/resources/beatmap_set.gd")]([])
 
-[node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager", "song_name_edit", "song_subname_edit", "song_author_edit", "map_author_edit", "cover_display", "cover_filename_edit", "song_filename_edit", "song_bpm_edit", "song_preview_start_edit", "song_preview_duration_edit")]
+[node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager", "song_name_edit", "song_subname_edit", "song_author_edit", "map_author_edit", "cover_display", "cover_filename_edit", "song_filename_edit", "song_bpm_edit", "song_preview_start_edit", "song_preview_duration_edit", "play_preview_button", "preview_audio_stream", "preview_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,6 +54,9 @@ song_filename_edit = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxC
 song_bpm_edit = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7/HBoxContainer/BPMSpinBox")
 song_preview_start_edit = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8/PreviewStartContainer/PreviewStartSpinBox")
 song_preview_duration_edit = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9/PreviewDurationContainer/PreviewDurationSpinBox")
+play_preview_button = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/PlayPreviewButton")
+preview_audio_stream = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/AudioStreamPlayer")
+preview_timer = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/PreviewTimer")
 
 [node name="BG" type="Panel" parent="."]
 layout_mode = 1
@@ -228,6 +231,21 @@ size_flags_horizontal = 3
 max_value = 99999.0
 step = 0.0
 suffix = "BPM"
+custom_arrow_step = 1.0
+
+[node name="PanelContainer10" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="PlayPreviewButton" type="Button" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10"]
+layout_mode = 2
+text = "Play Preview"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10"]
+
+[node name="PreviewTimer" type="Timer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10"]
+one_shot = true
 
 [node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 auto_translate_mode = 1
@@ -249,6 +267,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 max_value = 9999.0
 step = 0.001
+custom_arrow_step = 0.1
 
 [node name="PanelContainer9" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 auto_translate_mode = 1
@@ -268,6 +287,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 max_value = 9999.0
 step = 0.001
+custom_arrow_step = 0.1
 
 [node name="HSeparator2" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
 layout_mode = 2
