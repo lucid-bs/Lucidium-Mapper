@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=109 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
@@ -60,7 +60,7 @@ material = ExtResource("6_2v7ym")
 size = Vector3(0.025, 3, 0.025)
 
 [sub_resource type="BoxMesh" id="BoxMesh_abaqk"]
-size = Vector3(0.1, 4, 0.025)
+size = Vector3(0.025, 4, 0.025)
 
 [sub_resource type="QuadMesh" id="QuadMesh_3f33k"]
 size = Vector2(4, 3)
@@ -75,7 +75,7 @@ size = Vector2(4, 60)
 size = Vector3(0.025, 60, 0.05)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q54dk"]
-size = Vector3(0.1, 4, 0.25)
+size = Vector3(0.01, 4, 0.25)
 
 [sub_resource type="FontVariation" id="FontVariation_op0pt"]
 base_font = ExtResource("5_1sgbo")
@@ -116,8 +116,9 @@ curve = SubResource("Curve_w583n")
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_kpcd8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1h2j"]
+emission_shape_offset = Vector3(0, 0, -4)
 emission_shape = 3
-emission_box_extents = Vector3(8, 8, 8)
+emission_box_extents = Vector3(0.5, 0.5, 0.25)
 directional_velocity_min = 0.0299839
 directional_velocity_max = 0.0599839
 directional_velocity_curve = SubResource("CurveXYZTexture_kpcd8")
@@ -449,7 +450,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(485.317, 448.52)
 nodes/vertex/0/position = Vector2(580, 180)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_06yiu")
 nodes/vertex/2/position = Vector2(-760, 100)
@@ -526,8 +526,8 @@ nodes/fragment/35/position = Vector2(580, 640)
 nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 0, 6, 0, 4, 2, 7, 0, 4, 0, 12, 0, 11, 2, 15, 0, 4, 1, 3, 0, 16, 0, 22, 0, 10, 0, 11, 0, 16, 1, 9, 0, 8, 2, 13, 0, 8, 1, 8, 0, 11, 0, 10, 0, 8, 0, 28, 0, 27, 1, 29, 0, 26, 0, 30, 0, 29, 2, 16, 0, 27, 0, 27, 0, 26, 1, 26, 0, 0, 0, 31, 0, 10, 1, 32, 0, 7, 1, 33, 0, 0, 2, 34, 0, 0, 3, 35, 0, 0, 4)
 
 [sub_resource type="Gradient" id="Gradient_a0348"]
-offsets = PackedFloat32Array(0, 0.251185, 0.598361)
-colors = PackedColorArray(0.0588235, 0.0313726, 0.0156863, 1, 0.0384839, 0.0372208, 0.037534, 1, 0.113244, 0.10689, 0.102642, 1)
+offsets = PackedFloat32Array(0, 0.982222)
+colors = PackedColorArray(0.0588235, 0.0313726, 0.0156863, 1, 0.113244, 0.10689, 0.102642, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wjkg5"]
 gradient = SubResource("Gradient_a0348")
@@ -535,7 +535,7 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_mt8r0"]
-colors = PackedColorArray(0, 0, 0, 1, 0.237667, 0.223468, 0.230463, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.105508, 0.0975378, 0.101466, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_krgsd"]
 
@@ -553,8 +553,8 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/scroll = Vector2(0, -1.5)
 shader_parameter/uv_scale2 = Vector2(1, 1)
 shader_parameter/scroll2 = Vector2(0, -1)
-shader_parameter/overlay_alpha = 0.286
-shader_parameter/Metallic = 0.235
+shader_parameter/overlay_alpha = 0.536
+shader_parameter/Metallic = 0.515
 shader_parameter/Roughness = 0.087
 shader_parameter/Specular = 0.259
 shader_parameter/displacement_tut = ExtResource("20_36pox")
@@ -582,6 +582,15 @@ curve_x = SubResource("Curve_c4yao")
 curve_y = SubResource("Curve_fv173")
 curve_z = SubResource("Curve_c4yao")
 
+[sub_resource type="Curve" id="Curve_c1oyt"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oy5fi"]
+curve = SubResource("Curve_c1oyt")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oxnc8"]
 emission_shape_scale = Vector3(1, 0, 1)
 emission_shape = 6
@@ -589,10 +598,13 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 1.0
 emission_ring_radius = 16.0
 emission_ring_inner_radius = 6.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
 orbit_velocity_min = 0.0100001
 orbit_velocity_max = 0.0100001
 orbit_velocity_curve = SubResource("CurveXYZTexture_4j1nc")
 gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_oy5fi")
 alpha_curve = SubResource("CurveTexture_7b13x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3icav"]
@@ -1032,7 +1044,6 @@ mesh = SubResource("QuadMesh_7skff")
 
 [node name="Labels" type="Node3D" parent="Grid"]
 script = ExtResource("6_313ly")
-beatwalls_schema = true
 
 [node name="Y" type="Node3D" parent="Grid/Labels"]
 
@@ -1730,8 +1741,9 @@ mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
-amount = 256
+amount = 64
 lifetime = 1.5
+visibility_aabb = AABB(-5.08273, -4.27105, -9.26626, 9.13042, 8.75987, 8.64741)
 process_material = SubResource("ParticleProcessMaterial_s1h2j")
 draw_pass_1 = SubResource("QuadMesh_yiaym")
 
