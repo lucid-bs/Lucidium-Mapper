@@ -931,12 +931,11 @@ auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
-text = "Pack To Zip"
+text = "Push To Quest"
 metadata/_edit_use_anchors_ = true
 
 [node name="MapDataManager" type="Node" parent="."]
 script = ExtResource("2_mi6hj")
 info_dat_data = SubResource("Resource_g5lnc")
 
-[connection signal="text_changed" from="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer/SongNameEdit" to="." method="_on_song_name_edit_text_changed"]
 [connection signal="pressed" from="DifficultyThingy/HBoxContainer/EnterEditorButton" to="." method="_on_button_pressed"]

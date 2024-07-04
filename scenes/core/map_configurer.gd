@@ -29,6 +29,7 @@ func _on_button_pressed() -> void:
 func _ready() -> void:
 	load_data()
 	play_preview_button.pressed.connect(_on_play_preview_pressed)
+	
 func load_data():
 	song_name_edit.text = map_data_manager.get_property(&"song_name")
 	song_subname_edit.text = map_data_manager.get_property(&"song_subname")
@@ -42,11 +43,7 @@ func load_data():
 	song_preview_duration_edit.value = map_data_manager.get_property(&"preview_duration")
 
 	$"DifficultyThingy/VBoxContainer/E+".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"ExpertPlus")
-
-
-
-func _on_song_name_edit_text_changed(new_text: String) -> void:
-	$MapDataManager.update_property(&"song_name", new_text)
+	
 
 func _on_play_preview_pressed():
 	preview_audio_stream.volume_db = -80
@@ -60,4 +57,3 @@ func _on_play_preview_pressed():
 	audio_fade.tween_property(preview_audio_stream, "volume_db", -80, 1)
 	await audio_fade.finished
 	preview_audio_stream.stop()
-	
