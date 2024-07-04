@@ -99,16 +99,16 @@ func _ready() -> void:
 	$MeshInstance3D/Arrow.material_override = arrow_material
 	$MeshInstance3D/Dot.material_override = arrow_material
 	if glossy:
-		$MeshInstance3D.material_override.set_shader_parameter("roughness", 0.5)
-		$MeshInstance3D.material_override.set_shader_parameter("retallic", 1)
+		$MeshInstance3D.material_override.set_shader_parameter("roughness", 0.29)
+		$MeshInstance3D.material_override.set_shader_parameter("metallic", 0)
 	else:
 		$MeshInstance3D.material_override.set_shader_parameter("roughness", 1)
 		$MeshInstance3D.material_override.set_shader_parameter("metallic", 1)
 	
 	if color == BLOQ_COLORS.RED:
-		rgb_color = Color(1, 0, 0)
+		rgb_color = Color(0.80000001, 0.64481932, 0.43200001)
 	else:
-		rgb_color = Color(0.19, 0.62, 1)
+		rgb_color = Color(0.54808509, 0.61276591, 0.63999999)
 	update_color(rgb_color)
 	update_direction(direction, angle_offset)
 	update_position(x, y)
