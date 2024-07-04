@@ -8,10 +8,18 @@ extends Panel
 		"enter" = func():
 			$"../../WorldEnvironment".environment.glow_enabled = false
 			$"../../Billie/Static/PlayersPlace".hide()
+			$"../../Cloud".hide()
+			$"../../Cloud2".hide()
+			$"../../Billie/Static/Track/WaterfallFlatClose".hide()
+			$"../../Rotating Light/Light".light_color = Color(1, 1, 1)
 			$"../../Grid".show(),
 		"exit" = func():
 			$"../../WorldEnvironment".environment.glow_enabled = true
 			$"../../Billie/Static/PlayersPlace".show()
+			$"../../Cloud".show()
+			$"../../Cloud2".show()
+			$"../../Billie/Static/Track/WaterfallFlatClose".show()
+			$"../../Rotating Light/Light".light_color = Color("f0b490")
 			$"../../Grid".hide(),
 	},
 	{},
