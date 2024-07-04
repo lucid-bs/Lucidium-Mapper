@@ -35,7 +35,17 @@ func get_property(property_name : StringName):
 			return info_dat_data.preview_start
 		&"preview_duration":
 			return info_dat_data.preview_duration
-		
+
+func get_difficulty(difficulty_set : StringName, difficulty_name : StringName) -> DifficultyBeatmap:
+	var target_set : BeatmapSet = null
+	for i in info_dat_data.difficulty_beatmap_sets:
+		if i.beatmap_characteristic_name == difficulty_set:
+			target_set = i
+	if target_set != null:
+		for i in target_set.difficulty_beatmaps:
+			if i.difficulty == difficulty_name:
+				return i
+	return null
 
 func _ready() -> void:
 	info_dat = FileAccess.open(path + "/Info.dat", FileAccess.READ_WRITE)

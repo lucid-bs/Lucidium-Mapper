@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxixv7vtjll6o"]
+
+[ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="1_oce2y"]
+[ext_resource type="Script" path="res://scenes/core/scene_changer.gd" id="1_wbme8"]
+
+[node name="SceneChanger" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wbme8")
+next_scene = "res://scenes/core/editor.tscn"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85625
+anchor_top = 0.733333
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_oce2y")
+metadata/_edit_use_anchors_ = true

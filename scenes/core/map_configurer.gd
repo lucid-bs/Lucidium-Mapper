@@ -41,6 +41,9 @@ func load_data():
 	song_preview_start_edit.value = map_data_manager.get_property(&"preview_start")
 	song_preview_duration_edit.value = map_data_manager.get_property(&"preview_duration")
 
+	$"DifficultyThingy/VBoxContainer/E+".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"ExpertPlus")
+
+
 
 func _on_song_name_edit_text_changed(new_text: String) -> void:
 	$MapDataManager.update_property(&"song_name", new_text)
@@ -58,4 +61,3 @@ func _on_play_preview_pressed():
 	await audio_fade.finished
 	preview_audio_stream.stop()
 	
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cr4ahtyggswxk"]
+[gd_scene load_steps=27 format=4 uid="uid://cr4ahtyggswxk"]
 
 [ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://scenes/core/editor/block.tscn" id="1_hvejt"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
@@ -65,11 +65,11 @@ _surfaces = [{
 "aabb": AABB(-0.15, -0.005, -0.042, 0.3, 0.01, 0.09001),
 "format": 34359742465,
 "index_count": 48,
-"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 8, 0, 6, 0, 9, 0, 5, 0, 1, 0, 0, 0, 7, 0, 1, 0, 5, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 6, 0, 8, 0, 3, 0, 4, 0, 9, 0, 3, 0, 8, 0, 9, 0, 2, 0, 3, 0, 6, 0, 2, 0, 9, 0, 4, 0, 7, 0, 8, 0, 1, 0, 7, 0, 4, 0),
+"index_data": PackedByteArray("AgAAAAEAAgABAAMAAwABAAQABwAFAAYABwAGAAgACAAGAAkABQABAAAABwABAAUABgAAAAIABQAAAAYACAADAAQACQADAAgACQACAAMABgACAAkABAAHAAgAAQAHAAQA"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 10,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189)
+"vertex_data": PackedByteArray("AAAAAArXo7umm0Q9mpkZPgrXo7uWQ4u8mpkZvgrXo7uWQ4u8mpkZvgrXo7sxCCy9mpkZPgrXo7sxCCy9AAAAAArXozumm0Q9mpkZvgrXozuWQ4u8mpkZPgrXozuWQ4u8mpkZPgrXozsxCCy9mpkZvgrXozsxCCy9")
 }]
 blend_shape_mode = 0
 
@@ -79,12 +79,12 @@ _surfaces = [{
 "aabb": AABB(-0.15, -0.005, -0.042, 0.3, 0.01, 0.09001),
 "format": 34359742467,
 "index_count": 48,
-"index_data": PackedByteArray(2, 0, 0, 0, 1, 0, 2, 0, 1, 0, 3, 0, 3, 0, 1, 0, 4, 0, 7, 0, 5, 0, 6, 0, 7, 0, 6, 0, 8, 0, 8, 0, 6, 0, 9, 0, 12, 0, 10, 0, 11, 0, 13, 0, 10, 0, 12, 0, 16, 0, 14, 0, 15, 0, 17, 0, 14, 0, 16, 0, 20, 0, 18, 0, 19, 0, 21, 0, 18, 0, 20, 0, 24, 0, 22, 0, 23, 0, 25, 0, 22, 0, 24, 0, 28, 0, 26, 0, 27, 0, 29, 0, 26, 0, 28, 0),
+"index_data": PackedByteArray("AgAAAAEAAgABAAMAAwABAAQABwAFAAYABwAGAAgACAAGAAkADAAKAAsADQAKAAwAEAAOAA8AEQAOABAAFAASABMAFQASABQAGAAWABcAGQAWABgAHAAaABsAHQAaABwA"),
 "material": SubResource("StandardMaterial3D_2jfgi"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 30,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 187, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 0, 0, 0, 0, 10, 215, 163, 59, 166, 155, 68, 61, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 187, 150, 67, 139, 188, 154, 153, 25, 190, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 190, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 150, 67, 139, 188, 154, 153, 25, 62, 10, 215, 163, 59, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 49, 8, 44, 189, 154, 153, 25, 62, 10, 215, 163, 187, 150, 67, 139, 188, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 177, 166, 255, 127, 177, 166, 255, 127, 177, 166, 255, 127, 177, 166, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 77, 89, 255, 127, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+"vertex_data": PackedByteArray("AAAAAArXo7umm0Q9mpkZPgrXo7uWQ4u8mpkZvgrXo7uWQ4u8mpkZvgrXo7sxCCy9mpkZPgrXo7sxCCy9AAAAAArXozumm0Q9mpkZvgrXozuWQ4u8mpkZPgrXozuWQ4u8mpkZPgrXozsxCCy9mpkZvgrXozsxCCy9mpkZPgrXo7uWQ4u8AAAAAArXo7umm0Q9AAAAAArXozumm0Q9mpkZPgrXozuWQ4u8AAAAAArXo7umm0Q9mpkZvgrXo7uWQ4u8mpkZvgrXozuWQ4u8AAAAAArXozumm0Q9mpkZvgrXo7sxCCy9mpkZPgrXo7sxCCy9mpkZPgrXozsxCCy9mpkZvgrXozsxCCy9mpkZvgrXo7uWQ4u8mpkZvgrXo7sxCCy9mpkZvgrXozsxCCy9mpkZvgrXozuWQ4u8mpkZPgrXozuWQ4u8mpkZPgrXozsxCCy9mpkZPgrXo7sxCCy9mpkZPgrXo7uWQ4u8/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3///7Gm/3+xpv9/sab/f7Gm/39NWf9/TVn/f01Z/39NWf9//////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w8qgi")
@@ -478,6 +478,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Inspector" type="Control" parent="MapperUI/RightTabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/RightTabContainer/Inspector"]
 layout_mode = 1
@@ -526,7 +527,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
 popup/item_0/text = "Up"
-popup/item_0/id = 0
 popup/item_1/text = "Down"
 popup/item_1/id = 1
 popup/item_2/text = "Left"
@@ -559,7 +559,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
 popup/item_0/text = "Red"
-popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 
@@ -655,6 +654,7 @@ max_value = 2.0
 [node name="Attributes" type="Control" parent="MapperUI/RightTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="LeftTabContainer" type="TabContainer" parent="MapperUI"]
 layout_mode = 0
@@ -666,6 +666,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Control" parent="MapperUI/LeftTabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="NoteCotainer" type="VBoxContainer" parent="MapperUI/LeftTabContainer/Notes"]
 layout_mode = 1
@@ -739,14 +740,17 @@ text = "BR"
 [node name="Arcs" type="Control" parent="MapperUI/LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Bombs" type="Control" parent="MapperUI/LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="Walls" type="Control" parent="MapperUI/LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="RedBloq" parent="." instance=ExtResource("1_hvejt")]
 direction = 1

@@ -1,6 +1,6 @@
 extends Control
 
-const MAIN_MENU = preload("res://Scenes/Core/main_menu.tscn")
+const MAIN_MENU = preload("res://scenes/core/main_menu.tscn")
 
 var config = ConfigFile.new()
 

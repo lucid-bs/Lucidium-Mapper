@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=107 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
@@ -46,16 +46,14 @@ sky = SubResource("Sky_pnvj8")
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 1.35
 glow_blend_mode = 1
 fog_mode = 1
 fog_density = 1.0
 fog_depth_curve = 0.5
 fog_depth_begin = 0.0
 fog_depth_end = 1811.5
-volumetric_fog_density = 0.0
-volumetric_fog_anisotropy = 0.3
-volumetric_fog_ambient_inject = 0.61
-volumetric_fog_sky_affect = 0.779
+volumetric_fog_density = 0.0001
 
 [sub_resource type="BoxMesh" id="BoxMesh_j1knx"]
 material = ExtResource("6_2v7ym")
@@ -76,8 +74,8 @@ size = Vector2(4, 60)
 [sub_resource type="BoxMesh" id="BoxMesh_o38ct"]
 size = Vector3(0.025, 60, 0.05)
 
-[sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
-size = Vector3(0.1, 4, 0.025)
+[sub_resource type="BoxMesh" id="BoxMesh_q54dk"]
+size = Vector3(0.1, 4, 0.25)
 
 [sub_resource type="FontVariation" id="FontVariation_op0pt"]
 base_font = ExtResource("5_1sgbo")
@@ -86,8 +84,8 @@ variation_opentype = {
 2003265652: 700
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_q54dk"]
-size = Vector3(0.1, 4, 0.25)
+[sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
+size = Vector3(0.1, 4, 0.025)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u3cbc"]
 size = Vector3(1, 1, 0.0605469)
@@ -564,28 +562,38 @@ shader_parameter/base_color_texture = SubResource("GradientTexture2D_wjkg5")
 shader_parameter/water_texture = ExtResource("20_36pox")
 shader_parameter/water_texture2 = SubResource("NoiseTexture2D_b0cnb")
 
-[sub_resource type="Curve" id="Curve_5nldy"]
+[sub_resource type="Curve" id="Curve_n0hed"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0972851, 1), 0.0, 0.0, 0, 0, Vector2(0.89819, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_2ve7n"]
-curve = SubResource("Curve_5nldy")
+[sub_resource type="CurveTexture" id="CurveTexture_7b13x"]
+curve = SubResource("Curve_n0hed")
 
-[sub_resource type="Curve" id="Curve_oy2ye"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+[sub_resource type="Curve" id="Curve_c4yao"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_tlu62"]
-curve_x = SubResource("Curve_oy2ye")
+[sub_resource type="Curve" id="Curve_fv173"]
+_data = [Vector2(0, 0.153846), 0.0, 0.0, 0, 0, Vector2(1, 0.186813), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fxnm"]
-emission_shape = 3
-emission_box_extents = Vector3(6, 1, 4)
-directional_velocity_min = -0.0300161
-directional_velocity_max = -0.0300161
-directional_velocity_curve = SubResource("CurveXYZTexture_tlu62")
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4j1nc"]
+curve_x = SubResource("Curve_c4yao")
+curve_y = SubResource("Curve_fv173")
+curve_z = SubResource("Curve_c4yao")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oxnc8"]
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 16.0
+emission_ring_inner_radius = 6.0
+orbit_velocity_min = 0.0100001
+orbit_velocity_max = 0.0100001
+orbit_velocity_curve = SubResource("CurveXYZTexture_4j1nc")
 gravity = Vector3(0, 0, 0)
-alpha_curve = SubResource("CurveTexture_2ve7n")
+alpha_curve = SubResource("CurveTexture_7b13x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3icav"]
 render_priority = 0
@@ -594,6 +602,8 @@ shader = ExtResource("20_id8xb")
 [sub_resource type="QuadMesh" id="QuadMesh_oeq8w"]
 material = SubResource("ShaderMaterial_3icav")
 size = Vector2(12.21, 11.825)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2m0gw"]
 
 [node name="Map Editor" type="Node3D"]
 
@@ -731,60 +741,60 @@ mesh = SubResource("BoxMesh_o38ct")
 script = ExtResource("4_3kgy6")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-layers = 4
-material_override = ExtResource("6_2v7ym")
-mesh = SubResource("BoxMesh_f5epj")
-skeleton = NodePath("../../..")
-
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0"]
-transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "1"
-font = SubResource("FontVariation_op0pt")
-font_size = 114
-
-[node name="1" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
-layers = 4
-material_override = ExtResource("6_2v7ym")
-mesh = SubResource("BoxMesh_q54dk")
-skeleton = NodePath("../../..")
-
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/1"]
-transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "2"
-font = SubResource("FontVariation_op0pt")
-font_size = 114
-
-[node name="2" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="9" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/2"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/9"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "3"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
-[node name="3" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_f5epj")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/1"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "1"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="8" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/3"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/8"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "4"
+text = "2"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 4)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "0"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
 [node name="4" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
@@ -792,12 +802,12 @@ skeleton = NodePath("../../..")
 
 [node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/4"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "5"
+text = "4"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
 [node name="5" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
@@ -805,12 +815,12 @@ skeleton = NodePath("../../..")
 
 [node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/5"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "6"
+text = "5"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
 [node name="6" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
@@ -818,19 +828,32 @@ skeleton = NodePath("../../..")
 
 [node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/6"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "7
-"
+text = "6"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 
 [node name="7" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
 [node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/7"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "7
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+
+[node name="11" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/11"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "8
 "
@@ -1535,7 +1558,6 @@ theme_override_font_sizes/font_size = 12
 text = "Settings"
 item_count = 2
 popup/item_0/text = "Map Settings"
-popup/item_0/id = 0
 popup/item_1/text = "Editor Settings"
 popup/item_1/id = 1
 script = ExtResource("10_vu5vo")
@@ -1579,6 +1601,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes"]
 use_parent_material = true
@@ -1660,14 +1683,17 @@ text = "BR"
 [node name="Arcs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Bombs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="Walls" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="VSplitContainer" type="VSplitContainer" parent="MapperUI/HSplitContainer/HSplitContainer"]
 layout_mode = 2
@@ -1691,7 +1717,7 @@ stretch = true
 handle_input_locally = false
 msaa_3d = 2
 screen_space_aa = 1
-size = Vector2i(640, 360)
+size = Vector2i(742, 632)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
@@ -1823,6 +1849,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Inspector" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f3xxa")
+metadata/_tab_index = 0
 
 [node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector"]
 layout_mode = 2
@@ -1878,7 +1905,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
 popup/item_0/text = "Up"
-popup/item_0/id = 0
 popup/item_1/text = "Down"
 popup/item_1/id = 1
 popup/item_2/text = "Left"
@@ -1911,7 +1937,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
 popup/item_0/text = "Red"
-popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 
@@ -2009,6 +2034,7 @@ max_value = 2.0
 [node name="Attributes" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Bloqs" type="Node3D" parent="." node_paths=PackedStringArray("editor_node")]
 script = ExtResource("11_bwwcu")
@@ -2087,53 +2113,43 @@ surface_material_override/0 = SubResource("ShaderMaterial_8l1dh")
 modulate = Color(2.457, 1.326, 0.552, 1)
 texture = ExtResource("19_rks5o")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0007, -1.59451, -8.19465)
+[node name="Cloud" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.83066, 0)
+amount = 12
+lifetime = 25.0
+explosiveness = 0.4
+visibility_aabb = AABB(-21.6104, -12.2103, -21.3485, 42.8326, 24.4203, 42.88)
+process_material = SubResource("ParticleProcessMaterial_oxnc8")
+draw_pass_1 = SubResource("QuadMesh_oeq8w")
+
+[node name="TestParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82858, 0)
+visible = false
+amount = 12
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
-process_material = SubResource("ParticleProcessMaterial_1fxnm")
-draw_pass_1 = SubResource("QuadMesh_oeq8w")
+process_material = SubResource("ParticleProcessMaterial_oxnc8")
+draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00525, -1.59451, -8.19465)
+[node name="Cloud2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16934, 0)
+amount = 12
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
-process_material = SubResource("ParticleProcessMaterial_1fxnm")
+process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("QuadMesh_oeq8w")
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58322, 8.6273, -13.3614)
+[node name="TestParticles2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17142, 0)
+visible = false
+amount = 12
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
-process_material = SubResource("ParticleProcessMaterial_1fxnm")
-draw_pass_1 = SubResource("QuadMesh_oeq8w")
-
-[node name="GPUParticles3D4" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6216, 8.6273, -13.3614)
-lifetime = 25.0
-explosiveness = 0.4
-visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
-process_material = SubResource("ParticleProcessMaterial_1fxnm")
-draw_pass_1 = SubResource("QuadMesh_oeq8w")
-
-[node name="GPUParticles3D5" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965766, 8.6273, -13.3614)
-lifetime = 25.0
-explosiveness = 0.4
-visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
-process_material = SubResource("ParticleProcessMaterial_1fxnm")
-draw_pass_1 = SubResource("QuadMesh_oeq8w")
-
-[node name="GPUParticles3D6" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.965766, 8.6273, -23.2893)
-lifetime = 25.0
-explosiveness = 0.4
-visibility_aabb = AABB(-5.56824, -2.62886, -8.18007, 11.1365, 5.25771, 16.3601)
-process_material = SubResource("ParticleProcessMaterial_1fxnm")
-draw_pass_1 = SubResource("QuadMesh_oeq8w")
+process_material = SubResource("ParticleProcessMaterial_oxnc8")
+draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 
 [connection signal="tab_changed" from="MapperUI/Top Bar/TabBar" to="MapperUI/Top Bar" method="_on_tab_bar_tab_changed"]
 [connection signal="close_requested" from="MapperUI/SettingsWindow" to="MapperUI/SettingsWindow" method="_on_close_requested"]
