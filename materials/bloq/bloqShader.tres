@@ -4,7 +4,7 @@
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.beta2's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley, specular_schlick_ggx;
 uniform vec4 albedo : source_color;
 uniform float roughness : hint_range(0,1) = 0.75;
 uniform float specular;
@@ -27,8 +27,8 @@ metadata/_edit_res_path = "res://materials/bloq/glossyBloq.tres::Shader_od0y6"
 [resource]
 render_priority = 0
 shader = SubResource("Shader_od0y6")
-shader_parameter/albedo = Color(0.19, 0.62, 1, 1)
-shader_parameter/roughness = 0.75
+shader_parameter/albedo = Color(0.8, 0.645, 0.432, 1)
+shader_parameter/roughness = 0.34
 shader_parameter/specular = 1.0
-shader_parameter/metallic = 1.0
+shader_parameter/metallic = 0.0
 shader_parameter/color_multiplier = 1.0

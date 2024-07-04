@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=113 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
@@ -45,9 +45,7 @@ background_color = Color(0.658824, 0.466667, 0.333333, 1)
 sky = SubResource("Sky_pnvj8")
 tonemap_mode = 3
 glow_enabled = true
-glow_normalized = true
-glow_intensity = 1.35
-glow_blend_mode = 1
+glow_blend_mode = 0
 fog_mode = 1
 fog_density = 1.0
 fog_depth_curve = 0.5
@@ -561,6 +559,30 @@ shader_parameter/displacement_tut = ExtResource("20_36pox")
 shader_parameter/base_color_texture = SubResource("GradientTexture2D_wjkg5")
 shader_parameter/water_texture = ExtResource("20_36pox")
 shader_parameter/water_texture2 = SubResource("NoiseTexture2D_b0cnb")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxtxo"]
+size = Vector3(0.02, 0.02, 0.02)
+
+[sub_resource type="Gradient" id="Gradient_nf8b5"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qk14q"]
+gradient = SubResource("Gradient_nf8b5")
+height = 127
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h6xp"]
+resource_name = "ControllableLight"
+transparency = 1
+albedo_color = Color(0.557, 0.702, 0.776, 1)
+albedo_texture = SubResource("GradientTexture2D_qk14q")
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.557, 0.702, 0.776, 1)
+emission_energy_multiplier = 10.94
 
 [sub_resource type="Curve" id="Curve_n0hed"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0972851, 1), 0.0, 0.0, 0, 0, Vector2(0.89819, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -1737,6 +1759,7 @@ current = true
 script = ExtResource("2_xkfh1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
+gi_mode = 2
 mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 
@@ -2054,63 +2077,42 @@ editor_node = NodePath("../LucidiumEditor")
 
 [node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
-selected = false
 glossy = false
 color = 1
 direction = 8
-angle_offset = 0
-rgb_color = Color(0, 0, 0, 1)
-bloq_multiplier = 0.28
-arrow_multiplier = 0.405
-arrow_white = 0.0
-beat = 0.0
 x = 2
-y = 0
 
 [node name="Bloq3" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
-selected = false
 glossy = false
-color = 0
-direction = 1
-angle_offset = 0
-rgb_color = Color(0, 0, 0, 1)
+rgb_color = Color(0.831373, 0.698039, 0.443137, 1)
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
 arrow_white = 1.0
-beat = 0.0
 x = 1
-y = 0
 
 [node name="Bloq4" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -4)
-selected = false
-glossy = false
-color = 0
 direction = 0
-angle_offset = 0
-rgb_color = Color(0, 0, 0, 1)
-bloq_multiplier = 0.28
-arrow_multiplier = 0.405
-arrow_white = 0.0
-beat = 0.0
 x = 1
 y = 2
 
+[node name="Arrow" parent="Bloqs/Bloq4/MeshInstance3D" index="0"]
+surface_material_override/0 = null
+
 [node name="Bloq5" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -4)
-selected = false
 glossy = false
 color = 1
 direction = 8
-angle_offset = 0
-rgb_color = Color(0, 0, 0, 1)
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
 arrow_white = 1.0
-beat = 0.0
 x = 2
 y = 2
+
+[node name="Arrow" parent="Bloqs/Bloq5/MeshInstance3D" index="0"]
+surface_material_override/0 = null
 
 [node name="Billie" parent="." instance=ExtResource("18_rnir7")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -2121,12 +2123,19 @@ surface_material_override/0 = ExtResource("19_pgggt")
 [node name="MeshRenderer" parent="Billie/Static/Waterfall/WaterfallFalling" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_8l1dh")
 
+[node name="Laser 14" parent="Billie/Dynamic/Right Sunbeams/Rotating" index="13"]
+transform = Transform3D(0.42531, 0, -0.512828, -7.75047e-08, -16665, -6.41622e-08, -0.51329, 0.00251635, -0.424927, 0, 0, -1.5)
+
+[node name="MeshRenderer" parent="Billie/Dynamic/Right Sunbeams/Rotating/Laser 14/BoxLight 34" index="0"]
+mesh = SubResource("BoxMesh_qxtxo")
+surface_material_override/0 = SubResource("StandardMaterial3D_7h6xp")
+
 [node name="Sprite3D" type="Sprite3D" parent="Billie/Dynamic/Sun/Sun_Moon" index="1"]
 modulate = Color(2.457, 1.326, 0.552, 1)
 texture = ExtResource("19_rks5o")
 
 [node name="Cloud" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.83066, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.83066, 0)
 amount = 12
 lifetime = 25.0
 explosiveness = 0.4
@@ -2135,7 +2144,7 @@ process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("QuadMesh_oeq8w")
 
 [node name="TestParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.82858, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.82858, 0)
 visible = false
 amount = 12
 lifetime = 25.0
@@ -2169,5 +2178,6 @@ draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
 [connection signal="pressed" from="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer/Logger" to="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer" method="_on_logger_pressed"]
 
+[editable path="Bloqs/Bloq4"]
 [editable path="Bloqs/Bloq5"]
 [editable path="Billie"]

@@ -21,7 +21,6 @@ anchor_right = 0.45
 anchor_bottom = 0.222222
 offset_bottom = -1.52588e-05
 script = ExtResource("1_uy3uj")
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
