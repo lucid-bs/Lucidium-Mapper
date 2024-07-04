@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/core/assets/mm_Map.gd" id="1_uy3uj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gir82"]
-font_size = 21
+font_size = 22
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6v68"]
 font_size = 12
@@ -36,49 +36,42 @@ metadata/_edit_use_anchors_ = true
 [node name="TitleStuffs" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.777778
-anchor_bottom = 1.0
+anchor_top = 0.05
+anchor_right = 0.722222
+anchor_bottom = 0.95
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="VBoxContainer" parent="TitleStuffs"]
+[node name="Title" type="Label" parent="TitleStuffs"]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Title" type="Label" parent="TitleStuffs/Title"]
-layout_mode = 2
+size_flags_vertical = 1
 text = "Lost Faith "
 label_settings = SubResource("LabelSettings_gir82")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Subtitle" type="Label" parent="TitleStuffs/Title"]
+[node name="Subtitle" type="Label" parent="TitleStuffs"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "And the Unholy Trinity"
 label_settings = SubResource("LabelSettings_f6v68")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Author" type="VBoxContainer" parent="TitleStuffs"]
+[node name="Author" type="Label" parent="TitleStuffs"]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Author" type="Label" parent="TitleStuffs/Author"]
-layout_mode = 2
+size_flags_vertical = 1
 text = "JD The 65th"
 label_settings = SubResource("LabelSettings_gir82")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Mapper" type="Label" parent="TitleStuffs/Author"]
+[node name="Mapper" type="Label" parent="TitleStuffs"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "JD The 65th"
 label_settings = SubResource("LabelSettings_8yola")
 horizontal_alignment = 1
@@ -86,8 +79,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Directory" type="Label" parent="TitleStuffs"]
-custom_minimum_size = Vector2(448, 0)
+custom_minimum_size = Vector2(416, 0)
 layout_mode = 2
+size_flags_vertical = 1
+text = "/home/lucidia/ctrlproj/v1/"
 label_settings = SubResource("LabelSettings_4t4eb")
 horizontal_alignment = 1
 vertical_alignment = 1

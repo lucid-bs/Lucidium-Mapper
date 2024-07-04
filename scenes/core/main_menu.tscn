@@ -56,6 +56,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Main Menu"]
 layout_mode = 1
@@ -95,12 +96,14 @@ text = "Settings (NONFUNCTIONAL)"
 [node name="New Map" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_6ktwf")
+metadata/_tab_index = 2
 
 [node name="Input" type="VBoxContainer" parent="TabContainer/Load Map"]
 layout_mode = 2

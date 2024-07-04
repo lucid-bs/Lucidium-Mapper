@@ -53,11 +53,11 @@ func _on_play_preview_pressed():
 	var audio_fade = get_tree().create_tween().set_parallel(false)
 	preview_audio_stream.stream = AudioStreamOggVorbis.load_from_file($MapDataManager.path + map_data_manager.get_property(&"song_filename"))
 	preview_audio_stream.play(map_data_manager.get_property(&"preview_start"))
-	preview_timer.start(map_data_manager.get_property(&"preview_duration") - 0.5)
-	audio_fade.tween_property(preview_audio_stream, "volume_db", 0, 0.5)
+	preview_timer.start(map_data_manager.get_property(&"preview_duration") - 1)
+	audio_fade.tween_property(preview_audio_stream, "volume_db", 0, 1)
 	await preview_timer.timeout
 	audio_fade = get_tree().create_tween()
-	audio_fade.tween_property(preview_audio_stream, "volume_db", -80, 0.5)
+	audio_fade.tween_property(preview_audio_stream, "volume_db", -80, 1)
 	await audio_fade.finished
 	preview_audio_stream.stop()
 	

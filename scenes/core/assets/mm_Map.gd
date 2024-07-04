@@ -13,15 +13,15 @@ signal Map_Selected(directory : String)
 @export var map_directory : String
 
 func _ready() -> void:
-	$TitleStuffs/Title/Title.text = Title
+	$TitleStuffs/Title.text = Title
 	
 	if Subtitle == "":
-		$TitleStuffs/Title/Subtitle.queue_free()
+		$TitleStuffs/Subtitle.queue_free()
 	else:
-		$TitleStuffs/Title/Subtitle.text = Subtitle
+		$TitleStuffs/Subtitle.text = Subtitle
 	
-	$TitleStuffs/Author/Author.text = Author
-	$TitleStuffs/Author/Mapper.text = Mapper
+	$TitleStuffs/Author.text = Author
+	$TitleStuffs/Mapper.text = Mapper
 	
 	$TitleStuffs/Directory.text = map_directory
 	
