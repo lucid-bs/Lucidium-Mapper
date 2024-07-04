@@ -1,0 +1,2 @@
+ 
+https://docs.godotengine.org/en/stable/classes/class_tween.html#class-tween-method-interpolate-value
