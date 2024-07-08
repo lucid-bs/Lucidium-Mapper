@@ -8,8 +8,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func get_in_range(object_type, min_beat: float, max_beat: float) -> Array:
-	var tmp : Array[VisualEventBS] = []
+func get_in_range(object_type : StringName, min_beat: float, max_beat: float) -> Array:
+	var tmp : Array
+	match object_type:
+		&"color_notes":
+			tmp = $"../..".beatmap.color_notes
 	
 	return tmp.filter(func(obj): return obj.beat >= min_beat and obj.beat <= max_beat)
 	

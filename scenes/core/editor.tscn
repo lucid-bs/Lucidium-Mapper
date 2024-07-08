@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=118 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" path="res://scenes/core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://scenes/core/settings_window.tscn" id="11_f5e1k"]
 [ext_resource type="Script" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
-[ext_resource type="PackedScene" uid="uid://cku2ya1a0pubt" path="res://scenes/core/editor/block.tscn" id="14_om2ls"]
 [ext_resource type="Script" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
 [ext_resource type="Script" path="res://scenes/core/editor/editor.gd" id="16_r33nt"]
 [ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
@@ -2151,46 +2150,6 @@ metadata/_tab_index = 1
 script = ExtResource("11_bwwcu")
 editor_node = NodePath("../LucidiumEditor")
 
-[node name="Bloq2" parent="Bloqs" instance=ExtResource("14_om2ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
-glossy = false
-color = 1
-direction = 8
-x = 2
-
-[node name="Bloq3" parent="Bloqs" instance=ExtResource("14_om2ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
-glossy = false
-direction = 2
-rgb_color = Color(0.831373, 0.698039, 0.443137, 1)
-bloq_multiplier = 1.0
-arrow_multiplier = 1.0
-arrow_white = 1.0
-x = 1
-
-[node name="Bloq4" parent="Bloqs" instance=ExtResource("14_om2ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -4)
-glossy = false
-direction = 0
-x = 1
-y = 2
-
-[node name="Arrow" parent="Bloqs/Bloq4/MeshInstance3D" index="0"]
-surface_material_override/0 = null
-
-[node name="Bloq5" parent="Bloqs" instance=ExtResource("14_om2ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -4)
-color = 1
-direction = 8
-bloq_multiplier = 1.0
-arrow_multiplier = 1.0
-arrow_white = 1.0
-x = 2
-y = 2
-
-[node name="Arrow" parent="Bloqs/Bloq5/MeshInstance3D" index="0"]
-surface_material_override/0 = null
-
 [node name="Billie" parent="." instance=ExtResource("18_rnir7")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
@@ -2308,6 +2267,4 @@ text = "Save and Close"
 [connection signal="close_requested" from="ExitConfirmation" to="ExitConfirmation" method="_on_close_requested"]
 [connection signal="pressed" from="ExitConfirmation/Panel/VBoxContainer/HBoxContainer/C" to="ExitConfirmation" method="_on_c_pressed"]
 
-[editable path="Bloqs/Bloq4"]
-[editable path="Bloqs/Bloq5"]
 [editable path="Billie"]

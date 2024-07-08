@@ -39,6 +39,8 @@ enum BLOQ_COLORS {
 
 var hovered : bool = false
 
+var color_note_resource : ColorNote
+
 func update_color(new_color : Color, new_note_color := color, color_multiplier := bloq_multiplier):
 	$MeshInstance3D.material_override.set_shader_parameter("albedo", new_color)
 	$MeshInstance3D.material_override.set_shader_parameter("color_multiplier", bloq_multiplier)
