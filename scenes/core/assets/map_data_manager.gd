@@ -5,8 +5,10 @@ extends Node
 ## Not known as this in editor for self-debugging and readability's sake.
 
 @export var path : String
-var info_dat : FileAccess
+
 @export var info_dat_data : BeatmapInfo
+
+var info_dat : FileAccess
 
 signal data_loaded
 

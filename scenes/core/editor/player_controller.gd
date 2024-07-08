@@ -5,12 +5,12 @@ extends Node
 
 signal player_scrolled(up: bool)
 
+@export var event_manager : EventManager
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		match event.button_index:
-			MOUSE_BUTTON_RIGHT: # Only allows rotation if right click down
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
-			MOUSE_BUTTON_WHEEL_UP: # Increases max velocity
-				$"../EventManager".scroll_map(true)
-			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
-				$"../EventManager".scroll_map(false)
+			MOUSE_BUTTON_WHEEL_UP:
+				event_manager.scroll_map(true)
+			MOUSE_BUTTON_WHEEL_DOWN:
+				event_manager.scroll_map(false)

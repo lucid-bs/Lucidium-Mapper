@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diuirf440vd3v"
-path.s3tc="res://.godot/imported/FX_CloudAlpha08.webp.png-e2a8d3fe64cca9f81e8e682412aa821b.s3tc.ctex"
+uid="uid://b6x36mqspw0ui"
+path.bptc="res://.godot/imported/spect90.webp-d7c3eba89aa2321575c84aefe7b091c5.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://extern/opengameart/WickedInsignia/fx_cloudalphas/FX_CloudAlpha08.webp.png"
-dest_files=["res://.godot/imported/FX_CloudAlpha08.webp.png-e2a8d3fe64cca9f81e8e682412aa821b.s3tc.ctex"]
+source_file="res://extern/Lost Faith/spect90.webp"
+dest_files=["res://.godot/imported/spect90.webp-d7c3eba89aa2321575c84aefe7b091c5.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

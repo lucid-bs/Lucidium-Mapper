@@ -23,18 +23,22 @@ func _on_button_pressed() -> void:
 	
 	var editor = preload("res://scenes/core/editor.tscn").instantiate()
 	
+	editor.difficulty_beatmap = $DifficultyThingy.current_difficulty.difficulty_object
+	editor.map_path = $MapDataManager.path
+	
 	get_tree().root.call_deferred("add_child", editor)
 	call_deferred("queue_free")
 	
 func _ready() -> void:
+	$DifficultyThingy/HBoxContainer/EnterEditorButton.disabled = true
 	load_data()
 	play_preview_button.pressed.connect(_on_play_preview_pressed)
 	
 func load_data():
-	song_name_edit.text = map_data_manager.get_property(&"song_name")
-	song_subname_edit.text = map_data_manager.get_property(&"song_subname")
-	song_author_edit.text = map_data_manager.get_property(&"song_author_name")
-	map_author_edit.text = map_data_manager.get_property(&"level_author_name")
+	song_name_edit.text = map_data_manager.get_property("song_name")
+	song_subname_edit.text = map_data_manager.get_property("song_subname")
+	song_author_edit.text = map_data_manager.get_property("song_author_name")
+	map_author_edit.text = map_data_manager.get_property("level_author_name")
 	cover_display.texture = ImageTexture.create_from_image(Image.load_from_file($MapDataManager.path + map_data_manager.get_property(&"cover_image_filename")))
 	cover_filename_edit.text = map_data_manager.get_property(&"cover_image_filename")
 	song_filename_edit.text = map_data_manager.get_property(&"song_filename")
@@ -50,10 +54,15 @@ func _on_play_preview_pressed():
 	var audio_fade = get_tree().create_tween().set_parallel(false)
 	preview_audio_stream.stream = AudioStreamOggVorbis.load_from_file($MapDataManager.path + map_data_manager.get_property(&"song_filename"))
 	preview_audio_stream.play(map_data_manager.get_property(&"preview_start"))
-	preview_timer.start(map_data_manager.get_property(&"preview_duration") - 1)
-	audio_fade.tween_property(preview_audio_stream, "volume_db", 0, 1)
+	preview_timer.start(map_data_manager.get_property(&"preview_duration") -2)
+	audio_fade.tween_property(preview_audio_stream, "volume_db", 0, 0.5)
 	await preview_timer.timeout
 	audio_fade = get_tree().create_tween()
-	audio_fade.tween_property(preview_audio_stream, "volume_db", -80, 1)
+	audio_fade.tween_property(preview_audio_stream, "volume_db", -80, 2)
 	await audio_fade.finished
 	preview_audio_stream.stop()
+
+
+
+func _on_difficulty_thingy_difficulty_changed(new_difficulty: DifficultyThingyDiff) -> void:
+	$DifficultyThingy/HBoxContainer/EnterEditorButton.disabled = false

@@ -7,4 +7,4 @@ func log_message(message: String):
 	printmsg.add_theme_font_size_override("font_size", 13)
 	add_child(printmsg)
 	
-	
+	$"../..".scroll_vertical += 10000

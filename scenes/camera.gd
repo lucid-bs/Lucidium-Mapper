@@ -15,14 +15,16 @@ var _total_pitch = 0.0
 var _direction = Vector3(0.0, 0.0, 0.0)
 var _velocity = Vector3(0.0, 0.0, 0.0)
 @export_range(0, 1) var inertia : float = 1
-var _acceleration := lerpf(30, 8, inertia) # 30 REG, 8 MAX INERTIA
-var _deceleration := lerpf(-15, -3, inertia) # -10 REG, -3 MAX INERTIA
+var _acceleration : float
+var _deceleration : float
 var _vel_multiplier = 5
 
 func _ready() -> void:
 	DisplayServer.window_set_min_size(Vector2i(1280, 720))
 	%ErrorLogger.log_message("Hello from Camera!")
 	get_viewport().physics_object_picking = true
+	_acceleration = lerpf(35, 8, inertia) 
+	_deceleration = lerpf(-15, -3, inertia) 
 	
 func _input(event):
 	# Receives mouse motion

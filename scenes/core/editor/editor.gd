@@ -15,13 +15,4 @@ signal beat_changed(new_beat : float)
 
 @export var current_precision_denominator : int = 2
 
-var config = ConfigFile.new()
-
-func _ready() -> void:
-	config = config.load("user://settings.cfg")
-
-func get_setting(setting : String):
-	pass
-
-func update_setting(setting : String, new_value):
-	print(new_value)
+@export var unsaved_changes : bool = true

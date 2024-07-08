@@ -7,7 +7,6 @@ extends PanelContainer
 
 @export var difficulty_object : DifficultyBeatmap
 
-
 func _ready() -> void:
 	if !difficulty_object:
 		difficulty_object = DifficultyBeatmap.new()

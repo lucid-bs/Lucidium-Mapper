@@ -20,7 +20,27 @@ signal difficulty_changed(new_difficulty: DifficultyThingyDiff)
 @export var current_difficulty : DifficultyThingyDiff
 
 
-
+var map_reaction_time : float = 0:
+	set(value):
+		$HFlowContainer/ReactionTime/SpinBox.value = value
+		map_reaction_time = value
+var map_jump_distance : float = 0:
+	set(value):
+		$HFlowContainer/JumpDistance/SpinBox.value = value
+		map_jump_distance = value
+var map_half_jump_duration : float = 0:
+	set(value):
+		$HFlowContainer/HalfJumpDuration/SpinBox.value = value
+		map_half_jump_duration = value
+var map_note_jump_speed : float = 0:
+	set(value):
+		$HFlowContainer/NoteJumpSpeed/SpinBox.value = value
+		map_note_jump_speed = value
+var map_start_beat_offset : float = 0:
+	set(value):
+		$HFlowContainer/StartBeatOffset/SpinBox.value = value
+		map_start_beat_offset = value
+var map_bpm : float = 0
 
 ## full credit goes to Caeden117 (and KivalEvan) for all of the code in this function lmao
 func calculate_half_jump_duration(note_jump_speed : float, start_beat_offset: float, bpm : float):
@@ -38,13 +58,37 @@ func calculate_half_jump_duration(note_jump_speed : float, start_beat_offset: fl
 
 ## ~partial~ full credit goes to Caeden117 for ~most~ all of the code in this function lmao
 func update_controls():
-	$HFlowContainer/NoteJumpSpeed/SpinBox.value = current_difficulty.difficulty_object.note_jump_movement_speed
-	$HFlowContainer/StartBeatOffset/SpinBox.value = current_difficulty.difficulty_object.note_jump_start_beat_offset
-	$HFlowContainer/HalfJumpDuration/SpinBox.value = calculate_half_jump_duration(current_difficulty.difficulty_object.note_jump_movement_speed, 
+	map_note_jump_speed = current_difficulty.difficulty_object.note_jump_movement_speed
+	map_start_beat_offset = current_difficulty.difficulty_object.note_jump_start_beat_offset
+	map_half_jump_duration = calculate_half_jump_duration(current_difficulty.difficulty_object.note_jump_movement_speed, 
 		current_difficulty.difficulty_object.note_jump_start_beat_offset, 
 		map_data_manager.get_property(&"beats_per_minute"))
-	var num = 60 / map_data_manager.get_property(&"beats_per_minute");
-	$HFlowContainer/JumpDistance/SpinBox.value = current_difficulty.difficulty_object.note_jump_movement_speed * num * $HFlowContainer/HalfJumpDuration/SpinBox.value * 2;
+	map_bpm = 60 / map_data_manager.get_property(&"beats_per_minute")
+	map_jump_distance = current_difficulty.difficulty_object.note_jump_movement_speed * map_bpm * map_half_jump_duration * 2;
 
 	var beatms = 60000 / map_data_manager.get_property(&"beats_per_minute");
-	$HFlowContainer/ReactionTime/SpinBox.value = beatms * $HFlowContainer/HalfJumpDuration/SpinBox.value;
+	map_reaction_time = beatms * map_half_jump_duration;
+
+func update_values_from_reaction_time():
+	set_song_beat_offset(maxf(0.25, map_reaction_time  / ((60000 / map_bpm))))
+func update_values_from_jump_distance():
+	set_song_beat_offset(maxf(0.25, map_jump_distance / ((60 / map_bpm) * map_note_jump_speed * 2)))
+func update_values_from_half_jump_duration():
+	set_song_beat_offset(maxf(0.25, map_half_jump_duration))
+
+func set_song_beat_offset(hjd_after_offset : float):
+	var hjd_before_offset = calculate_half_jump_duration(map_note_jump_speed, 0, map_bpm)
+	map_start_beat_offset = hjd_after_offset - hjd_before_offset
+
+
+func _on_reaction_time_value_changed(value: float) -> void:
+	map_reaction_time = value
+	update_values_from_reaction_time()
+
+func _on_jump_distance_value_changed(value: float) -> void:
+	map_jump_distance = value
+	update_values_from_jump_distance()
+	
+func _on_half_jump_duration_value_changed(value: float) -> void:
+	map_half_jump_duration = value
+	update_values_from_half_jump_duration()

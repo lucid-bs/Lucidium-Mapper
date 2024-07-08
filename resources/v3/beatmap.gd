@@ -29,6 +29,8 @@ func unpack_from_json(json_text : String, json : Dictionary = {}):
 	
 	raw_data = json
 	
+	
+	
 
 func pack_to_json():
 	pass

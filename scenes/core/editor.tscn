@@ -1,5 +1,6 @@
-[gd_scene load_steps=113 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=119 format=3 uid="uid://d22oot53lt605"]
 
+[ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
 [ext_resource type="Script" path="res://scenes/core/editor/grid_manager.gd" id="3_wy725"]
@@ -24,10 +25,12 @@
 [ext_resource type="Material" uid="uid://3ksw0bxdofr2" path="res://materials/billie_water.tres" id="19_pgggt"]
 [ext_resource type="Texture2D" uid="uid://cauiaqreq10xs" path="res://extern/ChroMapper/billie/Billie/Sun.png" id="19_rks5o"]
 [ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
+[ext_resource type="Shader" path="res://materials/shaders/pixel_shader.gdshader" id="20_g4et7"]
 [ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
 [ext_resource type="Script" path="res://scenes/core/editor/player_controller.gd" id="26_6j8m4"]
 [ext_resource type="Script" path="res://scenes/core/editor/event_manager.gd" id="27_720f7"]
 [ext_resource type="Script" path="res://scenes/core/editor/map_data.gd" id="27_fuiss"]
+[ext_resource type="Script" path="res://scenes/core/editor/exit_confirmation.gd" id="30_6m50f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbno2"]
 sky_top_color = Color(0.239216, 0.137255, 0.0901961, 1)
@@ -85,6 +88,29 @@ variation_opentype = {
 [sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
 size = Vector3(0.1, 4, 0.025)
 
+[sub_resource type="Shader" id="Shader_ejom5"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.beta2's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cw4ha"]
+render_priority = 0
+shader = SubResource("Shader_ejom5")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_u3cbc"]
 size = Vector3(1, 1, 0.0605469)
 
@@ -95,6 +121,30 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 4
 border_width_right = 4
 border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdxl8"]
+shader = ExtResource("20_g4et7")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tahei"]
 
@@ -116,7 +166,7 @@ curve = SubResource("Curve_w583n")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1h2j"]
 emission_shape_offset = Vector3(0, 0, -4)
 emission_shape = 3
-emission_box_extents = Vector3(0.5, 0.5, 0.25)
+emission_box_extents = Vector3(2, 0.5, 0.25)
 directional_velocity_min = 0.0299839
 directional_velocity_max = 0.0599839
 directional_velocity_curve = SubResource("CurveXYZTexture_kpcd8")
@@ -639,7 +689,9 @@ size = Vector2(12.21, 11.825)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2m0gw"]
 
-[node name="Map Editor" type="Node3D"]
+[node name="Map Editor" type="Node3D" node_paths=PackedStringArray("local_editor")]
+script = ExtResource("1_lhv5r")
+local_editor = NodePath("LucidiumEditor")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
@@ -648,8 +700,9 @@ environment = SubResource("Environment_rcla0")
 script = ExtResource("16_r33nt")
 current_beat = 1.0
 
-[node name="PlayerController" type="Node" parent="LucidiumEditor"]
+[node name="PlayerController" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("event_manager")]
 script = ExtResource("26_6j8m4")
+event_manager = NodePath("../EventManager")
 
 [node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node")]
 script = ExtResource("27_720f7")
@@ -775,18 +828,19 @@ mesh = SubResource("BoxMesh_o38ct")
 script = ExtResource("4_3kgy6")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="9" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 4)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/9"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "3"
+text = "0"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
 [node name="1" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -800,32 +854,35 @@ transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e
 text = "1"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
-[node name="8" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/8"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/2"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "2"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
-[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 4)
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/3"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
-text = "0"
+text = "3"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
 [node name="4" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
@@ -839,6 +896,7 @@ transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e
 text = "4"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
 [node name="5" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
@@ -852,6 +910,7 @@ transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e
 text = "5"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
 [node name="6" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
@@ -865,6 +924,7 @@ transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e
 text = "6"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
 [node name="7" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
@@ -879,20 +939,32 @@ text = "7
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
 
-[node name="11" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="8" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/11"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/8"]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "8
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 114
+outline_size = 0
+
+[node name="Spectogram" type="Node3D" parent="Grid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="TimelineGrid" type="MeshInstance3D" parent="Grid/Spectogram"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
+layers = 4
+material_override = SubResource("ShaderMaterial_cw4ha")
+mesh = SubResource("PlaneMesh_r5xv2")
+skeleton = NodePath("../..")
 
 [node name="GridPlacements" type="Node3D" parent="Grid"]
 
@@ -1571,7 +1643,7 @@ tab_1/title = "Environment"
 tab_2/title = "Text Editor"
 tab_2/disabled = true
 
-[node name="Button" type="Button" parent="MapperUI/Top Bar"]
+[node name="Exit" type="Button" parent="MapperUI/Top Bar"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.03125
@@ -1733,10 +1805,12 @@ layout_mode = 2
 split_offset = 750
 
 [node name="Control" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer"]
+material = SubResource("ShaderMaterial_qdxl8")
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+texture_filter = 1
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 1
 anchors_preset = 15
@@ -1757,6 +1831,7 @@ render_target_update_mode = 4
 transform = Transform3D(0.93358, -0.0745088, 0.350537, 0, 0.978148, 0.207911, -0.358368, -0.194102, 0.913179, 5.2, 4.6, 5.6)
 current = true
 script = ExtResource("2_xkfh1")
+inertia = 0.045
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
 gi_mode = 2
@@ -1831,6 +1906,7 @@ theme_type_variation = &"DarkPanelContainer"
 [node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+follow_focus = true
 metadata/_edit_use_anchors_ = true
 
 [node name="LogMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer/ScrollContainer"]
@@ -2085,6 +2161,7 @@ x = 2
 [node name="Bloq3" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 glossy = false
+direction = 2
 rgb_color = Color(0.831373, 0.698039, 0.443137, 1)
 bloq_multiplier = 1.0
 arrow_multiplier = 1.0
@@ -2093,6 +2170,7 @@ x = 1
 
 [node name="Bloq4" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -4)
+glossy = false
 direction = 0
 x = 1
 y = 2
@@ -2102,7 +2180,6 @@ surface_material_override/0 = null
 
 [node name="Bloq5" parent="Bloqs" instance=ExtResource("14_om2ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -4)
-glossy = false
 color = 1
 direction = 8
 bloq_multiplier = 1.0
@@ -2136,7 +2213,7 @@ texture = ExtResource("19_rks5o")
 
 [node name="Cloud" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.83066, 0)
-amount = 12
+amount = 14
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-21.6104, -12.2103, -21.3485, 42.8326, 24.4203, 42.88)
@@ -2146,7 +2223,7 @@ draw_pass_1 = SubResource("QuadMesh_oeq8w")
 [node name="TestParticles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.82858, 0)
 visible = false
-amount = 12
+amount = 14
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
@@ -2155,7 +2232,7 @@ draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 
 [node name="Cloud2" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16934, 0)
-amount = 12
+amount = 14
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
@@ -2165,18 +2242,71 @@ draw_pass_1 = SubResource("QuadMesh_oeq8w")
 [node name="TestParticles2" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17142, 0)
 visible = false
-amount = 12
+amount = 14
 lifetime = 25.0
 explosiveness = 0.4
 visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
 process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 
+[node name="ExitConfirmation" type="Window" parent="."]
+title = "Please Confirm"
+initial_position = 2
+size = Vector2i(400, 150)
+visible = false
+script = ExtResource("30_6m50f")
+
+[node name="Panel" type="Panel" parent="ExitConfirmation"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExitConfirmation/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ExitConfirmation/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "This map has unsaved changes. Would you like to save before exiting?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ExitConfirmation/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="DS" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Don't Save"
+
+[node name="C" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="SaC" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save and Close"
+
 [connection signal="tab_changed" from="MapperUI/Top Bar/TabBar" to="MapperUI/Top Bar" method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="MapperUI/Top Bar/Exit" to="." method="_on_exit_pressed"]
 [connection signal="close_requested" from="MapperUI/SettingsWindow" to="MapperUI/SettingsWindow" method="_on_close_requested"]
 [connection signal="dragged" from="MapperUI/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" method="_on_h_split_container_dragged"]
 [connection signal="dragged" from="MapperUI/HSplitContainer/HSplitContainer" to="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" method="_on_h_split_container_dragged_parent"]
 [connection signal="pressed" from="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer/Logger" to="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer" method="_on_logger_pressed"]
+[connection signal="close_requested" from="ExitConfirmation" to="ExitConfirmation" method="_on_close_requested"]
+[connection signal="pressed" from="ExitConfirmation/Panel/VBoxContainer/HBoxContainer/C" to="ExitConfirmation" method="_on_c_pressed"]
 
 [editable path="Bloqs/Bloq4"]
 [editable path="Bloqs/Bloq5"]

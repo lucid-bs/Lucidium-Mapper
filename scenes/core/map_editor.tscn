@@ -753,8 +753,6 @@ layout_mode = 2
 metadata/_tab_index = 3
 
 [node name="RedBloq" parent="." instance=ExtResource("1_hvejt")]
-direction = 1
-y = 0
 
 [node name="BlooBloq" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)

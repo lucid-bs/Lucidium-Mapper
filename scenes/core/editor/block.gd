@@ -36,6 +36,9 @@ enum BLOQ_COLORS {
 @export var bloq_multiplier : float = 0.28 # 0.28 MMA2 Style
 @export var arrow_multiplier : float = 0.405 # 0.405 MMA2 Style
 @export var arrow_white : float = 0 # 0 MMA2 Style
+
+var hovered : bool = false
+
 func update_color(new_color : Color, new_note_color := color, color_multiplier := bloq_multiplier):
 	$MeshInstance3D.material_override.set_shader_parameter("albedo", new_color)
 	$MeshInstance3D.material_override.set_shader_parameter("color_multiplier", bloq_multiplier)
@@ -45,6 +48,7 @@ func update_arrow_color(albedo := rgb_color, multiplier := arrow_multiplier, whi
 	$MeshInstance3D/Arrow.material_override.set_shader_parameter("albedo", rgb_color) 
 	$MeshInstance3D/Arrow.material_override.set_shader_parameter("color_multiplier", arrow_multiplier)
 	$MeshInstance3D/Arrow.material_override.set_shader_parameter("white_blend", arrow_white)
+
 func update_direction(new_direction : BLOQ_DIRECTIONS, new_angle_offset : int):
 	if direction == BLOQ_DIRECTIONS.ANY:
 		$MeshInstance3D/Dot.visible = true
@@ -106,17 +110,14 @@ func _ready() -> void:
 		$MeshInstance3D.material_override.set_shader_parameter("metallic", 1)
 	
 	if color == BLOQ_COLORS.RED:
-		rgb_color = Color(0.80000001, 0.64481932, 0.43200001)
+		rgb_color = Color(0.8, 0.644, 0.432)
 	else:
-		rgb_color = Color(0.54808509, 0.61276591, 0.63999999)
+		rgb_color = Color(0.548, 0.613, 0.640)
 	update_color(rgb_color)
 	update_direction(direction, angle_offset)
 	update_position(x, y)
 	
 	update_arrow_color()
-	
-	
-	
 	
 
 func _input_event(camera: Camera3D, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
@@ -124,3 +125,43 @@ func _input_event(camera: Camera3D, event: InputEvent, position: Vector3, normal
 		if event.button_index == 1 && event.pressed == true && event.shift_pressed == true:
 			%ErrorLogger.log_message("One small [25 MINUTES] for [CLICKING BLOQ], one giant leap for [LUCIDIUM MAPPER]")
 			update_selection(!selected)
+func _on_mouse_entered() -> void:
+	hovered = true
+
+func _on_mouse_exited() -> void:
+	hovered = false
+
+func _input(event: InputEvent) -> void:
+	if hovered and Input.is_action_pressed("quick_edit_modifier") && !event.is_released():
+		%ErrorLogger.log_message("Arrow Modifier Registered")
+		if event.is_action("arrow_dot"):
+			# TODO: Set Deg based off of prior direction
+			update_direction(BLOQ_DIRECTIONS.ANY, 0)
+		else:
+			var arrow_vector = Input.get_vector("arrow_down", "arrow_up", "arrow_left", "arrow_right")
+			var arrow_deg = rad_to_deg(atan2(arrow_vector.y, arrow_vector.x))
+			if !arrow_deg > 0:
+				arrow_deg = 180 + remap(abs(arrow_deg), 0, 180, 180, 0)
+			%ErrorLogger.log_message(str(arrow_deg))
+			match int(arrow_deg):
+				0:
+					update_direction(BLOQ_DIRECTIONS.UP, 0)
+					%ErrorLogger.log_message("Up")
+				45:
+					update_direction(BLOQ_DIRECTIONS.UP_RIGHT, 0)
+					%ErrorLogger.log_message("Up Right")
+				90:
+					update_direction(BLOQ_DIRECTIONS.RIGHT, 0)
+					%ErrorLogger.log_message("Right")
+				135:
+					update_direction(BLOQ_DIRECTIONS.DOWN_RIGHT, 0)
+				180:
+					update_direction(BLOQ_DIRECTIONS.DOWN, 0)
+				225:
+					update_direction(BLOQ_DIRECTIONS.DOWN_LEFT, 0)
+				270:
+					update_direction(BLOQ_DIRECTIONS.LEFT, 0)
+				315:
+					update_direction(BLOQ_DIRECTIONS.UP_LEFT, 0)
+				360:
+					update_direction(BLOQ_DIRECTIONS.UP, 0)

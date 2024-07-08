@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://brv7nkla0w5yb"]
+
+[ext_resource type="Texture2D" path="res://extern/Lost Faith/spectrogram.png" id="1_dc8qj"]
+
+[resource]
+atlas = ExtResource("1_dc8qj")
+region = Rect2(141, 64, 1024, 2048)

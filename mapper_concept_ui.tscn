@@ -45,11 +45,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_selected_color = Color(0.662745, 0.811765, 1, 1)
 theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
-theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
+theme_override_colors/font_selected_color = Color(0.662745, 0.811765, 1, 1)
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_dxoc4")
 tab_alignment = 1
@@ -104,10 +104,12 @@ anchor_left = 0.8
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 0.844444
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Inspector" type="Control" parent="RightTabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RightTabContainer/Inspector"]
 layout_mode = 1
@@ -156,7 +158,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
 popup/item_0/text = "Up"
-popup/item_0/id = 0
 popup/item_1/text = "Down"
 popup/item_1/id = 1
 popup/item_2/text = "Left"
@@ -189,7 +190,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
 popup/item_0/text = "Red"
-popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 
@@ -271,16 +271,19 @@ max_value = 2.0
 [node name="Attributes" type="Control" parent="RightTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="LeftTabContainer" type="TabContainer" parent="."]
 layout_mode = 0
 anchor_top = 0.0555556
 anchor_right = 0.15
 anchor_bottom = 0.844444
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Notes" type="Control" parent="LeftTabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="NoteCotainer" type="VBoxContainer" parent="LeftTabContainer/Notes"]
 layout_mode = 1
@@ -354,11 +357,14 @@ text = "BR"
 [node name="Arcs" type="Control" parent="LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Bombs" type="Control" parent="LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="Walls" type="Control" parent="LeftTabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 3

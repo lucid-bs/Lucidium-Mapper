@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://scenes/core/ui/difficulty_thingy.gd" id="3_7my54"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="3_efsek"]
 [ext_resource type="Script" path="res://scenes/core/ui/copy_buttons.gd" id="3_y0rcl"]
-[ext_resource type="Script" path="res://scenes/resources/beatmap_info.gd" id="4_fmmta"]
+[ext_resource type="Script" path="res://resources/beatmap_info.gd" id="4_fmmta"]
 [ext_resource type="Script" path="res://scenes/core/ui/difficulty_thingy_diff.gd" id="4_hcms4"]
 [ext_resource type="Texture2D" uid="uid://ctoqxghl6kj1n" path="res://extern/ChroMapper/Sprites/BeatsaberSpriteSheet.png" id="4_j7wis"]
-[ext_resource type="Script" path="res://scenes/resources/beatmap_set.gd" id="9_vml01"]
+[ext_resource type="Script" path="res://resources/beatmap_set.gd" id="9_vml01"]
 
 [sub_resource type="Gradient" id="Gradient_jt01e"]
 offsets = PackedFloat32Array(0.963964, 1)
@@ -145,7 +145,6 @@ text = "Song Subname"
 [node name="SongSubnameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "PLACEHOLDER"
 
 [node name="PanelContainer2" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -938,4 +937,8 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("2_mi6hj")
 info_dat_data = SubResource("Resource_g5lnc")
 
+[connection signal="difficulty_changed" from="DifficultyThingy" to="." method="_on_difficulty_thingy_difficulty_changed"]
+[connection signal="value_changed" from="DifficultyThingy/HFlowContainer/ReactionTime/SpinBox" to="DifficultyThingy" method="_on_reaction_time_value_changed"]
+[connection signal="value_changed" from="DifficultyThingy/HFlowContainer/JumpDistance/SpinBox" to="DifficultyThingy" method="_on_jump_distance_value_changed"]
+[connection signal="value_changed" from="DifficultyThingy/HFlowContainer/HalfJumpDuration/SpinBox" to="DifficultyThingy" method="_on_half_jump_duration_value_changed"]
 [connection signal="pressed" from="DifficultyThingy/HBoxContainer/EnterEditorButton" to="." method="_on_button_pressed"]
