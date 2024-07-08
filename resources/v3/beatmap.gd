@@ -5,10 +5,13 @@ extends Resource
 
 @export var raw_data : Dictionary
 
+var conversion_table_to_json = {
+	"color_notes" = "colorNotes",
+}
 
 @export var bpm_events : Array
 @export var rotation_events : Array
-@export var color_notes : Array
+@export var color_notes : Array[ColorNote]
 @export var bomb_notes : Array
 @export var obstacles : Array
 @export var sliders : Array
@@ -29,7 +32,10 @@ func unpack_from_json(json_text : String, json : Dictionary = {}):
 	
 	raw_data = json
 	
-	
+	for i in raw_data[conversion_table_to_json["color_notes"]]:
+		var new_note = ColorNote.new()
+		color_notes.append(new_note.unpack_from_json("", i))
+	print(color_notes)
 	
 
 func pack_to_json():
