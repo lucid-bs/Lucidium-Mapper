@@ -37,6 +37,8 @@ enum BLOQ_COLORS {
 @export var arrow_multiplier : float = 0.405 # 0.405 MMA2 Style
 @export var arrow_white : float = 0 # 0 MMA2 Style
 
+
+
 var hovered : bool = false
 
 var color_note_resource : ColorNote

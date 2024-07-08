@@ -32,7 +32,7 @@ func sync_blocks():
 			new_block.x = i.line_index
 			new_block.y = i.line_layer
 			new_block.color = i.color
-			new_block.cut_direction = i.cut_direction
+			new_block.direction = i.cut_direction
 			new_block.angle_offset = i.angle_offset
 			new_block.beat = i.beat
 			$"../../Bloqs".add_child(new_block)

@@ -703,9 +703,10 @@ current_beat = 1.0
 script = ExtResource("26_6j8m4")
 event_manager = NodePath("../EventManager")
 
-[node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node")]
+[node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node", "map_data")]
 script = ExtResource("27_720f7")
 editor_node = NodePath("..")
+map_data = NodePath("../MapData")
 
 [node name="MapData" type="Node" parent="LucidiumEditor"]
 script = ExtResource("27_fuiss")

@@ -18,3 +18,4 @@ func _ready() -> void:
 		var beatmap_raw_data = FileAccess.get_file_as_string(map_path + difficulty_beatmap.beatmap_filename)
 		beatmap.unpack_from_json(beatmap_raw_data)
 		
+	$LucidiumEditor/EventManager.sync_blocks()
