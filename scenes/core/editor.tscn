@@ -695,13 +695,15 @@ local_editor = NodePath("LucidiumEditor")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
 
-[node name="LucidiumEditor" type="Node" parent="."]
+[node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("16_r33nt")
 current_beat = 1.0
+audio_stream_player = NodePath("AudioStreamPlayer")
 
-[node name="PlayerController" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("event_manager")]
+[node name="PlayerController" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("event_manager", "editor_node")]
 script = ExtResource("26_6j8m4")
 event_manager = NodePath("../EventManager")
+editor_node = NodePath("..")
 
 [node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node", "map_data")]
 script = ExtResource("27_720f7")
@@ -710,6 +712,8 @@ map_data = NodePath("../MapData")
 
 [node name="MapData" type="Node" parent="LucidiumEditor"]
 script = ExtResource("27_fuiss")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
 
 [node name="Grid" type="Node3D" parent="."]
 script = ExtResource("3_wy725")

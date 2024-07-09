@@ -25,7 +25,8 @@ func _on_button_pressed() -> void:
 	
 	editor.difficulty_beatmap = $DifficultyThingy.current_difficulty.difficulty_object
 	editor.map_path = $MapDataManager.path
-	
+	editor.audio_stream = AudioStreamOggVorbis.load_from_file($MapDataManager.path + map_data_manager.get_property(&"song_filename"))
+	editor.current_bpm = map_data_manager.get_property(&"beats_per_minute")
 	get_tree().root.call_deferred("add_child", editor)
 	call_deferred("queue_free")
 	

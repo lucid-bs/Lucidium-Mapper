@@ -9,6 +9,8 @@ extends Node
 
 const BLOCK = preload("res://scenes/core/editor/block.tscn")
 
+@export var bpm_second_rate : float
+
 var current_active_blocks : Array[ColorNote]
 func scroll_map(up: bool):
 	var divisor = editor_node.current_precision_denominator
@@ -28,9 +30,9 @@ func sync_blocks():
 			i.get_meta(&"block_node").position.z = (i.beat - editor_node.current_beat) * -4
 			old_blocks.erase(i.get_meta(&"block_node"))
 			
-			
 		else:
 			var new_block = BLOCK.instantiate()
+			new_block.glossy = false
 			new_block.color_note_resource = i
 			new_block.x = i.line_index
 			new_block.y = i.line_layer
@@ -46,3 +48,4 @@ func sync_blocks():
 	for i : Block in old_blocks:
 		i.color_note_resource.set_meta(&"block_node", null)
 		i.queue_free()
+		

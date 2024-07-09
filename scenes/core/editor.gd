@@ -9,6 +9,8 @@ extends Node3D
 
 @export var map_path : String
 
+@export var current_bpm : float 
+
 func _on_exit_pressed() -> void:
 	if $LucidiumEditor.unsaved_changes:
 		$ExitConfirmation.show()
