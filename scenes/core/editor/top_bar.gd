@@ -7,6 +7,7 @@ extends Panel
 		"right_menu" = $"../HSplitContainer/RightChartTabMargin",
 		"enter" = func():
 			$"../../WorldEnvironment".environment.glow_enabled = false
+			$"../../WorldEnvironment".environment.background_mode = Environment.BGMode.BG_COLOR
 			$"../../Billie/Static/PlayersPlace".hide()
 			$"../../Cloud".hide()
 			$"../../Cloud2".hide()
@@ -15,6 +16,7 @@ extends Panel
 			$"../../Grid".show(),
 		"exit" = func():
 			$"../../WorldEnvironment".environment.glow_enabled = true
+			$"../../WorldEnvironment".environment.background_mode = Environment.BGMode.BG_SKY
 			$"../../Billie/Static/PlayersPlace".show()
 			$"../../Cloud".show()
 			$"../../Cloud2".show()

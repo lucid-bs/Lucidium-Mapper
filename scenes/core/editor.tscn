@@ -43,7 +43,6 @@ sky_material = SubResource("ProceduralSkyMaterial_vbno2")
 
 [sub_resource type="Environment" id="Environment_rcla0"]
 background_mode = 2
-background_color = Color(0.658824, 0.466667, 0.333333, 1)
 sky = SubResource("Sky_pnvj8")
 tonemap_mode = 3
 glow_enabled = true
@@ -962,8 +961,9 @@ outline_size = 0
 
 [node name="Spectogram" type="Node3D" parent="Grid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+visible = false
 
-[node name="TimelineGrid" type="MeshInstance3D" parent="Grid/Spectogram"]
+[node name="Spectogram" type="MeshInstance3D" parent="Grid/Spectogram"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
 layers = 4
 material_override = SubResource("ShaderMaterial_cw4ha")
