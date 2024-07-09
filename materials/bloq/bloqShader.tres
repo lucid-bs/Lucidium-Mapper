@@ -27,8 +27,8 @@ metadata/_edit_res_path = "res://materials/bloq/glossyBloq.tres::Shader_od0y6"
 [resource]
 render_priority = 0
 shader = SubResource("Shader_od0y6")
-shader_parameter/albedo = Color(0.8, 0.645, 0.432, 1)
-shader_parameter/roughness = 0.34
+shader_parameter/albedo = Color(0.898039, 0.0313726, 0.0627451, 1)
+shader_parameter/roughness = 0.667
 shader_parameter/specular = 1.0
-shader_parameter/metallic = 0.0
-shader_parameter/color_multiplier = 1.0
+shader_parameter/metallic = 1.0
+shader_parameter/color_multiplier = 0.32

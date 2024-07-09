@@ -13,18 +13,21 @@ var current_active_blocks : Array[ColorNote]
 func scroll_map(up: bool):
 	var divisor = editor_node.current_precision_denominator
 	if up:
-		editor_node.current_beat = editor_node.current_beat + (1.0/divisor)
+		editor_node.current_beat = clamp(editor_node.current_beat + (1.0/divisor), 0, 1000)
+		
 	else:
-		editor_node.current_beat = editor_node.current_beat - (1.0/divisor)
-
+		editor_node.current_beat = clamp(editor_node.current_beat - (1.0/divisor), 0, 1000)
+		
+	sync_blocks()
 func sync_blocks():
-	var notes = map_data.get_in_range(&"color_notes", editor_node.current_beat, editor_node.current_beat + 7)
+	var notes = map_data.get_in_range(&"color_notes", editor_node.current_beat - 2, editor_node.current_beat + 7)
 	
 	var old_blocks : Array[Node] = $"../../Bloqs".get_children()
 	for i : ColorNote in notes:
 		if i.get_meta(&"block_node") is Block:
 			i.get_meta(&"block_node").position.z = (i.beat - editor_node.current_beat) * -4
 			old_blocks.erase(i.get_meta(&"block_node"))
+			
 			
 		else:
 			var new_block = BLOCK.instantiate()
@@ -40,5 +43,6 @@ func sync_blocks():
 			i.set_meta(&"block_node", new_block)
 		
 			
-	for i in old_blocks:
+	for i : Block in old_blocks:
+		i.color_note_resource.set_meta(&"block_node", null)
 		i.queue_free()
