@@ -26,9 +26,10 @@ func sync_blocks():
 	
 	var old_blocks : Array[Node] = $"../../Bloqs".get_children()
 	for i : ColorNote in notes:
-		if i.get_meta(&"block_node") is Block:
-			i.get_meta(&"block_node").position.z = (i.beat - editor_node.current_beat) * -4
-			old_blocks.erase(i.get_meta(&"block_node"))
+		var temp = i.get_meta(&"block_node", "null")
+		if temp is Block:
+			temp.position.z = (i.beat - editor_node.current_beat) * -4
+			old_blocks.erase(temp)
 			
 		else:
 			var new_block = BLOCK.instantiate()

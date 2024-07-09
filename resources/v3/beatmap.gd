@@ -35,7 +35,6 @@ func unpack_from_json(json_text : String, json : Dictionary = {}):
 	for i in raw_data[conversion_table_to_json["color_notes"]]:
 		var new_note = ColorNote.new()
 		color_notes.append(new_note.unpack_from_json("", i))
-	print(color_notes)
 	
 
 func pack_to_json():
