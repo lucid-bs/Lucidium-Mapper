@@ -11,7 +11,7 @@ signal player_scrolled(up: bool)
 var playback_node : MapPlayback
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton && event.is_pressed():
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_UP:
 				event_manager.scroll_map(true)
@@ -19,9 +19,12 @@ func _input(event: InputEvent) -> void:
 				event_manager.scroll_map(false)
 	elif event.is_action("map_play_pause") && event.is_pressed():
 		if editor_node.map_playing:
+			var divisor = editor_node.current_precision_denominator
 			editor_node.map_playing = false
 			editor_node.audio_stream_player.stop()
 			playback_node.queue_free()
+			editor_node.current_beat = snappedf(editor_node.current_beat, (1.0/divisor))
+			event_manager.sync_blocks()
 		else:
 			editor_node.audio_stream_player.stream =  $"../..".audio_stream
 			editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)

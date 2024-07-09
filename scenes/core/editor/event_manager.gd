@@ -13,13 +13,13 @@ const BLOCK = preload("res://scenes/core/editor/block.tscn")
 
 var current_active_blocks : Array[ColorNote]
 func scroll_map(up: bool):
-	var divisor = editor_node.current_precision_denominator
+	var step = 1.0 / editor_node.current_precision_denominator
 	if up:
-		editor_node.current_beat = clamp(editor_node.current_beat + (1.0/divisor), 0, 1000)
-		
+		editor_node.current_beat += step
+		editor_node.current_beat = clampf(editor_node.current_beat, 0.0, 1000.0)
 	else:
-		editor_node.current_beat = clamp(editor_node.current_beat - (1.0/divisor), 0, 1000)
-		
+		editor_node.current_beat -= step
+		editor_node.current_beat = clampf(editor_node.current_beat, 0.0, 1000.0)
 	sync_blocks()
 func sync_blocks():
 	var notes = map_data.get_in_range(&"color_notes", editor_node.current_beat - 2, editor_node.current_beat + 7)
