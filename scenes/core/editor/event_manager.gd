@@ -41,6 +41,7 @@ func sync_blocks():
 			new_block.direction = i.cut_direction
 			new_block.angle_offset = i.angle_offset
 			new_block.beat = i.beat
+			new_block.error_logger = %ErrorLogger
 			$"../../Bloqs".add_child(new_block)
 			new_block.position.z = (i.beat - editor_node.current_beat) * -4
 			i.set_meta(&"block_node", new_block)

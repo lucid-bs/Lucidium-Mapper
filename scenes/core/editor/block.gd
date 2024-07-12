@@ -37,6 +37,7 @@ enum BLOQ_COLORS {
 @export var arrow_multiplier : float = 0.405 # 0.405 MMA2 Style
 @export var arrow_white : float = 0 # 0 MMA2 Style
 
+@export var error_logger : Node
 
 
 var hovered : bool = false
@@ -114,9 +115,9 @@ func _ready() -> void:
 		$MeshInstance3D.material_override.set_shader_parameter("metallic", 1)
 	
 	if color == BLOQ_COLORS.RED:
-		rgb_color = Color(0.8, 0.644, 0.432)
+		rgb_color = Color(0.784, 0.078, 0.078)
 	else:
-		rgb_color = Color(0.548, 0.613, 0.640)
+		rgb_color = Color(0.156, 0.556, 0.823)
 	update_color(rgb_color)
 	update_direction(direction, angle_offset)
 	update_position(x, y)
@@ -127,7 +128,7 @@ func _ready() -> void:
 func _input_event(camera: Camera3D, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1 && event.pressed == true && event.shift_pressed == true:
-			%ErrorLogger.log_message("One small [25 MINUTES] for [CLICKING BLOQ], one giant leap for [LUCIDIUM MAPPER]")
+			error_logger.log_message("One small [25 MINUTES] for [CLICKING BLOQ], one giant leap for [LUCIDIUM MAPPER]")
 			update_selection(!selected)
 func _on_mouse_entered() -> void:
 	hovered = true
@@ -137,7 +138,7 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if hovered and Input.is_action_pressed("quick_edit_modifier") && !event.is_released():
-		%ErrorLogger.log_message("Arrow Modifier Registered")
+		error_logger.log_message("Arrow Modifier Registered")
 		if event.is_action("arrow_dot"):
 			# TODO: Set Deg based off of prior direction
 			update_direction(BLOQ_DIRECTIONS.ANY, 0)
@@ -146,17 +147,14 @@ func _input(event: InputEvent) -> void:
 			var arrow_deg = rad_to_deg(atan2(arrow_vector.y, arrow_vector.x))
 			if !arrow_deg > 0:
 				arrow_deg = 180 + remap(abs(arrow_deg), 0, 180, 180, 0)
-			%ErrorLogger.log_message(str(arrow_deg))
+			error_logger.log_message(str(arrow_deg))
 			match int(arrow_deg):
 				0:
 					update_direction(BLOQ_DIRECTIONS.UP, 0)
-					%ErrorLogger.log_message("Up")
 				45:
 					update_direction(BLOQ_DIRECTIONS.UP_RIGHT, 0)
-					%ErrorLogger.log_message("Up Right")
 				90:
 					update_direction(BLOQ_DIRECTIONS.RIGHT, 0)
-					%ErrorLogger.log_message("Right")
 				135:
 					update_direction(BLOQ_DIRECTIONS.DOWN_RIGHT, 0)
 				180:
