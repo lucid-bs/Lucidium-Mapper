@@ -17,6 +17,11 @@ func _input(event: InputEvent) -> void:
 				event_manager.scroll_map(true)
 			MOUSE_BUTTON_WHEEL_DOWN:
 				event_manager.scroll_map(false)
+		editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)
+		await get_tree().create_timer(0.15).timeout
+		editor_node.audio_stream_player.stop()
+		
+		
 	elif event.is_action("map_play_pause") && event.is_pressed():
 		if editor_node.map_playing:
 			var divisor = editor_node.current_precision_denominator

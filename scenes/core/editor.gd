@@ -26,3 +26,5 @@ func _ready() -> void:
 	
 	mapper_ready.emit()
 	
+	$LucidiumEditor/AudioStreamPlayer.stream = audio_stream
+	

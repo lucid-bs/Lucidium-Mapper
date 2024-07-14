@@ -21,6 +21,9 @@ func scroll_map(up: bool):
 		editor_node.current_beat -= step
 		editor_node.current_beat = clampf(editor_node.current_beat, 0.0, 1000.0)
 	sync_blocks()
+	
+	
+	
 func sync_blocks():
 	var notes = map_data.get_in_range(&"color_notes", editor_node.current_beat - 2, editor_node.current_beat + 7)
 	
