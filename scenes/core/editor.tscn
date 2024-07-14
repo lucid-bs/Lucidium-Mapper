@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=120 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scenes/core/editor/menu_button.gd" id="10_vu5vo"]
 [ext_resource type="Script" path="res://scenes/core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://scenes/core/settings_window.tscn" id="11_f5e1k"]
+[ext_resource type="Shader" path="res://materials/shaders/color_alpha.gdshader" id="11_irt5k"]
 [ext_resource type="Script" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
 [ext_resource type="Script" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
 [ext_resource type="Script" path="res://scenes/core/editor/editor.gd" id="16_r33nt"]
@@ -85,6 +86,12 @@ variation_opentype = {
 
 [sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
 size = Vector3(0.1, 4, 0.025)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ufjc0"]
+render_priority = 0
+shader = ExtResource("11_irt5k")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/alpha = 1.0
 
 [sub_resource type="Shader" id="Shader_ejom5"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.beta2's StandardMaterial3D.
@@ -697,6 +704,7 @@ environment = SubResource("Environment_rcla0")
 [node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("16_r33nt")
 current_beat = 1.0
+current_precision_denominator = 4
 audio_stream_player = NodePath("AudioStreamPlayer")
 
 [node name="PlayerController" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("event_manager", "editor_node")]
@@ -862,7 +870,7 @@ outline_size = 0
 [node name="2" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 layers = 4
-material_override = ExtResource("6_2v7ym")
+material_override = SubResource("ShaderMaterial_ufjc0")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
