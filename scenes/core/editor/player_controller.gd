@@ -11,12 +11,13 @@ signal player_scrolled(up: bool)
 var playback_node : MapPlayback
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton && event.is_pressed():
-		match event.button_index:
-			MOUSE_BUTTON_WHEEL_UP:
-				event_manager.scroll_map(true)
-			MOUSE_BUTTON_WHEEL_DOWN:
-				event_manager.scroll_map(false)
+	if event.is_action("map_scroll_up") && event.is_pressed() && !editor_node.map_playing:
+		event_manager.scroll_map(true)
+		editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)
+		await get_tree().create_timer(0.15).timeout
+		editor_node.audio_stream_player.stop()
+	elif event.is_action("map_scroll_down") && event.is_pressed() && !editor_node.map_playing:
+		event_manager.scroll_map(false)
 		editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)
 		await get_tree().create_timer(0.15).timeout
 		editor_node.audio_stream_player.stop()
