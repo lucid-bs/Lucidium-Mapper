@@ -35,7 +35,6 @@ void fragment() {
 interpolation_mode = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_j37dc"]
-noise_type = 2
 frequency = 0.02
 fractal_type = 0
 

@@ -1861,22 +1861,26 @@ visibility_aabb = AABB(-5.08273, -4.27105, -9.26626, 9.13042, 8.75987, 8.64741)
 process_material = SubResource("ParticleProcessMaterial_s1h2j")
 draw_pass_1 = SubResource("QuadMesh_yiaym")
 
-[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.00559441
-anchor_right = 0.99021
+[node name="MarginContainer" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+layout_mode = 0
+anchor_right = 1.0
 anchor_bottom = 0.0759494
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer"]
-custom_minimum_size = Vector2(80, 48)
+[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
-[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel"]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1885,17 +1889,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("23_efecr")
 
-[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel/PrecisionContainer"]
+[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_minus_1"
 flat = true
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel/PrecisionContainer"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
 text = "1/2"
 
-[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel/PrecisionContainer"]
+[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_fabox")

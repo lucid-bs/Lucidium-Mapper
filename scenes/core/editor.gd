@@ -11,6 +11,8 @@ extends Node3D
 
 @export var current_bpm : float 
 
+signal mapper_ready
+
 func _on_exit_pressed() -> void:
 	if $LucidiumEditor.unsaved_changes:
 		$ExitConfirmation.show()
@@ -21,3 +23,6 @@ func _ready() -> void:
 		beatmap.unpack_from_json(beatmap_raw_data)
 		
 	$LucidiumEditor/EventManager.sync_blocks()
+	
+	mapper_ready.emit()
+	

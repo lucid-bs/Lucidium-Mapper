@@ -40,7 +40,6 @@ metadata/_edit_res_path = "res://materials/bloq/glossyBloq.tres::Shader_od0y6"
 interpolation_mode = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h5wb5"]
-noise_type = 2
 frequency = 0.0417
 fractal_type = 0
 
