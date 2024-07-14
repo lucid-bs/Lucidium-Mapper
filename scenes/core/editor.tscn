@@ -171,8 +171,9 @@ curve = SubResource("Curve_w583n")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1h2j"]
 emission_shape_offset = Vector3(0, 0, -4)
+emission_shape_scale = Vector3(1, 1, 0.75)
 emission_shape = 3
-emission_box_extents = Vector3(2, 0.5, 0.25)
+emission_box_extents = Vector3(2, 0.5, 0.125)
 directional_velocity_min = 0.0299839
 directional_velocity_max = 0.0599839
 directional_velocity_curve = SubResource("CurveXYZTexture_kpcd8")
@@ -1861,7 +1862,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
 amount = 64
 lifetime = 2.0
-visibility_aabb = AABB(-5.08273, -4.27105, -9.26626, 9.13042, 8.75987, 8.64741)
+visibility_aabb = AABB(-5.29217, -4.84011, -8.91135, 10.1102, 9.24705, 8.86261)
 process_material = SubResource("ParticleProcessMaterial_s1h2j")
 draw_pass_1 = SubResource("QuadMesh_yiaym")
 

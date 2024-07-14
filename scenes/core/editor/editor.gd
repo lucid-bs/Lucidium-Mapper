@@ -15,7 +15,7 @@ signal beat_changed(new_beat : float)
 
 @export var current_precision_denominator : int = 2
 
-@export var unsaved_changes : bool = true
+@export var unsaved_changes : bool = false
 
 @export var map_playing : bool
 
