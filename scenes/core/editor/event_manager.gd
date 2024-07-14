@@ -29,6 +29,12 @@ func sync_blocks():
 		var temp = i.get_meta(&"block_node", "null")
 		if temp is Block:
 			temp.position.z = (i.beat - editor_node.current_beat) * -4
+			if temp.beat < editor_node.current_beat:
+				temp.block_dissolve = 0.5
+				temp.arrow_dissolve = 0.5
+			else:
+				temp.block_dissolve = 1
+				temp.arrow_dissolve = 1
 			old_blocks.erase(temp)
 			
 		else:
@@ -44,7 +50,14 @@ func sync_blocks():
 			new_block.error_logger = %ErrorLogger
 			$"../../Bloqs".add_child(new_block)
 			new_block.position.z = (i.beat - editor_node.current_beat) * -4
+			if new_block.beat < editor_node.current_beat:
+				new_block.block_dissolve = 0.5
+				new_block.arrow_dissolve = 0.5
+			else:
+				new_block.block_dissolve = 1
+				new_block.arrow_dissolve = 1
 			i.set_meta(&"block_node", new_block)
+			
 		
 			
 	for i : Block in old_blocks:

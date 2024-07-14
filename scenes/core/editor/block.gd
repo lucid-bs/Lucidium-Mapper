@@ -37,6 +37,16 @@ enum BLOQ_COLORS {
 @export var arrow_multiplier : float = 0.405 # 0.405 MMA2 Style
 @export var arrow_white : float = 0 # 0 MMA2 Style
 
+@export var block_dissolve : float = 1:
+	set(value):
+		$MeshInstance3D.material_override.set_shader_parameter("noise_interpolate", value)
+		block_dissolve = value
+		
+@export var arrow_dissolve : float = 1:
+	set(value):
+		$MeshInstance3D/Arrow.material_override.set_shader_parameter("noise_interpolate", value)
+		arrow_dissolve = value
+
 @export var error_logger : Node
 
 
@@ -130,6 +140,8 @@ func _input_event(camera: Camera3D, event: InputEvent, position: Vector3, normal
 		if event.button_index == 1 && event.pressed == true && event.shift_pressed == true:
 			error_logger.log_message("One small [25 MINUTES] for [CLICKING BLOQ], one giant leap for [LUCIDIUM MAPPER]")
 			update_selection(!selected)
+			
+
 func _on_mouse_entered() -> void:
 	hovered = true
 

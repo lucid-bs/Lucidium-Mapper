@@ -36,7 +36,6 @@ _surfaces = [{
 "vertex_count": 30,
 "vertex_data": PackedByteArray("AAAAAArXo7umm0Q9mpkZPgrXo7uWQ4u8mpkZvgrXo7uWQ4u8mpkZvgrXo7sxCCy9mpkZPgrXo7sxCCy9AAAAAArXozumm0Q9mpkZvgrXozuWQ4u8mpkZPgrXozuWQ4u8mpkZPgrXozsxCCy9mpkZvgrXozsxCCy9mpkZPgrXo7uWQ4u8AAAAAArXo7umm0Q9AAAAAArXozumm0Q9mpkZPgrXozuWQ4u8AAAAAArXo7umm0Q9mpkZvgrXo7uWQ4u8mpkZvgrXozuWQ4u8AAAAAArXozumm0Q9mpkZvgrXo7sxCCy9mpkZPgrXo7sxCCy9mpkZPgrXozsxCCy9mpkZvgrXozsxCCy9mpkZvgrXo7uWQ4u8mpkZvgrXo7sxCCy9mpkZvgrXozsxCCy9mpkZvgrXozuWQ4u8mpkZPgrXozuWQ4u8mpkZPgrXozsxCCy9mpkZPgrXo7sxCCy9mpkZPgrXo7uWQ4u8/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3///7Gm/3+xpv9/sab/f7Gm/39NWf9/TVn/f01Z/39NWf9//////////////////////wAA/38AAP9/AAD/fwAA/3////9/////f////3////9/")
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1auq3")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mkti1"]
@@ -60,7 +59,6 @@ surface_material_override/0 = ExtResource("3_frmyy")
 
 [node name="Arrow" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
-visible = false
 gi_mode = 2
 mesh = SubResource("ArrayMesh_8pbj6")
 skeleton = NodePath("")
@@ -68,6 +66,7 @@ surface_material_override/0 = ExtResource("3_3pj1r")
 
 [node name="Dot" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 8.47033e-22, 1.13687e-13, 2.84217e-14, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.242262)
+visible = false
 material_override = ExtResource("3_3pj1r")
 gi_mode = 2
 mesh = SubResource("CylinderMesh_mkti1")
