@@ -23,7 +23,7 @@ void fragment() {
 	vec4 noise = texture(noise_texture, UV);
 	ALBEDO = mix(albedo.rgb * color_multiplier, vec3(1, 1, 1) * clamp(color_multiplier, 1, 3), white_blend);
 	EMISSION = mix(albedo.rgb * color_multiplier, vec3(1, 1, 1) * clamp(color_multiplier, 1, 3), white_blend);
-	
+
 	// This does some weird stuff on the arrow mesh as the UVs are utterly nonextant
 	// Thanks Unidot Importer
 	ALPHA = float(clamp(noise.r + mix(-1, 1, mix(0.5, 1, noise_interpolate)), 0, 1) == 1.0);

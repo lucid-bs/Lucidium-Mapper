@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=122 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
 [ext_resource type="Shader" path="res://materials/shaders/pixel_shader.gdshader" id="20_g4et7"]
 [ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
+[ext_resource type="Script" path="res://scenes/core/precision_container.gd" id="23_efecr"]
 [ext_resource type="Script" path="res://scenes/core/editor/player_controller.gd" id="26_6j8m4"]
 [ext_resource type="Script" path="res://scenes/core/editor/event_manager.gd" id="27_720f7"]
 [ext_resource type="Script" path="res://scenes/core/editor/map_data.gd" id="27_fuiss"]
@@ -208,6 +209,9 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_yiaym"]
 material = SubResource("StandardMaterial3D_pshnc")
 size = Vector2(0.063, 0.063)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpcuv"]
+bg_color = Color(0.388235, 0.388235, 0.388235, 0.388235)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m73j5"]
 
@@ -1840,7 +1844,7 @@ size = Vector2i(742, 632)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
-transform = Transform3D(0.93358, -0.0745088, 0.350537, 0, 0.978148, 0.207911, -0.358368, -0.194102, 0.913179, 5.2, 4.6, 5.6)
+transform = Transform3D(0.951056, -0.0799795, 0.298487, 0, 0.965926, 0.258819, -0.309017, -0.246152, 0.91865, 1.643, 2.886, 3.305)
 current = true
 script = ExtResource("2_xkfh1")
 inertia = 0.045
@@ -1867,20 +1871,31 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer"]
+[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer"]
+custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
-[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/HBoxContainer"]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("23_efecr")
+
+[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_minus_1"
 flat = true
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
 text = "1/2"
 
-[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/HBoxContainer"]
+[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/TopContainer/Panel/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_fabox")

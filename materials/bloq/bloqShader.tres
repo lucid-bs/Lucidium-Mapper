@@ -23,15 +23,15 @@ float random (vec2 uv) {
 void fragment() {
 	vec2 base_uv = UV;
 	vec4 noise = texture(noise_texture, base_uv);
-	
+
 	ALBEDO = albedo.rgb * color_multiplier;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
 	ALPHA = float(clamp(noise.r + mix(-1, 1, mix(0.5, 1, noise_interpolate)), 0, 1) == 1.0);
-	
+
 	//ALPHA = noise.r;
-	
+
 }
 "
 metadata/_edit_res_path = "res://materials/bloq/glossyBloq.tres::Shader_od0y6"
