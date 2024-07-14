@@ -84,9 +84,6 @@ variation_opentype = {
 2003265652: 700
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
-size = Vector3(0.1, 4, 0.025)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ufjc0"]
 render_priority = 0
 shader = ExtResource("11_irt5k")
@@ -120,6 +117,9 @@ shader_parameter/albedo = Color(1, 1, 1, 1)
 size = Vector3(1, 1, 0.0605469)
 
 [sub_resource type="QuadMesh" id="QuadMesh_7skff"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f5epj"]
+size = Vector3(0.1, 4, 0.025)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxoc4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -857,7 +857,7 @@ outline_size = 0
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
 material_override = ExtResource("6_2v7ym")
-mesh = SubResource("BoxMesh_f5epj")
+mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
 [node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/1"]
