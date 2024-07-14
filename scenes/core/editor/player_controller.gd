@@ -14,12 +14,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("map_scroll_up") && event.is_pressed() && !editor_node.map_playing:
 		event_manager.scroll_map(true)
 		editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(0.13).timeout
 		editor_node.audio_stream_player.stop()
 	elif event.is_action("map_scroll_down") && event.is_pressed() && !editor_node.map_playing:
 		event_manager.scroll_map(false)
 		editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(0.13).timeout
 		editor_node.audio_stream_player.stop()
 		
 		

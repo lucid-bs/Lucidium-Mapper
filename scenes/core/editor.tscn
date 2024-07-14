@@ -161,8 +161,8 @@ emission_energy_multiplier = 2.56
 emission_texture = ExtResource("2_qhjkb")
 
 [sub_resource type="Curve" id="Curve_w583n"]
-_data = [Vector2(0, 1), 0.0, -1.059, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.043956), 0.0, -1.059, 0, 0, Vector2(0.344828, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_k5uc4"]
 curve = SubResource("Curve_w583n")
@@ -1860,7 +1860,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
 amount = 64
-lifetime = 1.5
+lifetime = 2.0
 visibility_aabb = AABB(-5.08273, -4.27105, -9.26626, 9.13042, 8.75987, 8.64741)
 process_material = SubResource("ParticleProcessMaterial_s1h2j")
 draw_pass_1 = SubResource("QuadMesh_yiaym")
