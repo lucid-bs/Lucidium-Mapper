@@ -20,3 +20,5 @@ signal beat_changed(new_beat : float)
 @export var map_playing : bool
 
 @export var audio_stream_player : AudioStreamPlayer
+
+@export var sfx_player : AudioStreamPlayer

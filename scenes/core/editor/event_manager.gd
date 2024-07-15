@@ -33,6 +33,8 @@ func sync_blocks():
 		var temp = i.get_meta(&"block_node", "null")
 		if temp is Block:
 			temp.position.z = (i.beat - editor_node.current_beat) * -4
+			if temp.position.z == 0 && editor_node.map_playing:
+				editor_node.sfx_player.play() 
 			if temp.beat < editor_node.current_beat:
 				block_tween.tween_property(temp, "block_dissolve", 0.5, 0.1)
 				#temp.block_dissolve = 0.5
@@ -58,6 +60,8 @@ func sync_blocks():
 			new_block.error_logger = %ErrorLogger
 			$"../../Bloqs".add_child(new_block)
 			new_block.position.z = (i.beat - editor_node.current_beat) * -4
+			if new_block.position.z == 0 && editor_node.map_playing:
+				editor_node.sfx_player.play() 
 			if new_block.beat < editor_node.current_beat:
 				block_tween.tween_property(new_block, "block_dissolve", 0.5, 0.1)
 				#temp.block_dissolve = 0.5
@@ -69,6 +73,8 @@ func sync_blocks():
 				#temp.arrow_dissolve = 1
 				block_tween.tween_property(new_block, "arrow_dissolve", 1, 0.1)
 			i.set_meta(&"block_node", new_block)
+			
+			
 			
 		
 			

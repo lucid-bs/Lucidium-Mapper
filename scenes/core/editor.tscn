@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=124 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -8,9 +8,11 @@
 [ext_resource type="Script" path="res://scenes/grid_placement.gd" id="4_gcuyk"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
+[ext_resource type="AudioStream" uid="uid://vum8phl3c23m" path="res://sfx/RabbitsViewerTick.wav" id="6_4cv4x"]
 [ext_resource type="Script" path="res://scenes/core/editor/grid_labels.gd" id="6_313ly"]
 [ext_resource type="Script" path="res://scenes/core/editor/top_bar.gd" id="6_edat5"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
+[ext_resource type="AudioStream" uid="uid://0uvwyyh82wx3" path="res://sfx/default/270045__theriavirra__drumsticks-dave-weckl-evolution-click-no1-silent.wav" id="7_y43l0"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
 [ext_resource type="Script" path="res://scenes/error_logger.gd" id="10_i8sui"]
 [ext_resource type="Script" path="res://scenes/core/settings_window.gd" id="10_jdq82"]
@@ -710,10 +712,11 @@ local_editor = NodePath("LucidiumEditor")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
 
-[node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+[node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player", "sfx_player")]
 script = ExtResource("16_r33nt")
 current_beat = 1.0
 audio_stream_player = NodePath("AudioStreamPlayer")
+sfx_player = NodePath("SFXPlayer")
 
 [node name="PlayerController" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("event_manager", "editor_node", "timeline_scroll_bar")]
 script = ExtResource("26_6j8m4")
@@ -730,6 +733,11 @@ map_data = NodePath("../MapData")
 script = ExtResource("27_fuiss")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
+stream = ExtResource("6_4cv4x")
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
+stream = ExtResource("7_y43l0")
+volume_db = 8.727
 
 [node name="Grid" type="Node3D" parent="."]
 script = ExtResource("3_wy725")
