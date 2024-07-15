@@ -213,6 +213,10 @@ size = Vector2(0.063, 0.063)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpcuv"]
 bg_color = Color(0.388235, 0.388235, 0.388235, 0.388235)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m73j5"]
 
@@ -715,7 +719,7 @@ audio_stream_player = NodePath("AudioStreamPlayer")
 script = ExtResource("26_6j8m4")
 event_manager = NodePath("../EventManager")
 editor_node = NodePath("..")
-timeline_scroll_bar = NodePath("../../MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/HScrollBar")
+timeline_scroll_bar = NodePath("../../MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer/Panel/HScrollBar")
 
 [node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node", "map_data")]
 script = ExtResource("27_720f7")
@@ -1912,11 +1916,36 @@ theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_1"
 flat = true
 
-[node name="HScrollBar" type="HScrollBar" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
-layout_mode = 0
-offset_top = 600.0
-offset_right = 742.0
-offset_bottom = 632.0
+[node name="MarginContainer2" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00269542
+anchor_top = 0.924051
+anchor_right = 1.0027
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
+
+[node name="HScrollBar" type="HScrollBar" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BottomMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer"]
 layout_mode = 2
