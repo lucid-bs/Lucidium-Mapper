@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=123 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://scenes/core/editor/grid_labels.gd" id="6_313ly"]
 [ext_resource type="Script" path="res://scenes/core/editor/top_bar.gd" id="6_edat5"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
-[ext_resource type="AudioStream" uid="uid://0uvwyyh82wx3" path="res://sfx/default/270045__theriavirra__drumsticks-dave-weckl-evolution-click-no1-silent.wav" id="7_y43l0"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
 [ext_resource type="Script" path="res://scenes/error_logger.gd" id="10_i8sui"]
 [ext_resource type="Script" path="res://scenes/core/settings_window.gd" id="10_jdq82"]
@@ -736,8 +735,8 @@ script = ExtResource("27_fuiss")
 stream = ExtResource("6_4cv4x")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
-stream = ExtResource("7_y43l0")
-volume_db = 8.727
+stream = ExtResource("6_4cv4x")
+max_polyphony = 12
 
 [node name="Grid" type="Node3D" parent="."]
 script = ExtResource("3_wy725")
@@ -997,7 +996,7 @@ skeleton = NodePath("../..")
 
 [node name="GridPlacements" type="Node3D" parent="Grid"]
 
-[node name="00" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="00" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1011,12 +1010,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="RayCast3D" type="RayCast3D" parent="Grid/GridPlacements/00"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-target_position = Vector3(0, -4, 0)
-collision_mask = 4
-
-[node name="10" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="10" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1030,7 +1024,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="20" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="20" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1044,7 +1038,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="30" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="30" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1058,7 +1052,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="01" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="01" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1072,7 +1066,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="11" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="11" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1086,7 +1080,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="21" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="21" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1100,7 +1094,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="31" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="31" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1114,7 +1108,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="02" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="02" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1128,7 +1122,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="13" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="13" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1142,7 +1136,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="23" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="23" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 0)
 script = ExtResource("4_gcuyk")
 
@@ -1156,7 +1150,7 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="33" type="StaticBody3D" parent="Grid/GridPlacements"]
+[node name="33" type="Area3D" parent="Grid/GridPlacements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.5, 0)
 script = ExtResource("4_gcuyk")
 

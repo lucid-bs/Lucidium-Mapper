@@ -45,7 +45,6 @@ func _input(event: InputEvent) -> void:
 			editor_node.audio_stream_player.stream =  $"../..".audio_stream
 			editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)
 			
-			
 			playback_node = MapPlayback.new()
 			playback_node.editor_node = editor_node
 			playback_node.event_manager = event_manager
@@ -60,6 +59,8 @@ func _ready() -> void:
 	editor_node.beat_changed.connect(editor_beat_changed)
 
 func scroll_bar_value_changed(value):
+	if editor_node.map_playing:
+		return
 	editor_node.current_beat = value
 	event_manager.sync_blocks()
 	editor_node.audio_stream_player.play((60/$"../..".current_bpm) * editor_node.current_beat)

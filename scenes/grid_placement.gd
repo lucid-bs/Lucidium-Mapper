@@ -20,4 +20,3 @@ func _unhandled_input(event: InputEvent) -> void:
 			$MeshInstance3D.transparency = 0.3
 		elif highlighted:
 			$MeshInstance3D.transparency = 0.6
-
