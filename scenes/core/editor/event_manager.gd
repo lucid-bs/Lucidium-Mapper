@@ -16,10 +16,10 @@ func scroll_map(up: bool):
 	var step = 1.0 / editor_node.current_precision_denominator
 	if up:
 		editor_node.current_beat += step
-		editor_node.current_beat = clampf(editor_node.current_beat, 0.0, ($"../..".current_bpm / 60) * $"../..".audio_stream.get_length())
+		editor_node.current_beat = clampf(snappedf(editor_node.current_beat, step), 0.0, ($"../..".current_bpm / 60) * $"../..".audio_stream.get_length())
 	else:
 		editor_node.current_beat -= step
-		editor_node.current_beat = clampf(editor_node.current_beat, 0.0, ($"../..".current_bpm / 60) * $"../..".audio_stream.get_length())
+		editor_node.current_beat = clampf(snappedf(editor_node.current_beat, step), 0.0, ($"../..".current_bpm / 60) * $"../..".audio_stream.get_length())
 	sync_blocks()
 	
 	

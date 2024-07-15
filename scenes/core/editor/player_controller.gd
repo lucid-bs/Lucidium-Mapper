@@ -54,7 +54,7 @@ func _input(event: InputEvent) -> void:
 			
 			
 func _ready() -> void:
-	timeline_scroll_bar.step = 1 / editor_node.current_precision_denominator
+	timeline_scroll_bar.step = 1.0 / editor_node.current_precision_denominator
 	timeline_scroll_bar.max_value = ($"../..".current_bpm / 60) * $"../..".audio_stream.get_length()
 	timeline_scroll_bar.value_changed.connect(scroll_bar_value_changed)
 	editor_node.beat_changed.connect(editor_beat_changed)
@@ -67,4 +67,6 @@ func scroll_bar_value_changed(value):
 	editor_node.audio_stream_player.stop()
 	
 func editor_beat_changed(value):
+	timeline_scroll_bar.value_changed.disconnect(scroll_bar_value_changed)
 	timeline_scroll_bar.value = value
+	timeline_scroll_bar.value_changed.connect(scroll_bar_value_changed)
