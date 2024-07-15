@@ -49,7 +49,7 @@ enum BLOQ_COLORS {
 
 @export var error_logger : Node
 
-
+@export var fine_grain_position_node : AnimatableBody3D
 var hovered : bool = false
 
 var color_note_resource : ColorNote

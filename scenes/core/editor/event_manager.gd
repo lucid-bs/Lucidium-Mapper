@@ -51,6 +51,7 @@ func sync_blocks():
 			new_block.color_note_resource = i
 			new_block.x = i.line_index
 			new_block.y = i.line_layer
+			new_block.position = Vector3(1, 1, 1)
 			new_block.color = i.color
 			new_block.direction = i.cut_direction
 			new_block.angle_offset = i.angle_offset
@@ -77,5 +78,4 @@ func sync_blocks():
 	for i : Block in old_blocks:
 		i.color_note_resource.set_meta(&"block_node", null)
 		block_tween.tween_callback(i.queue_free)
-		
 		

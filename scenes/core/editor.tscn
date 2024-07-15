@@ -733,7 +733,7 @@ stream = ExtResource("6_4cv4x")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
 stream = ExtResource("6_4cv4x")
-max_polyphony = 12
+volume_db = 1.0
 
 [node name="Grid" type="Node3D" parent="."]
 script = ExtResource("3_wy725")
@@ -993,9 +993,11 @@ skeleton = NodePath("../..")
 
 [node name="GridPlacements" type="Node3D" parent="Grid"]
 
-[node name="00" type="Area3D" parent="Grid/GridPlacements"]
+[node name="00" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/00"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1007,9 +1009,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="10" type="Area3D" parent="Grid/GridPlacements"]
+[node name="10" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1021,9 +1025,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="20" type="Area3D" parent="Grid/GridPlacements"]
+[node name="20" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1035,9 +1041,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="30" type="Area3D" parent="Grid/GridPlacements"]
+[node name="30" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1049,9 +1057,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="01" type="Area3D" parent="Grid/GridPlacements"]
+[node name="01" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1063,9 +1073,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="11" type="Area3D" parent="Grid/GridPlacements"]
+[node name="11" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1077,9 +1089,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="21" type="Area3D" parent="Grid/GridPlacements"]
+[node name="21" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1091,9 +1105,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="31" type="Area3D" parent="Grid/GridPlacements"]
+[node name="31" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1105,9 +1121,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="02" type="Area3D" parent="Grid/GridPlacements"]
+[node name="02" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1119,9 +1137,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="13" type="Area3D" parent="Grid/GridPlacements"]
+[node name="13" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1133,9 +1153,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="23" type="Area3D" parent="Grid/GridPlacements"]
+[node name="23" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
@@ -1147,9 +1169,11 @@ layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="33" type="Area3D" parent="Grid/GridPlacements"]
+[node name="33" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.5, 0)
+collision_mask = 4
 script = ExtResource("4_gcuyk")
+editor_node = NodePath("../../../LucidiumEditor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)

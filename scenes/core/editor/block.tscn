@@ -43,10 +43,12 @@ top_radius = 0.08
 bottom_radius = 0.08
 height = 0.025
 
-[node name="Bloq" type="RigidBody3D"]
+[node name="Bloq" type="RigidBody3D" node_paths=PackedStringArray("fine_grain_position_node")]
 collision_layer = 4
 freeze = true
+freeze_mode = 1
 script = ExtResource("1_p10gk")
+fine_grain_position_node = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xaduy")
