@@ -22,7 +22,7 @@ enum BLOQ_COLORS {
 @export var selected : bool = false
 
 
-@export var glossy : bool = true
+@export var glossy : bool = false
 
 
 # V3 JSON SETTINGS
@@ -33,9 +33,9 @@ enum BLOQ_COLORS {
 # END OPF V3 JSON SETTINGS
 
 @export var rgb_color : Color
-@export var bloq_multiplier : float = 0.28 # 0.28 MMA2 Style
-@export var arrow_multiplier : float = 0.405 # 0.405 MMA2 Style
-@export var arrow_white : float = 0 # 0 MMA2 Style
+@export var bloq_multiplier : float = 1 # 0.28 MMA2 Style 0.4 CM Style
+@export var arrow_multiplier : float = 0.8 # 0.405 MMA2 Style 1.3 CM Style
+@export var arrow_white : float = 0 # 0 MMA2 Style 0.125 CM Style
 
 @export var block_dissolve : float = 1:
 	set(value):
@@ -49,7 +49,7 @@ enum BLOQ_COLORS {
 
 @export var error_logger : Node
 
-@export var fine_grain_position_node : AnimatableBody3D
+@export var editor_node : LucidiumEditor
 var hovered : bool = false
 
 var color_note_resource : ColorNote

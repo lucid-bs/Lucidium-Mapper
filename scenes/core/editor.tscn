@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=125 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://scenes/core/settings_window.tscn" id="11_f5e1k"]
 [ext_resource type="Shader" path="res://materials/shaders/color_alpha.gdshader" id="11_irt5k"]
 [ext_resource type="Script" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
+[ext_resource type="Script" path="res://scenes/core/editor/sub_div_bars.gd" id="13_v18s2"]
 [ext_resource type="Script" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
 [ext_resource type="Script" path="res://scenes/core/editor/editor.gd" id="16_r33nt"]
 [ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
@@ -91,6 +92,12 @@ render_priority = 0
 shader = ExtResource("11_irt5k")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/alpha = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ptyo0"]
+size = Vector3(0.01, 4, 0.125)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gja7c"]
+size = Vector3(0.01, 4, 0.125)
 
 [sub_resource type="Shader" id="Shader_ejom5"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.beta2's StandardMaterial3D.
@@ -980,6 +987,141 @@ font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
+[node name="SubDivBars" type="Node3D" parent="Grid/Timeline" node_paths=PackedStringArray("editor_node")]
+visible = false
+script = ExtResource("13_v18s2")
+editor_node = NodePath("../../../LucidiumEditor")
+bar_mesh = SubResource("BoxMesh_ptyo0")
+bar_material = ExtResource("6_2v7ym")
+
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 2)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_gja7c")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/0"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "0"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -2)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/1"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "1"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -6)
+layers = 4
+material_override = SubResource("ShaderMaterial_ufjc0")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/2"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "2"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -10)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/3"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "3"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="4" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -14)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/4"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "4"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="5" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -18)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/5"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "5"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="6" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -22)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/6"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "6"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="7" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -26)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/7"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "7
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
+[node name="8" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -30)
+layers = 4
+material_override = ExtResource("6_2v7ym")
+mesh = SubResource("BoxMesh_q54dk")
+skeleton = NodePath("../../..")
+
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/8"]
+transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
+text = "8
+"
+font = SubResource("FontVariation_op0pt")
+font_size = 114
+outline_size = 0
+
 [node name="Spectogram" type="Node3D" parent="Grid"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 visible = false
@@ -1297,11 +1439,15 @@ current_tab = 0
 tab_alignment = 1
 clip_tabs = false
 scrolling_enabled = false
-tab_count = 3
+tab_count = 5
 tab_0/title = "Chart"
 tab_1/title = "Environment"
-tab_2/title = "Text Editor"
+tab_1/disabled = true
+tab_2/title = "Animate"
 tab_2/disabled = true
+tab_3/title = "Text Editor"
+tab_3/disabled = true
+tab_4/title = "Preview"
 
 [node name="Exit" type="Button" parent="MapperUI/Top Bar"]
 layout_mode = 1

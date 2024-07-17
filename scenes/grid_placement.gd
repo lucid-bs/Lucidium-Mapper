@@ -34,7 +34,6 @@ func _body_entered(body : Node3D):
 		current_block = body
 		editor_node.sfx_player.play()
 		
-		
 func _body_exited(body : Node3D):
 	if body is Block && current_block == body:
 		current_block = null

@@ -26,6 +26,8 @@ extends Panel
 	},
 	{},
 	{},
+	{},
+	{},
 ]
 
 func update_tabs():

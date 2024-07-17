@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_x3ln3")
-steepness = 0.09
-amplitude = 0.7
+steepness = 1.595
+amplitude = 2.75
 direction_degrees = 315.0
 frequency = 0.9
 speed = 0.75
+phase_degrees = 0.0

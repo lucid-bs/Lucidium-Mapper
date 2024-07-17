@@ -11,6 +11,8 @@ const BLOCK = preload("res://scenes/core/editor/block.tscn")
 
 @export var bpm_second_rate : float
 
+@export var active_notes : Array
+
 var current_active_blocks : Array[ColorNote]
 func scroll_map(up: bool):
 	var step = 1.0 / editor_node.current_precision_denominator
@@ -26,10 +28,10 @@ func scroll_map(up: bool):
 	
 func sync_blocks():
 	var block_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_parallel()
-	var notes = map_data.get_in_range(&"color_notes", editor_node.current_beat - 2, editor_node.current_beat + 7)
+	active_notes = map_data.get_in_range(&"color_notes", editor_node.current_beat - 2, editor_node.current_beat + 7)
 	
 	var old_blocks : Array[Node] = $"../../Bloqs".get_children()
-	for i : ColorNote in notes:
+	for i : ColorNote in active_notes:
 		var temp = i.get_meta(&"block_node", "null")
 		if temp is Block:
 			temp.position.z = (i.beat - editor_node.current_beat) * -4
@@ -47,7 +49,7 @@ func sync_blocks():
 			
 		else:
 			var new_block = BLOCK.instantiate()
-			new_block.glossy = false
+			new_block.editor_node = editor_node
 			new_block.color_note_resource = i
 			new_block.x = i.line_index
 			new_block.y = i.line_layer

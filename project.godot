@@ -37,7 +37,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/zylann.editor_debugger/plugin.cfg")
+enabled=PackedStringArray("res://addons/boujie_water_shader/plugin.cfg", "res://addons/zylann.editor_debugger/plugin.cfg")
 
 [gui]
 
