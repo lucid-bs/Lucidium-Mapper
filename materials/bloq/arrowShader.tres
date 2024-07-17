@@ -6,7 +6,7 @@ code = "// NOTE: Shader automatically converted from Godot Engine 4.2.beta2's St
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx, depth_prepass_alpha;
 uniform vec4 albedo : source_color;
-uniform float color_multiplier : hint_range(0, 3) = 1;
+uniform float color_multiplier : hint_range(0, 8) = 1;
 uniform float white_blend : hint_range(0, 1) = 1;
 
 uniform sampler2D noise_texture;

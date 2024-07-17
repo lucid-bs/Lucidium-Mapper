@@ -74,6 +74,7 @@ layout_mode = 2
 hide_root = true
 
 [node name="BlocksColorsContainer" type="ScrollContainer" parent="Editor/HSplitContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer"]
@@ -143,7 +144,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="BlocksMaterialContainer" type="ScrollContainer" parent="Editor/HSplitContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer"]
@@ -169,12 +169,14 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 2
-item_count = 3
+item_count = 4
 popup/item_0/text = "ChroMapper"
 popup/item_1/text = "MMA2"
 popup/item_1/id = 1
-popup/item_2/text = "Custom"
+popup/item_2/text = "Lucidium"
 popup/item_2/id = 2
+popup/item_3/text = "Custom"
+popup/item_3/id = 3
 
 [node name="HSeparator" type="HSeparator" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
 layout_mode = 2
@@ -200,9 +202,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-max_value = 1.0
+max_value = 3.0
 step = 0.0
-value = 0.28
+value = 2.0
 
 [node name="PanelContainer3" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
 auto_translate_mode = 1
@@ -225,9 +227,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-max_value = 1.0
+max_value = 8.0
 step = 0.0
-value = 0.405
+value = 8.0
 
 [node name="PanelContainer4" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
 auto_translate_mode = 1
