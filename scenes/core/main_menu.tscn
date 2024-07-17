@@ -51,10 +51,11 @@ anchor_top = 0.355556
 anchor_right = 0.95
 anchor_bottom = 0.888889
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -99,7 +100,6 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_6ktwf")
@@ -140,3 +140,5 @@ layout_mode = 2
 text = "Download"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="TabContainer/Load Map"]
+
+[connection signal="pressed" from="TabContainer/Load Map/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
