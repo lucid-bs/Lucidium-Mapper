@@ -204,7 +204,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 3.0
 step = 0.0
-value = 2.0
+value = 0.45
 
 [node name="PanelContainer3" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
 auto_translate_mode = 1
@@ -254,6 +254,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.0
+value = 0.063
 
 [node name="PanelContainer5" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)

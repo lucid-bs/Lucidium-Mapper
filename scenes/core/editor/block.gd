@@ -33,9 +33,9 @@ enum BLOQ_COLORS {
 # END OPF V3 JSON SETTINGS
 
 @export var rgb_color : Color
-@export var bloq_multiplier : float = 2 # 0.28 MMA2 Style 0.4 CM Style 2 LUC Style
+@export var bloq_multiplier : float = 0.45 # 0.28 MMA2 Style 0.4 CM Style 0.45 LUC Style
 @export var arrow_multiplier : float = 8 # 0.405 MMA2 Style 1.3 CM Style 8 LUC Style
-@export var arrow_white : float = 0 # 0 MMA2 Style 0.125 CM Style 0 LUC Style
+@export var arrow_white : float = 0.0625 # 0 MMA2 Style 0.125 CM Style 0.0625 LUC Style
 
 @export var block_dissolve : float = 1:
 	set(value):

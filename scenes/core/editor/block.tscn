@@ -49,6 +49,7 @@ collision_layer = 4
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_p10gk")
+glossy = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xaduy")
