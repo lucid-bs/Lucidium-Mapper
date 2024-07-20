@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=9 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Script" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
 [ext_resource type="Script" path="res://scenes/core/assets/web_map_loader.gd" id="4_6ktwf"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddiyh"]
+bg_color = Color(0.109804, 0.129412, 0.156863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8v2gx"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ji7h"]
+font_size = 10
+font_color = Color(0.61339, 0.61339, 0.61339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vf4l0"]
+bg_color = Color(0.113725, 0.133333, 0.160784, 1)
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -22,8 +35,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
+theme_override_styles/panel = SubResource("StyleBoxFlat_ddiyh")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -141,4 +156,105 @@ text = "Download"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="TabContainer/Load Map"]
 
+[node name="HELP" type="Panel" parent="."]
+layout_mode = 0
+anchor_left = 0.05
+anchor_top = 0.0888889
+anchor_right = 0.5
+anchor_bottom = 0.888889
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HELP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HELP/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "There are no maps here, HELP!"
+label_settings = SubResource("LabelSettings_8v2gx")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="HSeparator" type="HSeparator" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="d" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "There's Two cases I can think of."
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="d2" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "A: There are no maps in your CustomWIPLevels Directory"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="d3" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "B: You haven't set your install directory correctly"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="d4" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sidenote, to set it correctly, you need to use the *root* folder. If CustomWIPLevels is located within Beat Saber_Data, you need to select the Beat Saber_Data folder instead of the CustomWIPLevels folder. "
+label_settings = SubResource("LabelSettings_8ji7h")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 162
+
+[node name="HSeparator2" type="HSeparator" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="d5" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "I can do two things for you."
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="d6" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "A: Rescan '' for Maps"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 162
+
+[node name="Rescan" type="Button" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vf4l0")
+text = "Rescan"
+
+[node name="d7" type="Label" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "B: Send you back to reconfigure your Install Directory"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="Reconfigure" type="Button" parent="HELP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vf4l0")
+text = "Reconfigure"
+
 [connection signal="pressed" from="TabContainer/Load Map/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
+[connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Rescan" to="." method="_on_rescan_pressed"]
+[connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Reconfigure" to="." method="_on_reconfigure_pressed"]

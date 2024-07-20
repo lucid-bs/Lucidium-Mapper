@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://4uq6t750w1kx"]
+[gd_scene load_steps=4 format=3 uid="uid://4uq6t750w1kx"]
 
 [ext_resource type="Script" path="res://scenes/core/first_time_setup.gd" id="2_ni6y4"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="3_2m35f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jre7p"]
+bg_color = Color(0.109804, 0.129412, 0.156863, 1)
 
 [node name="First Time Setup" type="Control"]
 layout_mode = 3
@@ -19,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jre7p")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
