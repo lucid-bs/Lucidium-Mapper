@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=11 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Script" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
 [ext_resource type="Script" path="res://scenes/core/assets/web_map_loader.gd" id="4_6ktwf"]
+[ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="4_h4t08"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddiyh"]
@@ -113,6 +114,45 @@ text = "Settings (NONFUNCTIONAL)"
 [node name="New Map" type="Control" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="Panel" type="Panel" parent="TabContainer/New Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/New Map/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/New Map/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/New Map/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Uhh, there's nothing here."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/New Map/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FailsafeNoMapMaking" type="RichTextLabel" parent="TabContainer/New Map/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_h4t08")
+bbcode_enabled = true
+text = "That's how it's supposed to be right now. The priority is to get everything accurate to Beat Saber, and saving Map Data is lower on my Priorities list. If you need an [b]actual[/b] editor, [url=https://cm.topc.at/dl]download ChroMapper.[/url] "
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
 visible = false
@@ -268,6 +308,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[connection signal="meta_clicked" from="TabContainer/New Map/Panel/MarginContainer/VBoxContainer/FailsafeNoMapMaking" to="." method="_on_failsafe_no_map_making_meta_clicked"]
 [connection signal="pressed" from="TabContainer/Load Map/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
 [connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Rescan" to="." method="_on_rescan_pressed"]
 [connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Reconfigure" to="." method="_on_reconfigure_pressed"]

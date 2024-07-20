@@ -68,3 +68,7 @@ func _on_reconfigure_pressed() -> void:
 	
 	get_tree().root.call_deferred("add_child", first_time_setup)
 	call_deferred("queue_free")
+
+
+func _on_failsafe_no_map_making_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
