@@ -36,7 +36,6 @@ enum BLOQ_COLORS {
 @export var bloq_multiplier : float = 0.45 # 0.28 MMA2 Style 0.4 CM Style 0.45 LUC Style
 @export var arrow_multiplier : float = 8 # 0.405 MMA2 Style 1.3 CM Style 8 LUC Style
 @export var arrow_white : float = 0.0625 # 0 MMA2 Style 0.125 CM Style 0.0625 LUC Style
-
 @export var block_dissolve : float = 1:
 	set(value):
 		$MeshInstance3D.material_override.set_shader_parameter("noise_interpolate", value)
@@ -46,6 +45,9 @@ enum BLOQ_COLORS {
 	set(value):
 		$MeshInstance3D/Arrow.material_override.set_shader_parameter("noise_interpolate", value)
 		arrow_dissolve = value
+
+@export var arrow_mesh : MeshInstance3D
+@export var dot_mesh : MeshInstance3D
 
 @export var error_logger : Node
 
@@ -65,37 +67,9 @@ func update_arrow_color(albedo := rgb_color, multiplier := arrow_multiplier, whi
 	$MeshInstance3D/Arrow.material_override.set_shader_parameter("white_blend", arrow_white)
 
 func update_direction(new_direction : BLOQ_DIRECTIONS, new_angle_offset : int):
-	if direction == BLOQ_DIRECTIONS.ANY:
-		$MeshInstance3D/Dot.visible = true
-		$MeshInstance3D/Arrow.visible = false
-	else:
-		$MeshInstance3D/Dot.visible = false
-		$MeshInstance3D/Arrow.visible = true
-
-
-	global_rotation.z = 0
-	
-	match new_direction:
-		0:
-			global_rotation.z = deg_to_rad(180.0)
-		1:
-			global_rotation.z = deg_to_rad(0.0)
-		2:
-			global_rotation.z = deg_to_rad(-90.0)
-		3:
-			global_rotation.z = deg_to_rad(90.0)
-		4:
-			global_rotation.z = deg_to_rad(225.0)
-		5:
-			global_rotation.z = deg_to_rad(135.0)
-		6:
-			global_rotation.z = deg_to_rad(-45.0)
-		7:
-			global_rotation.z = deg_to_rad(45.0)
-
-	global_rotation.z -= deg_to_rad(new_angle_offset)
 	direction = new_direction
 	angle_offset = new_angle_offset
+	$TransformComponent3D.update_rotation()
 
 func update_position(new_x : int, new_y : int):
 	position.x = -1.5 + new_x

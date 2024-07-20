@@ -17,6 +17,11 @@ func _ready() -> void:
 	print(config.get_value("FileSystem", "InstallDir") + "/CustomWIPLevels")
 	
 	scan_for_maps(config.get_value("FileSystem", "InstallDir"))
+	
+	if randi_range(0, 3) == 2:
+		$"TabContainer/New Map/Panel/MarginContainer/VBoxContainer/FailsafeNoMapMaking".text = "That's how it's supposed to be right now. The priority is to get everything accurate to Beat Saber, and saving Map Data is lower on my Priorities list. If you need an [b]actual editor[/b], [url=https://cm.topc.at/dl]have you heard about our lord and savior, ChroMapper Chan?[/url] "
+	else:
+		$"TabContainer/New Map/Panel/MarginContainer/VBoxContainer/FailsafeNoMapMaking".text = "That's how it's supposed to be right now. The priority is to get everything accurate to Beat Saber, and saving Map Data is lower on my Priorities list. If you need an [b]actual editor[/b], [url=https://cm.topc.at/dl]download ChroMapper.[/url] "
 func _configure_map(directory: String):
 	var map_config = MAP_CONFIGURER.instantiate()
 	map_config.map_data_manager.path = directory
