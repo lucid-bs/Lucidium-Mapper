@@ -152,7 +152,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("4_h4t08")
 bbcode_enabled = true
-text = "That's how it's supposed to be right now. The priority is to get everything accurate to Beat Saber, and saving Map Data is lower on my Priorities list. If you need an [b]actual[/b] editor, [url=https://cm.topc.at/dl]download ChroMapper.[/url] "
+text = "That's how it's supposed to be right now. The priority is to get everything accurate to Beat Saber, and saving Map Data is lower on my Priorities list. If you need an [b]actual editor[/b], [url=https://cm.topc.at/dl]download ChroMapper.[/url] "
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
 visible = false
