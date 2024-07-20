@@ -94,6 +94,15 @@ layout_mode = 2
 text = "Use Appdata Instead"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 384.0
+offset_right = 1216.0
+offset_bottom = 576.0
+text = "As of the time that you're running this, this mapper cannot currently be used to Map songs. In the nature of keeping everything free and open source, I've left this publiclly accessible, but as it stands right now, this is a glorified shitty map viewer. Just use ChroMapper right now and check back in a few months if you want to make maps with this thing. Or keep an eye peeled at the BSMG Mapping Discussion channel, as I'll be posting updates there."
+autowrap_mode = 3
+
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
 [connection signal="pressed" from="HBoxContainer/Confirm" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="DirectoryManager/HBoxContainer/OpenFileManagerButton" to="." method="_on_open_file_manager_button_pressed"]
