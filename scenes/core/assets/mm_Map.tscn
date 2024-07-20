@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg18jengd0jtn"]
+[gd_scene load_steps=7 format=3 uid="uid://bg18jengd0jtn"]
 
 [ext_resource type="Script" path="res://scenes/core/assets/mm_Map.gd" id="1_uy3uj"]
+[ext_resource type="Texture2D" uid="uid://dn3sgp575bgwo" path="res://extern/Lost Faith/tcsr.png" id="2_l18i5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gir82"]
 font_size = 22
@@ -28,6 +29,7 @@ anchors_preset = -1
 anchor_left = 0.722222
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture = ExtResource("2_l18i5")
 expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true

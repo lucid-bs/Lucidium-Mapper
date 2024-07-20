@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=126 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
@@ -707,6 +707,8 @@ material = SubResource("ShaderMaterial_3icav")
 size = Vector2(12.21, 11.825)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2m0gw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_70k4i"]
 
 [node name="Map Editor" type="Node3D" node_paths=PackedStringArray("local_editor")]
 script = ExtResource("1_lhv5r")
@@ -1630,7 +1632,7 @@ stretch = true
 handle_input_locally = false
 msaa_3d = 2
 screen_space_aa = 1
-size = Vector2i(640, 360)
+size = Vector2i(742, 632)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
@@ -2110,6 +2112,18 @@ text = "Cancel"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Save and Close"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.911111
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "PRE ALPHA DEVELOPMENT BUILD - Expect Non-Functional, broken Jankiness and DO NOT use this in production to make maps without Acknowledging this."
+label_settings = SubResource("LabelSettings_70k4i")
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="tab_changed" from="MapperUI/Top Bar/TabBar" to="MapperUI/Top Bar" method="_on_tab_bar_tab_changed"]
 [connection signal="pressed" from="MapperUI/Top Bar/Exit" to="." method="_on_exit_pressed"]

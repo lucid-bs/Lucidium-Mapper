@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=10 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Script" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
@@ -17,6 +17,8 @@ font_color = Color(0.61339, 0.61339, 0.61339, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vf4l0"]
 bg_color = Color(0.113725, 0.133333, 0.160784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yiw1x"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -38,7 +40,6 @@ theme_type_variation = &"Background"
 theme_override_styles/panel = SubResource("StyleBoxFlat_ddiyh")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -66,7 +67,7 @@ anchor_top = 0.355556
 anchor_right = 0.95
 anchor_bottom = 0.888889
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
@@ -110,11 +111,11 @@ layout_mode = 2
 text = "Settings (NONFUNCTIONAL)"
 
 [node name="New Map" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_6ktwf")
@@ -254,6 +255,18 @@ justification_flags = 162
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_vf4l0")
 text = "Reconfigure"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.0888889
+text = "PRE ALPHA DEVELOPMENT BUILD - Expect Non-Functional, broken Jankiness and DO NOT use this in production to make maps without Acknowledging this."
+label_settings = SubResource("LabelSettings_yiw1x")
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TabContainer/Load Map/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
 [connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Rescan" to="." method="_on_rescan_pressed"]

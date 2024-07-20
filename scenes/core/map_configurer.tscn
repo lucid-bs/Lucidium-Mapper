@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtwrdjth048su"]
+[gd_scene load_steps=19 format=3 uid="uid://dtwrdjth048su"]
 
 [ext_resource type="Script" path="res://scenes/core/map_configurer.gd" id="1_v5not"]
 [ext_resource type="Script" path="res://scenes/core/assets/map_data_manager.gd" id="2_mi6hj"]
@@ -51,6 +51,8 @@ environment_names = Array[String]([])
 color_schemes = []
 custom_data = {}
 difficulty_beatmap_sets = Array[ExtResource("9_vml01")]([])
+
+[sub_resource type="LabelSettings" id="LabelSettings_0dmif"]
 
 [node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager", "song_name_edit", "song_subname_edit", "song_author_edit", "map_author_edit", "cover_display", "cover_filename_edit", "song_filename_edit", "song_bpm_edit", "song_preview_start_edit", "song_preview_duration_edit", "play_preview_button", "preview_audio_stream", "preview_timer")]
 layout_mode = 3
@@ -936,6 +938,19 @@ metadata/_edit_use_anchors_ = true
 [node name="MapDataManager" type="Node" parent="."]
 script = ExtResource("2_mi6hj")
 info_dat_data = SubResource("Resource_g5lnc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.911111
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "PRE ALPHA DEVELOPMENT BUILD - Expect Non-Functional, broken Jankiness and DO NOT use this in production to make maps without Acknowledging this."
+label_settings = SubResource("LabelSettings_0dmif")
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="difficulty_changed" from="DifficultyThingy" to="." method="_on_difficulty_thingy_difficulty_changed"]
 [connection signal="value_changed" from="DifficultyThingy/HFlowContainer/ReactionTime/SpinBox" to="DifficultyThingy" method="_on_reaction_time_value_changed"]
