@@ -24,6 +24,10 @@ func _on_button_pressed() -> void:
 	var editor = preload("res://scenes/core/editor.tscn").instantiate()
 	
 	editor.difficulty_beatmap = $DifficultyThingy.current_difficulty.difficulty_object
+	# I have NO IDEA why the editor beatmap just... persists. 
+	# Regardless, if we don't do the below, bad, BAD things will happen when we exit one map and open another.
+	editor.beatmap = Beatmap.new()
+	
 	editor.map_path = $MapDataManager.path
 	editor.audio_stream = AudioStreamOggVorbis.load_from_file($MapDataManager.path + map_data_manager.get_property(&"song_filename"))
 	editor.current_bpm = map_data_manager.get_property(&"beats_per_minute")
@@ -67,3 +71,8 @@ func _on_play_preview_pressed():
 
 func _on_difficulty_thingy_difficulty_changed(new_difficulty: DifficultyThingyDiff) -> void:
 	$DifficultyThingy/HBoxContainer/EnterEditorButton.disabled = false
+
+
+func _on_exit_pressed() -> void:
+	var mm = load("res://scenes/core/main_menu.tscn")
+	get_tree().change_scene_to_packed(mm)

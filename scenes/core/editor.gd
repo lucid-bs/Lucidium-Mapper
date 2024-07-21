@@ -16,6 +16,12 @@ signal mapper_ready
 func _on_exit_pressed() -> void:
 	if $LucidiumEditor.unsaved_changes:
 		$ExitConfirmation.show()
+	else:
+		var map_config = load("res://scenes/core/map_configurer.tscn").instantiate()
+		map_config.map_data_manager.path = map_path
+		
+		get_tree().root.call_deferred("add_child", map_config)
+		call_deferred("queue_free")
 
 func _ready() -> void:
 	if beatmap.raw_data.is_empty():

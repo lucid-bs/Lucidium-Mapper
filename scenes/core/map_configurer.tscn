@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtwrdjth048su"]
+[gd_scene load_steps=20 format=3 uid="uid://dtwrdjth048su"]
 
 [ext_resource type="Script" path="res://scenes/core/map_configurer.gd" id="1_v5not"]
 [ext_resource type="Script" path="res://scenes/core/assets/map_data_manager.gd" id="2_mi6hj"]
@@ -54,6 +54,9 @@ difficulty_beatmap_sets = Array[ExtResource("9_vml01")]([])
 
 [sub_resource type="LabelSettings" id="LabelSettings_0dmif"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dyti"]
+bg_color = Color(0.145098, 0.168627, 0.203922, 1)
+
 [node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager", "song_name_edit", "song_subname_edit", "song_author_edit", "map_author_edit", "cover_display", "cover_filename_edit", "song_filename_edit", "song_bpm_edit", "song_preview_start_edit", "song_preview_duration_edit", "play_preview_button", "preview_audio_stream", "preview_timer")]
 layout_mode = 3
 anchors_preset = 15
@@ -77,10 +80,6 @@ play_preview_button = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBox
 preview_audio_stream = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/AudioStreamPlayer")
 preview_timer = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/PreviewTimer")
 
-[node name="Chro" type="Sprite2D" parent="."]
-position = Vector2(640, 376)
-texture = ExtResource("2_su4so")
-
 [node name="BG" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -89,6 +88,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
+
+[node name="Chro" type="Sprite2D" parent="."]
+position = Vector2(640, 376)
+texture = ExtResource("2_su4so")
 
 [node name="InfoDatThingy" type="Panel" parent="."]
 layout_mode = 1
@@ -952,8 +955,20 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.05
+anchor_bottom = 0.0666667
+theme_override_fonts/font = ExtResource("3_efsek")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1dyti")
+text = "arrow_back"
+flat = true
+metadata/_edit_use_anchors_ = true
+
 [connection signal="difficulty_changed" from="DifficultyThingy" to="." method="_on_difficulty_thingy_difficulty_changed"]
 [connection signal="value_changed" from="DifficultyThingy/HFlowContainer/ReactionTime/SpinBox" to="DifficultyThingy" method="_on_reaction_time_value_changed"]
 [connection signal="value_changed" from="DifficultyThingy/HFlowContainer/JumpDistance/SpinBox" to="DifficultyThingy" method="_on_jump_distance_value_changed"]
 [connection signal="value_changed" from="DifficultyThingy/HFlowContainer/HalfJumpDuration/SpinBox" to="DifficultyThingy" method="_on_half_jump_duration_value_changed"]
 [connection signal="pressed" from="DifficultyThingy/HBoxContainer/EnterEditorButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

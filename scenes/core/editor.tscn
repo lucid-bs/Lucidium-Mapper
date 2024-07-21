@@ -1501,7 +1501,7 @@ script = ExtResource("10_vu5vo")
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsWindow" type="Window" parent="MapperUI"]
-position = Vector2i(320, 180)
+initial_position = 2
 size = Vector2i(640, 360)
 visible = false
 script = ExtResource("10_jdq82")
