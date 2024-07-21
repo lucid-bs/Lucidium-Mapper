@@ -72,10 +72,9 @@ func update_direction(new_direction : BLOQ_DIRECTIONS, new_angle_offset : int):
 	$TransformComponent3D.update_rotation()
 
 func update_position(new_x : int, new_y : int):
-	position.x = -1.5 + new_x
-	position.y = 0.5 + new_y
 	x = new_x
 	y = new_y
+	transform_component.update_position(true, true, false)
 
 func update_selection(new_selected: bool):
 	if new_selected:

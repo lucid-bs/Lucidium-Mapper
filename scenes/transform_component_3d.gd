@@ -16,13 +16,14 @@ enum PARENT_TYPE {
 }
 
 @export var parent_type : PARENT_TYPE
-@export var parent : VisualEventBS
+@export var parent : VisualObject
 
 func _ready() -> void:
 	parent = get_parent()
 	if get_parent() is Block:
 		parent_type = PARENT_TYPE.NOTE
 		
+	parent.transform_component = self
 
 func update_rotation():
 	match parent_type:
@@ -33,8 +34,6 @@ func update_rotation():
 			else:
 				parent.dot_mesh.visible = false
 				parent.arrow_mesh.visible = true
-
-
 			parent.global_rotation.z = 0
 			
 			match parent.direction:
@@ -56,3 +55,11 @@ func update_rotation():
 					parent.global_rotation.z = deg_to_rad(45.0)
 
 			parent.global_rotation.z -= deg_to_rad(parent.angle_offset)
+
+func update_position(update_x : bool, update_y : bool, update_z : bool):
+	if update_x:
+		parent.position.x = -1.5 + parent.x
+	if update_y:
+		parent.position.y = 0.5 + parent.y
+	if update_z:
+		parent.position.z = (parent.beat - parent.editor_node.current_beat) * -4

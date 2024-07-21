@@ -34,7 +34,7 @@ func sync_blocks():
 	for i : ColorNote in active_notes:
 		var temp = i.get_meta(&"block_node", "null")
 		if temp is Block:
-			temp.position.z = (i.beat - editor_node.current_beat) * -4
+			temp.transform_component.update_position(false, false, true)
 			if temp.beat < editor_node.current_beat:
 				block_tween.tween_property(temp, "block_dissolve", 0.5, 0.1)
 				#temp.block_dissolve = 0.5
@@ -60,7 +60,7 @@ func sync_blocks():
 			new_block.beat = i.beat
 			new_block.error_logger = %ErrorLogger
 			$"../../Bloqs".add_child(new_block)
-			new_block.position.z = (i.beat - editor_node.current_beat) * -4
+			new_block.transform_component.update_position(false, false, true)
 			if new_block.beat < editor_node.current_beat:
 				block_tween.tween_property(new_block, "block_dissolve", 0.5, 0.1)
 				#temp.block_dissolve = 0.5

@@ -1,5 +1,5 @@
 class_name VisualEventBS
-extends RigidBody3D
+extends VisualObject
 
 # V3 JSON SETTINGS
 @export var beat : float = 0
