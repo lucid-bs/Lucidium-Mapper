@@ -37,13 +37,16 @@ func _input(event: InputEvent) -> void:
 		
 	elif event.is_action("map_play_pause") && event.is_pressed():
 		if editor_node.map_playing:
-			var divisor = editor_node.current_precision_denominator
+			playback_node.queue_free()
 			editor_node.map_playing = false
 			editor_node.audio_stream_player.stop()
-			playback_node.queue_free()
+			var divisor = editor_node.current_precision_denominator
 			editor_node.current_beat = snappedf(editor_node.current_beat, (1.0/divisor))
-			timeline_scroll_bar.value_changed.connect(scroll_bar_value_changed)
 			event_manager.sync_blocks()
+			event_manager.sync_bombs()
+			timeline_scroll_bar.value = editor_node.current_beat
+			timeline_scroll_bar.value_changed.connect(scroll_bar_value_changed)
+			
 			
 		else:
 			editor_node.map_playing = true
