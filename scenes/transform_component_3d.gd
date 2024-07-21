@@ -20,8 +20,10 @@ enum PARENT_TYPE {
 
 func _ready() -> void:
 	parent = get_parent()
-	if get_parent() is Block:
+	if parent is Block:
 		parent_type = PARENT_TYPE.NOTE
+	elif parent is Bomb:
+		parent_type = PARENT_TYPE.BOMB
 		
 	parent.transform_component = self
 

@@ -7,12 +7,13 @@ extends Resource
 
 var conversion_table_to_json = {
 	"color_notes" = "colorNotes",
+	"bomb_notes" = "bombNotes",
 }
 
 @export var bpm_events : Array
 @export var rotation_events : Array
 @export var color_notes : Array[ColorNote]
-@export var bomb_notes : Array
+@export var bomb_notes : Array[BombNote]
 @export var obstacles : Array
 @export var sliders : Array
 @export var burst_sliders : Array
@@ -35,6 +36,9 @@ func unpack_from_json(json_text : String, json : Dictionary = {}):
 	for i in raw_data[conversion_table_to_json["color_notes"]]:
 		var new_note = ColorNote.new()
 		color_notes.append(new_note.unpack_from_json("", i))
+	for i in raw_data[conversion_table_to_json["bomb_notes"]]:
+		var new_note = BombNote.new()
+		bomb_notes.append(new_note.unpack_from_json("", i))
 	
 
 func pack_to_json():

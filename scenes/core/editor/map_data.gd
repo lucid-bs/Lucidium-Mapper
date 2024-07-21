@@ -13,6 +13,8 @@ func get_in_range(object_type : StringName, min_beat: float, max_beat: float) ->
 	match object_type:
 		&"color_notes":
 			tmp = $"../..".beatmap.color_notes
+		&"bomb_notes":
+			tmp = $"../..".beatmap.bomb_notes
 	
 	return tmp.filter(func(obj): return obj.beat >= min_beat and obj.beat <= max_beat)
 	

@@ -22,9 +22,11 @@ func _process(delta: float) -> void:
 		bpm_second_rate = $"../..".current_bpm / 60
 		editor_node.current_beat = (editor_node.audio_stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()) * (bpm_second_rate)
 		event_manager.sync_blocks()
+		event_manager.sync_bombs()
 
 
 func audio_stream_finished():
 	editor_node.map_playing = false
 	event_manager.sync_blocks()
+	event_manager.sync_bombs()
 	queue_free()

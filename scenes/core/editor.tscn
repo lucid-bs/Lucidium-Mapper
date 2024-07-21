@@ -1,8 +1,11 @@
-[gd_scene load_steps=126 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=130 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
+[ext_resource type="Script" path="res://resources/v3/beatmap/color_note.gd" id="2_jh26k"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
+[ext_resource type="Script" path="res://resources/v3/beatmap/bomb_note.gd" id="2_r50p3"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
+[ext_resource type="Script" path="res://resources/v3/beatmap.gd" id="3_gremr"]
 [ext_resource type="Script" path="res://scenes/core/editor/grid_manager.gd" id="3_wy725"]
 [ext_resource type="Script" path="res://scenes/core/editor/beat_grid_bars.gd" id="4_3kgy6"]
 [ext_resource type="Script" path="res://scenes/grid_placement.gd" id="4_gcuyk"]
@@ -34,6 +37,26 @@
 [ext_resource type="Script" path="res://scenes/core/editor/event_manager.gd" id="27_720f7"]
 [ext_resource type="Script" path="res://scenes/core/editor/map_data.gd" id="27_fuiss"]
 [ext_resource type="Script" path="res://scenes/core/editor/exit_confirmation.gd" id="30_6m50f"]
+
+[sub_resource type="Resource" id="Resource_5jsfj"]
+script = ExtResource("3_gremr")
+version = "3.2.0"
+raw_data = {}
+bpm_events = []
+rotation_events = []
+color_notes = Array[ExtResource("2_r50p3")]([])
+bomb_notes = Array[ExtResource("2_jh26k")]([])
+obstacles = []
+sliders = []
+burst_sliders = []
+basic_beatmap_events = []
+color_boost_beatmap_events = []
+light_color_event_box_groups = []
+light_rotation_event_box_groups = []
+light_translation_event_box_groups = []
+basic_event_types_with_keywords = {}
+use_normal_events_as_compatible_events = false
+custom_data = {}
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbno2"]
 sky_top_color = Color(0.239216, 0.137255, 0.0901961, 1)
@@ -713,6 +736,7 @@ size = Vector2(12.21, 11.825)
 [node name="Map Editor" type="Node3D" node_paths=PackedStringArray("local_editor")]
 script = ExtResource("1_lhv5r")
 local_editor = NodePath("LucidiumEditor")
+beatmap = SubResource("Resource_5jsfj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
@@ -2002,6 +2026,10 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="Bloqs" type="Node3D" parent="." node_paths=PackedStringArray("editor_node")]
+script = ExtResource("11_bwwcu")
+editor_node = NodePath("../LucidiumEditor")
+
+[node name="Bombs" type="Node3D" parent="." node_paths=PackedStringArray("editor_node")]
 script = ExtResource("11_bwwcu")
 editor_node = NodePath("../LucidiumEditor")
 
