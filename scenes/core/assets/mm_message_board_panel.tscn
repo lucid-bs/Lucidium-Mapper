@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmsb5j2akny1s"]
+
+[ext_resource type="Script" path="res://scenes/core/assets/message_board_panel.gd" id="1_4vkci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioi8t"]
+bg_color = Color(0.109804, 0.129412, 0.156863, 1)
+
+[node name="Panel2" type="Panel"]
+custom_minimum_size = Vector2(54, 964)
+script = ExtResource("1_4vkci")
+message = "This is a test to make sure that we can freely push updates for new features we want to make you aware of. If any changes major changes are made to the mapping experience, you'll be made aware via this section here. Hover for further information."
+sticky_stylebox = SubResource("StyleBoxFlat_ioi8t")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "This is a test to make sure that we can freely push updates for new features we want to make you aware of. If any changes major changes are made to the mapping experience, you'll be made aware via this section here. Hover for further information."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="resized" from="ScrollContainer/VBoxContainer/Label" to="." method="_on_label_resized"]

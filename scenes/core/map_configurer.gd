@@ -32,7 +32,7 @@ func _on_button_pressed() -> void:
 	editor.audio_stream = AudioStreamOggVorbis.load_from_file($MapDataManager.path + map_data_manager.get_property(&"song_filename"))
 	editor.current_bpm = map_data_manager.get_property(&"beats_per_minute")
 	get_tree().root.call_deferred("add_child", editor)
-	call_deferred("queue_free")
+	call_deferred_thread_group("queue_free")
 	
 func _ready() -> void:
 	$DifficultyThingy/HBoxContainer/EnterEditorButton.disabled = true
@@ -76,3 +76,5 @@ func _on_difficulty_thingy_difficulty_changed(new_difficulty: DifficultyThingyDi
 func _on_exit_pressed() -> void:
 	var mm = load("res://scenes/core/main_menu.tscn")
 	get_tree().change_scene_to_packed(mm)
+	# For some reason, Godot isn't destroying on change scene to packed.
+	call_deferred_thread_group("queue_free")

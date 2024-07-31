@@ -68,11 +68,10 @@ anchor_top = 0.355556
 anchor_right = 0.95
 anchor_bottom = 0.888889
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -100,7 +99,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Welcome To Lucidium"
+text = "Welcome To Lucidium, v0.1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -111,7 +110,26 @@ layout_mode = 2
 layout_mode = 2
 text = "Settings (NONFUNCTIONAL)"
 
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Updates"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Main Menu/ScrollContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="New Map" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

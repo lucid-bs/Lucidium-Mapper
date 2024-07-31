@@ -49,8 +49,9 @@ func _on_file_dialog_dir_selected(dir: String) -> void:
 
 
 func _on_button_pressed() -> void:
-	config.set_value("Version", "ConfigVersion", 1)
-	config.set_value("EditorGrid", "UsingBeatwallsSchema", false)
+	config.set_value("Version", "ConfigVersion", 2)
+	config.set_value("Editor", "Grid/CoordinateLabel/UsingBeatwallsSchema", false)
+	config.set_value("Networking", "Online", $Panel2/MarginContainer/HBoxContainer2/CheckButton.button_pressed)
 	config.set_value("FileSystem", "InstallDir", $DirectoryManager/HBoxContainer/LineEdit.text)
 	config.save("user://settings.cfg")
 	

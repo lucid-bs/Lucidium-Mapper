@@ -4,3 +4,4 @@
 
 [node name="LOADER" type="Node"]
 script = ExtResource("1_q215r")
+min_config_version = 2
