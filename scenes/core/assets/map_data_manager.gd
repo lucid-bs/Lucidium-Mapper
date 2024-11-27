@@ -16,6 +16,22 @@ func update_property(property_name : StringName, new_property):
 	match property_name:
 		&"song_name":
 			info_dat_data.song_name = new_property
+		&"song_subname":
+			info_dat_data.song_subname = new_property
+		&"song_author_name":
+			info_dat_data.song_author_name = new_property
+		&"level_author_name":
+			info_dat_data.level_author_name = new_property
+		&"cover_image_filename":
+			info_dat_data.cover_image_filename = new_property
+		&"song_filename":
+			info_dat_data.song_filename = new_property
+		&"beats_per_minute":
+			info_dat_data.beats_per_minute = new_property
+		&"preview_start":
+			info_dat_data.preview_start = new_property
+		&"preview_duration":
+			info_dat_data.preview_duration = new_property
 
 func get_property(property_name : StringName):
 	match property_name:
