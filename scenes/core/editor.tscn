@@ -79,7 +79,6 @@ fog_density = 1.0
 fog_depth_curve = 0.5
 fog_depth_begin = 0.0
 fog_depth_end = 1811.5
-volumetric_fog_density = 0.0001
 
 [sub_resource type="BoxMesh" id="BoxMesh_j1knx"]
 material = ExtResource("6_2v7ym")
@@ -386,7 +385,7 @@ uniform sampler2D water_texture;
 uniform vec2 uv_scale2 = vec2(1.000000, 1.000000);
 uniform vec2 scroll2;
 uniform sampler2D water_texture2;
-uniform float overlay_alpha : hint_range(0, 1) = 1;
+uniform float overlay_alpha : hint_range(0.0, 1.0) = 1.0;
 uniform float Metallic;
 uniform float Roughness;
 uniform float Specular;
@@ -638,19 +637,19 @@ noise = SubResource("FastNoiseLite_krgsd")
 render_priority = 0
 shader = SubResource("VisualShader_bd62x")
 shader_parameter/dis_scroll = Vector2(0, 0.285)
+shader_parameter/displacement_tut = ExtResource("20_36pox")
 shader_parameter/displace_parameter = 0.0
+shader_parameter/base_color_texture = SubResource("GradientTexture2D_wjkg5")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/scroll = Vector2(0, -1.5)
+shader_parameter/water_texture = ExtResource("20_36pox")
 shader_parameter/uv_scale2 = Vector2(1, 1)
 shader_parameter/scroll2 = Vector2(0, -1)
+shader_parameter/water_texture2 = SubResource("NoiseTexture2D_b0cnb")
 shader_parameter/overlay_alpha = 0.536
 shader_parameter/Metallic = 0.515
 shader_parameter/Roughness = 0.087
 shader_parameter/Specular = 0.259
-shader_parameter/displacement_tut = ExtResource("20_36pox")
-shader_parameter/base_color_texture = SubResource("GradientTexture2D_wjkg5")
-shader_parameter/water_texture = ExtResource("20_36pox")
-shader_parameter/water_texture2 = SubResource("NoiseTexture2D_b0cnb")
 
 [sub_resource type="BoxMesh" id="BoxMesh_qxtxo"]
 size = Vector3(0.02, 0.02, 0.02)
@@ -712,6 +711,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 1.0
 emission_ring_radius = 16.0
 emission_ring_inner_radius = 6.0
+emission_ring_cone_angle = 90.0
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
 orbit_velocity_min = 0.0100001
@@ -1495,6 +1495,7 @@ theme_override_font_sizes/font_size = 12
 text = "Settings"
 item_count = 2
 popup/item_0/text = "Map Settings"
+popup/item_0/id = 0
 popup/item_1/text = "Editor Settings"
 popup/item_1/id = 1
 script = ExtResource("10_vu5vo")
@@ -1894,6 +1895,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
 popup/item_0/text = "Up"
+popup/item_0/id = 0
 popup/item_1/text = "Down"
 popup/item_1/id = 1
 popup/item_2/text = "Left"
@@ -1926,6 +1928,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
 popup/item_0/text = "Red"
+popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 

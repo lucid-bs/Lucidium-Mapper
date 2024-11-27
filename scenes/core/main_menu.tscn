@@ -204,6 +204,7 @@ vertical_alignment = 1
 
 [node name="TabBar" type="TabBar" parent="TabContainer/Load Map/FILESYSTEM"]
 layout_mode = 2
+current_tab = 0
 tab_alignment = 1
 tab_count = 2
 tab_0/title = "Map Directory"

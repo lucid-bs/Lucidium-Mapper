@@ -56,5 +56,5 @@ shader_parameter/roughness = 0.667
 shader_parameter/specular = 1.0
 shader_parameter/metallic = 1.0
 shader_parameter/color_multiplier = 0.32
-shader_parameter/noise_interpolate = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_q83ee")
+shader_parameter/noise_interpolate = 1.0
