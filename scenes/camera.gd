@@ -21,7 +21,7 @@ var _vel_multiplier = 5
 
 func _ready() -> void:
 	DisplayServer.window_set_min_size(Vector2i(1280, 720))
-	%ErrorLogger.log_message("Hello from Camera!")
+	#%ErrorLogger.log_message("Hello from Camera!")
 	get_viewport().physics_object_picking = true
 	_acceleration = lerpf(35, 8, inertia) 
 	_deceleration = lerpf(-15, -3, inertia) 

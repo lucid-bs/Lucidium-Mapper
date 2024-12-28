@@ -39,6 +39,11 @@ func _ready() -> void:
 	load_data()
 	play_preview_button.pressed.connect(_on_play_preview_pressed)
 	
+	if randi_range(0, 4) == 3:
+		$InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer/Label.text = "Waiting For Godot? More like Waiting for Waveform, ha!"
+	else:
+		$InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer/Label.text = "A Waveform will go here. Eventually. One day."
+	
 func load_data():
 	song_name_edit.text = map_data_manager.get_property("song_name")
 	song_subname_edit.text = map_data_manager.get_property("song_subname")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://w1xrk5prbs38"]
 
-[ext_resource type="Script" path="res://scenes/settings_tree.gd" id="1_1jfr7"]
+[ext_resource type="Script" uid="uid://bvkmt7lgf32wm" path="res://scenes/settings_tree.gd" id="1_1jfr7"]
 
 [node name="GlobalSettings" type="TabContainer"]
 anchors_preset = 15

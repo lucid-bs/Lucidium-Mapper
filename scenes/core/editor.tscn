@@ -1,42 +1,42 @@
-[gd_scene load_steps=130 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=131 format=3 uid="uid://d22oot53lt605"]
 
-[ext_resource type="Script" path="res://scenes/core/editor.gd" id="1_lhv5r"]
-[ext_resource type="Script" path="res://resources/v3/beatmap/color_note.gd" id="2_jh26k"]
+[ext_resource type="Script" uid="uid://cbhsuce2xlbur" path="res://scenes/core/editor.gd" id="1_lhv5r"]
+[ext_resource type="Script" uid="uid://dvhtroyg883ll" path="res://resources/v3/beatmap/color_note.gd" id="2_jh26k"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="2_qhjkb"]
-[ext_resource type="Script" path="res://resources/v3/beatmap/bomb_note.gd" id="2_r50p3"]
-[ext_resource type="Script" path="res://scenes/camera.gd" id="2_xkfh1"]
-[ext_resource type="Script" path="res://resources/v3/beatmap.gd" id="3_gremr"]
-[ext_resource type="Script" path="res://scenes/core/editor/grid_manager.gd" id="3_wy725"]
-[ext_resource type="Script" path="res://scenes/core/editor/beat_grid_bars.gd" id="4_3kgy6"]
-[ext_resource type="Script" path="res://scenes/grid_placement.gd" id="4_gcuyk"]
+[ext_resource type="Script" uid="uid://g5uncl60e8oq" path="res://resources/v3/beatmap/bomb_note.gd" id="2_r50p3"]
+[ext_resource type="Script" uid="uid://dgkmdpr5srnmt" path="res://scenes/camera.gd" id="2_xkfh1"]
+[ext_resource type="Script" uid="uid://dq8qbl23ucj1g" path="res://resources/v3/beatmap.gd" id="3_gremr"]
+[ext_resource type="Script" uid="uid://b2yv1w6kmy5hv" path="res://scenes/core/editor/grid_manager.gd" id="3_wy725"]
+[ext_resource type="Script" uid="uid://dkay7rpejru6j" path="res://scenes/core/editor/beat_grid_bars.gd" id="4_3kgy6"]
+[ext_resource type="Script" uid="uid://vdu02pk42lfw" path="res://scenes/grid_placement.gd" id="4_gcuyk"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="5_1sgbo"]
 [ext_resource type="Material" uid="uid://dfpwwuor34p2h" path="res://materials/grid.tres" id="6_2v7ym"]
 [ext_resource type="AudioStream" uid="uid://vum8phl3c23m" path="res://sfx/RabbitsViewerTick.wav" id="6_4cv4x"]
-[ext_resource type="Script" path="res://scenes/core/editor/grid_labels.gd" id="6_313ly"]
-[ext_resource type="Script" path="res://scenes/core/editor/top_bar.gd" id="6_edat5"]
+[ext_resource type="Script" uid="uid://cipdgb4k8153f" path="res://scenes/core/editor/grid_labels.gd" id="6_313ly"]
+[ext_resource type="Script" uid="uid://whdbq5kod3y7" path="res://scenes/core/editor/top_bar.gd" id="6_edat5"]
 [ext_resource type="Material" uid="uid://bpmvefyc2g4g0" path="res://materials/grid_transparent.tres" id="7_k0ji6"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="9_fabox"]
-[ext_resource type="Script" path="res://scenes/error_logger.gd" id="10_i8sui"]
-[ext_resource type="Script" path="res://scenes/core/settings_window.gd" id="10_jdq82"]
-[ext_resource type="Script" path="res://scenes/core/editor/menu_button.gd" id="10_vu5vo"]
-[ext_resource type="Script" path="res://scenes/core/editor/block_manager.gd" id="11_bwwcu"]
+[ext_resource type="Script" uid="uid://diu0qt70jssaw" path="res://scenes/error_logger.gd" id="10_i8sui"]
+[ext_resource type="Script" uid="uid://bptokfgi3le4r" path="res://scenes/core/settings_window.gd" id="10_jdq82"]
+[ext_resource type="Script" uid="uid://sjru5atoiyka" path="res://scenes/core/editor/menu_button.gd" id="10_vu5vo"]
+[ext_resource type="Script" uid="uid://bv6fbw35xawur" path="res://scenes/core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://scenes/core/settings_window.tscn" id="11_f5e1k"]
-[ext_resource type="Shader" path="res://materials/shaders/color_alpha.gdshader" id="11_irt5k"]
-[ext_resource type="Script" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
-[ext_resource type="Script" path="res://scenes/core/editor/sub_div_bars.gd" id="13_v18s2"]
-[ext_resource type="Script" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
-[ext_resource type="Script" path="res://scenes/core/editor/editor.gd" id="16_r33nt"]
+[ext_resource type="Shader" uid="uid://bhekjfag8gphs" path="res://materials/shaders/color_alpha.gdshader" id="11_irt5k"]
+[ext_resource type="Script" uid="uid://ds0vd61u3sftr" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
+[ext_resource type="Script" uid="uid://bbwpdvbpnwrse" path="res://scenes/core/editor/sub_div_bars.gd" id="13_v18s2"]
+[ext_resource type="Script" uid="uid://dbgcoim70nhlq" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
+[ext_resource type="Script" uid="uid://yan1wf361187" path="res://scenes/core/editor/editor.gd" id="16_r33nt"]
 [ext_resource type="PackedScene" uid="uid://cv3sg4qounr80" path="res://extern/ChroMapper/billie/Billie.prefab.scn" id="18_rnir7"]
 [ext_resource type="Material" uid="uid://3ksw0bxdofr2" path="res://materials/billie_water.tres" id="19_pgggt"]
 [ext_resource type="Texture2D" uid="uid://cauiaqreq10xs" path="res://extern/ChroMapper/billie/Billie/Sun.png" id="19_rks5o"]
 [ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
-[ext_resource type="Shader" path="res://materials/shaders/pixel_shader.gdshader" id="20_g4et7"]
+[ext_resource type="Shader" uid="uid://dfq50l8dw8utv" path="res://materials/shaders/pixel_shader.gdshader" id="20_g4et7"]
 [ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
-[ext_resource type="Script" path="res://scenes/core/precision_container.gd" id="23_efecr"]
-[ext_resource type="Script" path="res://scenes/core/editor/player_controller.gd" id="26_6j8m4"]
-[ext_resource type="Script" path="res://scenes/core/editor/event_manager.gd" id="27_720f7"]
-[ext_resource type="Script" path="res://scenes/core/editor/map_data.gd" id="27_fuiss"]
-[ext_resource type="Script" path="res://scenes/core/editor/exit_confirmation.gd" id="30_6m50f"]
+[ext_resource type="Script" uid="uid://birusmsh57slp" path="res://scenes/core/precision_container.gd" id="23_efecr"]
+[ext_resource type="Script" uid="uid://cn16tb1rbna8s" path="res://scenes/core/editor/player_controller.gd" id="26_6j8m4"]
+[ext_resource type="Script" uid="uid://dvyclye0gkl1j" path="res://scenes/core/editor/event_manager.gd" id="27_720f7"]
+[ext_resource type="Script" uid="uid://cx0that30m8gp" path="res://scenes/core/editor/map_data.gd" id="27_fuiss"]
+[ext_resource type="Script" uid="uid://bu1s7cjpjis6p" path="res://scenes/core/editor/exit_confirmation.gd" id="30_6m50f"]
 
 [sub_resource type="Resource" id="Resource_5jsfj"]
 script = ExtResource("3_gremr")
@@ -73,7 +73,10 @@ background_mode = 2
 sky = SubResource("Sky_pnvj8")
 tonemap_mode = 3
 glow_enabled = true
-glow_blend_mode = 0
+glow_levels/2 = 0.25
+glow_levels/3 = 0.15
+glow_levels/5 = 0.25
+glow_blend_mode = 1
 fog_mode = 1
 fog_density = 1.0
 fog_depth_curve = 0.5
@@ -665,15 +668,27 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 metadata/_snap_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghsvx"]
+albedo_color = Color(0.556863, 0.701961, 0.776471, 1)
+emission_enabled = true
+emission = Color(0.442138, 0.507496, 0.562116, 1)
+emission_energy_multiplier = 57.9
+grow = true
+grow_amount = 0.08
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h6xp"]
 resource_name = "ControllableLight"
+next_pass = SubResource("StandardMaterial3D_ghsvx")
 transparency = 1
-albedo_color = Color(0.557, 0.702, 0.776, 1)
-albedo_texture = SubResource("GradientTexture2D_qk14q")
+blend_mode = 1
+albedo_color = Color(0.556863, 0.701961, 0.776471, 1)
 roughness = 0.0
 emission_enabled = true
-emission = Color(0.557, 0.702, 0.776, 1)
-emission_energy_multiplier = 10.94
+emission = Color(0.540665, 0.688125, 0.763706, 1)
+emission_energy_multiplier = 90.3
+emission_operator = 1
+emission_texture = SubResource("GradientTexture2D_qk14q")
+grow = true
 
 [sub_resource type="Curve" id="Curve_n0hed"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0972851, 1), 0.0, 0.0, 0, 0, Vector2(0.89819, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -696,8 +711,7 @@ curve_y = SubResource("Curve_fv173")
 curve_z = SubResource("Curve_c4yao")
 
 [sub_resource type="Curve" id="Curve_c1oyt"]
-min_value = -200.0
-max_value = 200.0
+_limits = [-200.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -2044,6 +2058,9 @@ surface_material_override/0 = ExtResource("19_pgggt")
 
 [node name="MeshRenderer" parent="Billie/Static/Waterfall/WaterfallFalling" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_8l1dh")
+
+[node name="MeshRenderer" parent="Billie/Dynamic/Right Sunbeams/Rotating/Laser 1/BoxLight 60" index="0"]
+transform = Transform3D(1, 0, 8.88178e-16, 0, 1, 0, -8.88178e-16, 0, 1, 0.571197, 1.12812e-05, -0.0565968)
 
 [node name="Laser 14" parent="Billie/Dynamic/Right Sunbeams/Rotating" index="13"]
 transform = Transform3D(0.42531, 0, -0.512828, -7.75047e-08, -16665, -6.41622e-08, -0.51329, 0.00251635, -0.424927, 0, 0, -1.5)

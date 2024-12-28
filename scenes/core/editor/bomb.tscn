@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpijiji0cbotm"]
 
-[ext_resource type="Script" path="res://scenes/core/editor/bomb.gd" id="1_qg3ol"]
+[ext_resource type="Script" uid="uid://4faksemgo6ac" path="res://scenes/core/editor/bomb.gd" id="1_qg3ol"]
 [ext_resource type="ArrayMesh" uid="uid://djej3u1c0m382" path="res://extern/ChroMapper/Bomb.obj" id="2_o0amf"]
 [ext_resource type="Material" uid="uid://dwm1qdjqkkpi1" path="res://extern/ChroMapper/Resources/Basic Black.material" id="3_mg5xj"]
-[ext_resource type="Script" path="res://scenes/transform_component_3d.gd" id="4_nabni"]
+[ext_resource type="Script" uid="uid://b40h747m7pc6b" path="res://scenes/transform_component_3d.gd" id="4_nabni"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gs7ig"]
 points = PackedVector3Array(0.190966, -0.127494, -0.0831277, -0.0200714, 0.214097, -0.0846814, 0.00638742, 0.00601051, -0.258127, -0.0798844, -0.232157, -0.129396, 0.189252, 0.146743, -0.129396, -0.0798844, 0.226529, -0.129396, 0.179291, -0.152327, -0.129396, -0.0671886, -0.219765, -0.0846649, -0.2394, 0.00715323, -0.129396, 0.189114, 0.13032, -0.0839276, -0.225487, 0.0251915, -0.0855554, 0.149406, -0.122425, -0.15931, -0.209472, -0.0127369, -0.149351, 0.159367, 0.116841, -0.15931, -0.0859455, 0.213708, -0.0848422, -0.0798844, 0.146743, -0.169287, -0.0118336, -0.0275053, -0.244344, -0.228304, -0.0216982, -0.084339, -0.0499564, 0.226529, -0.129396, -0.189549, 0.0171208, -0.15931, 0.167645, -0.153021, -0.08508, -0.0698798, -0.18223, -0.15931, -0.219434, -0.0426395, -0.129396, -0.0898461, 0.226529, -0.119438, -0.0389641, -0.220292, -0.0844473, -0.0939581, -0.206013, -0.0864959, 0.157619, 0.156199, -0.0854033, 0.00527427, -0.0112297, -0.254599, -0.000148093, -0.212177, -0.129396, -0.00318919, 0.0140779, -0.254528, -0.209472, 0.0569909, -0.129396, -0.0599181, 0.216516, -0.139374)

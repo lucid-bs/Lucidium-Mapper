@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=4 uid="uid://cku2ya1a0pubt"]
 
-[ext_resource type="Script" path="res://scenes/core/editor/block.gd" id="1_p10gk"]
+[ext_resource type="Script" uid="uid://k3gmmj1rcdc0" path="res://scenes/core/editor/block.gd" id="1_p10gk"]
 [ext_resource type="ArrayMesh" uid="uid://bf2xqx4dcms47" path="res://extern/ChroMapper/CubeNoteSmooth.obj" id="2_hir18"]
 [ext_resource type="Material" uid="uid://bpnac6d7buech" path="res://materials/bloq/arrowShader.tres" id="3_3pj1r"]
 [ext_resource type="Material" uid="uid://q5ec1qb0a6lg" path="res://materials/bloq/bloqShader.tres" id="3_frmyy"]
-[ext_resource type="Script" path="res://scenes/transform_component_3d.gd" id="5_4kw40"]
+[ext_resource type="Script" uid="uid://b40h747m7pc6b" path="res://scenes/transform_component_3d.gd" id="5_4kw40"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xaduy"]
 size = Vector3(0.75, 0.75, 0.75)

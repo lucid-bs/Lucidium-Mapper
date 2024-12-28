@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://3ksw0bxdofr2"]
 
-[ext_resource type="Shader" path="res://addons/boujie_water_shader/shader/water.gdshader" id="1_0mlej"]
+[ext_resource type="Shader" uid="uid://crqayhp184be6" path="res://addons/boujie_water_shader/shader/water.gdshader" id="1_0mlej"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ctq8h"]
 load_path = "res://.godot/imported/ocean_albedo_white_highcontrast.png-3a3aaf06806d705f194397a4ba62f921.s3tc.ctex"

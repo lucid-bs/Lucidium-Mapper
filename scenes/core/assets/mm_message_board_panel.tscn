@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmsb5j2akny1s"]
 
-[ext_resource type="Script" path="res://scenes/core/assets/message_board_panel.gd" id="1_4vkci"]
+[ext_resource type="Script" uid="uid://ymvppo834plf" path="res://scenes/core/assets/message_board_panel.gd" id="1_4vkci"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioi8t"]
 bg_color = Color(0.109804, 0.129412, 0.156863, 1)
 
 [node name="Panel2" type="Panel"]
-custom_minimum_size = Vector2(54, 964)
+custom_minimum_size = Vector2(54, 1164)
 script = ExtResource("1_4vkci")
 message = "This is a test to make sure that we can freely push updates for new features we want to make you aware of. If any changes major changes are made to the mapping experience, you'll be made aware via this section here. Hover for further information."
 sticky_stylebox = SubResource("StyleBoxFlat_ioi8t")

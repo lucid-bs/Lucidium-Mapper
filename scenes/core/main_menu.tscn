@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bltg8i5j75slv"]
 
-[ext_resource type="Script" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
+[ext_resource type="Script" uid="uid://be8573716n5kl" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
-[ext_resource type="Script" path="res://scenes/core/assets/web_map_loader.gd" id="4_6ktwf"]
+[ext_resource type="Script" uid="uid://bfvj7adctbaog" path="res://scenes/core/assets/web_map_loader.gd" id="4_6ktwf"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="4_h4t08"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
 

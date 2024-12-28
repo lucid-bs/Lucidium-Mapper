@@ -1,15 +1,15 @@
 [gd_scene load_steps=20 format=3 uid="uid://dtwrdjth048su"]
 
-[ext_resource type="Script" path="res://scenes/core/map_configurer.gd" id="1_v5not"]
-[ext_resource type="Script" path="res://scenes/core/assets/map_data_manager.gd" id="2_mi6hj"]
+[ext_resource type="Script" uid="uid://bsr3aia8w754x" path="res://scenes/core/map_configurer.gd" id="1_v5not"]
+[ext_resource type="Script" uid="uid://ucjpi7aochaf" path="res://scenes/core/assets/map_data_manager.gd" id="2_mi6hj"]
 [ext_resource type="Texture2D" uid="uid://byq6fbjy8gs68" path="res://UI/reference/chro.png" id="2_su4so"]
-[ext_resource type="Script" path="res://scenes/core/ui/difficulty_thingy.gd" id="3_7my54"]
+[ext_resource type="Script" uid="uid://cub5ghotk5ohn" path="res://scenes/core/ui/difficulty_thingy.gd" id="3_7my54"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="3_efsek"]
-[ext_resource type="Script" path="res://scenes/core/ui/copy_buttons.gd" id="3_y0rcl"]
-[ext_resource type="Script" path="res://resources/beatmap_info.gd" id="4_fmmta"]
-[ext_resource type="Script" path="res://scenes/core/ui/difficulty_thingy_diff.gd" id="4_hcms4"]
+[ext_resource type="Script" uid="uid://520stux3ohat" path="res://scenes/core/ui/copy_buttons.gd" id="3_y0rcl"]
+[ext_resource type="Script" uid="uid://cwkbyf3b3pd65" path="res://resources/beatmap_info.gd" id="4_fmmta"]
+[ext_resource type="Script" uid="uid://bbtrwyq4tt00c" path="res://scenes/core/ui/difficulty_thingy_diff.gd" id="4_hcms4"]
 [ext_resource type="Texture2D" uid="uid://ctoqxghl6kj1n" path="res://extern/ChroMapper/Sprites/BeatsaberSpriteSheet.png" id="4_j7wis"]
-[ext_resource type="Script" path="res://resources/beatmap_set.gd" id="9_vml01"]
+[ext_resource type="Script" uid="uid://wd16dwcgu4f" path="res://resources/beatmap_set.gd" id="9_vml01"]
 
 [sub_resource type="Gradient" id="Gradient_jt01e"]
 offsets = PackedFloat32Array(0.963964, 1)
@@ -90,6 +90,7 @@ grow_vertical = 2
 theme_type_variation = &"Background"
 
 [node name="Chro" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(640, 376)
 texture = ExtResource("2_su4so")
 
@@ -319,6 +320,16 @@ layout_mode = 2
 
 [node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer"]
+layout_mode = 2
+text = "A Waveform will go here. Eventually. One day."
+horizontal_alignment = 1
 
 [node name="DifficultyThingy" type="Panel" parent="." node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 1
@@ -918,8 +929,7 @@ metadata/_edit_use_anchors_ = true
 [node name="EnterEditorButton" type="Button" parent="DifficultyThingy/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Enter Editor
-"
+text = "Enter Editor"
 metadata/_edit_use_anchors_ = true
 
 [node name="PackZipButton" type="Button" parent="DifficultyThingy/HBoxContainer"]
