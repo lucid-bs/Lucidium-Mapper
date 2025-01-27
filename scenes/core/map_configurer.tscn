@@ -382,7 +382,7 @@ theme_override_constants/margin_bottom = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -467,7 +467,7 @@ theme_override_constants/margin_bottom = 2
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer"]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -556,7 +556,7 @@ theme_override_constants/margin_bottom = 2
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer"]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -645,7 +645,7 @@ theme_override_constants/margin_bottom = 2
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer"]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -734,7 +734,7 @@ theme_override_constants/margin_bottom = 2
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer"]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2

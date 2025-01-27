@@ -15,6 +15,8 @@ extends PanelContainer
 		else:
 			enabled = true
 			$MarginContainer/HBoxContainer/CheckButton.button_pressed = true
+			if value.custom_data.has("_difficultyLabel"):
+				$"MarginContainer/HBoxContainer/DiffName".text = value.custom_data["_difficultyLabel"]
 		difficulty_object = value
 		
 
