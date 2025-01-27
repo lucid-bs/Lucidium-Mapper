@@ -15,12 +15,22 @@ var folders := ["CustomWIPLevels", "CustomLevels"]
 
 func _ready() -> void:
 	
-	
+	$Popup.hide()
+	$TabBar/RemoveCustom.hide()
+	$AdditionalFolderDeleteConfirm.hide()
 	$ScrollContainer/VBoxContainer/Panel.queue_free()
 	var err = config.load("user://settings.cfg")
 	print(config.get_value("FileSystem", "InstallDir") + "/CustomWIPLevels")
 	
 	scan_for_maps(config.get_value("FileSystem", "InstallDir"))
+	
+	var additional_folders = config.get_value("FileSystem", "AdditionalFolders", [])
+	folders.append_array(additional_folders)
+	if folders.size() > 2:
+		for i in range(1, folders.size() - 1):
+			$TabBar.add_tab(folders[i + 1])
+			$TabBar.move_tab($TabBar.tab_count - 1, $TabBar.tab_count - 2)
+			
 	
 	if config.get_value("Networking", "Online", false):
 		var http_request = HTTPRequest.new()
@@ -127,6 +137,46 @@ func _on_failsafe_no_map_making_meta_clicked(meta: Variant) -> void:
 func folder_tab_changed(tab : int):
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		i.queue_free()
+	print(folders)
+	print(tab)
 	if tab > folders.size() - 1:
+		$Popup.show()
+		$Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text = ""
+		$Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.grab_focus()
 		return
+	elif tab > 1:
+		$TabBar/RemoveCustom.show()
+	else:
+		$TabBar/RemoveCustom.hide()
 	scan_for_maps(config.get_value("FileSystem", "InstallDir"), folders[tab])
+
+func _on_folder_popup_confirm_pressed() -> void:
+	folders.append($Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text)
+	$TabBar.add_tab($Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text)
+	$TabBar.move_tab($TabBar.tab_count - 1, $TabBar.tab_count - 2)
+	$TabBar.current_tab = $TabBar.tab_count - 2
+	var additional_folders = config.get_value("FileSystem", "AdditionalFolders", [])
+	additional_folders.append($Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text)
+	config.set_value("FileSystem", "AdditionalFolders", additional_folders)
+	print_debug(config.get_value("FileSystem", "InstallDir") + "/" + folders[$TabBar.current_tab])
+	DirAccess.make_dir_recursive_absolute(config.get_value("FileSystem", "InstallDir") + "/" +  folders[$TabBar.current_tab])
+	scan_for_maps(config.get_value("FileSystem", "InstallDir"), $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text)
+	config.save("user://settings.cfg")
+
+
+
+func _on_confirm_pressed() -> void:
+	var additional_folders = config.get_value("FileSystem", "AdditionalFolders", [])
+	var folder_name = folders[$TabBar.current_tab]
+	additional_folders.erase(folders[$TabBar.current_tab])
+	$TabBar.remove_tab(folders.find(folders[$TabBar.current_tab]))
+	folders.erase(folder_name)
+	$TabBar.current_tab -= 1
+	config.set_value("FileSystem", "AdditionalFolders", additional_folders)
+	scan_for_maps(config.get_value("FileSystem", "InstallDir"), folders[$TabBar.current_tab])
+	config.save("user://settings.cfg")
+
+
+func _on_remove_custom_pressed() -> void:
+	$AdditionalFolderDeleteConfirm.show()
+	$AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Confirm.grab_focus()

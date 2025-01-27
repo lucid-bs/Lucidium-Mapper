@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=12 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Script" uid="uid://be8573716n5kl" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
 [ext_resource type="Script" uid="uid://bfvj7adctbaog" path="res://scenes/core/assets/web_map_loader.gd" id="4_6ktwf"]
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="4_h4t08"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
+[ext_resource type="Script" uid="uid://byj6ag6lbjxyj" path="res://scenes/core/additional_folder_popup.gd" id="6_pa3yt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddiyh"]
 bg_color = Color(0.109804, 0.129412, 0.156863, 1)
@@ -35,8 +36,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 8.0
-offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
@@ -48,11 +47,21 @@ anchor_left = 0.05
 anchor_top = 0.0444444
 anchor_right = 0.5
 anchor_bottom = 0.0833333
+theme_override_constants/h_separation = 0
 current_tab = 0
+drag_to_rearrange_enabled = true
 tab_count = 3
 tab_0/title = "CustomWIPLevels"
 tab_1/title = "CustomLevels"
 tab_2/title = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="RemoveCustom" type="Button" parent="TabBar"]
+visible = false
+layout_mode = 0
+anchor_left = -0.0416667
+anchor_bottom = 1.0
+text = "-"
 metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -343,8 +352,134 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="Popup" type="Window" parent="."]
+initial_position = 2
+size = Vector2i(512, 150)
+visible = false
+script = ExtResource("6_pa3yt")
+
+[node name="Panel" type="Panel" parent="Popup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Enter Folder Name"
+
+[node name="LineEdit" type="LineEdit" parent="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "My New Folder"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Back
+"
+
+[node name="Confirm" type="Button" parent="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Confirm"
+
+[node name="AdditionalFolderDeleteConfirm" type="Window" parent="."]
+auto_translate_mode = 1
+initial_position = 2
+size = Vector2i(512, 150)
+visible = false
+script = ExtResource("6_pa3yt")
+
+[node name="Panel" type="Panel" parent="AdditionalFolderDeleteConfirm"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Background"
+
+[node name="MarginContainer" type="MarginContainer" parent="AdditionalFolderDeleteConfirm/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AdditionalFolderDeleteConfirm/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Really remove this folder? (It will not delete the FIle Contents.)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Back
+"
+
+[node name="Confirm" type="Button" parent="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "Confirm"
+
 [connection signal="tab_changed" from="TabBar" to="." method="folder_tab_changed"]
+[connection signal="pressed" from="TabBar/RemoveCustom" to="." method="_on_remove_custom_pressed"]
 [connection signal="meta_clicked" from="TabContainer/New Map/Panel/MarginContainer/VBoxContainer/FailsafeNoMapMaking" to="." method="_on_failsafe_no_map_making_meta_clicked"]
 [connection signal="pressed" from="TabContainer/Load Map/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
 [connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Rescan" to="." method="_on_rescan_pressed"]
 [connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Reconfigure" to="." method="_on_reconfigure_pressed"]
+[connection signal="close_requested" from="Popup" to="Popup" method="_on_close_requested"]
+[connection signal="visibility_changed" from="Popup" to="Popup" method="_on_visibility_changed"]
+[connection signal="text_changed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="Popup" method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="Popup" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Back" to="Popup" method="_on_back_pressed"]
+[connection signal="pressed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Confirm" to="." method="_on_folder_popup_confirm_pressed"]
+[connection signal="pressed" from="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Confirm" to="Popup" method="_on_confirm_pressed"]
+[connection signal="close_requested" from="AdditionalFolderDeleteConfirm" to="AdditionalFolderDeleteConfirm" method="_on_close_requested"]
+[connection signal="pressed" from="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Back" to="AdditionalFolderDeleteConfirm" method="_on_back_pressed"]
+[connection signal="pressed" from="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="AdditionalFolderDeleteConfirm/Panel/MarginContainer/VBoxContainer/HBoxContainer2/Confirm" to="AdditionalFolderDeleteConfirm" method="_on_confirm_pressed"]
