@@ -1,13 +1,25 @@
 class_name DifficultyThingyDiff
 extends PanelContainer
 
+@export var enabled : bool = false
+
 @export var selected : bool = false
 
 @export var difficulty_thingy : DifficultyThingy
 
-@export var difficulty_object : DifficultyBeatmap
+@export var difficulty_object : DifficultyBeatmap:
+	set(value):
+		if value == null:
+			enabled = false
+			$MarginContainer/HBoxContainer/CheckButton.button_pressed = false
+		else:
+			enabled = true
+			$MarginContainer/HBoxContainer/CheckButton.button_pressed = true
+		difficulty_object = value
+		
 
 func _ready() -> void:
+	$MarginContainer/HBoxContainer/CheckButton.toggled.connect(enabled_check_button_changed)
 	if !difficulty_object:
 		difficulty_object = DifficultyBeatmap.new()
 	$SelectionButton.show()
@@ -31,3 +43,5 @@ func new_difficulty_selected(difficulty : DifficultyThingyDiff):
 		theme_type_variation = "DarkPanelContainer"
 		selected = false
 	
+func enabled_check_button_changed(new_value : bool):
+	enabled = new_value

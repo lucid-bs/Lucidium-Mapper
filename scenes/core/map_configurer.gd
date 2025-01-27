@@ -57,6 +57,10 @@ func load_data():
 	song_preview_duration_edit.value = map_data_manager.get_property(&"preview_duration")
 
 	$"DifficultyThingy/VBoxContainer/E+".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"ExpertPlus")
+	$"DifficultyThingy/VBoxContainer/Ex".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Expert")
+	$"DifficultyThingy/VBoxContainer/H".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Hard")
+	$"DifficultyThingy/VBoxContainer/N".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Standard")
+	$"DifficultyThingy/VBoxContainer/E".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Easy")
 	
 
 func _on_play_preview_pressed():
