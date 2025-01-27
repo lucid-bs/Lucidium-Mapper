@@ -59,7 +59,7 @@ func load_data():
 	$"DifficultyThingy/VBoxContainer/E+".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"ExpertPlus")
 	$"DifficultyThingy/VBoxContainer/Ex".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Expert")
 	$"DifficultyThingy/VBoxContainer/H".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Hard")
-	$"DifficultyThingy/VBoxContainer/N".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Standard")
+	$"DifficultyThingy/VBoxContainer/N".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Normal")
 	$"DifficultyThingy/VBoxContainer/E".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Easy")
 	
 
