@@ -35,10 +35,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
 theme_override_styles/panel = SubResource("StyleBoxFlat_ddiyh")
+
+[node name="TabBar" type="TabBar" parent="."]
+layout_mode = 2
+anchor_left = 0.05
+anchor_top = 0.0444444
+anchor_right = 0.5
+anchor_bottom = 0.0833333
+current_tab = 0
+tab_count = 3
+tab_0/title = "CustomWIPLevels"
+tab_1/title = "CustomLevels"
+tab_2/title = "+"
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -217,6 +232,7 @@ text = "Download"
 [node name="HTTPRequest" type="HTTPRequest" parent="TabContainer/Load Map"]
 
 [node name="HELP" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 anchor_left = 0.05
 anchor_top = 0.0888889
@@ -327,6 +343,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[connection signal="tab_changed" from="TabBar" to="." method="folder_tab_changed"]
 [connection signal="meta_clicked" from="TabContainer/New Map/Panel/MarginContainer/VBoxContainer/FailsafeNoMapMaking" to="." method="_on_failsafe_no_map_making_meta_clicked"]
 [connection signal="pressed" from="TabContainer/Load Map/Button" to="TabContainer/Load Map" method="_on_button_pressed"]
 [connection signal="pressed" from="HELP/MarginContainer/VBoxContainer/Rescan" to="." method="_on_rescan_pressed"]

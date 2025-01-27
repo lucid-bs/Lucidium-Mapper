@@ -47,7 +47,6 @@ func _input(event: InputEvent) -> void:
 			timeline_scroll_bar.value = editor_node.current_beat
 			timeline_scroll_bar.value_changed.connect(scroll_bar_value_changed)
 			
-			
 		else:
 			editor_node.map_playing = true
 			if scrubbing_lock:
