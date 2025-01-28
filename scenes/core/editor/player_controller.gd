@@ -42,8 +42,8 @@ func _input(event: InputEvent) -> void:
 			editor_node.audio_stream_player.stop()
 			var divisor = editor_node.current_precision_denominator
 			editor_node.current_beat = snappedf(editor_node.current_beat, (1.0/divisor))
-			event_manager.sync_blocks()
-			event_manager.sync_bombs()
+			event_manager.call_deferred("sync_blocks")
+			event_manager.call_deferred("sync_bombs")
 			timeline_scroll_bar.value = editor_node.current_beat
 			timeline_scroll_bar.value_changed.connect(scroll_bar_value_changed)
 			
@@ -52,9 +52,7 @@ func _input(event: InputEvent) -> void:
 			if scrubbing_lock:
 				await scrubbing_finished
 				editor_node.audio_stream_player.stream = null
-	
 
-			
 			playback_node = MapPlayback.new()
 			playback_node.editor_node = editor_node
 			playback_node.event_manager = event_manager
