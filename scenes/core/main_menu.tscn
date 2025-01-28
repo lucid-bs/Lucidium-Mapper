@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=13 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Script" uid="uid://be8573716n5kl" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
@@ -21,6 +21,28 @@ font_color = Color(0.61339, 0.61339, 0.61339, 1)
 bg_color = Color(0.113725, 0.133333, 0.160784, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yiw1x"]
+
+[sub_resource type="GDScript" id="GDScript_pa3yt"]
+script/source = "extends Window
+
+
+func _on_close_requested() -> void:
+	hide()
+
+
+
+func _on_back_pressed() -> void:
+	hide()
+
+
+
+func _on_confirm_pressed() -> void:
+	hide()
+
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	$Panel/MarginContainer/VBoxContainer/HBoxContainer2/Confirm.pressed.emit()
+"
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -415,7 +437,7 @@ auto_translate_mode = 1
 initial_position = 2
 size = Vector2i(512, 150)
 visible = false
-script = ExtResource("6_pa3yt")
+script = SubResource("GDScript_pa3yt")
 
 [node name="Panel" type="Panel" parent="AdditionalFolderDeleteConfirm"]
 anchors_preset = 15
