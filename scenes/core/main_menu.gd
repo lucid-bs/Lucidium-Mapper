@@ -89,11 +89,13 @@ func scan_for_maps(directory : String, subfolder : String = "CustomWIPLevels"):
 	print(map_directory)
 	for i in map_directory:
 		print(config.get_value("FileSystem", "InstallDir") + "/" + subfolder + "/" + i + "/Info.dat")
-		if !FileAccess.file_exists(config.get_value("FileSystem", "InstallDir") + "/" + subfolder + "/" + i + "/Info.dat"):
+		if !FileAccess.file_exists(config.get_value("FileSystem", "InstallDir") + "/" + subfolder + "/" + i + "/Info.dat") && !FileAccess.file_exists(config.get_value("FileSystem", "InstallDir") + "/" + subfolder + "/" + i + "/info.dat"):
 			print("Not Found")
 		else:
 			loaded_maps += 1
 			var infodat = FileAccess.open(config.get_value("FileSystem", "InstallDir") + "/" + subfolder + "/" + i + "/Info.dat", FileAccess.READ)
+			if infodat == null:
+				infodat = FileAccess.open(config.get_value("FileSystem", "InstallDir") + "/" + subfolder + "/" + i + "/info.dat", FileAccess.READ)
 			var data = JSON.parse_string(infodat.get_as_text())
 			var map_button = MM_MAP.instantiate()
 			map_button.Title = data["_songName"]

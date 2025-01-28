@@ -67,6 +67,8 @@ func get_difficulty(difficulty_set : StringName, difficulty_name : StringName) -
 
 func _ready() -> void:
 	info_dat = FileAccess.open(path + "/Info.dat", FileAccess.READ_WRITE)
+	if info_dat == null:
+		info_dat = FileAccess.open(path + "/info.dat", FileAccess.READ_WRITE)
 	info_dat_data.unpack_from_json(info_dat.get_as_text())
 	print("Map Loaded into RAM, setting variables.")
 	data_loaded.emit()

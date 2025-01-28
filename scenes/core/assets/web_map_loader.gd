@@ -12,6 +12,8 @@ var downloadURL : String
 
 
 func _ready():
+	$Button.show()
+	$ProgressBar.hide()
 	var err = config.load("user://settings.cfg")
 	
 	$HTTPRequest.request_completed.connect(_on_request_completed)
@@ -43,9 +45,12 @@ func _on_button_pressed() -> void:
 		$HTTPRequest.request(beatSaverAPIEndpoint)
 		await thingyUpdated
 	if $FILESYSTEM/TabBar.current_tab == 0:
-		$HTTPRequest.download_file = config.get_value("FileSystem", "InstallDir") + "/CustomWIPLevels/" + "lucid.zip"
+		$HTTPRequest.download_file = config.get_value("FileSystem", "InstallDir") + "/CustomLevels/" + "lucid.zip"
 	else:
 		$HTTPRequest.download_file = "user://lucid.zip"
+	
+	$Button.hide()
+	$ProgressBar.show()
 	
 	$HTTPRequest.request(downloadURL)
 	await thingyUpdated
@@ -60,5 +65,10 @@ func _on_button_pressed() -> void:
 		var root_dir = config.get_value("FileSystem", "InstallDir") if $FILESYSTEM/TabBar.current_tab == 0 else "user://"
 		print(root_dir)
 		var root_dir_access = DirAccess.open(root_dir)
-		print(root_dir_access.make_dir_recursive("CustomWIPLevels/" + info["_songName"]))
-		print(info["_songName"])
+		print(root_dir_access.make_dir_recursive("CustomLevels/" + info["_songName"]))
+		for i in reader.get_files():
+			var new_file = FileAccess.open(root_dir + "/CustomLevels/" + info["_songName"] + "/" + i, FileAccess.WRITE_READ)
+			new_file.store_buffer(reader.read_file(i))
+			new_file.close()
+		DirAccess.remove_absolute(config.get_value("FileSystem", "InstallDir") + "/CustomLevels/" + "lucid.zip")
+		$"../..".call_deferred("_configure_map", root_dir + "/CustomLevels/" + info["_songName"])

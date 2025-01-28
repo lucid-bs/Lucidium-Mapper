@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bltg8i5j75slv"]
+[gd_scene load_steps=12 format=3 uid="uid://bltg8i5j75slv"]
 
 [ext_resource type="Script" uid="uid://be8573716n5kl" path="res://scenes/core/main_menu.gd" id="2_qmcka"]
 [ext_resource type="PackedScene" uid="uid://bg18jengd0jtn" path="res://scenes/core/assets/mm_Map.tscn" id="3_2i0mj"]
@@ -6,9 +6,6 @@
 [ext_resource type="FontFile" uid="uid://dlacn5if5v51f" path="res://extern/Inter-VariableFont_slnt,wght.ttf" id="4_h4t08"]
 [ext_resource type="Texture2D" uid="uid://bmeold7ct003x" path="res://Lucidium.svg" id="4_u068o"]
 [ext_resource type="Script" uid="uid://byj6ag6lbjxyj" path="res://scenes/core/additional_folder_popup.gd" id="6_pa3yt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddiyh"]
-bg_color = Color(0.109804, 0.129412, 0.156863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8v2gx"]
 font_size = 32
@@ -61,7 +58,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
-theme_override_styles/panel = SubResource("StyleBoxFlat_ddiyh")
 
 [node name="TabBar" type="TabBar" parent="."]
 layout_mode = 2
@@ -114,10 +110,11 @@ anchor_top = 0.355556
 anchor_right = 0.95
 anchor_bottom = 0.888889
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Main Menu" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -219,7 +216,6 @@ bbcode_enabled = true
 text = "That's how it's supposed to be right now. The priority is to get everything accurate to Beat Saber, and saving Map Data is lower on my Priorities list. If you need an [b]actual editor[/b], [url=https://cm.topc.at/dl]download ChroMapper.[/url] "
 
 [node name="Load Map" type="VBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_6ktwf")
@@ -259,6 +255,11 @@ tab_1/title = "USER DATA (Temporary)"
 [node name="Button" type="Button" parent="TabContainer/Load Map"]
 layout_mode = 2
 text = "Download"
+
+[node name="ProgressBar" type="ProgressBar" parent="TabContainer/Load Map"]
+layout_mode = 2
+indeterminate = true
+editor_preview_indeterminate = false
 
 [node name="HTTPRequest" type="HTTPRequest" parent="TabContainer/Load Map"]
 
