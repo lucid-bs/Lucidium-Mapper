@@ -32,17 +32,26 @@ signal beat_changed(new_beat : float)
 
 @export var sfx_player : AudioStreamPlayer
 
+var config = ConfigFile.new()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("swap_precision"):
 		swap_precisions()
 
 func _ready() -> void:
+	var err = config.load("user://settings.cfg")
+	main_precision_denominator = config.get_value("Editor", "PrimaryPrecision", 2)
+	secondary_precision_denominator = config.get_value("Editor", "SecondaryPrecision", 2)
 	if main_precision_container:
 		main_precision_container.positive_button.pressed.connect(update_precision.bind(true, false))
 		main_precision_container.negative_button.pressed.connect(update_precision.bind(false, false))
+		main_precision_container.precision_label.text = "1/" + str(main_precision_denominator)
 	if secondary_precision_container:
 		secondary_precision_container.positive_button.pressed.connect(update_precision.bind(true, true))
 		secondary_precision_container.negative_button.pressed.connect(update_precision.bind(false, true))
+		secondary_precision_container.precision_label.text = "1/" + str(secondary_precision_denominator)
+		
+		
 
 func update_precision(positive : bool, secondary := false):
 	current_precision_denominator = secondary_precision_denominator if secondary else main_precision_denominator
@@ -81,3 +90,9 @@ func swap_precisions():
 		main_precision_container.get_parent().add_theme_stylebox_override("panel", secondary_precision_container.get_parent().get_theme_stylebox("panel"))
 		secondary_precision_container.get_parent().remove_theme_stylebox_override("panel")
 	secondary_precision = !secondary_precision
+
+func _exit_tree() -> void:
+	var err = config.load("user://settings.cfg")
+	config.set_value("Editor", "PrimaryPrecision", main_precision_denominator)
+	config.set_value("Editor", "SecondaryPrecision", secondary_precision_denominator)
+	config.save("user://settings.cfg")
