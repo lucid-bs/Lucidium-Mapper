@@ -90,6 +90,7 @@ func swap_precisions():
 		main_precision_container.get_parent().add_theme_stylebox_override("panel", secondary_precision_container.get_parent().get_theme_stylebox("panel"))
 		secondary_precision_container.get_parent().remove_theme_stylebox_override("panel")
 	secondary_precision = !secondary_precision
+	current_precision_denominator = main_precision_denominator if !secondary_precision else secondary_precision_denominator
 
 func _exit_tree() -> void:
 	var err = config.load("user://settings.cfg")
