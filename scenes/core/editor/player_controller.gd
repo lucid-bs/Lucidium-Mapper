@@ -42,6 +42,7 @@ func _input(event: InputEvent) -> void:
 			editor_node.audio_stream_player.stop()
 			var divisor = editor_node.current_precision_denominator
 			editor_node.current_beat = snappedf(editor_node.current_beat, (1.0/divisor))
+			# Fun Fact; I learned the hard way that Race Conditions can happen in Modern Day because of this bug.
 			event_manager.call_deferred("sync_blocks")
 			event_manager.call_deferred("sync_bombs")
 			timeline_scroll_bar.value = editor_node.current_beat

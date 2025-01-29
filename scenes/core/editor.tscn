@@ -755,9 +755,11 @@ beatmap = SubResource("Resource_5jsfj")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rcla0")
 
-[node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player", "sfx_player")]
+[node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("main_precision_container", "secondary_precision_container", "audio_stream_player", "sfx_player")]
 script = ExtResource("16_r33nt")
 current_beat = 1.0
+main_precision_container = NodePath("../MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer")
+secondary_precision_container = NodePath("../MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer")
 audio_stream_player = NodePath("AudioStreamPlayer")
 sfx_player = NodePath("SFXPlayer")
 
@@ -1704,14 +1706,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
-[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel"]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1719,6 +1721,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("23_efecr")
+negative_button = NodePath("minus")
+positive_button = NodePath("plus")
+precision_label = NodePath("Label")
 
 [node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
@@ -1731,6 +1736,40 @@ layout_mode = 2
 text = "1/2"
 
 [node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_fabox")
+text = "stat_1"
+flat = true
+
+[node name="Panel2" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
+
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("23_efecr")
+negative_button = NodePath("minus")
+positive_button = NodePath("plus")
+precision_label = NodePath("Label")
+
+[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_fabox")
+text = "stat_minus_1"
+flat = true
+
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+layout_mode = 2
+text = "1/2"
+
+[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_fabox")
