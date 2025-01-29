@@ -38,6 +38,10 @@ func selection_button_pressed():
 	difficulty_thingy.current_difficulty = self
 	if difficulty_object:
 		difficulty_thingy.update_controls()
+	if enabled:
+		$"../../HBoxContainer/EnterEditorButton".disabled = false
+	else:
+		$"../../HBoxContainer/EnterEditorButton".disabled = true
 
 func new_difficulty_selected(difficulty : DifficultyThingyDiff):
 	if difficulty != self:
