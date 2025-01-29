@@ -1710,7 +1710,7 @@ theme_override_constants/separation = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 
 [node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label")]
@@ -1727,23 +1727,28 @@ precision_label = NodePath("Label")
 
 [node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_minus_1"
 flat = true
 
 [node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "1/2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_1"
 flat = true
 
 [node name="Panel2" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
@@ -1761,17 +1766,22 @@ precision_label = NodePath("Label")
 
 [node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_minus_1"
 flat = true
 
 [node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "1/2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_1"
 flat = true
