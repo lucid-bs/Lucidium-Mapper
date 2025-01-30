@@ -55,7 +55,7 @@ func update_rotation():
 					parent.global_rotation.z = deg_to_rad(-45.0)
 				7:
 					parent.global_rotation.z = deg_to_rad(45.0)
-
+					
 			parent.global_rotation.z -= deg_to_rad(parent.angle_offset)
 
 func update_position(update_x : bool, update_y : bool, update_z : bool):

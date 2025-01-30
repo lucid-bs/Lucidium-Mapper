@@ -29,7 +29,8 @@ func scroll_map(up: bool):
 func sync_blocks():
 	var block_tween = get_tree().create_tween().set_trans(Tween.TRANS_QUAD).set_parallel()
 	active_notes = map_data.get_in_range(&"color_notes", editor_node.current_beat - 2, editor_node.current_beat + 7)
-	
+	var red_block_per_beat_dict : Dictionary[float, Array]
+	var blue_block_per_beat_dict : Dictionary[float, Array]
 	var old_blocks : Array[Node] = $"../../Bloqs".get_children()
 	for i : ColorNote in active_notes:
 		var temp = i.get_meta(&"block_node", "null")
@@ -59,6 +60,18 @@ func sync_blocks():
 			new_block.angle_offset = i.angle_offset
 			new_block.beat = i.beat
 			new_block.error_logger = %ErrorLogger
+			if i.color == 0:
+				for b : Block in red_block_per_beat_dict.get_or_add(i.beat, []):
+					if i.cut_direction == b.direction && i.line_index != b.x && i.line_layer != b.y:
+						new_block.angle_snap_block = b
+						b.angle_snap_block = new_block
+				red_block_per_beat_dict[i.beat].append(new_block)
+			else:
+				for b : Block in blue_block_per_beat_dict.get_or_add(i.beat, []):
+					if i.cut_direction == b.direction && i.line_index != b.x && i.line_layer != b.y:
+						new_block.angle_snap_block = b
+						b.angle_snap_block = new_block
+				blue_block_per_beat_dict[i.beat].append(new_block)
 			$"../../Bloqs".add_child(new_block)
 			new_block.transform_component.update_position(false, false, true)
 			if new_block.beat < editor_node.current_beat:

@@ -52,6 +52,8 @@ enum BLOQ_COLORS {
 @export var error_logger : Node
 
 @export var editor_node : LucidiumEditor
+
+@export var angle_snap_block : Block
 var hovered : bool = false
 
 var color_note_resource : ColorNote
