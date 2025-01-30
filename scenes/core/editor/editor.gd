@@ -42,6 +42,7 @@ func _ready() -> void:
 	var err = config.load("user://settings.cfg")
 	main_precision_denominator = config.get_value("Editor", "PrimaryPrecision", 2)
 	secondary_precision_denominator = config.get_value("Editor", "SecondaryPrecision", 2)
+	current_precision_denominator = main_precision_denominator
 	main_precision_container.focus_button.hide()
 	main_precision_container.focus_button.pressed.connect(swap_precisions)
 	secondary_precision_container.focus_button.show()
