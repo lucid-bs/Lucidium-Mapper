@@ -42,6 +42,10 @@ func _ready() -> void:
 	var err = config.load("user://settings.cfg")
 	main_precision_denominator = config.get_value("Editor", "PrimaryPrecision", 2)
 	secondary_precision_denominator = config.get_value("Editor", "SecondaryPrecision", 2)
+	main_precision_container.focus_button.hide()
+	main_precision_container.focus_button.pressed.connect(swap_precisions)
+	secondary_precision_container.focus_button.show()
+	secondary_precision_container.focus_button.pressed.connect(swap_precisions)
 	if main_precision_container:
 		main_precision_container.positive_button.pressed.connect(update_precision.bind(true, false))
 		main_precision_container.negative_button.pressed.connect(update_precision.bind(false, false))
@@ -50,7 +54,7 @@ func _ready() -> void:
 		secondary_precision_container.positive_button.pressed.connect(update_precision.bind(true, true))
 		secondary_precision_container.negative_button.pressed.connect(update_precision.bind(false, true))
 		secondary_precision_container.precision_label.text = "1/" + str(secondary_precision_denominator)
-		
+	
 		
 
 func update_precision(positive : bool, secondary := false):
@@ -81,14 +85,20 @@ func update_precision(positive : bool, secondary := false):
 		else:
 			main_precision_container.negative_button.hide()
 			main_precision_container.negative_button.show()
+	if secondary != secondary_precision:
+		call_deferred("swap_precisions")
 
 func swap_precisions():
 	if secondary_precision:
 		secondary_precision_container.get_parent().add_theme_stylebox_override("panel", main_precision_container.get_parent().get_theme_stylebox("panel"))
 		main_precision_container.get_parent().remove_theme_stylebox_override("panel")
+		main_precision_container.focus_button.hide()
+		secondary_precision_container.focus_button.show()
 	else:
 		main_precision_container.get_parent().add_theme_stylebox_override("panel", secondary_precision_container.get_parent().get_theme_stylebox("panel"))
 		secondary_precision_container.get_parent().remove_theme_stylebox_override("panel")
+		main_precision_container.focus_button.show()
+		secondary_precision_container.focus_button.hide()
 	secondary_precision = !secondary_precision
 	current_precision_denominator = main_precision_denominator if !secondary_precision else secondary_precision_denominator
 

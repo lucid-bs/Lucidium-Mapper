@@ -7,3 +7,5 @@ extends HBoxContainer
 @export var positive_button : Button
 
 @export var precision_label : Label
+
+@export var focus_button : Button

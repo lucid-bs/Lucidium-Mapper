@@ -1713,7 +1713,7 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 
-[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label")]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label", "focus_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1721,11 +1721,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("23_efecr")
-negative_button = NodePath("minus")
-positive_button = NodePath("plus")
+negative_button = NodePath("Minus")
+positive_button = NodePath("Plus")
 precision_label = NodePath("Label")
+focus_button = NodePath("Label/FocusButton")
 
-[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
+[node name="Minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
@@ -1739,7 +1740,16 @@ text = "1/2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
+[node name="FocusButton" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1752,7 +1762,7 @@ custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
-[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label")]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label", "focus_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1760,11 +1770,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("23_efecr")
-negative_button = NodePath("minus")
-positive_button = NodePath("plus")
+negative_button = NodePath("Minus")
+positive_button = NodePath("Plus")
 precision_label = NodePath("Label")
+focus_button = NodePath("Label/FocusButton")
 
-[node name="minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+[node name="Minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
@@ -1778,7 +1789,16 @@ text = "1/2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+[node name="FocusButton" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
