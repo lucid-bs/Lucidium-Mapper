@@ -39,9 +39,9 @@ frequency = 0.02
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_he622"]
-seamless = true
-color_ramp = SubResource("Gradient_4hp6b")
 noise = SubResource("FastNoiseLite_j37dc")
+color_ramp = SubResource("Gradient_4hp6b")
+seamless = true
 
 [resource]
 render_priority = 0

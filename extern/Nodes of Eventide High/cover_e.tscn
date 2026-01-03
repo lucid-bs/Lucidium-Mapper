@@ -1,0 +1,481 @@
+[gd_scene load_steps=40 format=3 uid="uid://cxxn0xfdio4nc"]
+
+[ext_resource type="PackedScene" uid="uid://darkjdsixrvqk" path="res://notebook_with_a_metal_spiral.glb" id="1_wrw02"]
+[ext_resource type="Script" uid="uid://ci5na23yxr7sh" path="res://sub_viewport_container.gd" id="2_d27td"]
+[ext_resource type="Script" uid="uid://b0rxpyl5c8gst" path="res://notebook_with_a_metal_spiral.gd" id="2_srekp"]
+[ext_resource type="FontFile" uid="uid://dsnnjsamg8muv" path="res://fonts/Lexend/Lexend-VariableFont_wght.ttf" id="3_xp21e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xowi"]
+sky_top_color = Color(0.156, 0.269867, 0.4, 1)
+sky_horizon_color = Color(0.594587, 0.447225, 0.663813, 1)
+ground_bottom_color = Color(0.156863, 0.270588, 0.4, 1)
+ground_horizon_color = Color(0.594587, 0.447225, 0.663813, 1)
+ground_curve = 0.149285
+
+[sub_resource type="Sky" id="Sky_a202f"]
+sky_material = SubResource("ProceduralSkyMaterial_4xowi")
+
+[sub_resource type="Environment" id="Environment_noarx"]
+background_mode = 2
+sky = SubResource("Sky_a202f")
+ambient_light_source = 3
+tonemap_mode = 4
+tonemap_exposure = 0.5
+tonemap_white = 6.63
+glow_enabled = true
+glow_strength = 1.41
+glow_bloom = 0.07
+glow_blend_mode = 0
+adjustment_enabled = true
+adjustment_contrast = 1.26
+adjustment_saturation = 1.69
+
+[sub_resource type="Gradient" id="Gradient_a202f"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.51046, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.161096, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_noarx"]
+gradient = SubResource("Gradient_a202f")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.3)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_noarx")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_sh7pg"]
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(0.3083, 1.17391), 0.0, 0.0, 0, 0, Vector2(0.719368, 2.21739), -2.82857, -2.82857, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_noarx"]
+curve = SubResource("Curve_sh7pg")
+
+[sub_resource type="Gradient" id="Gradient_a0tk4"]
+offsets = PackedFloat32Array(0, 0.334802, 0.665198, 1)
+colors = PackedColorArray(0.65098, 0.921569, 0.87451, 1, 0.498039, 0.713726, 0.996078, 1, 0.651828, 0.542834, 0.875774, 1, 0.865524, 0.594564, 0.752948, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r3fl7"]
+gradient = SubResource("Gradient_a0tk4")
+
+[sub_resource type="Curve" id="Curve_jka67"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.343873, -0.0869565), 0.0, 0.0, 0, 0, Vector2(0.6917, 0.282609), 0.0, 0.0, 0, 0, Vector2(1, -0.347826), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_i5arm"]
+curve = SubResource("Curve_jka67")
+
+[sub_resource type="Curve" id="Curve_wc5p8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.632411, 0.73913), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jsk3o"]
+curve = SubResource("Curve_wc5p8")
+
+[sub_resource type="Curve" id="Curve_noarx"]
+_data = [Vector2(0, 1.2), 0.0, 0.0, 0, 0, Vector2(0.288538, 1.03043), 0.0, 0.0, 0, 0, Vector2(0.747036, 1.12174), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_a0tk4"]
+curve = SubResource("Curve_noarx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a202f"]
+lifetime_randomness = 0.3
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+orbit_velocity_min = -0.123
+orbit_velocity_max = 0.3
+orbit_velocity_curve = SubResource("CurveTexture_jsk3o")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_a0tk4")
+color_ramp = SubResource("GradientTexture1D_r3fl7")
+alpha_curve = SubResource("CurveTexture_noarx")
+emission_curve = SubResource("CurveTexture_noarx")
+hue_variation_min = -0.55
+hue_variation_max = 0.94
+hue_variation_curve = SubResource("CurveTexture_i5arm")
+turbulence_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_noarx"]
+size = Vector2(0.063, 0.063)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smyq8"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_noarx")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_r7mi2"]
+size = Vector2(0.016, 0.016)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4yeo"]
+lifetime_randomness = 0.3
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+orbit_velocity_min = -0.123
+orbit_velocity_max = 0.3
+orbit_velocity_curve = SubResource("CurveTexture_jsk3o")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_a0tk4")
+color = Color(0.521141, 0.521141, 0.52114, 1)
+color_ramp = SubResource("GradientTexture1D_r3fl7")
+alpha_curve = SubResource("CurveTexture_noarx")
+emission_curve = SubResource("CurveTexture_noarx")
+hue_variation_min = -0.55
+hue_variation_max = 0.94
+hue_variation_curve = SubResource("CurveTexture_i5arm")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_noarx")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+use_particle_trails = true
+
+[sub_resource type="Curve" id="Curve_a0tk4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.351779, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.73913), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_r3fl7"]
+curve_y = SubResource("Curve_a0tk4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_noarx"]
+lifetime_randomness = 0.3
+particle_flag_align_y = true
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = 27.0
+directional_velocity_curve = SubResource("CurveXYZTexture_r3fl7")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.1
+orbit_velocity_curve = SubResource("CurveTexture_jsk3o")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_a0tk4")
+color_ramp = SubResource("GradientTexture1D_r3fl7")
+alpha_curve = SubResource("CurveTexture_noarx")
+emission_curve = SubResource("CurveTexture_noarx")
+hue_variation_min = -0.55
+hue_variation_max = 0.94
+hue_variation_curve = SubResource("CurveTexture_i5arm")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_a202f"]
+size = 0.063
+
+[sub_resource type="Curve" id="Curve_wyf8l"]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.403162, 1.26087), 0.0, 0.0, 0, 0, Vector2(0.750988, 1.21739), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_w4yeo"]
+curve = SubResource("Curve_wyf8l")
+
+[sub_resource type="Curve" id="Curve_iu24g"]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.256917, 1.08696), 0.0, 0.0, 0, 0, Vector2(0.897233, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_swuhv"]
+curve = SubResource("Curve_iu24g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wyf8l"]
+lifetime_randomness = 0.3
+particle_flag_align_y = true
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = 27.0
+directional_velocity_curve = SubResource("CurveXYZTexture_r3fl7")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.1
+orbit_velocity_curve = SubResource("CurveTexture_jsk3o")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_a0tk4")
+color = Color(0.29219, 0.29219, 0.29219, 1)
+color_ramp = SubResource("GradientTexture1D_r3fl7")
+alpha_curve = SubResource("CurveTexture_w4yeo")
+emission_curve = SubResource("CurveTexture_swuhv")
+hue_variation_min = -0.55
+hue_variation_max = 0.94
+hue_variation_curve = SubResource("CurveTexture_i5arm")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_noarx")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+use_particle_trails = true
+
+[sub_resource type="FontVariation" id="FontVariation_abd5a"]
+base_font = ExtResource("3_xp21e")
+variation_opentype = {
+2003265652: 800
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_w4yeo"]
+font = SubResource("FontVariation_abd5a")
+font_size = 86
+font_color = Color(0.65098, 0.921569, 0.87451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iu24g"]
+font = SubResource("FontVariation_abd5a")
+font_size = 64
+font_color = Color(0.689146, 0.593062, 0.895742, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_noarx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Sketchfab_Scene" parent="Node3D" instance=ExtResource("1_wrw02")]
+transform = Transform3D(7.44864, 0, 2.91909, 0, 8, 0, -2.91909, 0, 7.44864, 0, 0, 0)
+script = ExtResource("2_srekp")
+
+[node name="Sparkles" type="GPUParticles3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_a0tk4")
+amount = 128
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_a202f")
+draw_pass_1 = SubResource("QuadMesh_noarx")
+
+[node name="Sparkles2" type="GPUParticles3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_smyq8")
+amount = 128
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_a202f")
+draw_pass_1 = SubResource("QuadMesh_r7mi2")
+
+[node name="Anti Sparkles" type="GPUParticles3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_a0tk4")
+amount = 64
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_w4yeo")
+draw_pass_1 = SubResource("QuadMesh_noarx")
+
+[node name="Vertical Trails" type="GPUParticles3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486922, -1.96274, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+amount = 64
+lifetime = 0.45
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_noarx")
+draw_pass_1 = SubResource("RibbonTrailMesh_a202f")
+
+[node name="Anti Vertical Trails" type="GPUParticles3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.96274, 0)
+material_override = SubResource("StandardMaterial3D_a202f")
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_wyf8l")
+draw_pass_1 = SubResource("RibbonTrailMesh_a202f")
+
+[node name="Trails" type="GPUParticles3D" parent="Node3D"]
+material_override = SubResource("StandardMaterial3D_noarx")
+amount = 32
+lifetime = 1.5
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_a202f")
+draw_pass_1 = SubResource("RibbonTrailMesh_a202f")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+script = ExtResource("2_d27td")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1000, 1000)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.955223, -0.0467688, 0.292169, 0.0190768, 0.995109, 0.0969218, -0.295273, -0.0870082, 0.951443, 0.549629, 0.221702, 1.8467)
+current = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label4" type="Label" parent="Control"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0667553
+anchor_top = 0.0667553
+anchor_right = 0.566755
+anchor_bottom = 2.52846
+offset_right = 40.0
+offset_bottom = 125.0
+text = "Nodes of Eventide High"
+label_settings = SubResource("LabelSettings_w4yeo")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.0625
+anchor_right = 0.5625
+anchor_bottom = 0.5625
+offset_right = 40.0
+offset_bottom = 125.0
+text = "Nodes of Eventide High"
+label_settings = SubResource("LabelSettings_w4yeo")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="Control"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0667553
+anchor_top = 0.418317
+anchor_right = 0.566755
+anchor_bottom = 2.18108
+offset_right = -60.6899
+text = "Official Concept Album"
+label_settings = SubResource("LabelSettings_iu24g")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.414062
+anchor_right = 0.5625
+anchor_bottom = 0.914062
+offset_right = -60.69
+text = "Official Concept Album"
+label_settings = SubResource("LabelSettings_iu24g")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1024.0
+offset_top = 1024.0
+offset_right = 1024.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+
+[node name="Label4" type="Label" parent="Control2"]
+modulate = Color(0.497474, 0.497474, 0.497474, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0667553
+anchor_top = 0.0667553
+anchor_right = 0.566755
+anchor_bottom = 2.52846
+offset_right = 40.0
+offset_bottom = 125.0
+text = "Nodes of Eventide High"
+label_settings = SubResource("LabelSettings_w4yeo")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.0625
+anchor_right = 0.5625
+anchor_bottom = 0.5625
+offset_right = 40.0
+offset_bottom = 125.0
+text = "Nodes of Eventide High"
+label_settings = SubResource("LabelSettings_w4yeo")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="Control2"]
+modulate = Color(0.5, 0.5, 0.5, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0667553
+anchor_top = 0.418317
+anchor_right = 0.566755
+anchor_bottom = 2.18108
+offset_right = -60.6899
+text = "Official Concept Album"
+label_settings = SubResource("LabelSettings_iu24g")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Control2"]
+layout_mode = 0
+anchor_left = 0.0625
+anchor_top = 0.414062
+anchor_right = 0.5625
+anchor_bottom = 0.914062
+offset_right = -60.69
+text = "Official Concept Album"
+label_settings = SubResource("LabelSettings_iu24g")
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.91079)
+light_color = Color(0.498039, 0.713726, 0.996078, 1)
+light_energy = 0.2

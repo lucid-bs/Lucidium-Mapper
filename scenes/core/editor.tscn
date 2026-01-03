@@ -40,23 +40,6 @@
 
 [sub_resource type="Resource" id="Resource_5jsfj"]
 script = ExtResource("3_gremr")
-version = "3.2.0"
-raw_data = {}
-bpm_events = []
-rotation_events = []
-color_notes = Array[ExtResource("2_r50p3")]([])
-bomb_notes = Array[ExtResource("2_jh26k")]([])
-obstacles = []
-sliders = []
-burst_sliders = []
-basic_beatmap_events = []
-color_boost_beatmap_events = []
-light_color_event_box_groups = []
-light_rotation_event_box_groups = []
-light_translation_event_box_groups = []
-basic_event_types_with_keywords = {}
-use_normal_events_as_compatible_events = false
-custom_data = {}
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vbno2"]
 sky_top_color = Color(0.239216, 0.137255, 0.0901961, 1)
@@ -376,7 +359,7 @@ parameter_name = "displace_parameter"
 
 [sub_resource type="VisualShader" id="VisualShader_bd62x"]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform vec2 dis_scroll;
 uniform sampler2D displacement_tut;
@@ -633,8 +616,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.105508, 0.0975378, 0.101466, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b0cnb"]
 width = 2048
-color_ramp = SubResource("Gradient_mt8r0")
 noise = SubResource("FastNoiseLite_krgsd")
+color_ramp = SubResource("Gradient_mt8r0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8l1dh"]
 render_priority = 0
@@ -673,7 +656,6 @@ albedo_color = Color(0.556863, 0.701961, 0.776471, 1)
 emission_enabled = true
 emission = Color(0.442138, 0.507496, 0.562116, 1)
 emission_energy_multiplier = 57.9
-grow = true
 grow_amount = 0.08
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h6xp"]
@@ -1470,8 +1452,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0.662745, 0.811765, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_dxoc4")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dxoc4")
@@ -1526,7 +1508,7 @@ script = ExtResource("10_jdq82")
 [node name="SettingsWindow" parent="MapperUI/SettingsWindow" instance=ExtResource("11_f5e1k")]
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MapperUI"]
-layout_mode = 2
+layout_mode = 0
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1683,6 +1665,7 @@ script = ExtResource("2_xkfh1")
 inertia = 0.045
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
+visible = false
 gi_mode = 2
 mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
