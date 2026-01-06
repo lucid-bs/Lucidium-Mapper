@@ -44,12 +44,13 @@ top_radius = 0.08
 bottom_radius = 0.08
 height = 0.025
 
-[node name="Bloq" type="RigidBody3D" unique_id=1539909654 node_paths=PackedStringArray("arrow_mesh", "dot_mesh")]
+[node name="Bloq" type="RigidBody3D" unique_id=1539909654 node_paths=PackedStringArray("block_mesh", "arrow_mesh", "dot_mesh")]
 collision_layer = 4
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_p10gk")
 glossy = true
+block_mesh = NodePath("MeshInstance3D")
 arrow_mesh = NodePath("MeshInstance3D/Arrow")
 dot_mesh = NodePath("MeshInstance3D/Dot")
 
@@ -59,6 +60,8 @@ shape = SubResource("BoxShape3D_xaduy")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=849903573]
 transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 gi_mode = 2
+instance_shader_parameters/albedo = Color(0.78431374, 0.078431375, 0.078431375, 1)
+instance_shader_parameters/noise_interpolate = 1.0
 mesh = ExtResource("2_hir18")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_frmyy")

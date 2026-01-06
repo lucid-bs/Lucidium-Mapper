@@ -17,7 +17,6 @@ seamless = true
 [resource]
 render_priority = 0
 shader = ExtResource("1_meyv1")
-shader_parameter/albedo = Color(0.78431374, 0.078431375, 0.078431375, 1)
 shader_parameter/gradientBasis = Vector3(1.065, 0, 6.13)
 shader_parameter/gradientBasisDistort = Vector3(0, -3.745, 3.355)
 shader_parameter/gradientBasisSpeed = 0.0

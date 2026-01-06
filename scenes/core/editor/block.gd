@@ -1,6 +1,12 @@
 extends VisualEventBS
 class_name Block
 
+## Oh, GOD, what the HELL is this???
+## How did I have no idea how terrible this code is?
+## TODO: Throw out this entire script and rewrite it from scratch.
+## Why? Because I couldn't code a proper system for shit a year ago.
+## That, and I probably wrote half of this while in class.
+
 
 enum BLOQ_DIRECTIONS {
 	UP = 0,
@@ -33,19 +39,23 @@ enum BLOQ_COLORS {
 # END OPF V3 JSON SETTINGS
 
 @export var rgb_color : Color
+
+@export var custom_shader : bool = false
 @export var bloq_multiplier : float = 0.45 # 0.28 MMA2 Style 0.4 CM Style 0.45 LUC Style
 @export var arrow_multiplier : float = 8 # 0.405 MMA2 Style 1.3 CM Style 8 LUC Style
 @export var arrow_white : float = 0.0625 # 0 MMA2 Style 0.125 CM Style 0.0625 LUC Style
 @export var block_dissolve : float = 1:
 	set(value):
-		$MeshInstance3D.material_override.set_shader_parameter("noise_interpolate", value)
+		block_mesh.set_instance_shader_parameter("noise_interpolate", value)
 		block_dissolve = value
 		
 @export var arrow_dissolve : float = 1:
 	set(value):
-		$MeshInstance3D/Arrow.material_override.set_shader_parameter("noise_interpolate", value)
+		## TODO: Update Arrow Shader.
+		arrow_mesh.material_override.set_shader_parameter("noise_interpolate", value)
 		arrow_dissolve = value
 
+@export var block_mesh : MeshInstance3D
 @export var arrow_mesh : MeshInstance3D
 @export var dot_mesh : MeshInstance3D
 
@@ -59,54 +69,65 @@ var hovered : bool = false
 var color_note_resource : ColorNote
 
 func update_color(new_color : Color, new_note_color := color, color_multiplier := bloq_multiplier):
-	$MeshInstance3D.material_override.set_shader_parameter("albedo", new_color)
-	$MeshInstance3D.material_override.set_shader_parameter("color_multiplier", bloq_multiplier)
+	block_mesh.set_instance_shader_parameter("albedo", new_color)
+	if custom_shader:
+		## TODO: Update custom shader.
+		block_mesh.material_override.set_shader_parameter("color_multiplier", bloq_multiplier)
 	color = new_note_color
 
 func update_arrow_color(albedo := rgb_color, multiplier := arrow_multiplier, white:= arrow_white):
-	$MeshInstance3D/Arrow.material_override.set_shader_parameter("albedo", rgb_color) 
-	$MeshInstance3D/Arrow.material_override.set_shader_parameter("color_multiplier", arrow_multiplier)
-	$MeshInstance3D/Arrow.material_override.set_shader_parameter("white_blend", arrow_white)
+	## TODO: Update Arrow shader.
+	arrow_mesh.material_override.set_shader_parameter("albedo", rgb_color) 
+	arrow_mesh.material_override.set_shader_parameter("color_multiplier", arrow_multiplier)
+	arrow_mesh.material_override.set_shader_parameter("white_blend", arrow_white)
 
 func update_direction(new_direction : BLOQ_DIRECTIONS, new_angle_offset : int):
+	## Why rely on calling a function in a child directly instead of just emitting a signal?
+	## TODO: Write the damn signal.
 	direction = new_direction
 	angle_offset = new_angle_offset
-	$TransformComponent3D.update_rotation()
+	transform_component.update_rotation()
 
 func update_position(new_x : int, new_y : int):
+	## Why rely on calling a function in a child directly instead of just emitting a signal?
+	## TODO: Write the damn signal.
 	x = new_x
 	y = new_y
 	transform_component.update_position(true, true, false)
 
 func update_selection(new_selected: bool):
+	## TODO: Move this logic to a reusable component. Dumbass.
 	if new_selected:
-		$MeshInstance3D.material_overlay = load("res://materials/outline.tres").duplicate()
+		block_mesh.material_overlay = load("res://materials/outline.tres")
 	else:
-		$MeshInstance3D.material_overlay = null
+		block_mesh.material_overlay = null
 	selected = new_selected
 	
 func _ready() -> void:
 	# Configure Material
-	var bloq_material = load("res://materials/bloq/bloqShader.tres").duplicate()
+	var bloq_material = load("res://materials/bloq/bloqShader.tres")
 	var arrow_material = load("res://materials/bloq/arrowShader.tres").duplicate()
-	$MeshInstance3D.material_override = bloq_material
-	$MeshInstance3D/Arrow.material_override = arrow_material
-	$MeshInstance3D/Dot.material_override = arrow_material
-	if glossy:
-		$MeshInstance3D.material_override.set_shader_parameter("roughness", 0.29)
-		$MeshInstance3D.material_override.set_shader_parameter("metallic", 0)
-	else:
-		$MeshInstance3D.material_override.set_shader_parameter("roughness", 1)
-		$MeshInstance3D.material_override.set_shader_parameter("metallic", 1)
+	block_mesh.material_override = bloq_material
+	arrow_mesh.material_override = arrow_material
+	dot_mesh.material_override = arrow_material
+	if custom_shader:
+		## TODO: Move these to per instance uniform?
+		## I'm not exactly sure what to do with this one.
+		if glossy:
+			block_mesh.material_override.set_shader_parameter("roughness", 0.29)
+			block_mesh.material_override.set_shader_parameter("metallic", 0)
+		else:
+			block_mesh.material_override.set_shader_parameter("roughness", 1)
+			block_mesh.material_override.set_shader_parameter("metallic", 1)
 	
 	if color == BLOQ_COLORS.RED:
 		rgb_color = Color(0.8, 0.645, 0.432, 1.0)
 	else:
 		rgb_color = Color(0.557, 0.702, 0.776, 1.0)
+	
 	update_color(rgb_color)
 	update_direction(direction, angle_offset)
 	update_position(x, y)
-	
 	update_arrow_color()
 	
 

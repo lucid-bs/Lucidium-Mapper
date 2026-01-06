@@ -10,7 +10,7 @@ varying vec3 worldEye;
 
 
 group_uniforms color;
-	uniform vec3 albedo: source_color = vec3(1.0, 1.0, 1.0);
+	instance uniform vec3 albedo: source_color = vec3(1.0, 1.0, 1.0);
 group_uniforms;
 
 group_uniforms gradientBasis;
@@ -26,7 +26,7 @@ group_uniforms refraction;
 group_uniforms;
 
 uniform sampler2D noise_texture;
-uniform float noise_interpolate : hint_range(0, 1.0) = 1;
+instance uniform float noise_interpolate : hint_range(0, 1.0) = 1;
 
 
 void vertex() {
