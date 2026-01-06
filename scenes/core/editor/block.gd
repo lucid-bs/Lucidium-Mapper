@@ -77,9 +77,9 @@ func update_color(new_color : Color, new_note_color := color, color_multiplier :
 
 func update_arrow_color(albedo := rgb_color, multiplier := arrow_multiplier, white:= arrow_white):
 	## TODO: Update Arrow shader.
-	arrow_mesh.material_override.set_shader_parameter("albedo", rgb_color) 
-	arrow_mesh.material_override.set_shader_parameter("color_multiplier", arrow_multiplier)
-	arrow_mesh.material_override.set_shader_parameter("white_blend", arrow_white)
+	arrow_mesh.set_instance_shader_parameter("albedo", rgb_color) 
+	arrow_mesh.set_instance_shader_parameter("color_multiplier", arrow_multiplier)
+	arrow_mesh.set_instance_shader_parameter("white_blend", arrow_white)
 
 func update_direction(new_direction : BLOQ_DIRECTIONS, new_angle_offset : int):
 	## Why rely on calling a function in a child directly instead of just emitting a signal?
@@ -106,7 +106,7 @@ func update_selection(new_selected: bool):
 func _ready() -> void:
 	# Configure Material
 	var bloq_material = load("res://materials/bloq/bloqShader.tres")
-	var arrow_material = load("res://materials/bloq/arrowShader.tres").duplicate()
+	var arrow_material = load("res://materials/bloq/arrowShader.tres")
 	block_mesh.material_override = bloq_material
 	arrow_mesh.material_override = arrow_material
 	dot_mesh.material_override = arrow_material
