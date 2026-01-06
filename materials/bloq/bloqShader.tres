@@ -1,14 +1,28 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://q5ec1qb0a6lg"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://q5ec1qb0a6lg"]
 
 [ext_resource type="Shader" uid="uid://dx4x3kunpje26" path="res://shaders/beatsaber_block.gdshader" id="1_meyv1"]
+
+[sub_resource type="Gradient" id="Gradient_4hp6b"]
+interpolation_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j37dc"]
+frequency = 0.02
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_meyv1"]
+noise = SubResource("FastNoiseLite_j37dc")
+color_ramp = SubResource("Gradient_4hp6b")
+seamless = true
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_meyv1")
-shader_parameter/albedo = Color(0.15686275, 0.5568628, 0.8235294, 1)
+shader_parameter/albedo = Color(0.78431374, 0.078431375, 0.078431375, 1)
 shader_parameter/gradientBasis = Vector3(1.065, 0, 6.13)
 shader_parameter/gradientBasisDistort = Vector3(0, -3.745, 3.355)
 shader_parameter/gradientBasisSpeed = 0.0
 shader_parameter/refractionSplit = 0.0
 shader_parameter/refractionSplitPower = 0.13000000547648
 shader_parameter/refractionAffect = 0.95
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_meyv1")
+shader_parameter/noise_interpolate = 1.0
