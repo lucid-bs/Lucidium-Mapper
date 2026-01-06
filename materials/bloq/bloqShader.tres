@@ -24,4 +24,3 @@ shader_parameter/refractionSplit = 0.0
 shader_parameter/refractionSplitPower = 0.13000000547648
 shader_parameter/refractionAffect = 0.95
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_meyv1")
-shader_parameter/noise_interpolate = 1.0
