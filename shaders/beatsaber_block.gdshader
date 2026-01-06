@@ -85,7 +85,7 @@ void fragment() {
 	vec2 base_uv = UV;
 	vec4 noise = texture(noise_texture, base_uv);
 	float interpolated = float(clamp(noise.r + mix(-1, 1, mix(0.5, 1, noise_interpolate)), 0, 1) == 1.0);
-	float rim = (float(clamp(noise.r + mix(-1, 1, mix(0.53, 1, noise_interpolate)), 0, 1) == 1.0) - interpolated) * step(0.001, noise_interpolate);
+	float rim = (float(clamp(noise.r + mix(-1, 1, mix(0.56, 1, noise_interpolate)), 0, 1) == 1.0) - interpolated) * step(0.001, noise_interpolate);
 	ALPHA = interpolated + rim;
 	ALBEDO = ALBEDO + (vec3(rim * 20.0) * albedo);
 	EMISSION = (vec3(rim * 500.0) * albedo);
