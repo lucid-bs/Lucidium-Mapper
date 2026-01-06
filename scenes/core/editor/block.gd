@@ -42,7 +42,7 @@ enum BLOQ_COLORS {
 
 @export var custom_shader : bool = false
 @export var bloq_multiplier : float = 0.45 # 0.28 MMA2 Style 0.4 CM Style 0.45 LUC Style
-@export var arrow_multiplier : float = 8 # 0.405 MMA2 Style 1.3 CM Style 8 LUC Style
+@export var arrow_multiplier : float = 12 # 0.405 MMA2 Style 1.3 CM Style 12 LUC Style
 @export var arrow_white : float = 0.0625 # 0 MMA2 Style 0.125 CM Style 0.0625 LUC Style
 @export var block_dissolve : float = 1:
 	set(value):
@@ -121,9 +121,9 @@ func _ready() -> void:
 			block_mesh.material_override.set_shader_parameter("metallic", 1)
 	
 	if color == BLOQ_COLORS.RED:
-		rgb_color = Color(0.8, 0.645, 0.432, 1.0)
+		rgb_color = Color(0.784, 0.078, 0.078, 1.0)
 	else:
-		rgb_color = Color(0.557, 0.702, 0.776, 1.0)
+		rgb_color = Color(0.157, 0.557, 0.824, 1.0)
 	
 	update_color(rgb_color)
 	update_direction(direction, angle_offset)

@@ -78,6 +78,8 @@ surface_material_override/0 = ExtResource("3_3pj1r")
 transform = Transform3D(1, 8.47033e-22, 1.13687e-13, 2.84217e-14, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.242262)
 material_override = ExtResource("3_3pj1r")
 gi_mode = 2
+instance_shader_parameters/color_multiplier = 1.0
+instance_shader_parameters/white_blend = 1.0
 mesh = SubResource("CylinderMesh_mkti1")
 
 [node name="TransformComponent3D" type="Node" parent="." unique_id=1177760313]

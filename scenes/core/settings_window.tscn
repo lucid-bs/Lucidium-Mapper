@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvkmt7lgf32wm" path="res://scenes/settings_tree.gd" id="1_1jfr7"]
 
-[node name="GlobalSettings" type="TabContainer"]
+[node name="GlobalSettings" type="TabContainer" unique_id=2077485412]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,7 +10,7 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 1
 
-[node name="Profiles" type="MarginContainer" parent="."]
+[node name="Profiles" type="MarginContainer" parent="." unique_id=902694631]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 6
@@ -19,33 +19,33 @@ theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Profiles"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Profiles" unique_id=413573739]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Profiles/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Profiles/ScrollContainer" unique_id=2088175525]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="Profiles/ScrollContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Profiles/ScrollContainer/VBoxContainer" unique_id=2147086563]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Profiles/ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Profiles/ScrollContainer/VBoxContainer/PanelContainer" unique_id=378921289]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Profiles/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Profiles/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1981004218]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dummy Setting A"
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Profiles/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="Profiles/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=755881033]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Editor" type="MarginContainer" parent="." node_paths=PackedStringArray("active_node")]
+[node name="Editor" type="MarginContainer" parent="." unique_id=338709611 node_paths=PackedStringArray("active_node")]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
@@ -65,107 +65,107 @@ tabs = {
 active_node = NodePath("HSplitContainer/BlocksColorsContainer")
 metadata/_tab_index = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Editor"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Editor" unique_id=846118383]
 layout_mode = 2
+split_offsets = PackedInt32Array(224, 232)
 split_offset = 224
 
-[node name="Tree" type="Tree" parent="Editor/HSplitContainer"]
+[node name="Tree" type="Tree" parent="Editor/HSplitContainer" unique_id=518367121]
 layout_mode = 2
 hide_root = true
 
-[node name="BlocksColorsContainer" type="ScrollContainer" parent="Editor/HSplitContainer"]
+[node name="BlocksColorsContainer" type="ScrollContainer" parent="Editor/HSplitContainer" unique_id=1166730177]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer" unique_id=690538762]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer" unique_id=265526324]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer" unique_id=2069915482]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1141101111]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dummy Setting A"
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=523498812]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer" unique_id=378549506]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer2" unique_id=1165225824]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1621850361]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dummy Setting B"
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=7203431]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer3" type="PanelContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer" unique_id=858287438]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer3" unique_id=477963066]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=567467565]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dummy Setting C (Color)"
 horizontal_alignment = 1
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Editor/HSplitContainer/BlocksColorsContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1212820884]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BlocksMaterialContainer" type="ScrollContainer" parent="Editor/HSplitContainer"]
-visible = false
+[node name="BlocksMaterialContainer" type="ScrollContainer" parent="Editor/HSplitContainer" unique_id=1947543637]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer" unique_id=827815765]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer" unique_id=1098330479]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer" unique_id=1152228096]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1551103955]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Preset"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=2086032131]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 2
@@ -179,27 +179,27 @@ popup/item_2/id = 2
 popup/item_3/text = "Custom"
 popup/item_3/id = 3
 
-[node name="HSeparator" type="HSeparator" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer" unique_id=1711707708]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer" unique_id=1762175086]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer2" unique_id=476145123]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=653072398]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Block Color Multiplier"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=108801636]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -207,24 +207,24 @@ max_value = 3.0
 step = 0.0
 value = 0.45
 
-[node name="PanelContainer3" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer" unique_id=1931452391]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer3" unique_id=1921783705]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1127055069]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Arrow Color Multiplier"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1940168507]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -232,24 +232,24 @@ max_value = 8.0
 step = 0.0
 value = 8.0
 
-[node name="PanelContainer4" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer" unique_id=285116566]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer4" unique_id=554682022]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer4/HBoxContainer" unique_id=1040569499]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Arrow White Mix"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer4/HBoxContainer" unique_id=222247498]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -257,21 +257,21 @@ max_value = 1.0
 step = 0.0
 value = 0.063
 
-[node name="PanelContainer5" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer"]
+[node name="PanelContainer5" type="PanelContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer" unique_id=1193576026]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer5"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer5" unique_id=123261761]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
+[node name="Label" type="Label" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer5/HBoxContainer" unique_id=1217056161]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Glossy"
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer5/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="Editor/HSplitContainer/BlocksMaterialContainer/VBoxContainer/PanelContainer5/HBoxContainer" unique_id=837918682]
 layout_mode = 2
 size_flags_horizontal = 3
 
