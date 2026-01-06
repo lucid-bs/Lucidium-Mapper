@@ -44,7 +44,7 @@ top_radius = 0.08
 bottom_radius = 0.08
 height = 0.025
 
-[node name="Bloq" type="RigidBody3D" node_paths=PackedStringArray("arrow_mesh", "dot_mesh")]
+[node name="Bloq" type="RigidBody3D" unique_id=1539909654 node_paths=PackedStringArray("arrow_mesh", "dot_mesh")]
 collision_layer = 4
 freeze = true
 freeze_mode = 1
@@ -53,17 +53,17 @@ glossy = true
 arrow_mesh = NodePath("MeshInstance3D/Arrow")
 dot_mesh = NodePath("MeshInstance3D/Dot")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=391372127]
 shape = SubResource("BoxShape3D_xaduy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=849903573]
 transform = Transform3D(1.5, -3.57628e-07, 0, 3.57628e-07, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 gi_mode = 2
 mesh = ExtResource("2_hir18")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_frmyy")
 
-[node name="Arrow" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="Arrow" type="MeshInstance3D" parent="MeshInstance3D" unique_id=788482605]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.1, 0.250082)
 visible = false
 gi_mode = 2
@@ -71,13 +71,13 @@ mesh = SubResource("ArrayMesh_8pbj6")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_3pj1r")
 
-[node name="Dot" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="Dot" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1278378844]
 transform = Transform3D(1, 8.47033e-22, 1.13687e-13, 2.84217e-14, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.242262)
 material_override = ExtResource("3_3pj1r")
 gi_mode = 2
 mesh = SubResource("CylinderMesh_mkti1")
 
-[node name="TransformComponent3D" type="Node" parent="."]
+[node name="TransformComponent3D" type="Node" parent="." unique_id=1177760313]
 script = ExtResource("5_4kw40")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

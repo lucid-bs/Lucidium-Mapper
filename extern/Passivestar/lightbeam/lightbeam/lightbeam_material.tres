@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c4uudb0m5p048"]
+
+[ext_resource type="Shader" uid="uid://c77hfyht2fpxt" path="res://extern/Passivestar/lightbeam/lightbeam/lightbeam.gdshader" id="1_4nd3r"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4nd3r")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/use_second_color = false
+shader_parameter/second_color = Color(1, 1, 1, 1)
+shader_parameter/cone_start_width = 0.02
+shader_parameter/cone_curve = 0.3
+shader_parameter/beam_sharpness = 0.25
+shader_parameter/beam_fade = 4.0
+shader_parameter/use_gradient = false
+shader_parameter/proximity_fade_distance = 0.75
+shader_parameter/z_fade_start = 0.5
+shader_parameter/z_fade_end = 0.8
+shader_parameter/use_noise = false
+shader_parameter/noise_scale = 1.0000000149012
+shader_parameter/noise_intensity = 0.5
+shader_parameter/noise_scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/noise_distortion_intensity = 0.01
+shader_parameter/noise_distortion_scroll_speed = Vector2(-0.02, -0.01)

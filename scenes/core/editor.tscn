@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://d22oot53lt605"]
+[gd_scene load_steps=127 format=3 uid="uid://d22oot53lt605"]
 
 [ext_resource type="Script" uid="uid://cbhsuce2xlbur" path="res://scenes/core/editor.gd" id="1_lhv5r"]
 [ext_resource type="Script" uid="uid://dvhtroyg883ll" path="res://resources/v3/beatmap/color_note.gd" id="2_jh26k"]
@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://sjru5atoiyka" path="res://scenes/core/editor/menu_button.gd" id="10_vu5vo"]
 [ext_resource type="Script" uid="uid://bv6fbw35xawur" path="res://scenes/core/editor/block_manager.gd" id="11_bwwcu"]
 [ext_resource type="PackedScene" uid="uid://w1xrk5prbs38" path="res://scenes/core/settings_window.tscn" id="11_f5e1k"]
-[ext_resource type="Shader" uid="uid://bhekjfag8gphs" path="res://materials/shaders/color_alpha.gdshader" id="11_irt5k"]
+[ext_resource type="Shader" uid="uid://bhekjfag8gphs" path="res://shaders/color_alpha.gdshader" id="11_irt5k"]
 [ext_resource type="Script" uid="uid://ds0vd61u3sftr" path="res://scenes/core/left_tab_container.gd" id="12_b3ujs"]
 [ext_resource type="Script" uid="uid://bbwpdvbpnwrse" path="res://scenes/core/editor/sub_div_bars.gd" id="13_v18s2"]
 [ext_resource type="Script" uid="uid://dbgcoim70nhlq" path="res://scenes/core/editor/button_container.gd" id="14_uoxu3"]
@@ -30,7 +30,7 @@
 [ext_resource type="Material" uid="uid://3ksw0bxdofr2" path="res://materials/billie_water.tres" id="19_pgggt"]
 [ext_resource type="Texture2D" uid="uid://cauiaqreq10xs" path="res://extern/ChroMapper/billie/Billie/Sun.png" id="19_rks5o"]
 [ext_resource type="Texture2D" uid="uid://pmsldaf7chtt" path="res://extern/LittleStryker/godot_waterfall/assets/texture/waterfall_textures/waterfall_texture.png" id="20_36pox"]
-[ext_resource type="Shader" uid="uid://dfq50l8dw8utv" path="res://materials/shaders/pixel_shader.gdshader" id="20_g4et7"]
+[ext_resource type="Shader" uid="uid://dfq50l8dw8utv" path="res://shaders/pixel_shader.gdshader" id="20_g4et7"]
 [ext_resource type="Shader" uid="uid://b08nq5tf0l06q" path="res://materials/clouds/clouds_a.tres" id="20_id8xb"]
 [ext_resource type="Script" uid="uid://birusmsh57slp" path="res://scenes/core/precision_container.gd" id="23_efecr"]
 [ext_resource type="Script" uid="uid://cn16tb1rbna8s" path="res://scenes/core/editor/player_controller.gd" id="26_6j8m4"]
@@ -59,7 +59,6 @@ glow_enabled = true
 glow_levels/2 = 0.25
 glow_levels/3 = 0.15
 glow_levels/5 = 0.25
-glow_blend_mode = 1
 fog_mode = 1
 fog_density = 1.0
 fog_depth_curve = 0.5
@@ -358,173 +357,6 @@ operator = 2
 parameter_name = "displace_parameter"
 
 [sub_resource type="VisualShader" id="VisualShader_bd62x"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform vec2 dis_scroll;
-uniform sampler2D displacement_tut;
-uniform float displace_parameter;
-uniform sampler2D base_color_texture;
-uniform vec2 uv_scale = vec2(1.000000, 1.000000);
-uniform vec2 scroll;
-uniform sampler2D water_texture;
-uniform vec2 uv_scale2 = vec2(1.000000, 1.000000);
-uniform vec2 scroll2;
-uniform sampler2D water_texture2;
-uniform float overlay_alpha : hint_range(0.0, 1.0) = 1.0;
-uniform float Metallic;
-uniform float Roughness;
-uniform float Specular;
-
-
-
-void vertex() {
-// Input:6
-	vec3 n_out6p0 = VERTEX;
-
-
-// Input:2
-	vec3 n_out2p0 = NORMAL;
-
-
-// Vector2Parameter:12
-	vec2 n_out12p0 = dis_scroll;
-
-
-// Input:11
-	float n_out11p0 = TIME;
-
-
-// UVFunc:10
-	vec2 n_out10p0 = vec2(n_out11p0) * n_out12p0 + UV;
-
-
-	vec4 n_out5p0;
-// Texture2D:5
-	n_out5p0 = texture(displacement_tut, n_out10p0);
-
-
-// VectorOp:3
-	vec3 n_out3p0 = n_out2p0 + vec3(n_out5p0.xyz);
-
-
-// FloatParameter:9
-	float n_out9p0 = displace_parameter;
-
-
-// VectorOp:8
-	vec3 n_out8p0 = n_out3p0 * vec3(n_out9p0);
-
-
-// VectorOp:7
-	vec3 n_out7p0 = n_out6p0 + n_out8p0;
-
-
-// Output:0
-	VERTEX = n_out7p0;
-
-
-}
-
-void fragment() {
-	vec4 n_out29p0;
-// Texture2D:29
-	n_out29p0 = texture(base_color_texture, UV);
-
-
-// Vector2Parameter:32
-	vec2 n_out32p0 = uv_scale;
-
-
-// UVFunc:7
-	vec2 n_in7p2 = vec2(0.50000, 0.50000);
-	vec2 n_out7p0 = (UV - n_in7p2) * n_out32p0 + n_in7p2;
-
-
-// Vector2Parameter:15
-	vec2 n_out15p0 = scroll;
-
-
-// Input:6
-	float n_out6p0 = TIME;
-
-
-// UVFunc:4
-	vec2 n_out4p0 = vec2(n_out6p0) * n_out15p0 + n_out7p0;
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(water_texture, n_out4p0);
-
-
-// Input:22
-	vec2 n_out22p0 = UV;
-
-
-// Vector2Parameter:31
-	vec2 n_out31p0 = uv_scale2;
-
-
-// UVFunc:10
-	vec2 n_in10p2 = vec2(0.50000, 0.50000);
-	vec2 n_out10p0 = (n_out22p0 - n_in10p2) * n_out31p0 + n_in10p2;
-
-
-// Vector2Parameter:13
-	vec2 n_out13p0 = scroll2;
-
-
-// Input:9
-	float n_out9p0 = TIME;
-
-
-// UVFunc:8
-	vec2 n_out8p0 = vec2(n_out9p0) * n_out13p0 + n_out10p0;
-
-
-	vec4 n_out11p0;
-// Texture2D:11
-	n_out11p0 = texture(water_texture2, n_out8p0);
-
-
-// VectorOp:16
-	vec4 n_out16p0 = n_out3p0 * n_out11p0;
-
-
-// FloatParameter:28
-	float n_out28p0 = overlay_alpha;
-
-
-// VectorOp:27
-	vec4 n_out27p0 = n_out16p0 * vec4(n_out28p0);
-
-
-// VectorOp:26
-	vec4 n_out26p0 = n_out29p0 + n_out27p0;
-
-
-// FloatParameter:33
-	float n_out33p0 = Metallic;
-
-
-// FloatParameter:34
-	float n_out34p0 = Roughness;
-
-
-// FloatParameter:35
-	float n_out35p0 = Specular;
-
-
-// Output:0
-	ALBEDO = vec3(n_out26p0.xyz);
-	METALLIC = n_out33p0;
-	ROUGHNESS = n_out34p0;
-	SPECULAR = n_out35p0;
-
-
-}
-"
 nodes/vertex/0/position = Vector2(580, 180)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_06yiu")
 nodes/vertex/2/position = Vector2(-760, 100)
@@ -640,38 +472,6 @@ shader_parameter/Specular = 0.259
 [sub_resource type="BoxMesh" id="BoxMesh_qxtxo"]
 size = Vector3(0.02, 0.02, 0.02)
 
-[sub_resource type="Gradient" id="Gradient_nf8b5"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qk14q"]
-gradient = SubResource("Gradient_nf8b5")
-height = 127
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghsvx"]
-albedo_color = Color(0.556863, 0.701961, 0.776471, 1)
-emission_enabled = true
-emission = Color(0.442138, 0.507496, 0.562116, 1)
-emission_energy_multiplier = 57.9
-grow_amount = 0.08
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h6xp"]
-resource_name = "ControllableLight"
-next_pass = SubResource("StandardMaterial3D_ghsvx")
-transparency = 1
-blend_mode = 1
-albedo_color = Color(0.556863, 0.701961, 0.776471, 1)
-roughness = 0.0
-emission_enabled = true
-emission = Color(0.540665, 0.688125, 0.763706, 1)
-emission_energy_multiplier = 90.3
-emission_operator = 1
-emission_texture = SubResource("GradientTexture2D_qk14q")
-grow = true
-
 [sub_resource type="Curve" id="Curve_n0hed"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0972851, 1), 0.0, 0.0, 0, 0, Vector2(0.89819, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -729,15 +529,15 @@ size = Vector2(12.21, 11.825)
 
 [sub_resource type="LabelSettings" id="LabelSettings_70k4i"]
 
-[node name="Map Editor" type="Node3D" node_paths=PackedStringArray("local_editor")]
+[node name="Map Editor" type="Node3D" unique_id=1449390041 node_paths=PackedStringArray("local_editor")]
 script = ExtResource("1_lhv5r")
 local_editor = NodePath("LucidiumEditor")
 beatmap = SubResource("Resource_5jsfj")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=308172228]
 environment = SubResource("Environment_rcla0")
 
-[node name="LucidiumEditor" type="Node" parent="." node_paths=PackedStringArray("main_precision_container", "secondary_precision_container", "audio_stream_player", "sfx_player")]
+[node name="LucidiumEditor" type="Node" parent="." unique_id=906364414 node_paths=PackedStringArray("main_precision_container", "secondary_precision_container", "audio_stream_player", "sfx_player")]
 script = ExtResource("16_r33nt")
 current_beat = 1.0
 main_precision_container = NodePath("../MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer")
@@ -745,103 +545,103 @@ secondary_precision_container = NodePath("../MapperUI/HSplitContainer/HSplitCont
 audio_stream_player = NodePath("AudioStreamPlayer")
 sfx_player = NodePath("SFXPlayer")
 
-[node name="PlayerController" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("event_manager", "editor_node", "timeline_scroll_bar")]
+[node name="PlayerController" type="Node" parent="LucidiumEditor" unique_id=4516085 node_paths=PackedStringArray("event_manager", "editor_node", "timeline_scroll_bar")]
 script = ExtResource("26_6j8m4")
 event_manager = NodePath("../EventManager")
 editor_node = NodePath("..")
 timeline_scroll_bar = NodePath("../../MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer/Panel/HScrollBar")
 
-[node name="EventManager" type="Node" parent="LucidiumEditor" node_paths=PackedStringArray("editor_node", "map_data")]
+[node name="EventManager" type="Node" parent="LucidiumEditor" unique_id=1152417913 node_paths=PackedStringArray("editor_node", "map_data")]
 script = ExtResource("27_720f7")
 editor_node = NodePath("..")
 map_data = NodePath("../MapData")
 
-[node name="MapData" type="Node" parent="LucidiumEditor"]
+[node name="MapData" type="Node" parent="LucidiumEditor" unique_id=489380747]
 script = ExtResource("27_fuiss")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LucidiumEditor" unique_id=707655239]
 stream = ExtResource("6_4cv4x")
 
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="LucidiumEditor"]
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="LucidiumEditor" unique_id=1467222937]
 stream = ExtResource("6_4cv4x")
-volume_db = 1.0
+volume_db = -4.0
 
-[node name="Grid" type="Node3D" parent="."]
+[node name="Grid" type="Node3D" parent="." unique_id=600538513]
 script = ExtResource("3_wy725")
 
-[node name="X" type="Node3D" parent="Grid"]
+[node name="X" type="Node3D" parent="Grid" unique_id=488877769]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/X"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/X" unique_id=75878853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 0)
 layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/X"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/X" unique_id=1399533682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0)
 layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/X"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/X" unique_id=1923532885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/X"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/X" unique_id=2128592219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
 layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/X"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/X" unique_id=130577927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
 layers = 2
 mesh = SubResource("BoxMesh_j1knx")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("6_2v7ym")
 
-[node name="Y" type="Node3D" parent="Grid"]
+[node name="Y" type="Node3D" parent="Grid" unique_id=963029460]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/Y"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Grid/Y" unique_id=332918068]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/Y"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Grid/Y" unique_id=1995412241]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
 layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/Y"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Grid/Y" unique_id=964270445]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 2, 0)
 layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/Y"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Grid/Y" unique_id=1931947908]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3, 0)
 layers = 2
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_abaqk")
 skeleton = NodePath("../..")
 
-[node name="SelectionGrid" type="MeshInstance3D" parent="Grid"]
+[node name="SelectionGrid" type="MeshInstance3D" parent="Grid" unique_id=49547632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 layers = 2
 material_override = ExtResource("7_k0ji6")
 mesh = SubResource("QuadMesh_3f33k")
 
-[node name="Timeline" type="Node3D" parent="Grid"]
+[node name="Timeline" type="Node3D" parent="Grid" unique_id=1026482081]
 
-[node name="TimelineGrid" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="TimelineGrid" type="MeshInstance3D" parent="Grid/Timeline" unique_id=785392944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
 layers = 4
 material_override = SubResource("StandardMaterial3D_drsw4")
@@ -849,146 +649,146 @@ transparency = 0.5
 mesh = SubResource("PlaneMesh_r5xv2")
 skeleton = NodePath("../..")
 
-[node name="LANE1" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="LANE1" type="MeshInstance3D" parent="Grid/Timeline" unique_id=725990882]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="LANE2" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="LANE2" type="MeshInstance3D" parent="Grid/Timeline" unique_id=537433528]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -2, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="LANE3" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="LANE3" type="MeshInstance3D" parent="Grid/Timeline" unique_id=1325519755]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -1, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="LANE4" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="LANE4" type="MeshInstance3D" parent="Grid/Timeline" unique_id=816326125]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 1, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="LANE5" type="MeshInstance3D" parent="Grid/Timeline"]
+[node name="LANE5" type="MeshInstance3D" parent="Grid/Timeline" unique_id=1296871716]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 2, 0.0034079, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_o38ct")
 
-[node name="BeatBars" type="Node3D" parent="Grid/Timeline" node_paths=PackedStringArray("editor_node")]
+[node name="BeatBars" type="Node3D" parent="Grid/Timeline" unique_id=328222916 node_paths=PackedStringArray("editor_node")]
 script = ExtResource("4_3kgy6")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=1352869854]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 4)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/0" unique_id=134883677]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "0"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="1" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=1394139826]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/1"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/1" unique_id=1396588197]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "1"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="2" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=2048520357]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -4)
 layers = 4
 material_override = SubResource("ShaderMaterial_ufjc0")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/2"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/2" unique_id=1541364812]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "2"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="3" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=122770041]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -8)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/3"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/3" unique_id=1686830279]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "3"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="4" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="4" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=1390273280]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -12)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/4"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/4" unique_id=1494413736]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "4"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="5" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="5" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=1356784784]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -16)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/5"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/5" unique_id=1797919336]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "5"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="6" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="6" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=1027590061]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -20)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/6"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/6" unique_id=1514218315]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "6"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="7" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="7" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=762928090]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -24)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/7"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/7" unique_id=802218917]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "7
 "
@@ -996,14 +796,14 @@ font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="8" type="MeshInstance3D" parent="Grid/Timeline/BeatBars"]
+[node name="8" type="MeshInstance3D" parent="Grid/Timeline/BeatBars" unique_id=537202621]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -28)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/8"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/BeatBars/8" unique_id=2033047143]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "8
 "
@@ -1011,119 +811,119 @@ font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="SubDivBars" type="Node3D" parent="Grid/Timeline" node_paths=PackedStringArray("editor_node")]
+[node name="SubDivBars" type="Node3D" parent="Grid/Timeline" unique_id=1954658363 node_paths=PackedStringArray("editor_node")]
 visible = false
 script = ExtResource("13_v18s2")
 editor_node = NodePath("../../../LucidiumEditor")
 bar_mesh = SubResource("BoxMesh_ptyo0")
 bar_material = ExtResource("6_2v7ym")
 
-[node name="0" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="0" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=1528996418]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 2)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_gja7c")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/0"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/0" unique_id=862854347]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "0"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="1" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="1" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=1498970985]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -2)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/1"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/1" unique_id=1376090593]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "1"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="2" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="2" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=2047271783]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -6)
 layers = 4
 material_override = SubResource("ShaderMaterial_ufjc0")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/2"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/2" unique_id=575261444]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "2"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="3" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="3" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=1370068687]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -10)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/3"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/3" unique_id=1549013320]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "3"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="4" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="4" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=1831465118]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -14)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/4"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/4" unique_id=724636258]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "4"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="5" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="5" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=593962223]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -18)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/5"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/5" unique_id=376178678]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "5"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="6" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="6" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=281708706]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -22)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/6"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/6" unique_id=397498178]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "6"
 font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="7" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="7" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=290372683]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -26)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/7"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/7" unique_id=384322259]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "7
 "
@@ -1131,14 +931,14 @@ font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="8" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars"]
+[node name="8" type="MeshInstance3D" parent="Grid/Timeline/SubDivBars" unique_id=154896629]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -30)
 layers = 4
 material_override = ExtResource("6_2v7ym")
 mesh = SubResource("BoxMesh_q54dk")
 skeleton = NodePath("../../..")
 
-[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/8"]
+[node name="BeatNum" type="Label3D" parent="Grid/Timeline/SubDivBars/8" unique_id=508184309]
 transform = Transform3D(-8.74228e-08, 3.55271e-15, 1, -1, 1.06581e-14, -8.74228e-08, -7.10543e-15, -1, 1.91069e-15, -1.39876e-07, -3.2, 0)
 text = "8
 "
@@ -1146,279 +946,279 @@ font = SubResource("FontVariation_op0pt")
 font_size = 114
 outline_size = 0
 
-[node name="Spectogram" type="Node3D" parent="Grid"]
+[node name="Spectogram" type="Node3D" parent="Grid" unique_id=1094561640]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 visible = false
 
-[node name="Spectogram" type="MeshInstance3D" parent="Grid/Spectogram"]
+[node name="Spectogram" type="MeshInstance3D" parent="Grid/Spectogram" unique_id=472842335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
 layers = 4
 material_override = SubResource("ShaderMaterial_cw4ha")
 mesh = SubResource("PlaneMesh_r5xv2")
 skeleton = NodePath("../..")
 
-[node name="GridPlacements" type="Node3D" parent="Grid"]
+[node name="GridPlacements" type="Node3D" parent="Grid" unique_id=1825165451]
 
-[node name="00" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="00" type="Area3D" parent="Grid/GridPlacements" unique_id=1189398892 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/00"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/00" unique_id=1106412546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/00"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/00" unique_id=1598636176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="10" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="10" type="Area3D" parent="Grid/GridPlacements" unique_id=236343812 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/10"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/10" unique_id=865295101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/10"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/10" unique_id=345026085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="20" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="20" type="Area3D" parent="Grid/GridPlacements" unique_id=1774449589 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/20"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/20" unique_id=1253347662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/20"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/20" unique_id=88592514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="30" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="30" type="Area3D" parent="Grid/GridPlacements" unique_id=1565559573 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/30"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/30" unique_id=610707310]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/30"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/30" unique_id=1813296115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="01" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="01" type="Area3D" parent="Grid/GridPlacements" unique_id=738844670 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/01"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/01" unique_id=989416171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/01"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/01" unique_id=1044142480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="11" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="11" type="Area3D" parent="Grid/GridPlacements" unique_id=669854641 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/11"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/11" unique_id=324303466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/11"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/11" unique_id=1359198887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="21" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="21" type="Area3D" parent="Grid/GridPlacements" unique_id=1688960848 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/21"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/21" unique_id=1754331268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/21"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/21" unique_id=404853922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="31" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="31" type="Area3D" parent="Grid/GridPlacements" unique_id=59939291 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/31"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/31" unique_id=566701866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/31"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/31" unique_id=1334917190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="02" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="02" type="Area3D" parent="Grid/GridPlacements" unique_id=373241353 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/02"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/02" unique_id=1545043131]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/02"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/02" unique_id=383253983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="13" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="13" type="Area3D" parent="Grid/GridPlacements" unique_id=1193052310 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/13"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/13" unique_id=2005489531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/13"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/13" unique_id=1532634362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="23" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="23" type="Area3D" parent="Grid/GridPlacements" unique_id=233514503 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/23"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/23" unique_id=738357930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/23"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/23" unique_id=1388354357]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="33" type="Area3D" parent="Grid/GridPlacements" node_paths=PackedStringArray("editor_node")]
+[node name="33" type="Area3D" parent="Grid/GridPlacements" unique_id=2076213904 node_paths=PackedStringArray("editor_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.5, 0)
 collision_mask = 4
 script = ExtResource("4_gcuyk")
 editor_node = NodePath("../../../LucidiumEditor")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/33"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid/GridPlacements/33" unique_id=1373948686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00488281)
 shape = SubResource("BoxShape3D_u3cbc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/33"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Grid/GridPlacements/33" unique_id=892581995]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00523536)
 layers = 2
 transparency = 1.0
 mesh = SubResource("QuadMesh_7skff")
 
-[node name="Labels" type="Node3D" parent="Grid"]
+[node name="Labels" type="Node3D" parent="Grid" unique_id=1007831354]
 script = ExtResource("6_313ly")
 
-[node name="Y" type="Node3D" parent="Grid/Labels"]
+[node name="Y" type="Node3D" parent="Grid/Labels" unique_id=73322993]
 
-[node name="Y0" type="Label3D" parent="Grid/Labels/Y"]
+[node name="Y0" type="Label3D" parent="Grid/Labels/Y" unique_id=804051043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.5, 0)
 text = "0
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="Y1" type="Label3D" parent="Grid/Labels/Y"]
+[node name="Y1" type="Label3D" parent="Grid/Labels/Y" unique_id=944903784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.5, 0)
 text = "1"
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="Y2" type="Label3D" parent="Grid/Labels/Y"]
+[node name="Y2" type="Label3D" parent="Grid/Labels/Y" unique_id=1190697538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 2.5, 0)
 text = "2
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="1X" type="Node3D" parent="Grid/Labels"]
+[node name="1X" type="Node3D" parent="Grid/Labels" unique_id=1312398261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="X0" type="Label3D" parent="Grid/Labels/1X"]
+[node name="X0" type="Label3D" parent="Grid/Labels/1X" unique_id=684187692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.3, 0)
 text = "0
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="X1" type="Label3D" parent="Grid/Labels/1X"]
+[node name="X1" type="Label3D" parent="Grid/Labels/1X" unique_id=569093121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, 0)
 text = "1
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="2X" type="Node3D" parent="Grid/Labels"]
+[node name="2X" type="Node3D" parent="Grid/Labels" unique_id=25196930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="X2" type="Label3D" parent="Grid/Labels/2X"]
+[node name="X2" type="Label3D" parent="Grid/Labels/2X" unique_id=1642643194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 0)
 text = "2"
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="X3" type="Label3D" parent="Grid/Labels/2X"]
+[node name="X3" type="Label3D" parent="Grid/Labels/2X" unique_id=91024979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.3, 0)
 text = "3
 "
 font = SubResource("FontVariation_op0pt")
 font_size = 57
 
-[node name="Rotating Light" type="Node3D" parent="."]
+[node name="Rotating Light" type="Node3D" parent="." unique_id=1920624091]
 transform = Transform3D(-1.00389, -0.423731, -0.346668, -3.22324e-08, 0.711106, -0.826286, 0.579596, -0.733924, -0.600447, 0, 3, 0)
 
-[node name="Light" type="DirectionalLight3D" parent="Rotating Light"]
+[node name="Light" type="DirectionalLight3D" parent="Rotating Light" unique_id=2056710478]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 light_color = Color(0.941, 0.707, 0.565, 1)
 shadow_bias = 0.05
 shadow_normal_bias = 0.4
 
-[node name="MapperUI" type="Control" parent="."]
+[node name="MapperUI" type="Control" parent="." unique_id=129225812]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1427,7 +1227,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="BG" type="Panel" parent="MapperUI"]
+[node name="BG" type="Panel" parent="MapperUI" unique_id=1149014936]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1436,7 +1236,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
 
-[node name="Top Bar" type="Panel" parent="MapperUI"]
+[node name="Top Bar" type="Panel" parent="MapperUI" unique_id=929625760]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1445,7 +1245,7 @@ theme_type_variation = &"TopBar"
 script = ExtResource("6_edat5")
 metadata/_edit_use_anchors_ = true
 
-[node name="TabBar" type="TabBar" parent="MapperUI/Top Bar"]
+[node name="TabBar" type="TabBar" parent="MapperUI/Top Bar" unique_id=2104393086]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1473,7 +1273,7 @@ tab_3/title = "Text Editor"
 tab_3/disabled = true
 tab_4/title = "Preview"
 
-[node name="Exit" type="Button" parent="MapperUI/Top Bar"]
+[node name="Exit" type="Button" parent="MapperUI/Top Bar" unique_id=2065214347]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.03125
@@ -1483,7 +1283,7 @@ text = "arrow_back"
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="MenuButton" type="MenuButton" parent="MapperUI/Top Bar"]
+[node name="MenuButton" type="MenuButton" parent="MapperUI/Top Bar" unique_id=1949843997]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03125
@@ -1499,34 +1299,36 @@ popup/item_1/id = 1
 script = ExtResource("10_vu5vo")
 metadata/_edit_use_anchors_ = true
 
-[node name="SettingsWindow" type="Window" parent="MapperUI"]
+[node name="SettingsWindow" type="Window" parent="MapperUI" unique_id=571784623]
 initial_position = 2
 size = Vector2i(640, 360)
 visible = false
 script = ExtResource("10_jdq82")
 
-[node name="SettingsWindow" parent="MapperUI/SettingsWindow" instance=ExtResource("11_f5e1k")]
+[node name="SettingsWindow" parent="MapperUI/SettingsWindow" unique_id=1912455893 instance=ExtResource("11_f5e1k")]
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MapperUI"]
+[node name="HSplitContainer" type="HSplitContainer" parent="MapperUI" unique_id=749813464]
 layout_mode = 0
 anchor_top = 0.0555556
 anchor_right = 1.0
 anchor_bottom = 1.0
+split_offsets = PackedInt32Array(1020)
 split_offset = 1020
 metadata/_edit_use_anchors_ = true
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MapperUI/HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="MapperUI/HSplitContainer" unique_id=576531890]
 layout_mode = 2
+split_offsets = PackedInt32Array(270)
 split_offset = 270
 
-[node name="LeftChartTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer"]
+[node name="LeftChartTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer" unique_id=1361180330]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 8
 
-[node name="LeftTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin"]
+[node name="LeftTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin" unique_id=1901971699]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 current_tab = 0
@@ -1535,19 +1337,19 @@ tabs_rearrange_group = 1
 script = ExtResource("12_b3ujs")
 metadata/_edit_use_anchors_ = true
 
-[node name="Notes" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
+[node name="Notes" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" unique_id=478522650]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes"]
+[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes" unique_id=77471855]
 use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="Notes" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel"]
+[node name="Notes" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel" unique_id=1412958157]
 layout_mode = 2
 
-[node name="NoteContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes"]
+[node name="NoteContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes" unique_id=1972295879]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1556,15 +1358,15 @@ offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer"]
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer" unique_id=1715273500]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings" unique_id=512873585]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_type_variation = &"LucidiumClassType"
 
-[node name="Direction" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/Title"]
+[node name="Direction" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/Title" unique_id=1207126544]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1575,72 +1377,73 @@ text = "Direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings"]
+[node name="GridContainer" type="GridContainer" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings" unique_id=1592355419]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 3
 
-[node name="Button" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=1870762041]
 layout_mode = 2
 text = "TL"
 
-[node name="Button2" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button2" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=2021974109]
 layout_mode = 2
 text = "T"
 
-[node name="Button3" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button3" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=944610384]
 layout_mode = 2
 text = "TR"
 
-[node name="Button4" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button4" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=854177814]
 layout_mode = 2
 text = "L"
 
-[node name="Button5" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button5" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=1932565093]
 layout_mode = 2
 text = "D"
 
-[node name="Button6" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button6" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=1740776110]
 layout_mode = 2
 text = "R"
 
-[node name="Button7" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button7" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=418484307]
 layout_mode = 2
 text = "BL"
 
-[node name="Button8" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button8" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=294328826]
 layout_mode = 2
 text = "B"
 
-[node name="Button9" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer"]
+[node name="Button9" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer/Notes/UIPanel/Notes/NoteContainer/CubeSettings/GridContainer" unique_id=483485581]
 layout_mode = 2
 text = "BR"
 
-[node name="Arcs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
+[node name="Arcs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" unique_id=1128184313]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Bombs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
+[node name="Bombs" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" unique_id=710765002]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Walls" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer"]
+[node name="Walls" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/LeftChartTabMargin/LeftTabContainer" unique_id=349678442]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="VSplitContainer" type="VSplitContainer" parent="MapperUI/HSplitContainer/HSplitContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="MapperUI/HSplitContainer/HSplitContainer" unique_id=347449034]
 layout_mode = 2
+split_offsets = PackedInt32Array(750)
 split_offset = 750
 
-[node name="Control" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer"]
+[node name="Control" type="Control" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer" unique_id=1176497062]
 material = SubResource("ShaderMaterial_qdxl8")
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control" unique_id=1127661915]
 texture_filter = 1
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 1
@@ -1651,33 +1454,33 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer" unique_id=487250136]
 handle_input_locally = false
 msaa_3d = 2
 screen_space_aa = 1
 size = Vector2i(742, 632)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport" unique_id=1297481865]
 transform = Transform3D(0.951056, -0.0799795, 0.298487, 0, 0.965926, 0.258819, -0.309017, -0.246152, 0.91865, 1.643, 2.886, 3.305)
 current = true
 script = ExtResource("2_xkfh1")
-inertia = 0.045
+inertia = 0.645
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D" unique_id=1553711170]
 visible = false
 gi_mode = 2
 mesh = SubResource("CapsuleMesh_tahei")
 surface_material_override/0 = SubResource("StandardMaterial3D_tl6yc")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/SubViewportContainer/SubViewport/Camera3D" unique_id=979131070]
 amount = 64
 lifetime = 2.0
 visibility_aabb = AABB(-5.29217, -4.84011, -8.91135, 10.1102, 9.24705, 8.86261)
 process_material = SubResource("ParticleProcessMaterial_s1h2j")
 draw_pass_1 = SubResource("QuadMesh_yiaym")
 
-[node name="MarginContainer" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control" unique_id=1274693070]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.0759494
@@ -1687,16 +1490,16 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer"]
+[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer" unique_id=1586238450]
 layout_mode = 2
 theme_override_constants/separation = 16
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
+[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer" unique_id=2075843447]
 custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 
-[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label", "focus_button")]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel" unique_id=1520438468 node_paths=PackedStringArray("negative_button", "positive_button", "precision_label", "focus_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1709,21 +1512,21 @@ positive_button = NodePath("Plus")
 precision_label = NodePath("Label")
 focus_button = NodePath("Label/FocusButton")
 
-[node name="Minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
+[node name="Minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer" unique_id=1883879809]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_minus_1"
 flat = true
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer" unique_id=1395277209]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1/2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FocusButton" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer/Label"]
+[node name="FocusButton" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer/Label" unique_id=1578135465]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1732,7 +1535,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer"]
+[node name="Plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel/PrecisionContainer" unique_id=1665780255]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1740,12 +1543,12 @@ theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_1"
 flat = true
 
-[node name="Panel2" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer"]
+[node name="Panel2" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer" unique_id=812324]
 custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
-[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2" node_paths=PackedStringArray("negative_button", "positive_button", "precision_label", "focus_button")]
+[node name="PrecisionContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2" unique_id=1277848167 node_paths=PackedStringArray("negative_button", "positive_button", "precision_label", "focus_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1758,21 +1561,21 @@ positive_button = NodePath("Plus")
 precision_label = NodePath("Label")
 focus_button = NodePath("Label/FocusButton")
 
-[node name="Minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+[node name="Minus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer" unique_id=1526783387]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_minus_1"
 flat = true
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer" unique_id=1285894652]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1/2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FocusButton" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer/Label"]
+[node name="FocusButton" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer/Label" unique_id=1402417008]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1781,7 +1584,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer"]
+[node name="Plus" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer/TopContainer/Panel2/PrecisionContainer" unique_id=763071547]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1789,7 +1592,7 @@ theme_override_fonts/font = ExtResource("9_fabox")
 text = "stat_1"
 flat = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control"]
+[node name="MarginContainer2" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control" unique_id=1872271510]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00269542
@@ -1802,17 +1605,17 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 10
 metadata/_edit_use_anchors_ = true
 
-[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2"]
+[node name="TopContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2" unique_id=732687134]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer"]
+[node name="Panel" type="Panel" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer" unique_id=1853572333]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_jpcuv")
 
-[node name="HScrollBar" type="HScrollBar" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer/Panel"]
+[node name="HScrollBar" type="HScrollBar" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/Control/MarginContainer2/TopContainer/Panel" unique_id=1794246745]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1820,21 +1623,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BottomMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer"]
+[node name="BottomMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer" unique_id=1183174486]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin"]
+[node name="PanelContainer" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin" unique_id=18495534]
 layout_mode = 2
 theme_type_variation = &"LightPanelContainer"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer" unique_id=385118459]
 layout_mode = 2
 
-[node name="Logger" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer"]
+[node name="Logger" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer" unique_id=1375400453]
 visible = false
 custom_minimum_size = Vector2(0, 136)
 layout_mode = 2
@@ -1844,17 +1647,17 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger"]
+[node name="PanelContainer" type="PanelContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger" unique_id=1049950510]
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer" unique_id=319275499]
 layout_mode = 2
 size_flags_horizontal = 3
 follow_focus = true
 metadata/_edit_use_anchors_ = true
 
-[node name="LogMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer/ScrollContainer"]
+[node name="LogMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer/ScrollContainer" unique_id=686627530]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1863,38 +1666,38 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="ErrorLogger" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer/ScrollContainer/LogMargin"]
+[node name="ErrorLogger" type="VBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/Logger/PanelContainer/ScrollContainer/LogMargin" unique_id=147753046]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("10_i8sui")
 
-[node name="ButtonMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer"]
+[node name="ButtonMargin" type="MarginContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer" unique_id=1355719829]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 4
 
-[node name="ButtonContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin"]
+[node name="ButtonContainer" type="HBoxContainer" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin" unique_id=2018953149]
 layout_mode = 2
 size_flags_vertical = 8
 script = ExtResource("14_uoxu3")
 
-[node name="Logger" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer"]
+[node name="Logger" type="Button" parent="MapperUI/HSplitContainer/HSplitContainer/VSplitContainer/BottomMargin/PanelContainer/VBoxContainer/ButtonMargin/ButtonContainer" unique_id=902555604]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_m73j5")
 toggle_mode = true
 text = "Output Log"
 flat = true
 
-[node name="RightChartTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer"]
+[node name="RightChartTabMargin" type="MarginContainer" parent="MapperUI/HSplitContainer" unique_id=219492384]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RightTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin"]
+[node name="RightTabContainer" type="TabContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin" unique_id=1651572964]
 custom_minimum_size = Vector2(224, 0)
 layout_mode = 2
 current_tab = 0
@@ -1902,19 +1705,19 @@ drag_to_rearrange_enabled = true
 tabs_rearrange_group = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Inspector" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer"]
+[node name="Inspector" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer" unique_id=451800510]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f3xxa")
 metadata/_tab_index = 0
 
-[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector"]
+[node name="UIPanel" type="PanelContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector" unique_id=1266667211]
 layout_mode = 2
 theme_type_variation = &"DarkPanelContainer"
 
-[node name="Inspector" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel"]
+[node name="Inspector" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel" unique_id=1946682947]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector" unique_id=1890779023]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1922,20 +1725,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer" unique_id=14651270]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
+[node name="CubeSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer" unique_id=779518552]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings" unique_id=1811047338]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_type_variation = &"LucidiumClassType"
 
-[node name="Cube" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title"]
+[node name="Cube" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Title" unique_id=566490673]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1946,17 +1749,17 @@ text = "Cube"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Direction" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Direction" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings" unique_id=252624971]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction" unique_id=1244337540]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction"]
+[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Direction" unique_id=1940395254]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 9
@@ -1979,17 +1782,17 @@ popup/item_7/id = 7
 popup/item_8/text = "Down Right"
 popup/item_8/id = 8
 
-[node name="Color" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Color" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings" unique_id=355410178]
 layout_mode = 2
 
-[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color" unique_id=279230506]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Color"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color"]
+[node name="OptionButton" type="OptionButton" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Color" unique_id=2049890662]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
@@ -1998,29 +1801,29 @@ popup/item_0/id = 0
 popup/item_1/text = "Blue"
 popup/item_1/id = 1
 
-[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings"]
+[node name="Angle Offset" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings" unique_id=367821007]
 layout_mode = 2
 
-[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+[node name="Color" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset" unique_id=195356851]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Angle Offset"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/CubeSettings/Angle Offset" unique_id=274185869]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EventSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer"]
+[node name="EventSettings" type="VBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer" unique_id=1334169559]
 layout_mode = 2
 
-[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Title" type="Panel" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings" unique_id=1597640139]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme_type_variation = &"LucidiumClassType"
 
-[node name="Event" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title"]
+[node name="Event" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Title" unique_id=1957418473]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2031,11 +1834,11 @@ text = "Event"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Beat" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Beat" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings" unique_id=1707272450]
 layout_mode = 2
 tooltip_text = "Time in Beats"
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat" unique_id=1658861791]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -2043,66 +1846,66 @@ text = "Beat"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Beat" unique_id=912647188]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Time" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Time" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings" unique_id=95309323]
 layout_mode = 2
 tooltip_text = "Time in Seconds"
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time" unique_id=345898081]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Time" unique_id=1957708433]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Grid" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings"]
+[node name="Grid" type="HBoxContainer" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings" unique_id=2116412029]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="Label" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid" unique_id=2101266332]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="SpinBox" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid" unique_id=637273821]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 3.0
 
-[node name="Label2" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="Label2" type="Label" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid" unique_id=1287827442]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpinBox2" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid"]
+[node name="SpinBox2" type="SpinBox" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer/Inspector/UIPanel/Inspector/ScrollContainer/VBoxContainer/EventSettings/Grid" unique_id=264193443]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2.0
 
-[node name="Attributes" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer"]
+[node name="Attributes" type="Control" parent="MapperUI/HSplitContainer/RightChartTabMargin/RightTabContainer" unique_id=942259383]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Bloqs" type="Node3D" parent="." node_paths=PackedStringArray("editor_node")]
+[node name="Bloqs" type="Node3D" parent="." unique_id=978756769 node_paths=PackedStringArray("editor_node")]
 script = ExtResource("11_bwwcu")
 editor_node = NodePath("../LucidiumEditor")
 
-[node name="Bombs" type="Node3D" parent="." node_paths=PackedStringArray("editor_node")]
+[node name="Bombs" type="Node3D" parent="." unique_id=1398715693 node_paths=PackedStringArray("editor_node")]
 script = ExtResource("11_bwwcu")
 editor_node = NodePath("../LucidiumEditor")
 
-[node name="Billie" parent="." instance=ExtResource("18_rnir7")]
+[node name="Billie" parent="." unique_id=196139014 instance=ExtResource("18_rnir7")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="MeshRenderer" parent="Billie/Static/Track/WaterfallFlatClose" index="0"]
@@ -2119,13 +1922,12 @@ transform = Transform3D(0.42531, 0, -0.512828, -7.75047e-08, -16665, -6.41622e-0
 
 [node name="MeshRenderer" parent="Billie/Dynamic/Right Sunbeams/Rotating/Laser 14/BoxLight 34" index="0"]
 mesh = SubResource("BoxMesh_qxtxo")
-surface_material_override/0 = SubResource("StandardMaterial3D_7h6xp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Billie/Dynamic/Sun/Sun_Moon" index="1"]
+[node name="Sprite3D" type="Sprite3D" parent="Billie/Dynamic/Sun/Sun_Moon" index="1" unique_id=649115071]
 modulate = Color(2.457, 1.326, 0.552, 1)
 texture = ExtResource("19_rks5o")
 
-[node name="Cloud" type="GPUParticles3D" parent="."]
+[node name="Cloud" type="GPUParticles3D" parent="." unique_id=1742517104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.83066, 0)
 amount = 14
 lifetime = 25.0
@@ -2134,7 +1936,7 @@ visibility_aabb = AABB(-21.6104, -12.2103, -21.3485, 42.8326, 24.4203, 42.88)
 process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("QuadMesh_oeq8w")
 
-[node name="TestParticles" type="GPUParticles3D" parent="."]
+[node name="TestParticles" type="GPUParticles3D" parent="." unique_id=238131215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.82858, 0)
 visible = false
 amount = 14
@@ -2144,7 +1946,7 @@ visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
 process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 
-[node name="Cloud2" type="GPUParticles3D" parent="."]
+[node name="Cloud2" type="GPUParticles3D" parent="." unique_id=1801416870]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16934, 0)
 amount = 14
 lifetime = 25.0
@@ -2153,7 +1955,7 @@ visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
 process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("QuadMesh_oeq8w")
 
-[node name="TestParticles2" type="GPUParticles3D" parent="."]
+[node name="TestParticles2" type="GPUParticles3D" parent="." unique_id=1891432340]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17142, 0)
 visible = false
 amount = 14
@@ -2163,21 +1965,21 @@ visibility_aabb = AABB(-5.56824, -2.62886, -7.59172, 11.1365, 5.25771, 15.1834)
 process_material = SubResource("ParticleProcessMaterial_oxnc8")
 draw_pass_1 = SubResource("CapsuleMesh_2m0gw")
 
-[node name="ExitConfirmation" type="Window" parent="."]
+[node name="ExitConfirmation" type="Window" parent="." unique_id=778167179]
 title = "Please Confirm"
 initial_position = 2
 size = Vector2i(400, 150)
 visible = false
 script = ExtResource("30_6m50f")
 
-[node name="Panel" type="Panel" parent="ExitConfirmation"]
+[node name="Panel" type="Panel" parent="ExitConfirmation" unique_id=1699953357]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ExitConfirmation/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ExitConfirmation/Panel" unique_id=2122825467]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2185,7 +1987,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="ExitConfirmation/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="ExitConfirmation/Panel/VBoxContainer" unique_id=689939222]
 layout_mode = 2
 size_flags_vertical = 3
 text = "This map has unsaved changes. Would you like to save before exiting?"
@@ -2193,27 +1995,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ExitConfirmation/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ExitConfirmation/Panel/VBoxContainer" unique_id=1855222217]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="DS" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer"]
+[node name="DS" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer" unique_id=304852432]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Don't Save"
 
-[node name="C" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer"]
+[node name="C" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer" unique_id=1029316916]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="SaC" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer"]
+[node name="SaC" type="Button" parent="ExitConfirmation/Panel/VBoxContainer/HBoxContainer" unique_id=1672651966]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Save and Close"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2118842716]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.911111

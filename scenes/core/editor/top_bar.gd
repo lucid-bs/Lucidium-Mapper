@@ -1,6 +1,7 @@
 extends Panel
 
-
+## I should probably make this a dictionary.
+## TODO: Make this a dictionary.
 @onready var tabs = [
 	{
 		"left_menu" = $"../HSplitContainer/HSplitContainer/LeftChartTabMargin",

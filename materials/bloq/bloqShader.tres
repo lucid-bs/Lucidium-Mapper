@@ -1,60 +1,14 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://q5ec1qb0a6lg"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://q5ec1qb0a6lg"]
 
-[sub_resource type="Shader" id="Shader_od0y6"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.2.beta2's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley, specular_schlick_ggx, depth_prepass_alpha;
-uniform vec4 albedo : source_color;
-uniform float roughness : hint_range(0,1) = 0.75;
-uniform float specular;
-uniform float metallic : hint_range(0,1) = 1;
-uniform float color_multiplier : hint_range(0, 3) = 1;
-
-uniform sampler2D noise_texture;
-uniform float noise_interpolate : hint_range(0, 1.0, 0.1) = 2;
-
-float random (vec2 uv) {
-    return fract(sin(dot(uv.xy,
-        vec2(12.9898,78.233))) * 43758.5453123);
-}
-
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 noise = texture(noise_texture, base_uv);
-
-	ALBEDO = albedo.rgb * color_multiplier;
-	METALLIC = metallic;
-	ROUGHNESS = roughness;
-	SPECULAR = specular;
-	float interpolated = float(clamp(noise.r + mix(-1, 1, mix(0.5, 1, noise_interpolate)), 0, 1) == 1.0);
-	ALPHA = interpolated;
- 	//ALPHA = noise.r;
-
-}
-"
-metadata/_edit_res_path = "res://materials/bloq/glossyBloq.tres::Shader_od0y6"
-
-[sub_resource type="Gradient" id="Gradient_6ab0n"]
-interpolation_mode = 2
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_h5wb5"]
-frequency = 0.0225
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q83ee"]
-noise = SubResource("FastNoiseLite_h5wb5")
-color_ramp = SubResource("Gradient_6ab0n")
-seamless = true
+[ext_resource type="Shader" uid="uid://dx4x3kunpje26" path="res://shaders/beatsaber_block.gdshader" id="1_meyv1"]
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_od0y6")
-shader_parameter/albedo = Color(0.898039, 0.0313726, 0.0627451, 1)
-shader_parameter/roughness = 0.667
-shader_parameter/specular = 1.0
-shader_parameter/metallic = 1.0
-shader_parameter/color_multiplier = 0.32
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_q83ee")
-shader_parameter/noise_interpolate = 2.0
+shader = ExtResource("1_meyv1")
+shader_parameter/albedo = Color(0.15686275, 0.5568628, 0.8235294, 1)
+shader_parameter/gradientBasis = Vector3(1.065, 0, 6.13)
+shader_parameter/gradientBasisDistort = Vector3(0, -3.745, 3.355)
+shader_parameter/gradientBasisSpeed = 0.0
+shader_parameter/refractionSplit = 0.0
+shader_parameter/refractionSplitPower = 0.13000000547648
+shader_parameter/refractionAffect = 0.95

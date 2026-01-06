@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtwrdjth048su"]
+[gd_scene load_steps=21 format=3 uid="uid://dtwrdjth048su"]
 
 [ext_resource type="Script" uid="uid://bsr3aia8w754x" path="res://scenes/core/map_configurer.gd" id="1_v5not"]
 [ext_resource type="Script" uid="uid://ucjpi7aochaf" path="res://scenes/core/assets/map_data_manager.gd" id="2_mi6hj"]
 [ext_resource type="Texture2D" uid="uid://byq6fbjy8gs68" path="res://UI/reference/chro.png" id="2_su4so"]
+[ext_resource type="Script" uid="uid://qoctpsi3wmqo" path="res://scenes/core/ui/audio_stream_waveform.gd" id="3_0euj2"]
 [ext_resource type="Script" uid="uid://cub5ghotk5ohn" path="res://scenes/core/ui/difficulty_thingy.gd" id="3_7my54"]
 [ext_resource type="FontFile" uid="uid://b2l417p525crd" path="res://extern/MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" id="3_efsek"]
 [ext_resource type="Script" uid="uid://520stux3ohat" path="res://scenes/core/ui/copy_buttons.gd" id="3_y0rcl"]
@@ -24,40 +25,21 @@ height = 256
 atlas = ExtResource("4_j7wis")
 region = Rect2(53, 28, 14, 14)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jef3"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7dwg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5l12i"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7dwg"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jef3"]
 
 [sub_resource type="Resource" id="Resource_g5lnc"]
 script = ExtResource("4_fmmta")
-version = "2.1.0"
-song_name = ""
-song_subname = ""
-song_author_name = ""
-level_author_name = ""
-beats_per_minute = 0.0
-shuffle = 0.0
-shuffle_period = 0.5
-preview_start = 0.0
-preview_duration = 0.0
-song_filename = ""
-cover_image_filename = ""
-environment_name = ""
-all_directions_environment_name = "GlassDesertEnvironment"
-song_time_offset = 0.0
-environment_names = Array[String]([])
-color_schemes = []
-custom_data = {}
-difficulty_beatmap_sets = Array[ExtResource("9_vml01")]([])
 
 [sub_resource type="LabelSettings" id="LabelSettings_0dmif"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dyti"]
 bg_color = Color(0.145098, 0.168627, 0.203922, 1)
 
-[node name="Map Configurer" type="Control" node_paths=PackedStringArray("map_data_manager", "song_name_edit", "song_subname_edit", "song_author_edit", "map_author_edit", "cover_display", "cover_filename_edit", "song_filename_edit", "song_bpm_edit", "song_preview_start_edit", "song_preview_duration_edit", "play_preview_button", "preview_audio_stream", "preview_timer")]
+[node name="Map Configurer" type="Control" unique_id=2030528355 node_paths=PackedStringArray("map_data_manager", "song_name_edit", "song_subname_edit", "song_author_edit", "map_author_edit", "cover_display", "cover_filename_edit", "song_filename_edit", "song_bpm_edit", "song_preview_start_edit", "song_preview_duration_edit", "play_preview_button", "preview_audio_stream", "preview_timer", "audio_stream_waveform_panel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,8 +61,9 @@ song_preview_duration_edit = NodePath("InfoDatThingy/MarginContainer/VBoxContain
 play_preview_button = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/PlayPreviewButton")
 preview_audio_stream = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/AudioStreamPlayer")
 preview_timer = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10/PreviewTimer")
+audio_stream_waveform_panel = NodePath("InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer/AudioStreamWaveform")
 
-[node name="BG" type="Panel" parent="."]
+[node name="BG" type="Panel" parent="." unique_id=945444414]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,12 +72,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Background"
 
-[node name="Chro" type="Sprite2D" parent="."]
+[node name="Chro" type="Sprite2D" parent="." unique_id=1254945055]
 visible = false
 position = Vector2(640, 376)
 texture = ExtResource("2_su4so")
 
-[node name="InfoDatThingy" type="Panel" parent="."]
+[node name="InfoDatThingy" type="Panel" parent="." unique_id=1276467399]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -103,7 +86,7 @@ anchor_right = 0.55
 anchor_bottom = 0.955556
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="InfoDatThingy"]
+[node name="MarginContainer" type="MarginContainer" parent="InfoDatThingy" unique_id=131314048]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,143 +98,143 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer" unique_id=1727565805]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=1085497155]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer" unique_id=1543969929]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1995498110]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Name"
 
-[node name="SongNameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="SongNameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1032807496]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
 
-[node name="PanelContainer4" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=961402010]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4" unique_id=421864772]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer" unique_id=1508667677]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Subname"
 
-[node name="SongSubnameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer"]
+[node name="SongSubnameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer" unique_id=169299116]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=1053037354]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1699187295]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1428638110]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Author"
 
-[node name="SongAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="SongAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer" unique_id=1716462584]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
 
-[node name="PanelContainer3" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=1221313630]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3" unique_id=446684811]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=182014864]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Map Author"
 
-[node name="MapAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="MapAuthorEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer" unique_id=1699604626]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
 
-[node name="HSeparator" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=525894903]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=1150142813]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1002391440]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=25835921]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_0le68")
 expand_mode = 5
 
-[node name="PanelContainer6" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PanelContainer6" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=193847962]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6" unique_id=1584280556]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer" unique_id=1070424506]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Cover Filename"
 
-[node name="CoverFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer"]
+[node name="CoverFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer6/HBoxContainer" unique_id=1719600186]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2131424134]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer5" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="PanelContainer5" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1497053468]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer5"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer5" unique_id=1064597637]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer5/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer5/HBoxContainer" unique_id=631567139]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Song Filename"
 
-[node name="SongFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer5/HBoxContainer"]
+[node name="SongFilenameEdit" type="LineEdit" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer5/HBoxContainer" unique_id=418567565]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "PLACEHOLDER"
 
-[node name="PanelContainer7" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="PanelContainer7" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1720300797]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7" unique_id=799698115]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7/HBoxContainer" unique_id=2126371105]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Song BPM"
 
-[node name="BPMSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7/HBoxContainer"]
+[node name="BPMSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer7/HBoxContainer" unique_id=1833517834]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 99999.0
@@ -259,79 +242,79 @@ step = 0.0
 suffix = "BPM"
 custom_arrow_step = 1.0
 
-[node name="PanelContainer10" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="PanelContainer10" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=205365508]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 
-[node name="PlayPreviewButton" type="Button" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10"]
+[node name="PlayPreviewButton" type="Button" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10" unique_id=1907140537]
 layout_mode = 2
 text = "Play Preview"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10" unique_id=759028249]
 
-[node name="PreviewTimer" type="Timer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10"]
+[node name="PreviewTimer" type="Timer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer10" unique_id=514937601]
 one_shot = true
 
-[node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1081856882]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="PreviewStartContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8"]
+[node name="PreviewStartContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8" unique_id=1571671506]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8/PreviewStartContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8/PreviewStartContainer" unique_id=1993249375]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Preview Start"
 vertical_alignment = 1
 
-[node name="PreviewStartSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8/PreviewStartContainer"]
+[node name="PreviewStartSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer8/PreviewStartContainer" unique_id=1090496847]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 9999.0
 step = 0.001
 custom_arrow_step = 0.1
 
-[node name="PanelContainer9" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="PanelContainer9" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1968205146]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="PreviewDurationContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9"]
+[node name="PreviewDurationContainer" type="HBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9" unique_id=1789550128]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9/PreviewDurationContainer"]
+[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9/PreviewDurationContainer" unique_id=730364327]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Preview Duration"
 
-[node name="PreviewDurationSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9/PreviewDurationContainer"]
+[node name="PreviewDurationSpinBox" type="SpinBox" parent="InfoDatThingy/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer9/PreviewDurationContainer" unique_id=380875565]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 9999.0
 step = 0.001
 custom_arrow_step = 0.1
 
-[node name="HSeparator2" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=753954639]
 layout_mode = 2
 
-[node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer"]
+[node name="PanelContainer8" type="PanelContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer" unique_id=871618400]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8" unique_id=523389577]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer"]
+[node name="AudioStreamWaveform" type="Panel" parent="InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer" unique_id=742409562]
 layout_mode = 2
-text = "A Waveform will go here. Eventually. One day."
-horizontal_alignment = 1
+size_flags_vertical = 3
+script = ExtResource("3_0euj2")
 
-[node name="DifficultyThingy" type="Panel" parent="." node_paths=PackedStringArray("map_data_manager")]
+[node name="DifficultyThingy" type="Panel" parent="." unique_id=1644304060 node_paths=PackedStringArray("map_data_manager")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6
@@ -342,7 +325,7 @@ script = ExtResource("3_7my54")
 map_data_manager = NodePath("../MapDataManager")
 metadata/_edit_use_anchors_ = true
 
-[node name="TabBar" type="TabBar" parent="DifficultyThingy"]
+[node name="TabBar" type="TabBar" parent="DifficultyThingy" unique_id=471906682]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -357,7 +340,7 @@ tab_4/title = "Lawless"
 tab_5/title = "Playground"
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DifficultyThingy"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DifficultyThingy" unique_id=1780683804]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.0975609
@@ -365,44 +348,44 @@ anchor_right = 1.0
 anchor_bottom = 0.52439
 metadata/_edit_use_anchors_ = true
 
-[node name="E+" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="E+" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" unique_id=259040172 node_paths=PackedStringArray("difficulty_thingy")]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_type_variation = &"LightPanelContainer"
 script = ExtResource("4_hcms4")
 difficulty_thingy = NodePath("../..")
 
-[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/E+"]
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/E+" unique_id=1407301664]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer" unique_id=763363809]
 layout_mode = 2
 
-[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer" unique_id=1710369956]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Expert+"
 flat = true
 
-[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer" unique_id=135920053 node_paths=PackedStringArray("difficulty_thingy")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_y0rcl")
 difficulty_thingy = NodePath("../../../../..")
 
-[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons" unique_id=2020517385]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "content_copy"
 
-[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons" unique_id=1465468619]
 auto_translate_mode = 1
 visible = false
 custom_minimum_size = Vector2(32, 0)
@@ -411,7 +394,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 disabled = true
 text = "content_paste"
 
-[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons" unique_id=158677898]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -420,7 +403,7 @@ toggle_mode = true
 icon = SubResource("AtlasTexture_c40l2")
 icon_alignment = 1
 
-[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons" unique_id=1768403131]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -428,7 +411,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "nature_people"
 
-[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer/CopyButtons" unique_id=1082870978]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -436,18 +419,18 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "lightbulb"
 
-[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/E+/MarginContainer/HBoxContainer" unique_id=1559400664]
 layout_mode = 2
 button_pressed = true
 
-[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/E+"]
+[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/E+" unique_id=1778919701]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_s7dwg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
 flat = true
 
-[node name="Ex" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="Ex" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" unique_id=803685201 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -455,7 +438,7 @@ theme_type_variation = &"DarkPanelContainer"
 script = ExtResource("4_hcms4")
 difficulty_thingy = NodePath("../..")
 
-[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/Ex"]
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/Ex" unique_id=113294197]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -463,11 +446,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer" unique_id=405311286]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer" unique_id=85833571]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -475,14 +458,14 @@ size_flags_horizontal = 2
 text = "Expert"
 flat = true
 
-[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer" unique_id=1662583988 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_y0rcl")
 difficulty_thingy = NodePath("../../../../..")
 
-[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons" unique_id=397163834]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -490,7 +473,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "content_copy"
 
-[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons" unique_id=1789683561]
 auto_translate_mode = 1
 visible = false
 custom_minimum_size = Vector2(32, 0)
@@ -499,7 +482,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 disabled = true
 text = "content_paste"
 
-[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons" unique_id=1555694760]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -508,7 +491,7 @@ toggle_mode = true
 icon = SubResource("AtlasTexture_c40l2")
 icon_alignment = 1
 
-[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons" unique_id=573596862]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -516,7 +499,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "nature_people"
 
-[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer/CopyButtons" unique_id=2130328514]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -524,19 +507,19 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "lightbulb"
 
-[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/Ex/MarginContainer/HBoxContainer" unique_id=1603737804]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/Ex"]
+[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/Ex" unique_id=1186006020]
 auto_translate_mode = 1
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_s7dwg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
 flat = true
 
-[node name="H" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="H" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" unique_id=859704283 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -544,7 +527,7 @@ theme_type_variation = &"DarkPanelContainer"
 script = ExtResource("4_hcms4")
 difficulty_thingy = NodePath("../..")
 
-[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/H"]
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/H" unique_id=1219333812]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -552,11 +535,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/H/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/H/MarginContainer" unique_id=1752012272]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer" unique_id=825394425]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -564,14 +547,14 @@ size_flags_horizontal = 2
 text = "Hard"
 flat = true
 
-[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer" unique_id=1505814313 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_y0rcl")
 difficulty_thingy = NodePath("../../../../..")
 
-[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons" unique_id=135635135]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -579,7 +562,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "content_copy"
 
-[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons" unique_id=2040955299]
 auto_translate_mode = 1
 visible = false
 custom_minimum_size = Vector2(32, 0)
@@ -588,7 +571,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 disabled = true
 text = "content_paste"
 
-[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons" unique_id=1691449327]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -597,7 +580,7 @@ toggle_mode = true
 icon = SubResource("AtlasTexture_c40l2")
 icon_alignment = 1
 
-[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons" unique_id=2026253968]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -605,7 +588,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "nature_people"
 
-[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer/CopyButtons" unique_id=693858667]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -613,19 +596,19 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "lightbulb"
 
-[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/H/MarginContainer/HBoxContainer" unique_id=2058035555]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/H"]
+[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/H" unique_id=2022281187]
 auto_translate_mode = 1
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_s7dwg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
 flat = true
 
-[node name="N" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="N" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" unique_id=924537787 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -633,7 +616,7 @@ theme_type_variation = &"DarkPanelContainer"
 script = ExtResource("4_hcms4")
 difficulty_thingy = NodePath("../..")
 
-[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/N"]
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/N" unique_id=472478048]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -641,11 +624,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/N/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/N/MarginContainer" unique_id=1123876540]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer" unique_id=1467888178]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -653,14 +636,14 @@ size_flags_horizontal = 2
 text = "Normal"
 flat = true
 
-[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer" unique_id=1863688645 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_y0rcl")
 difficulty_thingy = NodePath("../../../../..")
 
-[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons" unique_id=1082517284]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -668,7 +651,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "content_copy"
 
-[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons" unique_id=1188936556]
 auto_translate_mode = 1
 visible = false
 custom_minimum_size = Vector2(32, 0)
@@ -677,7 +660,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 disabled = true
 text = "content_paste"
 
-[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons" unique_id=574322829]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -686,7 +669,7 @@ toggle_mode = true
 icon = SubResource("AtlasTexture_c40l2")
 icon_alignment = 1
 
-[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons" unique_id=947635218]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -694,7 +677,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "nature_people"
 
-[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer/CopyButtons" unique_id=1947869738]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -702,19 +685,19 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "lightbulb"
 
-[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/N/MarginContainer/HBoxContainer" unique_id=777399792]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/N"]
+[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/N" unique_id=1189098085]
 auto_translate_mode = 1
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_s7dwg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
 flat = true
 
-[node name="E" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="E" type="PanelContainer" parent="DifficultyThingy/VBoxContainer" unique_id=1585359141 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -722,7 +705,7 @@ theme_type_variation = &"DarkPanelContainer"
 script = ExtResource("4_hcms4")
 difficulty_thingy = NodePath("../..")
 
-[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/E"]
+[node name="MarginContainer" type="MarginContainer" parent="DifficultyThingy/VBoxContainer/E" unique_id=864533199]
 auto_translate_mode = 1
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -730,11 +713,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E/MarginContainer" unique_id=357613620]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer"]
+[node name="DiffName" type="LineEdit" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer" unique_id=1984059179]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
@@ -742,14 +725,14 @@ size_flags_horizontal = 2
 text = "Easy"
 flat = true
 
-[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer" node_paths=PackedStringArray("difficulty_thingy")]
+[node name="CopyButtons" type="HBoxContainer" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer" unique_id=700464982 node_paths=PackedStringArray("difficulty_thingy")]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_y0rcl")
 difficulty_thingy = NodePath("../../../../..")
 
-[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Copy" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons" unique_id=826229540]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -757,7 +740,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "content_copy"
 
-[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Paste" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons" unique_id=285879728]
 auto_translate_mode = 1
 visible = false
 custom_minimum_size = Vector2(32, 0)
@@ -766,7 +749,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 disabled = true
 text = "content_paste"
 
-[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Notes" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons" unique_id=57211189]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -775,7 +758,7 @@ toggle_mode = true
 icon = SubResource("AtlasTexture_c40l2")
 icon_alignment = 1
 
-[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Environment" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons" unique_id=2018015843]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -783,7 +766,7 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "nature_people"
 
-[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons"]
+[node name="Lights" type="Button" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer/CopyButtons" unique_id=1112091191]
 auto_translate_mode = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -791,19 +774,19 @@ theme_override_fonts/font = ExtResource("3_efsek")
 toggle_mode = true
 text = "lightbulb"
 
-[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="DifficultyThingy/VBoxContainer/E/MarginContainer/HBoxContainer" unique_id=167454139]
 auto_translate_mode = 1
 layout_mode = 2
 
-[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/E"]
+[node name="SelectionButton" type="Button" parent="DifficultyThingy/VBoxContainer/E" unique_id=2018454313]
 auto_translate_mode = 1
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_s7dwg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5l12i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1jef3")
 flat = true
 
-[node name="HFlowContainer" type="HFlowContainer" parent="DifficultyThingy"]
+[node name="HFlowContainer" type="HFlowContainer" parent="DifficultyThingy" unique_id=1238396278]
 layout_mode = 0
 anchor_left = 0.0357143
 anchor_top = 0.512195
@@ -813,15 +796,15 @@ offset_top = 3.05176e-05
 offset_bottom = -3.05176e-05
 metadata/_edit_use_anchors_ = true
 
-[node name="ReactionTime" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer"]
+[node name="ReactionTime" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer" unique_id=1346302935]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/ReactionTime"]
+[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/ReactionTime" unique_id=838415030]
 layout_mode = 2
 text = "Reaction Time"
 
-[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/ReactionTime"]
+[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/ReactionTime" unique_id=1032955965]
 layout_mode = 2
 max_value = 10000.0
 step = 0.0
@@ -829,68 +812,68 @@ rounded = true
 suffix = "ms"
 custom_arrow_step = 1.0
 
-[node name="JumpDistance" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer"]
+[node name="JumpDistance" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer" unique_id=1313242744]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/JumpDistance"]
+[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/JumpDistance" unique_id=1382273436]
 auto_translate_mode = 1
 layout_mode = 2
 text = "Jump Distance"
 
-[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/JumpDistance"]
+[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/JumpDistance" unique_id=1957069608]
 auto_translate_mode = 1
 layout_mode = 2
 max_value = 10000.0
 step = 0.01
 custom_arrow_step = 1.0
 
-[node name="HalfJumpDuration" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer"]
+[node name="HalfJumpDuration" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer" unique_id=2064335198]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/HalfJumpDuration"]
+[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/HalfJumpDuration" unique_id=1742957677]
 auto_translate_mode = 1
 layout_mode = 2
 text = "Half Jump Duration"
 
-[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/HalfJumpDuration"]
+[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/HalfJumpDuration" unique_id=1632815714]
 auto_translate_mode = 1
 layout_mode = 2
 max_value = 10000.0
 step = 0.0
 custom_arrow_step = 0.25
 
-[node name="NoteJumpSpeed" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer"]
+[node name="NoteJumpSpeed" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer" unique_id=439280590]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/NoteJumpSpeed"]
+[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/NoteJumpSpeed" unique_id=1036118787]
 auto_translate_mode = 1
 layout_mode = 2
 text = "Note Jump Speed"
 
-[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/NoteJumpSpeed"]
+[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/NoteJumpSpeed" unique_id=1871273879]
 auto_translate_mode = 1
 layout_mode = 2
 max_value = 10000.0
 step = 0.0
 custom_arrow_step = 0.25
 
-[node name="StartBeatOffset" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer"]
+[node name="StartBeatOffset" type="VBoxContainer" parent="DifficultyThingy/HFlowContainer" unique_id=360596674]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/StartBeatOffset"]
+[node name="Label" type="Label" parent="DifficultyThingy/HFlowContainer/StartBeatOffset" unique_id=1824963453]
 auto_translate_mode = 1
 layout_mode = 2
 text = "Start Beat Offset"
 
-[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/StartBeatOffset"]
+[node name="SpinBox" type="SpinBox" parent="DifficultyThingy/HFlowContainer/StartBeatOffset" unique_id=1283789973]
 auto_translate_mode = 1
 layout_mode = 2
 max_value = 10000.0
@@ -898,7 +881,7 @@ step = 0.0
 suffix = "Beats"
 custom_arrow_step = 0.25
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="DifficultyThingy"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="DifficultyThingy" unique_id=134698682]
 layout_mode = 0
 anchor_left = 0.0357143
 anchor_top = 0.707317
@@ -906,33 +889,33 @@ anchor_right = 0.964286
 anchor_bottom = 0.804878
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="DifficultyThingy/HBoxContainer2"]
+[node name="Button" type="Button" parent="DifficultyThingy/HBoxContainer2" unique_id=1732204793]
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Map Data & Settings"
 
-[node name="Button2" type="Button" parent="DifficultyThingy/HBoxContainer2"]
+[node name="Button2" type="Button" parent="DifficultyThingy/HBoxContainer2" unique_id=415674082]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Noodle Settings"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultyThingy" unique_id=999094229]
 layout_mode = 0
 anchor_top = 0.829268
 anchor_right = 1.0
 anchor_bottom = 0.926829
 metadata/_edit_use_anchors_ = true
 
-[node name="EnterEditorButton" type="Button" parent="DifficultyThingy/HBoxContainer"]
+[node name="EnterEditorButton" type="Button" parent="DifficultyThingy/HBoxContainer" unique_id=1777127306]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Enter Editor"
 metadata/_edit_use_anchors_ = true
 
-[node name="PackZipButton" type="Button" parent="DifficultyThingy/HBoxContainer"]
+[node name="PackZipButton" type="Button" parent="DifficultyThingy/HBoxContainer" unique_id=1650952927]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -940,7 +923,7 @@ disabled = true
 text = "Pack To Zip"
 metadata/_edit_use_anchors_ = true
 
-[node name="PushToQuest" type="Button" parent="DifficultyThingy/HBoxContainer"]
+[node name="PushToQuest" type="Button" parent="DifficultyThingy/HBoxContainer" unique_id=722418923]
 auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -948,11 +931,11 @@ disabled = true
 text = "Push To Quest"
 metadata/_edit_use_anchors_ = true
 
-[node name="MapDataManager" type="Node" parent="."]
+[node name="MapDataManager" type="Node" parent="." unique_id=1631264150]
 script = ExtResource("2_mi6hj")
 info_dat_data = SubResource("Resource_g5lnc")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1901213696]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -965,7 +948,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="." unique_id=228723622]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.05

@@ -100,9 +100,9 @@ func _ready() -> void:
 		$MeshInstance3D.material_override.set_shader_parameter("metallic", 1)
 	
 	if color == BLOQ_COLORS.RED:
-		rgb_color = Color(0.8, 0.645, 0.432)
+		rgb_color = Color(0.8, 0.645, 0.432, 1.0)
 	else:
-		rgb_color = Color(0.548, 0.613, 0.64)
+		rgb_color = Color(0.557, 0.702, 0.776, 1.0)
 	update_color(rgb_color)
 	update_direction(direction, angle_offset)
 	update_position(x, y)

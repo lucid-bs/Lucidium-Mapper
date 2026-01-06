@@ -19,6 +19,8 @@ extends Control
 @export var preview_audio_stream : AudioStreamPlayer
 @export var preview_timer : Timer
 
+@export var audio_stream_waveform_panel : AudioStreamWaveform
+
 func _on_button_pressed() -> void:
 	
 	var editor = preload("res://scenes/core/editor.tscn").instantiate()
@@ -38,11 +40,8 @@ func _ready() -> void:
 	$DifficultyThingy/HBoxContainer/EnterEditorButton.disabled = true
 	load_data()
 	play_preview_button.pressed.connect(_on_play_preview_pressed)
-	
-	if randi_range(0, 4) == 3:
-		$InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer/Label.text = "Waiting For Godot? More like Waiting for Waveform, ha!"
-	else:
-		$InfoDatThingy/MarginContainer/VBoxContainer/PanelContainer8/VBoxContainer/Label.text = "A Waveform will go here. Eventually. One day."
+	audio_stream_waveform_panel.generate_waveform()
+
 	
 func load_data():
 	song_name_edit.text = map_data_manager.get_property("song_name")
@@ -61,6 +60,8 @@ func load_data():
 	$"DifficultyThingy/VBoxContainer/H".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Hard")
 	$"DifficultyThingy/VBoxContainer/N".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Normal")
 	$"DifficultyThingy/VBoxContainer/E".difficulty_object = map_data_manager.get_difficulty(&"Standard", &"Easy")
+	
+	audio_stream_waveform_panel.audio_file = AudioStreamOggVorbis.load_from_file($MapDataManager.path + map_data_manager.get_property(&"song_filename"))
 	
 
 func _on_play_preview_pressed():
